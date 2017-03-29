@@ -23,7 +23,7 @@ const webpackDevelopmentConfig = {
     // Plugins => Configure webpack plugins
     plugins: [
       new ExtractTextPlugin({
-          filename: "/stylesheets/[name].bundle.css"
+          filename: "stylesheets/[name].bundle.css"
       }),
     ]
 };
