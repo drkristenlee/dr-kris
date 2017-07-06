@@ -14,6 +14,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const WebpackNotifierPlugin = require('webpack-notifier');
 
+// ADDED FOR AUTOPREFIXER
+const PostCSSPlugin = require('postcss-loader');
+
+
 // MAIN WEBPACK CONFIGURATION
 const webpackBaseConfig = function(env) {
 
@@ -59,10 +63,10 @@ const webpackBaseConfig = function(env) {
                 {
                   test: /\.sass$/,
                   use: ExtractTextPlugin.extract({
-                      use: [{loader: "css-loader"}, {loader: "sass-loader"}],
+                      use: [{loader: "css-loader"}, {loader: "postcss-loader"}, {loader: "sass-loader"}],
                       fallback: "style-loader"
                   })
-                }
+                },
             ]
         },
 
@@ -94,6 +98,7 @@ const webpackBaseConfig = function(env) {
             }),
 
             new WebpackNotifierPlugin({alwaysNotify: true}),
+
         ]
     }
 };
