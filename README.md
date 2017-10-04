@@ -1,40 +1,48 @@
-# Craft CMS Project Boilerplate
+# Dr Kris
 
-This is the project scaffolding MilesHerndon uses for all of our Craft CMS projects.
+This is a [CraftCMS](https://craftcms.com/) theme.
 
-##### Table of Contents
+### Introduction
 
-1. [Dependencies](#Dependencies)
-1. [Installation](#Installation)
-1. [Workflow](#workflow)
-1. [Under the Hood](#under-the-hood)
-1. [Key Collaborators](#key Collaborators)
-1. [License](#license)
+The project setup and gulp configuration is based on [craft-webpack-project-boilerplate by MilesHerndon agency](https://github.com/MilesHerndon/craft-webpack-project-boilerplate) which has solid documentation and you should check it out if you have questions about the project structure.
 
-*****
+## Getting Started
 
+### 1) Install MAMP
 
-## Dependencies
-* [Node.js](https://nodejs.org/en/)
-* [Craft CMS](https://craftcms.com)
+1. [Download](https://www.mamp.info/en/) and install MAMP
+2. Open MAMP and click Start Servers
+3. The MAMP start page should open in your browser
+4. Click on the link to `phpMyAdmin`
+5. Create a new database and name it `dr_kris`
 
-_[Back to top](#table-of-contents)_
+### 2) Install Project Dependencies
 
-*****
+- [npm](https://www.npmjs.com/) - Node Package Manager is what we'll use to install dependencies and automate stuff.
 
-## Installation
+### 3) Project Setup
 
-Download or clone this project scaffold into your working directory, and then run:
+1. Open the command line and navigate to `/Applications/MAMP/htdocs`: `cd /Applications/MAMP/htdocs`
+2. Clone the repo here: `git clone git@github.com:Scout-NU/dr-kris.git`
+3. Open the file `/craft/config/db.php` in the cloned repo
+4. Look for the section labeled `Environment: Local`
+5. Under this section, change the line: `'database' => 'craft_webpack_project_boilerplate'` to be `'database' => 'dr_kris'`. You can leave the other settings as their default values.
+6. Save this file
 
-``` sh
-$ npm install
-```
+### 4) Install Craft CMS
 
-_[Back to top](#table-of-contents)_
+1. In your browser, navigate to `http://localhost:8888/dr-kris/public/admin/dashboard` (or if your MAMP is running on another port use that one)
+2. Click on Begin
+3. We will be using a `scout-admin` account for development. If you need the credentials, contact Nick
+4. Fill in the credentials and press Next
+5. For site name enter `dr-kris`. The other fields can remain their default values.
+6. Click Finish Up
 
-*****
+### 5) Development
 
-## Workflow
+To install project dependencies, navigate to the repo and run `npm install`
+
+#### Workflow
 
 Use Node.js scripts to run build tools.
 
@@ -42,47 +50,3 @@ Use Node.js scripts to run build tools.
 * `$ npm run build` - Creates production ready code.
 
 After running `` $ npm run watch `` or `` $ npm run build ``, your deploy-ready code will be taken from the ``./src/`` directory and placed within the ``./public/build/`` directory of your project. However, the webpack generated templates will be placed within the ``./public/static/templates/_webpack.templates`` directory of your project so Craft CMS has access to them.
-
-_[Back to top](#table-of-contents)_
-
-*****
-
-## Under the Hood
-This project scaffolding is pretty opinionated and makes use of the following tools, open source projects, and architecture methodologies:
-
-* [Webpack](https://webpack.js.org/) - A bundler for javascript and friends.
-* [Sass](http://sass-lang.com/) - CSS extension language
-* [ECMAScript 2015 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla) - JavaScript's built-in modules.
-* [SMACSS](https://smacss.com/) - Methodology for organizing scalable and modular CSS architectures
-* [BEM](http://getbem.com/) -  Block Element Modifier is a methodology, that helps you to achieve reusable components and code sharing in the front-end
-* [Augmented ITCSS](https://github.com/m-soyka/Augment-ITCSS) - This is an augmented css folder structure that originates from the ITCSS architecture and uses SMACSS and BEM.
-* [Modernizr](https://modernizr.com/) - Modernizr tells you what HTML, CSS and JavaScript features the user’s browser has to offer.
-* [svg4everybody](https://github.com/jonathantneal/svg4everybody) - Open source external SVG polyfill for useing external SVG spritemaps
-* [PictureFill](https://github.com/scottjehl/picturefill) - A responsive image polyfill for <picture>, srcset, sizes, and more
-
-_[Back to top](#table-of-contents)_
-
-*****
-
-## Key Collaborators
-Thanks to our developers who made this Craft CMS project scaffolding possible.
-* [Mark Reckard](https://github.com/marker004)
-* [Matthew Soyka](https://github.com/m-soyka)
-
-_[Back to top](#table-of-contents)_
-
-*****
-
-## License
-
-###### The MIT License
-
-Copyright (c) 2017 MilesHerndon
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-_[Back to top](#table-of-contents)_
