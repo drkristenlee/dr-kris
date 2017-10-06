@@ -1,0 +1,931 @@
+@charset "UTF-8";
+/** ======================================================================================================
+  * Styles via ITCSS Methodology
+  *
+  * This is where all of the stylesheets are compiled.
+  * They are processed in the order they are imported to ensure the consistent increase of specificity.
+  * ====================================================================================================== */
+/**
+  * |=====================================================================================================================|
+  * | TABLE OF CONTENTS (ITCSS HIERARCHY OF SPECIFICITY)
+  * |=====================================================================================================================|
+  * | I. SETTINGS
+  * |   > The Settings layer does not contain any styles.
+  * |     It only houses variables and other configuration needs.
+  * |
+  * |   > Examples: breakpoints, animations, colors, spacers, font-size, line height
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | II. GENERIC
+  * |   > The Generic layer is houses very high-level, far reaching styles
+  * |     that are commonly used on every web project.
+  * |
+  * |   > Example: Normalize.css, Box-sizing, Form Input Resets, Headings Reset, etc.
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | III. TOOLS
+  * |   > Mixins and functions that are used to make it easy to
+  * |     apply commonly used code chunks and logic to the other elements.
+  * |
+  * |   > Example: positions, text-sizes, media-queries, fonts, cursors, etc.
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | IV. UTILITIES
+  * |   > Classes that can be applied to html elements or used within tools
+  * |     and other modules / frameworks to help with DRY coding techniques
+  * |   > Utilities help seperate general global styles to increaases flexiblity
+  * |     and can be added and changed freely.
+  * |
+  * |   > Examples: color, font, text-size, padding, align, background, etc.
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | V. ELEMENTS
+  * |   > All style directly associated to the html selectors.
+  * |
+  * |   > Example: h1...h6, p, blockquote, body, html, hr, ul, ol, li, etc...
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | VI. BUILDING BLOCKS
+  * |   > All modules that are the smallest building block pieces that
+  * |     will be used to create modules and frameworks in the form of macros.
+  * |     These are simliar to elements, but they are styles using classes,
+  * |     not the html element themselves.
+  * |
+  * |   > Example: svgs, button, links, ux, inputs, responsive images, etc.
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | VII. MODULES
+  * |   > Modules are coding the main coding chunks of the project.
+  * |     These utilize building blocks and custom styles and are placed within frameworks.
+  * |
+  * |   > These pieces fit inside frameworks, but understanding the seperation can be subjective
+  * |
+  * |   > Example: navigation, banner, hero-banner,
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | VIII. FRAMEWORKS
+  * |   > Frameworks are pices of code that wrap around modules to ensure
+  * |     they are correctly layed out on the browser window.
+  * |     Generally associated with custom grid.
+  * |
+  * |   > These pieces fit inside frameworks, but understanding the seperation can be subjective
+  * |
+  * |   > Example: main-header, main-footer, sidebar, line-break grid, lightbox grid, thirds grid, etc.
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  * | IX. TRUMPS
+  * |   > All styles that must always trump all other styles.
+  * |     Therefor, they all have the !important tag attached to them.
+  * |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+  **/
+/** ==========================================================================
+  * I. SETTINGS
+  * ========================================================================== **/
+/** ==================================================================================================================
+  *   This is where all of the "SETTINGS" stylesheets are compiled
+  *
+  *   The Settings layer does not contain any styles. It only houses variables and other configuration needs.
+  * ================================================================================================================== */
+/**
+  * "Breakpoint" SETTINGS - ITCSS Methodology
+  *
+  * The Settings layer does not contain any styles. It only houses variables and other configuration needs.
+  *
+  **/
+/**
+  * "Color" SETTINGS - ITCSS Methodology
+  *
+  * The Settings layer does not contain any styles. It only houses variables and other configuration needs.
+  *
+  **/
+/**
+  * "Spacer" SETTINGS - ITCSS Methodology
+  *
+  * The Settings layer does not contain any styles. It only houses variables and other configuration needs.
+  *
+  **/
+/** ==========================================================================
+  * II. GENERIC
+  * ========================================================================== **/
+/** ==================================================================================================================
+  *   This is where all of the "GENERIC" stylesheets are compiled
+  *
+  *   The Generic layer is houses very high-level, far reaching styles that are commonly used on every web project.
+  * ================================================================================================================== */
+/**
+  * "Normalize Library" GENERIC - ITCSS Methodology
+  *
+  * The Generic layer is houses very high-level, far reaching styles that are commonly used on every web project.
+  *
+  * These are the styles from normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css
+  **/
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/**
+ * Remove the margin in all browsers (opinionated). */
+body {
+  margin: 0; }
+
+/* HTML5 display definitions
+ * ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE. */
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+  /* 1 */
+  display: block; }
+
+/**
+ * Add the correct display in IE 9-. */
+audio, canvas, progress, video {
+  display: inline-block; }
+
+/**
+ * Add the correct display in iOS 4-7. */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera. */
+progress {
+  vertical-align: baseline; }
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE. */
+template, [hidden] {
+  display: none; }
+
+/* Links
+ * ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+. */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */ }
+  a:active, a:hover {
+    outline-width: 0; }
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated). */
+/* Text-level semantics
+ * ========================================================================== */
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari. */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */ }
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6. */
+b, strong {
+  font-weight: inherit; }
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari. */
+b, strong {
+  font-weight: bolder; }
+
+/**
+ * Add the correct font style in Android 4.3-. */
+dfn {
+  font-style: italic; }
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari. */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/**
+ * Add the correct background and color in IE 9-. */
+mark {
+  background-color: #ff0;
+  color: #000; }
+
+/**
+ * Add the correct font size in all browsers. */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers. */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+/* Embedded content
+ * ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10-. */
+img {
+  border-style: none; }
+
+/**
+ * Hide the overflow in IE. */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Grouping content
+ * ========================================================================== */
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers. */
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/**
+ * Add the correct margin in IE 8. */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE. */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */ }
+
+/* Forms
+ * ========================================================================== */
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari. */
+button, input, select, textarea {
+  font: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */ }
+
+/**
+ * Restore the font weight unset by the previous rule. */
+optgroup {
+  font-weight: bold; }
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge. */
+button, input {
+  /* 1 */
+  overflow: visible; }
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox. */
+button, select {
+  /* 1 */
+  text-transform: none; }
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari. */
+button, html [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */ }
+
+/**
+ * Remove the inner border and padding in Firefox. */
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+ * Restore the focus styles unset by the previous rule. */
+button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated). */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers. */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */ }
+
+/**
+ * Remove the default vertical scrollbar in IE. */
+textarea {
+  overflow: auto; }
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-. */
+[type="checkbox"], [type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome. */
+[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari. */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */ }
+  [type="search"]::-webkit-search-cancel-button, [type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X. */
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari. */
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54; }
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari. */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
+
+/**
+  * "CSS Reset" GENERIC - ITCSS Methodology
+  *
+  * The Generic layer is houses very high-level, far reaching styles that are commonly used on every web project.
+  *
+  * These are CSS Reset styles that add onto normalize.css.
+  **/
+/**
+  * As well as using normalize.css, it is often advantageous to remove all
+  * margins from certain elements. */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, form, fieldset, legend, figure, table, th, td, caption, hr {
+  margin: 0;
+  padding: 0; }
+
+/**
+  * Remove the default font-weight so we can control this with our
+  * typography classes */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+/**
+  * Give a help cursor to elements that give extra info on `:hover`. */
+abbr[title], dfn[title] {
+  cursor: help; }
+
+/**
+  * Remove underlines from potentially troublesome elements. */
+u {
+  text-decoration: none; }
+
+ins {
+  text-decoration: none;
+  border-bottom: 1px solid; }
+
+/**
+  * Apply faux underlines to inserted text via `border-bottom`. */
+/**
+  * "Box-Sizing" GENERIC - ITCSS Methodology
+  *
+  * The Generic layer is houses very high-level, far reaching styles that are commonly used on every web project.
+  *
+  **/
+html {
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+/**
+  * "Super Form Reset" GENERIC - ITCSS Methodology
+  *
+  * The Generic layer is houses very high-level, far reaching styles that are commonly used on every web project.
+  *
+  * A couple of things to watch out for:
+  *
+  * IE8: If a text input doesn't have padding on all sides or none the text won't be centered.
+  * The default border sizes on text inputs in all UAs seem to be slightly different. You're better off using custom borders.
+  * You NEED to set the font-size and family on all form elements
+  * Search inputs need to have their appearance reset and the box-sizing set to content-box to match other UAs
+  * You can style the upload button in webkit using ::-webkit-file-upload-button
+  * ::-webkit-file-upload-button selectors can't be used in the same selector as normal ones. FF and IE freak out.
+  * IE: You don't need to fake inline-block with labels and form controls in IE. They function as inline-block.
+  * By turning off ::-webkit-search-decoration, it removes the extra whitespace on the left on search inputs
+  **/
+input, label, select, button, textarea {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1;
+  /* Browsers have different default form fonts */
+  font-size: 13px;
+  font-family: Arial; }
+
+/* Remove the stupid outer glow in Webkit */
+input,
+select {
+  box-sizing: content-box; }
+  input:focus,
+  select:focus {
+    outline: 0; }
+
+/* Box Sizing Reset
+ *----------------------------------------------- */
+/* All of our custom controls should be what we expect them to be */
+textarea {
+  box-sizing: content-box; }
+
+/* These elements are usually rendered a certain way by the browser */
+button {
+  box-sizing: border-box; }
+
+input[type=reset], input[type=button], input[type=submit], input[type=checkbox], input[type=radio] {
+  box-sizing: border-box; }
+
+select {
+  box-sizing: border-box; }
+
+/* Text Inputs
+ *----------------------------------------------- */
+input[type=checkbox], input[type=radio] {
+  width: 13px;
+  height: 13px; }
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box; }
+
+/* Button Controls
+ *----------------------------------------------- */
+/* File Uploads
+ *----------------------------------------------- */
+/* Search Input
+ *----------------------------------------------- */
+/* Make webkit render the search input like a normal text field */
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration {
+  display: none; }
+
+/* Buttons
+ *----------------------------------------------- */
+button {
+  /* Fix IE7 display bug */
+  overflow: visible;
+  width: auto; }
+
+input[type="reset"], input[type="button"], input[type="submit"] {
+  /* Fix IE7 display bug */
+  overflow: visible;
+  width: auto; }
+
+/* IE8 and FF freak out if this rule is within another selector */
+::-webkit-file-upload-button {
+  padding: 0;
+  border: 0;
+  background: none; }
+
+/* Textarea
+ *----------------------------------------------- */
+textarea {
+  /* Move the label to the top */
+  vertical-align: top;
+  /* Turn off scroll bars in IE unless needed */
+  overflow: auto; }
+
+/* Selects
+ *----------------------------------------------- */
+select[multiple] {
+  /* Move the label to the top */
+  vertical-align: top; }
+
+/**
+  * CSS Reset Generic - ITCSS Methodology
+  * This ITCSS layer houses very high-level, far reaching styles.
+  * This layer is seldom modified, and is usually the same across any projects you work on.
+  * Examples: Normalize.css, global box-sizing rules, CSS resets and so on.
+  * NOTE: First layer that actually produces any CSS!!
+  *
+  *
+  * These are CSS Reset styles that add onto normalize.css.
+  **/
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  line-height: 100%;
+  font-weight: normal; }
+
+/** ==========================================================================
+  * III. TOOLS
+  * ========================================================================== **/
+/** ==================================================================================================================
+  *  This is where all of the "TOOLS" stylesheets are compiled
+  *
+  *  All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  * ================================================================================================================== */
+/**
+  * "Fonts" TOOLS - ITCSS Methodology
+  *
+  * Mixins and functions that are used to make it easy to apply commonly used code chunks and logic to the other elements.
+  *
+  **/
+/**
+  * "Media Query" TOOLS - ITCSS Methodology
+  *
+  * Mixins and functions that are used to make it easy to apply commonly used code chunks and logic to the other elements.
+  *
+  **/
+/**
+  * "Position" TOOLS - ITCSS Methodology
+  *
+  * Mixins and functions that are used to make it easy to apply commonly used code chunks and logic to the other elements.
+  *
+  **/
+/**
+  * "Font Size" TOOLS - ITCSS Methodology
+  *
+  * Mixins and functions that are used to make it easy to apply commonly used code chunks and logic to the other elements.
+  *
+  **/
+/** ==========================================================================
+  * IV. UTILITIES
+  * ========================================================================== **/
+/** ========================================================================================================================================
+  *  This is where all of the "UTILITIES" stylesheets are compiled
+  *
+  *  Classes that can be applied to html elements or used within tools and other modules / frameworks to help with DRY coding techniques
+  *  Utilities help seperate general global styles to increaases flexiblity and can be added and changed freely.
+  * ======================================================================================================================================== */
+/** ==========================================================================
+  * V. ELEMENTS
+  * ========================================================================== **/
+/** ==================================================================
+  *  This is where all of the "ELEMENTS" stylesheets are compiled
+  *
+  *  All style directly associated to the html selectors.
+  * ================================================================== */
+/**
+  * "Body" ELEMENTS - ITCSS Methodology
+  *
+  * The Elements layer are style directly associated to the html selectors.
+  *
+  **/
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility; }
+
+/**
+  * "Button" ELEMENTS - ITCSS Methodology
+  *
+  * The Elements layer are style directly associated to the html selectors.
+  *
+  **/
+button:focus {
+  outline: 0; }
+
+/**
+  * "HTML" ELEMENTS - ITCSS Methodology
+  *
+  * The Elements layer are style directly associated to the html selectors.
+  *
+  **/
+html {
+  font-size: 16px;
+  line-height: 18px; }
+
+/**
+  * "Images" ELEMENTS - ITCSS Methodology
+  *
+  * The Elements layer are style directly associated to the html selectors.
+  *
+  **/
+img {
+  width: auto;
+  max-width: 100%;
+  height: auto; }
+
+/**
+  * "Links" ELEMENTS - ITCSS Methodology
+  *
+  * The Elements layer are style directly associated to the html selectors.
+  *
+  **/
+a:focus {
+  outline: 0; }
+
+a:link, a:visited, a:hover, a:active {
+  color: blue; }
+
+/**
+  * "svg" ELEMENTS - ITCSS Methodology
+  *
+  * The Elements layer are style directly associated to the html selectors.
+  *
+  **/
+svg {
+  width: 100%;
+  height: 100%;
+  display: block; }
+
+/** ==========================================================================
+  * VI. BUILDING BLOCKS
+  * ========================================================================== **/
+/** =====================================================================================================================================
+  *  This is where all of the "BUILDING BLOCKS" stylesheets are compiled
+  *
+  * All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  * These are simliar to elements, but they are styles using classes, not the html element themselves.
+  * ===================================================================================================================================== */
+/** ==================================================================================================================
+  *  This is where all of the "FORMS" BUILDING BLOCK stylesheets are compiled
+  *
+  * All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  * These are simliar to elements, but they are styles using classes, not the html element themselves.
+  * ================================================================================================================== */
+/** ==================================================================================================================
+  *  This is where all of the "LAYOUT" BUILDING BLOCK stylesheets are compiled
+  *
+  * All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  * These are simliar to elements, but they are styles using classes, not the html element themselves.
+  * ================================================================================================================== */
+/** ==================================================================================================================
+  *  This is where all of the "MEDIA" BUILDING BLOCK stylesheets are compiled
+  *
+  * All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  * These are simliar to elements, but they are styles using classes, not the html element themselves.
+  * ================================================================================================================== */
+/** ==================================================================================================================
+  *  This is where all of the "SVG" BUILDING BLOCK stylesheets are compiled
+  *
+  * All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  * These are simliar to elements, but they are styles using classes, not the html element themselves.
+  * ================================================================================================================== */
+/** ==================================================================================================================
+  *  This is where all of the "TEXT" BUILDING BLOCK stylesheets are compiled
+  *
+  * All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  * These are simliar to elements, but they are styles using classes, not the html element themselves.
+  * ================================================================================================================== */
+/** ==================================================================================================================
+  *  This is where all of the "UX" BUILDING BLOCK stylesheets are compiled
+  *
+  * All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  * These are simliar to elements, but they are styles using classes, not the html element themselves.
+  * ================================================================================================================== */
+/** ==========================================================================
+  * VII. MODULES
+  * ========================================================================== **/
+/** ==================================================================================================================
+  *   This is where all of the "MODULES" stylesheets are compiled
+  *
+  *   All modules that are the smallest building block pieces that will be used to create modules and frameworks in the form of macros.
+  *   These are simliar to elements, but they are styles using classes, not the html element themselves.
+  *   The Settings layer does not contain any styles. It only houses variables and other configuration needs.
+  * ================================================================================================================== */
+/** ==========================================================================
+  * VIII. FRAMEWORKS
+  * ========================================================================== **/
+/** ==================================================================================================================
+  *   This is where all of the "FRAMEWORKS" stylesheets are compiled
+  *
+  *   All frameworks that are the smallest building block pieces that will be used to create frameworks and frameworks in the form of macros.
+  *   These are simliar to elements, but they are styles using classes, not the html element themselves.
+  *   The Settings layer does not contain any styles. It only houses variables and other configuration needs.
+  * ================================================================================================================== */
+/** ==========================================================================
+  * IX. TRUMPS
+  * ========================================================================== **/
+/** ==================================================================================================================
+  *  This is where all of the "TRUMPS" stylesheets are compiled
+  *
+  *  All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  * ================================================================================================================== */
+/**
+  * "Accessibility" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+[aria-hidden="true"] {
+  display: none !important; }
+
+/**
+  * "Background Color" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+/**
+  * "Text Color" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+/**
+  * "Display" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+.is-display-inline-block {
+  display: inline-block !important; }
+
+.is-display-block {
+  display: block !important; }
+
+.is-display-inline {
+  display: inline !important; }
+
+.is-display-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important; }
+
+.is-display-none {
+  display: none !important; }
+
+/**
+  * "Fonts" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+/**
+  * "List Style" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+.is-list-style-type-circle {
+  list-style-type: circle !important; }
+
+.is-list-style-type-decimal {
+  list-style-type: decimal !important; }
+
+.is-list-style-type-decimal-leading-zero {
+  list-style-type: decimal-leading-zero !important; }
+
+.is-list-style-type-disc {
+  list-style-type: disc !important; }
+
+.is-list-style-type-lower-latin {
+  list-style-type: lower-latin !important; }
+
+.is-list-style-type-lower-roman {
+  list-style-type: lower-roman !important; }
+
+.is-list-style-type-none {
+  list-style-type: none !important; }
+
+.is-list-style-type-square {
+  list-style-type: square !important; }
+
+/**
+  * "Padding" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+.is-padding-bottom-none {
+  padding-bottom: 0px !important; }
+
+.is-padding-left-none {
+  padding-left: 0px !important; }
+
+.is-padding-none {
+  padding: 0px !important; }
+
+.is-padding-right-none {
+  padding-right: 0px !important; }
+
+.is-padding-top-none {
+  padding-top: 0px !important; }
+
+/**
+  * "Position" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+.is-position-absolute {
+  position: absolute !important; }
+
+.is-position-fixed {
+  position: fixed !important; }
+
+.is-position-relative {
+  position: relative !important; }
+
+.is-position-static {
+  position: static !important; }
+
+/**
+  * "Text-align" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+.is-text-align-center {
+  text-align: center !important; }
+
+.is-text-align-justify {
+  text-align: justify !important; }
+
+.is-text-align-left {
+  text-align: left !important; }
+
+.is-text-align-right {
+  text-align: right !important; }
+
+/**
+  * "Text-decoration" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+.is-text-decoration-line-through {
+  text-decoration: line-through !important; }
+
+.is-text-decoration-none {
+  text-decoration: none !important; }
+
+.is-text-decoration-overline {
+  text-decoration: overline !important; }
+
+.is-text-decoration-underline {
+  text-decoration: underline !important; }
+
+/**
+  * "Text-size" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+/**
+  * "Text-transform" TRUMPS - ITCSS Methodology
+  *
+  * All styles that must always trump all other styles. Therefor, they all have the !important tag attached to them.
+  *
+  **/
+.is-text-transform-capitalize {
+  text-transform: capitalize !important; }
+
+.is-text-transform-lowercase {
+  text-transform: lowercase !important; }
+
+.is-text-transform-uppercase {
+  text-transform: uppercase !important; }
+
+/*# sourceMappingURL=global.bundle.css.map*/

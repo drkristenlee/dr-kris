@@ -23,7 +23,7 @@ return array(
         'server' => 'localhost', // The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
         'user' => 'root', // The database username to connect with.
         'password' => 'root', // The database password to connect with.
-        'database' => 'craft_webpack_project_boilerplate', // The name of the database to select.
+        'database' => 'dr_kris', // The name of the database to select.
     ),
 		/**
      * Environment: Development
