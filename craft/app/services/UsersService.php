@@ -512,28 +512,7 @@ class UsersService extends BaseApplicationComponent
 	 */
 	public function getEmailVerifyUrl(UserModel $user)
 	{
-		$userRecord = $this->_getUserRecordById($user->id);
-		$unhashedVerificationCode = $this->_setVerificationCodeOnUserRecord($userRecord);
-		$userRecord->save();
-
-		if ($user->can('accessCp'))
-		{
-			$url = UrlHelper::getActionUrl('users/verifyemail', array('code' => $unhashedVerificationCode, 'id' => $userRecord->uid), craft()->request->isSecureConnection() ? 'https' : 'http');
-		}
-		else
-		{
-			// We want to hide the CP trigger if they don't have access to the CP.
-			$path = craft()->config->get('actionTrigger').'/users/verifyemail';
-			$params = array(
-				'code' => $unhashedVerificationCode,
-				'id' => $userRecord->uid
-			);
-
-			$locale = $user->preferredLocale ?: craft()->i18n->getPrimarySiteLocaleId();
-			$url = UrlHelper::getSiteUrl($path, $params, UrlHelper::getProtocolForTokenizedUrl(), $locale);
-		}
-
-		return $url;
+		return $this->_getUserUrl($user, 'verifyemail');
 	}
 
 	/**
@@ -545,27 +524,7 @@ class UsersService extends BaseApplicationComponent
 	 */
 	public function getPasswordResetUrl(UserModel $user)
 	{
-		$userRecord = $this->_getUserRecordById($user->id);
-		$unhashedVerificationCode = $this->_setVerificationCodeOnUserRecord($userRecord);
-		$userRecord->save();
-
-		$path = craft()->config->get('actionTrigger').'/users/setpassword';
-		$params = array(
-			'code' => $unhashedVerificationCode,
-			'id' => $userRecord->uid
-		);
-
-		$scheme = UrlHelper::getProtocolForTokenizedUrl();
-
-		if ($user->can('accessCp'))
-		{
-			return UrlHelper::getCpUrl($path, $params, $scheme);
-		}
-		else
-		{
-			$locale = $user->preferredLocale ?: craft()->i18n->getPrimarySiteLocaleId();
-			return UrlHelper::getSiteUrl($path, $params, $scheme, $locale);
-		}
+		return $this->_getUserUrl($user, 'setpassword');
 	}
 
 	/**
@@ -703,6 +662,7 @@ class UsersService extends BaseApplicationComponent
 	{
 		$userRecord = $this->_getUserRecordById($user->id);
 		$currentTime = DateTimeHelper::currentUTCDateTime();
+		$locked = false;
 
 		$userRecord->lastInvalidLoginDate = $user->lastInvalidLoginDate = $currentTime;
 		$userRecord->lastLoginAttemptIPAddress = craft()->request->getUserHostAddress();
@@ -716,13 +676,14 @@ class UsersService extends BaseApplicationComponent
 				$userRecord->invalidLoginCount++;
 
 				// Was that one bad password too many?
-				if ($userRecord->invalidLoginCount > $maxInvalidLogins)
+				if ($userRecord->invalidLoginCount >= $maxInvalidLogins)
 				{
 					$userRecord->locked = true;
 					$user->locked = true;
 					$userRecord->invalidLoginCount = null;
 					$userRecord->invalidLoginWindowStart = null;
 					$userRecord->lockoutDate = $user->lockoutDate = $currentTime;
+					$locked = true;
 				}
 			}
 			else
@@ -736,7 +697,17 @@ class UsersService extends BaseApplicationComponent
 			$user->invalidLoginCount = $userRecord->invalidLoginCount;
 		}
 
-		return $userRecord->save();
+		$saveSuccess = $userRecord->save();
+
+		if ($locked)
+		{
+			// Fire an 'onLockUser' event
+			$this->onLockUser(new Event($this, array(
+				'user' => $user
+			)));
+		}
+
+		return $saveSuccess;
 	}
 
 	/**
@@ -815,6 +786,7 @@ class UsersService extends BaseApplicationComponent
 	 *
 	 * @param UserModel $user
 	 *
+	 * @return bool
 	 * @throws Exception
 	 */
 	public function verifyEmailForUser(UserModel $user)
@@ -840,7 +812,12 @@ class UsersService extends BaseApplicationComponent
 			}
 
 			$userRecord->unverifiedEmail = null;
-			$userRecord->save();
+
+			if (!$userRecord->save())
+			{
+				$user->addErrors($userRecord->getErrors());
+				return false;
+			}
 
 			// If the user status is pending, let's activate them.
 			if ($userRecord->pending == true)
@@ -848,6 +825,8 @@ class UsersService extends BaseApplicationComponent
 				$this->activateUser($user);
 			}
 		}
+
+		return true;
 	}
 
 	/**
@@ -1412,6 +1391,18 @@ class UsersService extends BaseApplicationComponent
 	}
 
 	/**
+	 * Fires an 'onLockUser' event.
+	 *
+	 * @param Event $event
+	 *
+	 * @return null
+	 */
+	public function onLockUser(Event $event)
+	{
+		$this->raiseEvent('onLockUser', $event);
+	}
+
+	/**
 	 * Fires an 'onBeforeSuspendUser' event.
 	 *
 	 * @param Event $event
@@ -1693,5 +1684,45 @@ class UsersService extends BaseApplicationComponent
 		}
 
 		return $success;
+	}
+
+	/**
+	 * Sets a new verification code on a user, and returns their new verification URL
+	 *
+	 * @param UserModel $user   The user that should get the new Password Reset URL
+	 * @param string    $action The UsersController action that the URL should point to
+	 *
+	 * @return string The new Password Reset URL.
+	 * @see getPasswordResetUrl()
+	 * @see getEmailVerifyUrl()
+	 */
+	private function _getUserUrl(UserModel $user, $action)
+	{
+		$userRecord = $this->_getUserRecordById($user->id);
+		$unhashedVerificationCode = $this->_setVerificationCodeOnUserRecord($userRecord);
+		$userRecord->save();
+
+		$path = craft()->config->get('actionTrigger').'/users/'.$action;
+		$params = array(
+			'code' => $unhashedVerificationCode,
+			'id' => $userRecord->uid
+		);
+
+		$scheme = UrlHelper::getProtocolForTokenizedUrl();
+
+		if ($user->can('accessCp'))
+		{
+			// Only use getCpUrl() if the base CP URL has been explicitly set,
+			// so UrlHelper won't use HTTP_HOST
+			if (craft()->config->get('baseCpUrl'))
+			{
+				return UrlHelper::getCpUrl($path, $params, $scheme);
+			}
+
+			$path = craft()->config->get('cpTrigger').'/'.$path;
+		}
+
+		$locale = $user->preferredLocale ?: craft()->i18n->getPrimarySiteLocaleId();
+		return UrlHelper::getSiteUrl($path, $params, $scheme, $locale);
 	}
 }
