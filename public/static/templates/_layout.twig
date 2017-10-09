@@ -3,10 +3,18 @@
 
 {# HEADER #}
 {% block header %}
-	<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
-	<nav>
-		<ul>
-			<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
+	<nav class="nav">
+		<div class="brand">
+			<a href="./">Brand Logo</a>
+		</div>
+		<ul class="nav_list">
+			<li class="nav_item nav_mobile">Mobile Nav</li>
+			<li class="nav_item"><a href="./about">About</a></li>
+			<li class="nav_item"><a href="#">Books</a></li>
+			<li class="nav_item"><a href="#">Resources</a></li>
+			<li class="nav_item"><a href="#">News & Events</a></li>
+			<li class="nav_item"><a href="#">Contact</a></li>
+			<li class="nav_item subscribe">Subscribe</li>
 		</ul>
 	</nav>
 {% endblock %}
@@ -20,5 +28,5 @@
 
 {# FOOTER #}
 {% block footer %}
-	Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
+	<h3>Footer</h3>
 {% endblock %}

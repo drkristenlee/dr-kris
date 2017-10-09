@@ -20,14 +20,153 @@
 {% extends "_layout" %}
 
 {% block main %}
-	<h1>{{ entry.title }}</h1>
+	<!-- hero section -->
+	<div class="landing_hero">
+	
+		<h1 class="hero_quote"><span class="open_quote quote_top">S</span>how up as the real you. The airbrushed you isn't sustainable, or even half as awesome.</h1>
 
-	{{ entry.body }}
+		<button class="float_ad">Check out Mentalligence!</button>
 
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-		{% endfor %}
-	</ul>
+	</div>
+	<div class="about_section section">
+
+		<h3>About Dr. Kris</h3>
+
+		<p>Dr. Kristen Lee, affectionately known as "Dr. Kris", helps people design practical plans to manage stress and adapt to change. With twenty years' experience as a clinical social worker and educator, she is devoted to promoting well-being and leveraging human potential.
+		<br><br>
+		<a href="./about" class="link">Read more →</a>
+		</p>
+
+	</div>
+	<div class="book_section section">
+
+		<h3>Books</h3>
+
+		<div class="underlay-img right"></div>
+
+		<p class="subtitle">Mentalligence</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		<br><br>
+		<a href="#" class="link">Read more →</a>
+		<br>
+		<a href="#" class="link">Learn more about <em>Reset</em> →</a>
+		</p>
+
+	</div>
+	<div class="resources_section section">
+
+		<h3>Resources</h3>
+
+		<div class="resource_grid">
+			<span class="chevron right"></span>
+
+			<div class="resource_item">
+				<div class="resource_img">
+				</div>
+				<div class="resource_text">
+					<p>Resource Title</p>
+					<p>Publication</p>
+					<p>Meta information</p>
+				</div>
+			</div>
+			<div class="resource_item">
+				<div class="resource_img">
+				</div>
+				<div class="resource_text">
+					<p>Resource Title</p>
+					<p>Publication</p>
+					<p>Meta information</p>
+				</div>
+			</div>
+			<div class="resource_item">
+				<div class="resource_img">
+				</div>
+				<div class="resource_text">
+					<p>Resource Title</p>
+					<p>Publication</p>
+					<p>Meta information</p>
+				</div>
+			</div>
+			<div class="resource_item">
+				<div class="resource_img">
+				</div>
+				<div class="resource_text">
+					<p>Resource Title</p>
+					<p>Publication</p>
+					<p>Meta information</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="news_section section">
+
+		<h3>News and Events</h3>
+
+		<div class="event_list">
+			<div class="event_entry">
+				<div class="event_info">
+					<p class="subtitle">Event Name / Type</p>
+					<p>date/date/date</p>
+					<p>location info</p>
+				</div>
+				<p class="event_desc">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+				</p>
+			</div>
+
+			<div class="event_entry">
+				<div class="event_info">
+					<p class="subtitle">Event Name / Type</p>
+					<p>date/date/date</p>
+					<p>location info</p>
+				</div>
+				<p class="event_desc">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+				</p>
+			</div>
+
+			<div class="event_entry">
+				<div class="event_info">
+					<p class="subtitle">Event Name / Type</p>
+					<p>date/date/date</p>
+					<p>location info</p>
+				</div>
+				<p class="event_desc">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+				</p>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="contact_section section">
+
+		<h3>Contact</h3>
+
+		<div class="contact_container">
+			<div class="contact_img"></div>
+
+			<div class="contact_form">
+				<div class="contact_block">
+					<label>Why do you want to contact Dr. Kris?</label>
+					<select>
+						<option disabled selected>- - -</option>
+						<option>Lorem ipsum</option>
+						<option>Lorem ipsum</option>
+						<option>Lorem ipsum</option>
+					</select>
+				</div>
+				<div class="contact_block">
+					<label>Message</label>
+					<textarea rows="5"></textarea>
+				</div>
+				<div class="contact_block right">
+					<button>Send Message</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
 {% endblock %}
+
