@@ -9,5 +9,521 @@
   * ================================================================================================================== */
 
 
+// Variables
+$timeline-branch-length: 35%
+
+
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
+
+nav.nav
+	position: absolute
+	display: flex
+	align-items: center
+	justify-content: space-between
+	z-index: 100
+	top: 50px
+	left: 0
+	right: 0
+	padding: 0 10vw
+	.brand, .nav_list
+		display: inline-block
+		margin: 0
+	.brand
+		max-width: 200px
+		a
+			text-decoration: none
+			color: #000
+	.nav_list 
+		list-style: none
+		a
+			text-decoration: none
+			color: #000
+		.nav_item
+			display: inline-block
+			margin-right: 1rem
+			&:last-child
+				margin-right: 0
+			&.nav_mobile
+				display: none
+				margin-right: 0
+			&.subscribe
+				background: #aaa
+				color: #fff
+				padding: 4px 10px
+				border-radius: 5px
+				font-size: 12px
+				cursor: pointer
+		@media (max-width: 800px)
+			.nav_item
+				display: none
+				&.nav_mobile
+					display: inline-block
+
+.section
+	position: relative
+	width: 100%
+	padding: 1rem 10vw
+	min-height: 550px
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: flex-end
+	@media (max-width: 750px)
+		align-items: flex-start
+		justify-content: flex-start
+		min-height: unset
+		padding: 5rem 10vw
+	& > h3, & > p
+		z-index: 1
+	& > h3
+		position: absolute
+		top: 5rem
+		left: 15vw
+		font-size: 30px
+		@media (max-width: 800px)
+			left: calc(90vw - 600px)
+		@media (max-width: 750px)
+			position: initial
+			left: unset
+			top: unset
+			margin-bottom: 1rem
+	& p
+		font-size: 20px
+		font-weight: 300
+		line-height: 1.2
+		&.subtitle
+			font-weight: 500
+			margin-bottom: 1rem
+	& > p
+		max-width: 600px
+		.link
+			font-size: 16px
+			text-decoration: none
+	& .underlay-img
+		position: absolute
+		top: 0
+		bottom: 0
+		&.right
+			right: 0
+		&.left
+			left: 0
+		margin: auto
+		z-index: 0
+		width: 500px
+		height: 400px
+		background: #eee
+		@media (max-width: 750px)
+			position: initial
+			right: unset
+			top: unset
+			bottom: unset
+			margin: 0 0 1rem 0
+			width: 100%
+			height: 200px
+	&.about_section
+		background: #eee
+	&.book_section
+		background: #fff
+		align-items: flex-start
+	&.news_section, &.resources_section, &.contact_section
+		min-height: unset
+		align-items: flex-start
+		padding-top: 2rem
+		padding-bottom: 2rem
+		h3
+			position: unset
+			padding-left: 5vw
+			@media (max-width: 800px)
+				padding-left: 0
+	&.resources_section .resource_grid,
+	&.news_section .event_list,
+	&.contact_section .contact_container
+		position: relative
+		margin: 4rem 0
+		width: 100%
+		@media (max-width: 750px)
+			margin: 2rem 0
+	&.resources_section .resource_grid
+		position: relative
+		display: flex
+		justify-content: space-between
+		flex-flow: wrap
+		.resource_item
+			display: inline-block
+			width: 200px;
+			.resource_img
+				width: 100%
+				height: 200px
+				background: #eee
+				margin-bottom: 0.5rem
+			.resource_text
+				width: 100%
+				p
+					font-size: 16px
+		@media (max-width: 1050px)
+			& .resource_item
+				width: 45%
+				margin-bottom: 1rem
+				& .resource_text
+					margin-bottom: 1rem
+		@media (max-width: 750px)
+			flex-flow: column wrap
+			& .resource_item
+				width: 100%
+		.chevron
+			position: absolute
+			top: 35%
+			right: -5vw
+			opacity: 0.35
+			transition-timing-function: ease-in-out
+			transition-duration: 400ms
+			&:hover
+				opacity: 1
+				cursor: pointer
+			@media (max-width: 1050px)
+				top: 40%
+			@media (max-width: 750px)
+				display: none
+			&:before
+				width: 30px
+				height: 30px
+	&.news_section .event_list
+		@media (max-width: 800px)
+			margin: 2rem 0
+		.event_entry
+			width: 100%
+			margin-bottom: 2rem
+			display: flex
+			flex-direction: row
+			justify-content: space-between
+			.event_info
+				width: 300px
+				p
+					margin-bottom: 0.25rem
+					&.subtitle
+						margin-bottom: 0.75rem
+						font-weight: 500
+						font-size: 22px
+			.event_desc
+				max-width: 600px
+				font-size: 16px
+			@media (max-width: 800px)
+				flex-direction: column
+				.event_info
+					width: 100%
+					p.subtitle
+						margin-bottom: 0.25rem
+				.event_desc
+					width: 100%
+					margin-top: 1rem
+	&.contact_section 
+		@media (min-width: 751px)
+			padding-left: 0px
+			h3
+				padding-left: 15vw
+				@media (max-width: 800px)
+					padding-left: 10vw
+		.contact_container
+			display: flex
+			align-items: center
+			justify-content: space-between
+			.contact_img
+				width: 50%
+				height: 300px
+				background: #eee
+			.contact_form
+				width: 45%
+				.contact_block
+					&.right 
+						text-align: right
+					margin-bottom: 1rem
+					label
+						margin-bottom: 0.5rem
+						font-size: 16px
+						font-weight: 300
+					select, textarea
+						width: 100%
+						border: 1px solid #eee
+						border-radius: 5px
+						outline: none
+					select
+						height: 35px
+						option[disabled]
+							color: #ccc
+					button
+						margin-top: 0.25rem
+						background: #eee
+						padding: 12px 20px;
+						border-radius: 5px
+						@media (max-width: 750px)
+							width: 100%
+			@media (max-width: 750px)
+				flex-direction: column
+				.contact_img
+					width: 100%
+					height: 250px
+					margin-bottom: 2rem
+				.contact_form
+					width: 100%
+	&.client_section
+		min-height: unset
+		padding-left: 0px
+		padding-right: 0px
+		align-items: flex-start
+		h3
+			position: initial
+			padding-left: 15vw
+			margin-bottom: 4rem
+			@media (max-width: 750px)
+				padding-left: 10vw
+		.client_carousel
+			width: 100%
+			height: 150px
+			position: relative
+			margin-bottom: 2rem
+			overflow-x: hidden
+			@media (max-width: 750px)
+				margin-bottom: 0
+			.offset_container
+				position: absolute
+				display: flex
+				top: 0
+				bottom: 0
+				left: 0
+				width: auto
+			.client_item
+				display: inline-block
+				width: 200px
+				height: 100%
+				background: #eee
+				margin-right: 2rem
+	&.timeline_section
+		padding-top: 4rem
+		padding-bottom: 4rem
+		min-height: unset
+		align-items: center
+		justify-content: center
+		h3
+			width: 100%
+			position: initial
+			padding-left: 5vw
+			margin-bottom: 4rem
+			@media (max-width: 750px)
+				padding-left: 0
+		.timeline_container
+			position: relative
+			width: 100%
+			.timeline_block
+				position: relative
+				height: 200px
+				&:before
+					content: ''
+					position: absolute
+					height: 100%
+					width: 2px
+					background: #dedede
+					left: 0
+					right: 0
+					margin: auto
+				&:after
+					content: '' 
+					position: absolute 
+					width: $timeline-branch-length
+					height: 2px 
+					background: #dedede 
+					z-index: 0 
+					bottom: 0% 
+					margin: auto
+					left: 0
+					right: 0
+				.date
+					position: absolute
+					z-index: 1
+					font-size: 100px
+					top: 10px
+					opacity: 0.25
+					font-weight: 600
+				.content
+					position: absolute
+					top: 0px
+					bottom: 0px
+					display: flex
+					align-items: center
+					justify-content: space-around
+					width: 50%
+					.text
+						font-size: 12px
+						width: 200px
+						z-index: 2
+					.asset
+						width: 150px
+						height: 150px
+						background: #eee
+						z-index: 0
+				&:nth-child(odd)
+					.date 
+						right: $timeline-branch-length * .25
+					.content
+						flex-direction: row-reverse
+						right: 0
+					&:after
+						left: $timeline-branch-length
+				&:nth-child(even)
+					.date 
+						left: $timeline-branch-length * .25
+					.content
+						left: 0
+					&:after
+						right: $timeline-branch-length
+				&:last-child
+					&:after
+						width: 0
+					@media (min-width: 951px)
+						margin-bottom: 200px
+						height: 250px
+						.date 
+							top: unset
+							right: 0
+							left: 0
+							width: min-content
+							bottom: -25px
+							margin: auto
+						.content
+							left: 0
+							right: 0
+							top: unset
+							margin: auto
+							bottom: 0px
+							align-items: flex-start
+							justify-content: space-between
+							width: 400px
+							.text
+								font-size: 12px
+								width: 45%
+							.asset
+								width: 45%
+								height: 150px
+								background: #eee
+								margin-bottom: 1rem
+				@media (max-width: 950px)
+					height: auto
+					&:before
+						right: unset
+						left: 0
+					&:after
+						width: 100%
+						right: unset
+						left: 0
+					.date
+						position: absolute
+						z-index: 1
+						font-size: 100px
+						bottom: 50px
+						top: unset
+						left: unset
+						right: 0px
+						opacity: 0.25
+						font-weight: 600
+					.content
+						position: unset
+						top: unset
+						bottom: unset
+						display: flex
+						padding: 4rem 1rem
+						align-items: flex-start
+						justify-content: flex-start
+						flex-direction: column
+						width: 100%
+						.text
+							width: 100%
+							margin-bottom: 1rem
+					&:nth-child(odd), &:nth-child(even)
+						.date 
+							left: unset
+							right: 0px
+						.content
+							flex-direction: column
+							right: unset
+							left: 0
+						&:after
+							left: 0
+
+.landing_hero
+	position: relative
+	width: 100%
+	height: 100vh
+	min-height: 550px
+	display: flex
+	align-items: center
+	justify-content: center
+	.hero_quote
+		width: 80%
+		max-width: 900px
+		padding: 80px 5vw
+		font-size: 40px
+		font-weight: 500
+		@media (max-width: 750px)
+			font-size: 35px
+		.open_quote
+			position: relative
+			&:after
+				content: '"'
+				font-size: 50px
+				position: absolute
+				width: 33px
+				height: 25px
+				background-repeat: no-repeat
+				opacity: 0.15
+				z-index: 0
+				background: url(../../public/static/images/quote.svg)
+			&.quote_top
+				&:after
+					top: -10px
+					left: -20px
+	.float_ad
+		position: absolute
+		bottom: 10%
+		right: 10%
+		background: #aaa
+		padding: 10px 20px
+		font-size: 16px
+		color: #fff
+		border-radius: 5px
+
+.about_hero
+	position: relative
+	width: 100%
+	height: 100vh
+	min-height: 550px
+	display: flex
+	align-items: flex-start
+	justify-content: center
+	@media (max-width: 750px)
+		height: unset
+		padding-top: 8rem
+		justify-content: flex-start
+		.underlay-img
+			margin-bottom: 2rem
+	.hero_bio
+		max-width: 900px
+		z-index: 1
+		font-size: 26px
+		font-weight: 300
+		line-height: 1.2
+		@media (max-width: 800px)
+			font-size: 20px
+		@media (max-width: 750px)
+			font-size: 18px
+			width: 100%
+
+#footer
+	width: 100%
+	display: flex
+	align-items: center
+	justify-content: center
+	min-height: 300px
+	background: #ddd
+	h3 
+		font-size: 30px
+
