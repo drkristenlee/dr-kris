@@ -14,7 +14,7 @@
 			<li class="nav_item"><a href="#">Resources</a></li>
 			<li class="nav_item"><a href="#">News & Events</a></li>
 			<li class="nav_item"><a href="#">Contact</a></li>
-			<li class="nav_item subscribe">Subscribe</li>
+			<!--<li class="nav_item subscribe">Subscribe</li>-->
 		</ul>
 	</nav>
 {% endblock %}
@@ -25,8 +25,18 @@
 	<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
 {% endblock %}
 
-
 {# FOOTER #}
 {% block footer %}
-	<h3>Footer</h3>
+	{# SUBSCRIBE #}
+	<div class="subscribe_module">
+		<h3>Stay connected with Dr. Kris</h3>
+		<div class="subscribe_input">
+			<input type="email" name="subscribe_email" placeholder="Enter your email here">
+			<button>Keep Me Updated</button>
+		</div>
+	</div>
+	{# FOOTER INFO #}
+	<div class="footer_content">
+		<h3>Footer</h3>
+	</div>
 {% endblock %}
