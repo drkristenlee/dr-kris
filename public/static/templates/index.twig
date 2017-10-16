@@ -23,7 +23,11 @@
 	<!-- hero section -->
 	<div class="landing_hero">
 	
-		<h1 class="hero_quote"><span class="open_quote quote_top">S</span>how up as the real you. The airbrushed you isn't sustainable, or even half as awesome<span class="open_quote quote_bottom">.</span></h1>
+		<h1 class="hero_quote"><span class="open_quote quote_top"></span>
+		{% for entry in craft.entries.section('landingQuotes').limit(1) %}
+			{{ entry.headingQuote }}
+		{% endfor %}
+		<span class="open_quote quote_bottom"</span></h1>
 
 		<button class="float_ad">Check out Mentalligence!</button>
 
@@ -105,39 +109,20 @@
 		<h3>News and Events</h3>
 
 		<div class="event_list">
-			<div class="event_entry">
-				<div class="event_info">
-					<p class="subtitle">Event Name / Type</p>
-					<p>date/date/date</p>
-					<p>location info</p>
+			
+			{% for entry in craft.entries.section('events').order('date asc').limit(3) %}
+			
+				<div class="event_entry">
+					<div class="event_info">
+						<p class="subtitle">{{ entry.title }}</p>
+						<p>{{ entry.date }}</p>
+						<p>{{ entry.location }}</p>
+					</div>
+					<p class="event_desc">{{ entry.eventDescription }}</p>
 				</div>
-				<p class="event_desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-				</p>
-			</div>
 
-			<div class="event_entry">
-				<div class="event_info">
-					<p class="subtitle">Event Name / Type</p>
-					<p>date/date/date</p>
-					<p>location info</p>
-				</div>
-				<p class="event_desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-				</p>
-			</div>
-
-			<div class="event_entry">
-				<div class="event_info">
-					<p class="subtitle">Event Name / Type</p>
-					<p>date/date/date</p>
-					<p>location info</p>
-				</div>
-				<p class="event_desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-				</p>
-			</div>
-
+			{% endfor%}
+			
 		</div>
 
 		<a href="#" class="link">Load more →</a>
@@ -148,26 +133,14 @@
 		<h3>Resources</h3>
 
 		<div class="resource_list">
-			<div class="resource_item">
-				<p class="subtitle">Resource / Article Title</p>
-				<p>date/date/date</p>
-				<p>location info</p>
-			</div>
-			<div class="resource_item">
-				<p class="subtitle">Resource / Article Title</p>
-				<p>date/date/date</p>
-				<p>location info</p>
-			</div>
-			<div class="resource_item">
-				<p class="subtitle">Resource / Article Title</p>
-				<p>date/date/date</p>
-				<p>location info</p>
-			</div>
-			<div class="resource_item">
-				<p class="subtitle">Resource / Article Title</p>
-				<p>date/date/date</p>
-				<p>location info</p>
-			</div>
+
+			{% for entry in craft.entries.section('resources').order('date asc').limit(4) %}
+				<div class="resource_item">
+					<p class="subtitle">{{ entry.title }}</p>
+					<p style="margin-bottom: 0.5rem">{{ entry.description }}</p>
+					<p>{{ entry.postDate }}</p>
+				</div>
+			{% endfor %}
 			
 		</div>
 
