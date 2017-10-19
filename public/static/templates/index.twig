@@ -22,15 +22,15 @@
 {% block main %}
 	<!-- hero section -->
 	<div class="landing_hero">
-	
-		<h1 class="hero_quote"><span class="open_quote quote_top"></span>
-		{% for entry in craft.entries.section('landingQuotes').limit(1) %}
-			{{ entry.headingQuote }}
-		{% endfor %}
-		<span class="open_quote quote_bottom"</span></h1>
+		<div class="hero_container">
+			<h1 class="hero_quote"><span class="open_quote quote_top"></span>
+			{% for entry in craft.entries.section('landingQuotes').limit(1) %}
+				{{ entry.headingQuote }}
+			{% endfor %}
+			<span class="open_quote quote_bottom"</span></h1>
 
-		<button class="float_ad">Check out Mentalligence!</button>
-
+			<button class="float_ad">Check out Mentalligence!</button>
+		</div>
 	</div>
 	<div class="about_section section">
 
@@ -44,15 +44,18 @@
 	</div>
 	<div class="book_section section">
 
-		<h3>Mentalligence</h3>
+		<div class="text-container">
+			<h3 class="title">Mentalligence</h3>
 
-		<!--<p class="subtitle">Mentalligence</p>-->
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-		<br><br>
-		<a href="#" class="link">Read more →</a>
-		</p>
+			<p class="general">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			<br><br>
+			<a href="./books" class="link">Read more →</a>
+			</p>
+		</div>
 
-		<div class="underlay-img right"></div>
+		<div class="image-container">
+			<div class="img"></div>
+		</div>
 
 	</div>
 	<!--

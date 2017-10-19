@@ -1,0 +1,116 @@
+{#
+ # Books template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% set _nav_page = 'books' %}
+
+{% block main %}
+	<!-- hero section -->
+	<div class="book_hero">
+	
+		<h1>Mentalligence</h1>
+
+		<div class="preview_container">
+			<div class="review-position">
+				<div class="review-container">
+					<p class="review-quote">
+						"Lee's voice and the book's structure will be useful to readers looking for a leg up...A well written, sensible self-help guide"
+					</p>
+					<p class="review-author">- Kirkus Reviews</p>
+				</div>
+			</div>
+			<button class="cta">Buy the Book Now!</button>
+		</div>
+
+	</div>
+
+	<div class="section book_preview">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<div class="list_quotes">
+		<div class="quote_item">
+			<p class="body">
+				"Lee's voice and the book's structure will be useful to readers looking for a leg up...A well written, sensible self-help guide"
+			</p>
+			<p class="author">
+				- Kirkus Reviews
+			</p>
+		</div>
+		<div class="quote_item">
+			<p class="body">
+				"A rational, clearly outlined debut guide to recognizign and tolerating the sress of everyday life"
+			</p>
+			<p class="author">
+				- Kirkus Reviews
+			</p>
+		</div>
+		<div class="quote_item">
+			<p class="body">
+				"Filled with skills you can start applying to your life today, <em>Mentalligence</em> serves as a practical guide to coping with stress. Backed by scientific evidence, yet presented in an easy-to-digest format, Dr. Kris' adivce will prepare you for challenges of all sizes.."
+			</p>
+			<p class="author">
+				- Amy Morin, LCSW &amp; bestselling author of <em>13 Things Mentally Strong People Don't Do</em>
+			</p>
+		</div>
+		<div class="cta-container">
+			<button class="cta">Buy the Book Now!</button>
+		</div>
+	</div>
+	
+	<div class="book_section section">
+
+		<div class="text-container">
+			<h3 class="title small-gap">Praise for <em>RESET</em></h3>
+			<div class="mobile-only-img"></div>
+			<div class="quote_item">
+				<p class="body">
+				"Lee's voice and the book's structure will be useful to readers looking for a leg up...A well written, sensible self-help guide"
+				</p>
+				<p class="author">
+					- Kirkus Reviews
+				</p>
+			</div>
+			<div class="quote_item">
+				<p class="body">
+				"A rational, clearly outlined debut guide to recognizign and tolerating the sress of everyday life"
+				</p>
+				<p class="author">
+					- Kirkus Reviews
+				</p>
+			</div>
+		</div>
+		
+
+		<div class="image-container">
+			<div class="img"></div>
+		</div>
+
+		<button class="cta-float bottom left">Buy <em>RESET</em> now!</button>
+			
+	</div>
+	
+
+	
+	
+	
+{% endblock %}
+
