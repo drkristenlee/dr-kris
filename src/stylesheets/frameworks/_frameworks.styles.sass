@@ -67,10 +67,33 @@ nav.nav
 			a
 				text-decoration: none
 				color: #000
+			& > a
 				height: $nav-height
 				display: block
 				padding: 0 15px
 				line-height: $nav-height
+			.hover-menu
+				z-index: -1
+				position: absolute
+				left: 0
+				right: 0
+				top: $nav-height
+				transform-origin: top center
+				background: #eee
+				padding: 10px 0
+				opacity: 0
+				pointer-events: none
+				transition-timing-function: ease-in-out
+				transition-duration: 250ms
+				li
+					list-style: none
+					font-size: 12px
+					margin-bottom: 10px
+					&:last-child
+						margin-bottom: 0
+			&:hover .hover-menu, .hover-menu:hover
+				opacity: 1
+				pointer-events: unset
 		@media (max-width: 800px)
 			.nav_item
 				display: none
