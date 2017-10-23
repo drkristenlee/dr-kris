@@ -11,7 +11,7 @@
 
 // Variables
 $timeline-branch-length: 35%
-
+$nav-height: 70px
 
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
@@ -22,43 +22,112 @@ nav.nav
 	align-items: center
 	justify-content: space-between
 	z-index: 100
-	top: 50px
+	height: $nav-height
+	top: 0
 	left: 0
 	right: 0
-	padding: 0 10vw
+	padding: 0 4rem
+	background: #ddd
+	@media (max-width: 850px)
+		padding: 0 10vw
 	.brand, .nav_list
 		display: inline-block
 		margin: 0
 	.brand
+		font-size: 30px
+		font-weight: 600
 		max-width: 200px
 		a
 			text-decoration: none
 			color: #000
 	.nav_list 
 		list-style: none
-		a
-			text-decoration: none
-			color: #000
+		height: 100%
 		.nav_item
 			display: inline-block
-			margin-right: 1rem
+			text-align: center
+			font-weight: 600
+			position: relative
 			&:last-child
 				margin-right: 0
-			&.nav_mobile
-				display: none
-				margin-right: 0
-			&.subscribe
-				background: #aaa
-				color: #fff
-				padding: 4px 10px
-				border-radius: 5px
-				font-size: 12px
-				cursor: pointer
+			&:after
+				content: ''
+				position: absolute
+				width: 0
+				height: 5px
+				left: 0
+				right: 0
+				bottom: 0px
+				margin: auto
+				background: #444
+				transition-timing-function: ease-in-out
+				transition-duration: 250ms
+			&:hover:after, &.active:after
+				width: 100%
+			a
+				text-decoration: none
+				color: #000
+			& > a
+				height: $nav-height
+				display: block
+				padding: 0 15px
+				line-height: $nav-height
+			.hover-menu
+				z-index: -1
+				position: absolute
+				left: 0
+				right: 0
+				top: $nav-height
+				transform-origin: top center
+				background: #eee
+				padding: 10px 0
+				opacity: 0
+				pointer-events: none
+				transition-timing-function: ease-in-out
+				transition-duration: 250ms
+				li
+					list-style: none
+					font-size: 12px
+					margin-bottom: 10px
+					&:last-child
+						margin-bottom: 0
+			&:hover .hover-menu, .hover-menu:hover
+				opacity: 1
+				pointer-events: unset
 		@media (max-width: 800px)
 			.nav_item
 				display: none
-				&.nav_mobile
-					display: inline-block
+				
+		.mobile_nav
+			display: none
+			margin-right: 0
+			text-align: center
+			position: relative
+			height: 100%
+			justify-content: center
+			align-items: center
+			cursor: pointer
+			@media (max-width: 800px)
+				display: flex
+			.container
+				width: 40px
+				height: 40px
+				position: relative
+				.nav-line
+					width: 90%
+					height: 3px
+					border-radius: 2px
+					background: #444
+					position: absolute
+					left: 0
+					right: 0
+					margin: auto
+					&:nth-child(1)
+						top: 10px
+					&:nth-child(2)
+						top: 20px
+					&:nth-child(3)
+						top: 30px
 
 .section
 	position: relative
@@ -102,32 +171,56 @@ nav.nav
 		font-size: 16px
 		font-weight: 300
 		text-decoration: none
-	& .underlay-img
-		position: absolute
-		top: 0
-		bottom: 0
-		&.right
-			right: 0
-		&.left
-			left: 0
-		margin: auto
-		z-index: 0
-		width: 500px
-		height: 400px
-		background: #eee
-		@media (max-width: 750px)
-			position: initial
-			right: unset
-			top: unset
-			bottom: unset
-			margin: 2rem 0 1rem 0 
-			width: 100%
-			height: 250px
 	&.about_section
 		background: #eee
 	&.book_section
+		@media (min-width: 751px)
+			padding-right: 0
+			flex-direction: row
 		background: #fff
 		align-items: flex-start
+		flex-direction: column
+		min-height: unset
+		padding-top: 4rem
+		padding-bottom: 4rem
+		.text-container 
+			width: 350px
+			@media (min-width: 751px)
+				margin-right: 2rem
+			.title
+				font-weight: 600
+				font-size: 30px
+				margin-bottom: 4rem
+				&.small-gap
+					margin-bottom: 2rem
+			.general
+				margin-bottom: 1rem
+			.quote_item
+				margin-bottom: 2rem
+				.body
+					font-size: 16px
+					line-height: 1.15
+					margin-bottom: 0.5rem
+				.author
+					padding-left: 10%
+					font-size: 14px
+					color: #666
+		.image-container
+			flex: 1
+			height: 500px
+			.img
+				width: 100%
+				height: 100%
+				background: #eee
+			@media (max-width: 750px)
+				margin: 2rem 0 1rem 0 
+				width: 100%
+				height: 250px
+		@media (max-width: 750px)
+			.text-container 
+				width: 100%
+			.image-container
+				display: none
 	&.news_section, &.resources_section, &.contact_section
 		min-height: unset
 		align-items: flex-start
@@ -379,9 +472,14 @@ nav.nav
 					justify-content: space-around
 					width: 50%
 					.text
-						font-size: 12px
 						width: 200px
 						z-index: 2
+						.title
+							font-size: 14px
+							font-weight: 600
+							margin-bottom: 5px
+						.description
+							font-size: 12px
 					.asset
 						width: 150px
 						height: 150px
@@ -425,7 +523,6 @@ nav.nav
 							justify-content: space-between
 							width: 400px
 							.text
-								font-size: 12px
 								width: 45%
 							.asset
 								width: 45%
@@ -464,6 +561,10 @@ nav.nav
 						.text
 							width: 100%
 							margin-bottom: 1rem
+							.title
+								font-size: 16px
+							.description
+								font-size: 14px
 					&:nth-child(odd), &:nth-child(even)
 						.date 
 							left: unset
@@ -481,72 +582,96 @@ nav.nav
 	height: 100vh
 	min-height: 550px
 	display: flex
+	flex-direction: column
 	align-items: center
 	justify-content: center
-	.hero_quote
+	.hero_container
 		width: 80%
-		max-width: 900px
-		padding: 80px 5vw
-		font-size: 40px
-		font-weight: 500
-		@media (max-width: 750px)
-			font-size: 35px
-		.open_quote
-			position: relative
-			&:after
-				content: ''
-				font-size: 50px
-				position: absolute
-				width: 33px
-				height: 25px
-				background-repeat: no-repeat
-				opacity: 0.15
-				z-index: 0
-				background: url(../../public/static/images/quote.svg)
-			&.quote_top
+		max-width: 700px
+		padding: $nav-height 0 0px 5vw
+		position: relative
+		.hero_quote
+			font-size: 34px
+			font-weight: 600
+			line-height: 1.25
+			margin-bottom: 3rem
+			@media (max-width: 750px)
+				font-size: 30px
+			.open_quote
+				position: relative
 				&:after
-					transform: scale(-1)
-					top: -10px
-					left: -40px
-			&.quote_bottom
-				&:after
-					bottom: -10px
-					right: -40px
-	.float_ad
-		position: absolute
-		bottom: 10%
-		right: 10%
-		background: #aaa
-		padding: 10px 20px
-		font-size: 16px
-		color: #fff
-		border-radius: 5px
+					content: ''
+					font-size: 50px
+					position: absolute
+					width: 33px
+					height: 25px
+					background-repeat: no-repeat
+					opacity: 0.15
+					z-index: 0
+					background: url(../../public/static/images/quote.svg)
+				&.quote_top
+					&:after
+						transform: scale(-1)
+						top: -10px
+						left: -40px
+				&.quote_bottom
+					&:after
+						bottom: -10px
+						right: -40px
+		.float_ad
+			background: #aaa
+			padding: 10px 20px
+			font-size: 18px
+			color: #fff
 
 .about_hero
+	h3
+		position: unset
+		margin-bottom: 3rem
+		@media (max-width: 950px)
+			margin-bottom: 0rem
 	position: relative
 	width: 100%
-	height: 100vh
-	min-height: 550px
 	display: flex
 	align-items: flex-start
 	justify-content: center
-	@media (max-width: 750px)
-		height: unset
-		padding-top: 8rem
+	@media (min-width: 951px)
+		flex-direction: column
+		padding-right: 0
+		margin-top: 8rem
+	@media (max-width: 950px)
 		justify-content: flex-start
-		.underlay-img
-			margin-bottom: 2rem
-	.hero_bio
-		max-width: 900px
-		z-index: 1
-		font-size: 26px
-		font-weight: 300
-		line-height: 1.2
-		@media (max-width: 800px)
+		margin-top: 4rem
+		padding: 5rem 10vw
+	.flex-row
+		display: flex
+		flex-direction: column
+		@media (min-width: 950px)
+			flex-direction: row-reverse
+		.hero_bio
+			flex: 1
+			z-index: 1
 			font-size: 20px
-		@media (max-width: 750px)
-			font-size: 18px
-			width: 100%
+			margin-right: 2rem
+			font-weight: 300
+			line-height: 1.2
+			@media (max-width: 800px)
+				font-size: 20px
+			@media (max-width: 950px)
+				font-size: 18px
+				width: 100%
+		.image-container 
+			width: 600px
+			height: 400px
+			.img
+				width: 100%
+				height: 100%
+				background: #eee
+			@media (max-width: 950px)
+				margin: 2rem 0 1rem 0 
+				width: 100%
+				height: 50vw
+				min-height: 300px
 
 #footer
 	width: 100%
@@ -589,9 +714,194 @@ nav.nav
 	.footer_content
 		display: flex
 		align-items: center
-		justify-content: center
-		min-height: 300px
+		justify-content: space-between
+		padding: 3rem 4rem
 		background: #ddd
 		h3 
 			font-size: 30px
+		.logo-nav
+			.footer-logo
+				margin-bottom: 2rem
+				font-size: 40px
+				font-weight: 600
+				a
+					text-decoration: none
+					color: #000
+			.footer-nav
+				list-style: none
+				.nav_item
+					display: inline-block
+					margin-right: 1rem
+					font-size: 15px
+					font-weight: 600
+					&:last-child
+						margin-right: 0
+					a
+						text-decoration: none
+						color: #000
+
+		.footer-about
+			max-width: 300px				
+			h5
+				margin-bottom: 1rem
+				font-weight: 600
+			p
+				font-size: 12px
+				margin-bottom: 1rem
+			.social-container
+				i
+					font-size: 16px
+					background: #444
+					color: white
+					border-radius: 100%
+					width: 32px
+					height: 32px
+					line-height: 32px
+					text-align: center
+					margin-right: 7.5px
+		@media (max-width: 850px)
+			flex-direction: column
+			align-items: flex-start
+			padding: 3rem 10vw
+			.logo-nav
+				margin-bottom: 2rem
+				
+		@media (max-width: 600px)
+			.footer-nav .nav_item
+				width: 100%
+				margin-bottom: 1rem
+				margin-right: 0
+
+
+.book_hero
+	position: relative
+	width: 100%
+	height: 100vh
+	min-height: 550px
+	margin-top: $nav-height
+	h1
+		padding-top: 3rem
+		font-size: 34px
+		font-weight: 600
+		padding-left: 10vw
+		margin-bottom: 2rem
+	.preview_container
+		position: relative
+		width: 100%
+		min-height: 550px
+		background: #eee
+		.review-position
+			position: absolute
+			left: 5vw
+			top: 15%
+			@media (max-width: 600px)
+				left: 0
+				top: unset
+				bottom: 20%
+			.review-container
+				position: relative
+				width: 500px
+				@media (max-width: 600px)
+					width: 100%
+					padding: 0 5vw
+				.review-quote
+					font-size: 30px
+					font-weight: 600
+					line-height: 1.25
+					margin-bottom: 2rem
+					@media (max-width: 600px)
+						font-size: 26px
+				.review-author
+					position: relative
+					font-size: 22px
+					text-align: right
+					margin-right: 20%
+					@media (max-width: 600px)
+						font-size: 20px
+		.cta
+			position: absolute
+			left: 5vw
+			bottom: 15%
+			background: #aaa
+			padding: 15px 25px
+			font-size: 20px
+			color: #fff
+			@media (max-width: 600px)
+				left: 0
+				right: 0
+				margin: auto
+				width: 95%
+				bottom: 5%
+
+.book_preview.section
+	justify-content: center
+	align-items: center
+	min-height: 400px
+	padding: 4rem 10vw
+	& > p
+		font-size: 16px
+		max-width: 700px
+		margin-bottom: 2rem
+		&:last-child
+			margin-bottom: none
+
+.list_quotes
+	padding: 0 10vw
+	display: flex
+	flex-direction: column
+	align-items: center
+	padding-bottom: 2rem
+	.quote_item
+		max-width: 900px
+		width: 100%
+		position: relative
+		margin-bottom: 2rem
+		.body
+			font-size: 20px
+			line-height: 1.15
+			margin-bottom: 1rem
+		.author
+			padding-left: 10%
+			font-size: 16px
+			color: #666
+	.cta-container 
+		text-align: right
+		width: 100%
+		margin-top: 1rem
+		.cta
+			@media (max-width: 500px)
+				width: 100%
+			background: #aaa
+			padding: 15px 25px
+			font-size: 20px
+			color: #fff
+
+.mobile-only-img
+	width: 100%
+	height: 300px
+	background: #eee
+	margin-bottom: 2rem
+	margin-top: -1rem
+	@media(min-width: 751px)
+		display: none
+
+
+.cta-float
+	@media (min-width: 751px)
+		position: absolute
+		&.bottom
+			bottom: 4rem
+		&.left
+			left: 10vw
+	background: #aaa
+	padding: 15px 25px
+	font-size: 20px
+	color: #fff
+
+
+
+
+
+
+
 

@@ -1,20 +1,45 @@
 {% extends "_webpack.templates/_webpack.template.wrapper" %}
 
+{% includeCssFile 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}
+
+{% set nav_page = _nav_page|default('') %}
 
 {# HEADER #}
 {% block header %}
 	<nav class="nav">
 		<div class="brand">
-			<a href="./">Brand Logo</a>
+			<a href="./">Logo</a>
 		</div>
 		<ul class="nav_list">
-			<li class="nav_item nav_mobile">Mobile Nav</li>
-			<li class="nav_item"><a href="./about">About</a></li>
-			<li class="nav_item"><a href="#">Books</a></li>
-			<li class="nav_item"><a href="#">Resources</a></li>
-			<li class="nav_item"><a href="#">News & Events</a></li>
-			<li class="nav_item"><a href="#">Contact</a></li>
-			<!--<li class="nav_item subscribe">Subscribe</li>-->
+			<li class="mobile_nav">
+				<div class="container">
+					<span class="nav-line"></span>
+					<span class="nav-line"></span>
+					<span class="nav-line"></span>
+				</div>
+			</li>
+			<li class="nav_item
+				{% if nav_page == 'about' %} active{% endif %}
+				"><a href="./about">About</a></li>
+			<li class="nav_item 
+				{% if nav_page == 'books' %} active{% endif %}
+				"><a href="./books">Books</a></li>
+			<li class="nav_item 
+				{% if nav_page == 'resources' %} active{% endif %}
+				">
+					<a href="#">Resources</a>
+					<ul class="hover-menu">
+						<li><a href="#">Worksheets</a></li>
+						<li><a href="#">Presentations</a></li>
+						<li><a href="#">Videos</a></li>
+					</ul>
+				</li>
+			<li class="nav_item 
+				{% if nav_page == 'news' %} active{% endif %}
+				"><a href="#">News</a></li>
+			<li class="nav_item 
+				{% if nav_page == 'contact' %} active{% endif %}
+				"><a href="#">Contact</a></li>
 		</ul>
 	</nav>
 {% endblock %}
@@ -37,6 +62,24 @@
 	</div>
 	{# FOOTER INFO #}
 	<div class="footer_content">
-		<h3>Footer</h3>
+		<div class="logo-nav">
+			<div class="footer-logo"><a href="./">Logo</a></div>
+			<ul class="footer-nav">
+				<li class="nav_item"><a href="./about">About</a></li>
+				<li class="nav_item"><a href="./books">Books</a></li>
+				<li class="nav_item"><a href="#">Resources</a></li>
+				<li class="nav_item"><a href="#">News</a></li>
+				<li class="nav_item"><a href="#">Contact</a></li>
+			</ul>
+		</div>
+		<div class="footer-about">
+			<h5>About Dr. Kris</h5>
+			<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+			<div class="social-container">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="https://twitter.com/TheRealDrKris" target="_blank"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+			</div>
+		</div>
 	</div>
 {% endblock %}
