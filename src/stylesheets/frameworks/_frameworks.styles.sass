@@ -25,7 +25,6 @@ html
 body.mobileOverlay 
 	overflow: hidden
 	.mobile_nav_list
-		padding: 20px 10vw
 		position: relative
 		display: block
 		height: 100vh
@@ -40,6 +39,9 @@ body.mobileOverlay
 			font-size: 30px
 			color: #000
 			font-weight: 600
+			padding-top: 20px 
+			padding-left: 10vw
+			padding-right: 10vw
 			margin-bottom: 2rem
 			.close-btn 
 				float: right
@@ -49,6 +51,7 @@ body.mobileOverlay
 		.navigation
 			list-style: none
 			.nav_item
+				padding-left: 10vw
 				display: block
 				margin-bottom: 2rem
 				font-size: 22px
@@ -57,6 +60,16 @@ body.mobileOverlay
 					text-decoration: none
 				.sub-list
 					display: none
+					.nav_item 
+						padding-left: 0
+						margin-bottom: 10px
+						a
+							font-size: 16px
+							color: #999
+				&.drop-vis .sub-list
+					display: block
+					padding-left: 20px
+					margin-top: 10px
 
 nav.nav
 	position: absolute
@@ -627,6 +640,30 @@ nav.nav
 		margin-bottom: 2rem
 		padding-top: 3rem
 
+
+.has-dropdown
+	position: relative
+	&:before
+		content: ''
+		width: 0; 
+		height: 0; 
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 5px solid #999;
+		position: absolute
+		top: 50%
+		right: 0px
+
+.mobile_nav_list .has-dropdown
+	cursor: pointer
+	&:before
+		right: -15px
+		border-top-color: #252525
+
+.drop-vis
+	.has-dropdown:before
+		transform: rotate(-180deg)
+
 .landing_hero
 	position: relative
 	width: 100%
@@ -817,7 +854,25 @@ nav.nav
 				.file_type
 					font-size: 14px
 					font-weight: 200
-
+			&.list-mode
+				column-count: unset
+				column-gap: unset
+				.resource_item
+					display: flex
+					flex-direction: row
+					justify-content: flex-start
+					align-items: center
+					background: #eee
+					position: relative
+					.thumbnail
+						height: 70px
+						width: 70px
+						background: #fff
+						border: 2px solid #eee
+						margin: 0
+					.info
+						margin-left: 10px
+					
 
 .event_groups
 	width: 100%
@@ -860,7 +915,7 @@ nav.nav
 				.description
 					max-width: 50%
 					font-size: 14px
-				@media (max-width: 600px)
+				@media (max-width: 700px)
 					flex-direction: column
 					width: 100%
 					align-items: flex-start

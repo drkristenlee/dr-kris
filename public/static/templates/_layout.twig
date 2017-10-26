@@ -12,14 +12,19 @@
 		<ul class="navigation">
 			<li class="nav_item"><a href="./">Home</a></li>
 			<li class="nav_item"><a href="./books">Books</a></li>
-			<li class="nav_item"><a href="./resources">Resources</a>
+			<li class="nav_item"><a class="has-dropdown">Resources</a>
 				<ul class="sub-list">
 					<li class="nav_item"><a href="./resources#worksheets">Worksheets</a></li>
 					<li class="nav_item"><a href="./resources#presentations">Presentations</a></li>
 					<li class="nav_item"><a href="./resources#videos">Videos</a></li>
 				</ul>
 			</li>
-			<li class="nav_item"><a href="./news">News</a></li>
+			<li class="nav_item"><a class="has-dropdown">News</a>
+				<ul class="sub-list">
+					<li class="nav_item"><a href="./news#press">Press</a></li>
+					<li class="nav_item"><a href="./news#events">Events</a></li>
+				</ul>
+			</li>
 			<li class="nav_item">Contact</li>
 		</ul>
 	</div>
@@ -44,7 +49,7 @@
 			<li class="nav_item 
 				{% if nav_page == 'resources' %} active{% endif %}
 				">
-					<a href="./resources">Resources</a>
+					<a href="./resources" class="has-dropdown">Resources</a>
 					<ul class="hover-menu">
 						<li><a href="./resources#worksheets">Worksheets</a></li>
 						<li><a href="./resources#presentations">Presentations</a></li>
@@ -54,7 +59,7 @@
 			<li class="nav_item 
 				{% if nav_page == 'news' %} active{% endif %}
 				">
-					<a href="./news">News</a>
+					<a href="./news" class="has-dropdown">News</a>
 					<ul class="hover-menu">
 						<li><a href="./news#press">Press</a></li>
 						<li><a href="./news#events">Events</a></li>

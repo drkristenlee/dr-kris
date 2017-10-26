@@ -8,11 +8,14 @@ $(document).ready(function(){
 		$("#resources .category-list .category").removeClass("active");
 		$(this).addClass("active");
 	});
-});
 
-$(document).ready(function(){
 	$("#resources .type-select .list-type").click(function(){
 		$("#resources .type-select .list-type").removeClass("active");
 		$(this).addClass("active");
+		if ($("#list-view-select").hasClass('active')) {
+			$("#resources .content").addClass('list-mode');
+		} else {
+			$("#resources .content").removeClass('list-mode');
+		}
 	});
 });
