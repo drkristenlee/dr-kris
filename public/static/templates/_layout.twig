@@ -6,6 +6,23 @@
 
 {# HEADER #}
 {% block header %}
+	<div class="mobile_nav_list">
+		
+		<h3 class="title">Menu <i class="close-btn fa fa-close"></i></h3>
+		<ul class="navigation">
+			<li class="nav_item"><a href="./">Home</a></li>
+			<li class="nav_item"><a href="./books">Books</a></li>
+			<li class="nav_item"><a href="./resources">Resources</a>
+				<ul class="sub-list">
+					<li class="nav_item"><a href="./resources#worksheets">Worksheets</a></li>
+					<li class="nav_item"><a href="./resources#presentations">Presentations</a></li>
+					<li class="nav_item"><a href="./resources#videos">Videos</a></li>
+				</ul>
+			</li>
+			<li class="nav_item"><a href="./news">News</a></li>
+			<li class="nav_item">Contact</li>
+		</ul>
+	</div>
 	<nav class="nav">
 		<div class="brand">
 			<a href="./">Logo</a>
@@ -27,16 +44,22 @@
 			<li class="nav_item 
 				{% if nav_page == 'resources' %} active{% endif %}
 				">
-					<a href="#">Resources</a>
+					<a href="./resources">Resources</a>
 					<ul class="hover-menu">
-						<li><a href="#">Worksheets</a></li>
-						<li><a href="#">Presentations</a></li>
-						<li><a href="#">Videos</a></li>
+						<li><a href="./resources#worksheets">Worksheets</a></li>
+						<li><a href="./resources#presentations">Presentations</a></li>
+						<li><a href="./resources#videos">Videos</a></li>
 					</ul>
 				</li>
 			<li class="nav_item 
 				{% if nav_page == 'news' %} active{% endif %}
-				"><a href="#">News</a></li>
+				">
+					<a href="./news">News</a>
+					<ul class="hover-menu">
+						<li><a href="./news#press">Press</a></li>
+						<li><a href="./news#events">Events</a></li>
+					</ul>
+				</li>
 			<li class="nav_item 
 				{% if nav_page == 'contact' %} active{% endif %}
 				"><a href="#">Contact</a></li>
@@ -51,27 +74,37 @@
 {% endblock %}
 
 {# FOOTER #}
-{% block footer %}
-	{# SUBSCRIBE #}
-	<div class="subscribe_module">
-		<h3>Stay connected with Dr. Kris</h3>
-		<div class="subscribe_input">
-			<input type="email" name="subscribe_email" placeholder="Enter your email here">
-			<button>Keep Me Updated</button>
-		</div>
-	</div>
+{% block footer %}	
 	{# FOOTER INFO #}
 	<div class="footer_content">
 		<div class="logo-nav">
-			<div class="footer-logo"><a href="./">Logo</a></div>
-			<ul class="footer-nav">
-				<li class="nav_item"><a href="./about">About</a></li>
-				<li class="nav_item"><a href="./books">Books</a></li>
-				<li class="nav_item"><a href="#">Resources</a></li>
-				<li class="nav_item"><a href="#">News</a></li>
-				<li class="nav_item"><a href="#">Contact</a></li>
-			</ul>
+			<a href="./" class="footer-logo">Logo</a>
+			<p class="subscribe_text">Sign up for my newsletter</p>
+			<div class="subscribe_input">
+				<input type="email" name="subscribe_email" placeholder="Enter your email here">
+				<button>Send</button>
+			</div>
 		</div>
+		<ul class="footer-nav">
+			<li class="nav_item"><a href="./about">About</a></li>
+			<li class="nav_item"><a href="./books">Books</a></li>
+			<li class="nav_item">
+				<ul class="sub-list">
+					<li class="nav_item main"><a href="./resources">Resources</a></li>
+					<li class="nav_item"><a href="./resources#worksheets">Worksheets</a></li>
+					<li class="nav_item"><a href="./resources#presentations">Presentations</a></li>
+					<li class="nav_item"><a href="./resources#videos">Videos</a></li>
+				</ul>
+			</li>
+			<li class="nav_item">
+				<ul class="sub-list">
+					<li class="nav_item main"><a href="./news">News</a></li>
+					<li class="nav_item"><a href="./news#press">Press</a></li>
+					<li class="nav_item"><a href="./news#events">Events</a></li>
+				</ul>
+			</li>
+			<li class="nav_item"><a href="#">Contact</a></li>
+		</ul>
 		<div class="footer-about">
 			<h5>About Dr. Kris</h5>
 			<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
@@ -83,3 +116,6 @@
 		</div>
 	</div>
 {% endblock %}
+
+{% includeJsFile 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}
+

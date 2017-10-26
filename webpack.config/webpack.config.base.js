@@ -33,6 +33,9 @@ const webpackBaseConfig = function(env) {
           // File containing our custom routes
           router: "./src/javascripts/router.js",
 
+          // File containing our mobile nav js
+          mobile_nav: "./src/javascripts/modules/mobile_nav.js",
+
           // File containing code from third party libraries
           vendor: ['jquery', 'picturefill', 'svg4everybody' ]
         },

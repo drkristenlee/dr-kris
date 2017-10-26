@@ -1,0 +1,108 @@
+{#
+ # News template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% set _nav_page = 'news' %}
+
+{% block main %}
+	<!-- hero section -->
+	<div class="news_main section no-flex">
+		
+		<h3>Press</h3>
+
+		<h3>Events</h3>
+
+		<div class="event_groups">
+
+			<div class="event_section">
+				<p class="title">November 2017</p>
+				<div class="event-list">
+					
+					<div class="event">
+						<div class="date">11/05</div>
+						<div class="info">
+							<p class="info-title">Event Name / Type</p>
+							<p class="info-loc">City, State</p>
+						</div>
+						<p class="description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+					<div class="event">
+						<div class="date">11/15</div>
+						<div class="info">
+							<p class="info-title">Event Name / Type</p>
+							<p class="info-loc">City, State</p>
+						</div>
+						<p class="description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="event_section">
+				<p class="title">December 2017</p>
+				<div class="event-list">
+					
+					<div class="event">
+						<div class="date">12/09</div>
+						<div class="info">
+							<p class="info-title">Event Name / Type</p>
+							<p class="info-loc">City, State</p>
+						</div>
+						<p class="description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+					<div class="event">
+						<div class="date">12/20</div>
+						<div class="info">
+							<p class="info-title">Event Name / Type</p>
+							<p class="info-loc">City, State</p>
+						</div>
+						<p class="description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+					<div class="event">
+						<div class="date">12/22</div>
+						<div class="info">
+							<p class="info-title">Event Name / Type</p>
+							<p class="info-loc">City, State</p>
+						</div>
+						<p class="description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="load-container">
+				<button class="load-btn">Load more</button>
+			</div>
+
+		</div>
+
+	</div>
+{% endblock %}
+
