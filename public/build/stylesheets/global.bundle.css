@@ -1543,6 +1543,10 @@ nav.nav {
     right: -15px;
     border-top-color: #252525; }
 
+.nav_list .nav_item:hover .has-dropdown:before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg); }
+
 .drop-vis .has-dropdown:before {
   -webkit-transform: rotate(-180deg);
           transform: rotate(-180deg); }
