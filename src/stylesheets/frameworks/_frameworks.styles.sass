@@ -16,6 +16,61 @@ $nav-height: 70px
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
 
+html 
+	line-height: unset
+
+
+.mobile_nav_list
+	display: none
+body.mobileOverlay 
+	overflow: hidden
+	.mobile_nav_list
+		position: relative
+		display: block
+		height: 100vh
+		min-height: 400px
+		width: 100vw
+		position: fixed
+		top: 0
+		left: 0
+		background: #ccc
+		z-index: 1000
+		.title
+			font-size: 30px
+			color: #000
+			font-weight: 600
+			padding-top: 20px 
+			padding-left: 10vw
+			padding-right: 10vw
+			margin-bottom: 2rem
+			.close-btn 
+				float: right
+				font-size: 30px
+				cursor: pointer
+				color: #252525
+		.navigation
+			list-style: none
+			.nav_item
+				padding-left: 10vw
+				display: block
+				margin-bottom: 2rem
+				font-size: 22px
+				a
+					color: #000
+					text-decoration: none
+				.sub-list
+					display: none
+					.nav_item 
+						padding-left: 0
+						margin-bottom: 10px
+						a
+							font-size: 16px
+							color: #999
+				&.drop-vis .sub-list
+					display: block
+					padding-left: 20px
+					margin-top: 10px
+
 nav.nav
 	position: absolute
 	display: flex
@@ -70,7 +125,7 @@ nav.nav
 			& > a
 				height: $nav-height
 				display: block
-				padding: 0 15px
+				padding: 0 18px
 				line-height: $nav-height
 			.hover-menu
 				z-index: -1
@@ -576,6 +631,42 @@ nav.nav
 						&:after
 							left: 0
 
+.section.no-flex
+	display: block
+	padding: 0 10vw
+	margin: $nav-height 0
+	h3	
+		position: unset
+		margin-bottom: 2rem
+		padding-top: 3rem
+
+
+.has-dropdown
+	position: relative
+	&:before
+		content: ''
+		width: 0; 
+		height: 0; 
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 5px solid #999;
+		position: absolute
+		top: 50%
+		right: 0px
+
+.mobile_nav_list .has-dropdown
+	cursor: pointer
+	&:before
+		right: -15px
+		border-top-color: #252525
+
+.nav_list .nav_item:hover .has-dropdown:before
+	transform: rotate(-180deg)
+	
+.drop-vis
+	.has-dropdown:before
+		transform: rotate(-180deg)
+
 .landing_hero
 	position: relative
 	width: 100%
@@ -673,72 +764,246 @@ nav.nav
 				height: 50vw
 				min-height: 300px
 
+.resources_main
+	#resources
+		width: 100%
+		.top-select
+			.category-list
+				margin-bottom: 1rem
+				list-style: none
+				display: inline-block
+				@media (max-width: 600px)
+					display: block
+					margin-bottom: 20px
+				.category
+					position: relative
+					font-size: 18px
+					display: inline-block
+					margin-right: 1.5rem
+					cursor: pointer
+					&:last-child
+						margin-right: 0px
+					&:after
+						content: ''
+						position: absolute
+						width: 0
+						height: 3px
+						left: 0
+						right: 0
+						bottom: -5px
+						margin: auto
+						background: #444
+						transition-timing-function: ease-in-out
+						transition-duration: 250ms
+					&:hover:after, &.active:after
+						width: 100%
+			.type-select
+				list-style: none
+				float: right
+				@media (max-width: 600px)
+					float: unset
+					margin-bottom: 15px
+				.list-type
+					position: relative
+					display: inline-block
+					cursor: pointer
+					&:first-child
+						margin-right: 10px
+					&:after
+						content: ''
+						position: absolute
+						width: 0
+						height: 2px
+						left: 0
+						right: 0
+						bottom: -4px
+						margin: auto
+						background: #444
+						transition-timing-function: ease-in-out
+						transition-duration: 250ms
+					&:hover:after, &.active:after
+						width: 100%
+		.filter
+			margin-bottom: 30px
+			display: flex
+			input
+				background: white
+				border: 1px solid #aaa
+				flex-grow: 1
+				margin-right: 8px
+				padding: 5px 10px
+			select
+				width: 108px
+				background: #aaa
+				color: white
+		.content
+			column-count: 3
+			column-gap: 23px
+			@media (max-width: 900px)
+				column-count: 2
+			@media (max-width: 600px)
+				column-count: 1
+			.resource_item
+				margin-bottom: 23px
+				break-inside: avoid-column;
+				.thumbnail
+					height: 300px
+					background: #eee
+					margin-bottom: 5px
+				.resource_title
+					font-size: 20px
+					font-weight: 600
+					margin-bottom: 2px
+				.file_type
+					font-size: 14px
+					font-weight: 200
+			&.list-mode
+				column-count: unset
+				column-gap: unset
+				.resource_item
+					display: flex
+					flex-direction: row
+					justify-content: flex-start
+					align-items: center
+					background: #eee
+					position: relative
+					.thumbnail
+						height: 70px
+						width: 70px
+						background: #fff
+						border: 2px solid #eee
+						margin: 0
+					.info
+						margin-left: 10px
+					
+
+.event_groups
+	width: 100%
+	padding: 1rem 0
+	.event_section
+		margin-bottom: 4rem
+		width: 100%
+		.title
+			text-align: center
+			font-size: 20px
+			font-weight: 400
+			padding-bottom: 15px
+			border-bottom: 1px solid #aaa
+			margin-bottom: 1.5rem
+		.event-list
+			.event
+				margin-bottom: 1.5rem
+				width: 100%
+				display: flex
+				flex-direction: row
+				justify-content: space-between
+				align-items: center
+				padding: 10px 10px
+				.date
+					width: 100px
+					margin-right: 10px
+					font-size: 30px
+					font-weight: 600
+				.info
+					margin-right: 10px
+					display: flex
+					flex-direction: column
+					justify-content: space-between
+					.info-title
+						font-size: 20px
+						font-weight: 400
+					.info-loc
+						font-size: 16px
+						font-weight: 300
+				.description
+					max-width: 50%
+					font-size: 14px
+				@media (max-width: 700px)
+					flex-direction: column
+					width: 100%
+					align-items: flex-start
+					.date
+						margin-right: 0
+						margin-bottom: 10px 
+					.info
+						margin-right: 0
+						margin-bottom: 15px
+					.description
+						max-width: unset
+	.load-container
+		text-align: center
+		.load-btn
+			background: #ccc
+			cursor: pointer
+			padding: 8px 20px
+			color: white
+
 #footer
 	width: 100%
-	.subscribe_module
-		min-height: 210px
+	.footer_content
 		display: flex
-		flex-direction: column
-		align-items: center
-		justify-content: center
-		border-top: 1px solid #ccc
-		border-bottom: 1px solid #ccc
-		h3
-			font-size: 22px
-			margin-bottom: 2rem
+		align-items: flex-start
+		justify-content: space-between
+		padding: 4rem 4rem
+		background: #ddd
+		.footer-logo
+			margin-bottom: 1rem
+			font-size: 40px
+			font-weight: 600				
+			text-decoration: none
+			color: #000
+			display: inline-block
+		.subscribe_text
+			font-size: 16px
+			margin-bottom: 10px
 		.subscribe_input
+			width: 200px
 			position: relative
 			display: inline-block
 			input, button
 				outline: none
-				font-size: 14px
+				font-size: 12px
 			input
-				height: 34px
-				width: 300px
-				border: 1px solid #bbb
-				border-right: none
-				border-top-left-radius: 5px
-				border-bottom-left-radius: 5px
+				width: 135px
+				height: 28px
+				background: white
 				padding: 1px 10px
-				@media (max-width: 600px)
-					width: 50vw
 			button
 				float: right
 				border: none
-				border-radius: 0
-				border-top-right-radius: 5px
-				border-bottom-right-radius: 5px
 				background: #bbb
 				color: white
-				padding: 12px 20px
-	.footer_content
-		display: flex
-		align-items: center
-		justify-content: space-between
-		padding: 3rem 4rem
-		background: #ddd
-		h3 
-			font-size: 30px
-		.logo-nav
-			.footer-logo
+				width: 45px
+				height: 30px
+		.footer-nav
+			width: 500px
+			display: flex
+			justify-content: space-evenly
+			list-style: none
+			@media (max-width: 600px)
+				display: block
+				width: auto
 				margin-bottom: 2rem
-				font-size: 40px
+				.nav-item
+					display: block
+			.nav_item
+				display: inline-block
+				font-size: 15px
 				font-weight: 600
 				a
 					text-decoration: none
 					color: #000
-			.footer-nav
-				list-style: none
-				.nav_item
-					display: inline-block
-					margin-right: 1rem
-					font-size: 15px
-					font-weight: 600
-					&:last-child
-						margin-right: 0
-					a
-						text-decoration: none
-						color: #000
+				.sub-list
+					.nav_item
+						margin-bottom: 10px
+						&:last-child
+							margin-bottom: 0px
+					.nav_item:not(.main)
+						display: block
+						font-size: 13px
+						a
+							color: #999
+							font-weight: 200
 
 		.footer-about
 			max-width: 300px				
@@ -759,19 +1024,16 @@ nav.nav
 					line-height: 32px
 					text-align: center
 					margin-right: 7.5px
-		@media (max-width: 850px)
+		@media (max-width: 950px)
 			flex-direction: column
 			align-items: flex-start
 			padding: 3rem 10vw
 			.logo-nav
 				margin-bottom: 2rem
-				
-		@media (max-width: 600px)
 			.footer-nav .nav_item
 				width: 100%
 				margin-bottom: 1rem
 				margin-right: 0
-
 
 .book_hero
 	position: relative
