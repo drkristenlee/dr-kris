@@ -6,9 +6,7 @@
 
 {# HEADER #}
 {% block header %}
-	<div class="mobile_nav_list">
-		
-		<h3 class="title">Menu <i class="close-btn fa fa-close"></i></h3>
+	<div class="mobile_nav_list">		
 		<ul class="navigation">
 			<li class="nav_item"><a href="./">Home</a></li>
 			<li class="nav_item"><a href="./books">Books</a></li>
@@ -25,21 +23,21 @@
 					<li class="nav_item"><a href="./news#events">Events</a></li>
 				</ul>
 			</li>
-			<li class="nav_item">Contact</li>
+			<li class="nav_item"><a href="./contact">Contact</a></li>
 		</ul>
+	</div>
+	<div class="mobile_nav">
+		<div class="container">
+			<span class="nav-line"></span>
+			<span class="nav-line"></span>
+			<span class="nav-line"></span>
+		</div>
 	</div>
 	<nav class="nav">
 		<div class="brand">
 			<a href="./">Logo</a>
 		</div>
 		<ul class="nav_list">
-			<li class="mobile_nav">
-				<div class="container">
-					<span class="nav-line"></span>
-					<span class="nav-line"></span>
-					<span class="nav-line"></span>
-				</div>
-			</li>
 			<li class="nav_item
 				{% if nav_page == 'about' %} active{% endif %}
 				"><a href="./about">About</a></li>
@@ -67,7 +65,7 @@
 				</li>
 			<li class="nav_item 
 				{% if nav_page == 'contact' %} active{% endif %}
-				"><a href="#">Contact</a></li>
+				"><a href="./contact">Contact</a></li>
 		</ul>
 	</nav>
 {% endblock %}
@@ -108,7 +106,7 @@
 					<li class="nav_item"><a href="./news#events">Events</a></li>
 				</ul>
 			</li>
-			<li class="nav_item"><a href="#">Contact</a></li>
+			<li class="nav_item"><a href="./contact">Contact</a></li>
 		</ul>
 		<div class="footer-about">
 			<h5>About Dr. Kris</h5>

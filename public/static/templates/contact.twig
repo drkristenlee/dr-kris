@@ -1,0 +1,81 @@
+{#
+ # Contact template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% set _nav_page = 'contact' %}
+
+{% block main %}
+	<!-- hero section -->
+	<div class="resources_main section no-flex">
+		
+		<h3>Contact</h3>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+
+		<br><br><br>
+
+		<p>Select your reason for contacting Dr. Kris:</p>
+
+		<div class="contact-method-select">
+			<div class="contact-method selected">
+				<p>Looking for her to speak at an event</p>
+			</div>
+			<div class="contact-method">
+				<p>Want her to do a workshop</p>
+			</div>
+			<div class="contact-method">
+				<p>Questions regarding bulk book orders</p>
+			</div>
+			<div class="contact-method">
+				<p>General Inquiry or reason not listed</p>
+			</div>
+		</div>
+
+		<div class="contact-form-wrapper">
+			<form class="contact-form">
+				<div class="form-row">
+					<div class="_half form-content">
+						<label>Enter your email:</label>
+						<input class="form-el" type="text" placeholder="example@email.com">
+					</div>
+					<div class="_half form-content">
+						<label>Enter your phone number:</label>
+						<input class="form-el" type="text" placeholder="(XXX) XXX-XXXX">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-content">
+						<label>Subject of Inquiry:</label>
+						<input class="form-el" type="text" placeholder="Interested in speaking at...">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-content">
+						<label>Your message:</label>
+						<textarea class="form-el" rows="4" placeholder="Enter the body of your message here"></textarea>
+					</div>
+				</div>
+				<button class="submit-contact" style="float: right;">Send Message</button>
+			</form>
+		</div>
+
+	</div>
+{% endblock %}
+
