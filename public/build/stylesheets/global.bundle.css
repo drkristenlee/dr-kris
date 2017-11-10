@@ -854,6 +854,7 @@ html {
   transition-timing-function: linear;
   transition-duration: 100ms;
   transition-property: opacity;
+  transition-delay: 150ms;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -878,11 +879,23 @@ html {
       opacity: 0;
       transition-timing-function: ease-in-out;
       transition-duration: 150ms;
+      -webkit-transform: translateY(-5px);
+              transform: translateY(-5px);
       text-align: center;
       display: block;
       margin-bottom: 2rem;
       font-size: 22px;
       text-transform: uppercase; }
+      .mobile_nav_list .navigation .nav_item:nth-child(1) {
+        transition-delay: 125ms; }
+      .mobile_nav_list .navigation .nav_item:nth-child(2) {
+        transition-delay: 100ms; }
+      .mobile_nav_list .navigation .nav_item:nth-child(3) {
+        transition-delay: 75ms; }
+      .mobile_nav_list .navigation .nav_item:nth-child(4) {
+        transition-delay: 50ms; }
+      .mobile_nav_list .navigation .nav_item:nth-child(5) {
+        transition-delay: 0ms; }
       .mobile_nav_list .navigation .nav_item a {
         color: #000;
         text-decoration: none; }
@@ -903,19 +916,24 @@ body.mobileOverlay {
     opacity: 1;
     pointer-events: initial;
     transition-timing-function: ease-in-out;
-    transition-duration: 250ms; }
+    transition-duration: 250ms;
+    transition-delay: 0ms; }
     body.mobileOverlay .mobile_nav_list .navigation .nav_item {
       transition-duration: 200ms;
       letter-spacing: initial;
-      opacity: 1; }
+      opacity: 1;
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px); }
+      body.mobileOverlay .mobile_nav_list .navigation .nav_item:nth-child(1) {
+        transition-delay: 40ms; }
       body.mobileOverlay .mobile_nav_list .navigation .nav_item:nth-child(2) {
-        transition-delay: 50ms; }
+        transition-delay: 80ms; }
       body.mobileOverlay .mobile_nav_list .navigation .nav_item:nth-child(3) {
-        transition-delay: 75ms; }
+        transition-delay: 120ms; }
       body.mobileOverlay .mobile_nav_list .navigation .nav_item:nth-child(4) {
-        transition-delay: 100ms; }
+        transition-delay: 160ms; }
       body.mobileOverlay .mobile_nav_list .navigation .nav_item:nth-child(5) {
-        transition-delay: 125ms; }
+        transition-delay: 200ms; }
 
 nav.nav {
   position: absolute;
