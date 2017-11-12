@@ -12,6 +12,10 @@
 // Variables
 $timeline-branch-length: 35%
 $nav-height: 70px
+$nav-pad: 4rem
+
+$transition-time-in: 200ms
+$transition-time-out: 150ms 
 
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
@@ -19,57 +23,144 @@ $nav-height: 70px
 html 
 	line-height: unset
 
+.mobile_nav
+	display: none
+	margin-right: 0
+	text-align: center
+	position: absolute
+	top: 0
+	right: $nav-pad
+	@media (max-width: 850px)
+		right: 10vw
+	height: $nav-height
+	z-index: 1000
+	justify-content: center
+	align-items: center
+	cursor: pointer
+	@media (max-width: 800px)
+		display: flex
+	.container
+		width: 40px
+		height: 40px
+		position: relative
+		transition-timing-function: ease-in-out
+		transition-duration: $transition-time-out
+		.nav-line
+			transition-timing-function: ease-in-out
+			transition-duration: $transition-time-out
+			width: 90%
+			height: 3px
+			border-radius: 2px
+			background: #444
+			position: absolute
+			left: 0
+			right: 0
+			margin: auto
+			&:nth-child(1)
+				top: 10px
+				transition-delay: $transition-time-out
+			&:nth-child(2)
+				top: 20px
+			&:nth-child(3)
+				top: 30px
+				transition-delay: $transition-time-out
+	&.active
+		.container 
+			transform: rotate(-45deg)
+			transition-delay: $transition-time-in
+			transition-duration: $transition-time-in
+			.nav-line
+				transition-duration: $transition-time-in
+				&:nth-child(1)
+					top: 20px
+					transition-delay: 0ms
+				&:nth-child(2)
+					transition-delay: $transition-time-in
+					transform: rotate(90deg)
+				&:nth-child(3)
+					top: 20px
+					transition-delay: 0ms
 
 .mobile_nav_list
-	display: none
+	opacity: 0
+	overflow: scroll
+	pointer-events: none
+	position: relative
+	transition-timing-function: linear
+	transition-duration: 100ms
+	transition-property: opacity
+	transition-delay: $transition-time-out
+	display: flex
+	height: 100vh
+	min-height: 400px
+	justify-content: center
+	align-items: center
+	width: 100vw
+	position: fixed
+	top: 0
+	left: 0
+	background: #ccc
+	z-index: 1000
+	.navigation
+		list-style: none
+		.nav_item
+			letter-spacing: -12px
+			opacity: 0
+			transition-timing-function: ease-in-out
+			transition-duration: $transition-time-out
+			transform: translateY(-5px)
+			text-align: center
+			display: block
+			margin-bottom: 2rem
+			font-size: 22px
+			text-transform: uppercase
+			&:nth-child(1)
+				transition-delay: 125ms
+			&:nth-child(2)
+				transition-delay: 100ms
+			&:nth-child(3)
+				transition-delay: 75ms
+			&:nth-child(4)
+				transition-delay: 50ms
+			&:nth-child(5)
+				transition-delay: 0ms
+			a
+				color: #000
+				text-decoration: none
+			.sub-list
+				display: none
+				.nav_item 
+					margin-bottom: 10px
+					a
+						font-size: 16px
+						color: #999
+			&.drop-vis .sub-list
+				display: block
+				margin-top: 10px	
+
 body.mobileOverlay 
 	overflow: hidden
 	.mobile_nav_list
-		position: relative
-		display: block
-		height: 100vh
-		min-height: 400px
-		width: 100vw
-		position: fixed
-		top: 0
-		left: 0
-		background: #ccc
-		z-index: 1000
-		.title
-			font-size: 30px
-			color: #000
-			font-weight: 600
-			padding-top: 20px 
-			padding-left: 10vw
-			padding-right: 10vw
-			margin-bottom: 2rem
-			.close-btn 
-				float: right
-				font-size: 30px
-				cursor: pointer
-				color: #252525
-		.navigation
-			list-style: none
-			.nav_item
-				padding-left: 10vw
-				display: block
-				margin-bottom: 2rem
-				font-size: 22px
-				a
-					color: #000
-					text-decoration: none
-				.sub-list
-					display: none
-					.nav_item 
-						padding-left: 0
-						margin-bottom: 10px
-						a
-							font-size: 16px
-							color: #999
-				&.drop-vis .sub-list
-					display: block
-					padding-left: 20px
-					margin-top: 10px
+		opacity: 1
+		pointer-events: initial
+		transition-timing-function: ease-in-out
+		transition-duration: 250ms
+		transition-delay: 0ms
+		.navigation .nav_item
+			transition-duration: $transition-time-in
+			letter-spacing: initial
+			opacity: 1
+			transform: translateY(0px)
+			&:nth-child(1)
+				transition-delay: $transition-time-in * (1/5)
+			&:nth-child(2)
+				transition-delay: $transition-time-in * (2/5)
+			&:nth-child(3)
+				transition-delay: $transition-time-in * (3/5)
+			&:nth-child(4)
+				transition-delay: $transition-time-in * (4/5)
+			&:nth-child(5)
+				transition-delay: $transition-time-in
 
 nav.nav
 	position: absolute
@@ -81,7 +172,7 @@ nav.nav
 	top: 0
 	left: 0
 	right: 0
-	padding: 0 4rem
+	padding: 0 $nav-pad
 	background: #ddd
 	@media (max-width: 850px)
 		padding: 0 10vw
@@ -132,10 +223,10 @@ nav.nav
 				position: absolute
 				left: 0
 				right: 0
-				top: $nav-height
+				top: $nav-height + 5px
 				transform-origin: top center
 				background: #eee
-				padding: 10px 0
+				padding: 15px 0
 				opacity: 0
 				pointer-events: none
 				transition-timing-function: ease-in-out
@@ -152,37 +243,6 @@ nav.nav
 		@media (max-width: 800px)
 			.nav_item
 				display: none
-				
-		.mobile_nav
-			display: none
-			margin-right: 0
-			text-align: center
-			position: relative
-			height: 100%
-			justify-content: center
-			align-items: center
-			cursor: pointer
-			@media (max-width: 800px)
-				display: flex
-			.container
-				width: 40px
-				height: 40px
-				position: relative
-				.nav-line
-					width: 90%
-					height: 3px
-					border-radius: 2px
-					background: #444
-					position: absolute
-					left: 0
-					right: 0
-					margin: auto
-					&:nth-child(1)
-						top: 10px
-					&:nth-child(2)
-						top: 20px
-					&:nth-child(3)
-						top: 30px
 
 .section
 	position: relative
@@ -220,7 +280,7 @@ nav.nav
 		&.subtitle
 			font-weight: 500
 			margin-bottom: 1rem
-	& > p
+	&:not(.no-flex) > p
 		max-width: 600px
 	.link
 		font-size: 16px
@@ -937,6 +997,92 @@ nav.nav
 			cursor: pointer
 			padding: 8px 20px
 			color: white
+
+
+.contact-method-select
+	display: flex
+	width: 100%
+	align-items: center
+	justify-content: space-between
+	margin-top: 2rem
+	padding-bottom: 2rem
+	border-bottom: 1px solid #eee
+	@media (max-width: 600px)
+		flex-direction: column
+	.contact-method
+		width: 22%
+		padding: 10px 20px
+		height: 80px
+		display: flex
+		justify-content: center
+		align-items: center
+		background: #eee
+		border: solid 1px #ddd
+		cursor: pointer
+		transition-timing-function: ease-in-out
+		transition-duration: 250ms
+		@media (max-width: 600px)
+			width: 100%
+			margin-bottom: 10px
+			height: unset
+			padding: 15px 20px
+		p
+			text-align: center
+			font-size: 14px
+			color: #999
+		&:hover
+			background: #eaeaea
+			border-color: #dadada
+			p
+				color: #777
+		&.selected
+			background: #d0d0d0
+			border-color: #bababa
+			p
+				color: #555
+
+.contact-form-wrapper
+	width: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+	margin: 2rem 0
+	.contact-form
+		width: 700px
+		position: relative
+		.form-row
+			display: flex
+			flex-direction: row
+			width: 100%
+			justify-content: space-between
+			@media (max-width: 700px)
+				flex-direction: column
+			.form-content
+				width: 100%
+				margin-bottom: 2rem
+				@media (max-width: 700px)
+					margin-bottom: 1.5rem
+				&._half
+					width: 47.5%
+					display: inline-block
+					@media (max-width: 700px)
+						width: 100%
+						display: block
+				label 
+					margin-bottom: 10px
+				.form-el
+					width: stretch
+					border: 1px solid #aaa
+					padding: 8px 10px
+					line-height: 1.25
+		.submit-contact
+			background: #ccc
+			height: 40px
+			width: 130px
+			@media (max-width: 700px)
+				padding: unset
+				width: 100%
+
 
 #footer
 	width: 100%
