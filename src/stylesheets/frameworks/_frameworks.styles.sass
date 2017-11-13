@@ -17,11 +17,42 @@ $nav-pad: 4rem
 $transition-time-in: 200ms
 $transition-time-out: 150ms 
 
+$dark-grey: #333434
+$teal: #007C79
+$white: #FFFFFF
+$off-white: #D8D9D9
+$blue: #274A63
+
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
 
 html 
 	line-height: unset
+
+#content
+	position: relative
+	overflow: hidden
+
+.inkblot
+	position: absolute
+	width: 400px
+	z-index: 1000
+	mix-blend-mode: multiply
+	&.hero-inkblot.left
+		top: 250px
+		left: -100px
+		transform: rotate(180deg)
+	&.hero-inkblot.right
+		top: 50px
+		right: -100px
+	&.landing-about-inkblot.left
+		top: 1050px
+		left: -20px
+		width: 250px
+	&.landing-about-inkblot.right
+		top: 1200px
+		right: -100px
+		width: 400px
 
 .mobile_nav
 	display: none
@@ -33,7 +64,7 @@ html
 	@media (max-width: 850px)
 		right: 10vw
 	height: $nav-height
-	z-index: 1000
+	z-index: 3000
 	justify-content: center
 	align-items: center
 	cursor: pointer
@@ -100,7 +131,7 @@ html
 	top: 0
 	left: 0
 	background: #ccc
-	z-index: 1000
+	z-index: 1001
 	.navigation
 		list-style: none
 		.nav_item
@@ -165,7 +196,7 @@ body.mobileOverlay
 nav.nav
 	position: absolute
 	display: flex
-	align-items: center
+	align-items: flex-start
 	justify-content: space-between
 	z-index: 100
 	height: $nav-height
@@ -173,7 +204,6 @@ nav.nav
 	left: 0
 	right: 0
 	padding: 0 $nav-pad
-	background: #ddd
 	@media (max-width: 850px)
 		padding: 0 10vw
 	.brand, .nav_list
@@ -186,6 +216,8 @@ nav.nav
 		a
 			text-decoration: none
 			color: #000
+			img 
+				height: 100px
 	.nav_list 
 		list-style: none
 		height: 100%
@@ -200,12 +232,12 @@ nav.nav
 				content: ''
 				position: absolute
 				width: 0
-				height: 5px
+				height: 3px
 				left: 0
 				right: 0
-				bottom: 0px
+				bottom: 15px
 				margin: auto
-				background: #444
+				background: $blue
 				transition-timing-function: ease-in-out
 				transition-duration: 250ms
 			&:hover:after, &.active:after
@@ -223,20 +255,24 @@ nav.nav
 				position: absolute
 				left: 0
 				right: 0
-				top: $nav-height + 5px
+				top: ($nav-height - 15px) + 5px
 				transform-origin: top center
-				background: #eee
-				padding: 15px 0
+				background: $blue
+				padding: 15px 10px
+				box-sizing: border-box
 				opacity: 0
 				pointer-events: none
 				transition-timing-function: ease-in-out
 				transition-duration: 250ms
+				text-align: left
 				li
 					list-style: none
 					font-size: 12px
 					margin-bottom: 10px
 					&:last-child
 						margin-bottom: 0
+					a
+						color: $white
 			&:hover .hover-menu, .hover-menu:hover
 				opacity: 1
 				pointer-events: unset
@@ -286,9 +322,48 @@ nav.nav
 		font-size: 16px
 		font-weight: 300
 		text-decoration: none
+		color: $teal
+		&.white
+			color: $white
+
 	&.about_section
-		background: #eee
+		.img-text-wrapper
+			display: flex
+			flex-direction: row
+			@media (max-width: 600px)
+				flex-direction: column
+			.image-container
+				width: 500px
+				height: auto
+				.img
+					width: 100%
+				@media (max-width: 1000px)
+					width: 50vw
+				@media (max-width: 600px)
+					margin-bottom: 1rem
+					width: 100%
+			.text-container
+				margin-left: 2rem
+				flex: 1
+				@media (max-width: 600px)
+					margin-left: 0
+					width: 100%
+				.sub-section-title
+					text-transform: uppercase
+					color: $teal
+					font-weight: 500
+					font-size: 18px
+					margin-bottom: 20px
+				p
+					margin-bottom: 20px
+					font-size: 16px
+					&.link-para
+						margin-top: 40px
+						margin-bottom: 0
+
+
 	&.book_section
+		padding-left: 0
 		@media (min-width: 751px)
 			padding-right: 0
 			flex-direction: row
@@ -299,17 +374,26 @@ nav.nav
 		padding-top: 4rem
 		padding-bottom: 4rem
 		.text-container 
-			width: 350px
+			width: 600px
+			position: relative
+			background: $dark-grey
+			padding: 50px
+			padding-left: 12vw
 			@media (min-width: 751px)
 				margin-right: 2rem
 			.title
-				font-weight: 600
+				font-weight: 400
 				font-size: 30px
-				margin-bottom: 4rem
+				margin-bottom: 2rem
+				color: $white
 				&.small-gap
 					margin-bottom: 2rem
 			.general
 				margin-bottom: 1rem
+				color: $white
+				font-size: 18px
+				border-left: 1px solid $teal
+				padding-left: 20px
 			.quote_item
 				margin-bottom: 2rem
 				.body
@@ -352,7 +436,7 @@ nav.nav
 			margin-bottom: 4rem
 	&.resources_section .resource_grid,
 	&.news_section .event_list,
-	&.resources_section .resource_list,
+	&.resources_section .resource_list
 		position: relative
 		margin: 4rem 0 0.5rem 0
 		width: 100%
@@ -409,13 +493,17 @@ nav.nav
 				width: 30px
 				height: 30px
 	&.resources_section .resource_list
-		column-count: 2
-		column-gap: 25vw
-		@media (max-width: 750px)
-			column-count: unset
-			column-gap: unset
+		display: grid
+		grid-template-columns: repeat(3, 1fr)
+		grid-gap: 20px
+		grid-auto-rows: max-content
+		@media (max-width: 900px)
+			grid-template-columns: repeat(2, 1fr)
+		@media (max-width: 600px)
+			grid-template-columns: repeat(1, 1fr)
 		.resource_item
-			margin-bottom: 2rem
+			background: $off-white
+			padding: 25px 15px
 			.subtitle
 				margin-bottom: 0.75rem
 				font-weight: 500
@@ -736,14 +824,16 @@ nav.nav
 	flex-direction: column
 	align-items: center
 	justify-content: center
+	overflow: hidden
 	.hero_container
 		width: 80%
 		max-width: 700px
 		padding: $nav-height 0 0px 5vw
 		position: relative
+		text-align: center
 		.hero_quote
 			font-size: 34px
-			font-weight: 600
+			font-weight: 400
 			line-height: 1.25
 			margin-bottom: 3rem
 			@media (max-width: 750px)
@@ -770,7 +860,7 @@ nav.nav
 						bottom: -10px
 						right: -40px
 		.float_ad
-			background: #aaa
+			background: $teal
 			padding: 10px 20px
 			font-size: 18px
 			color: #fff
@@ -1091,17 +1181,19 @@ nav.nav
 		align-items: flex-start
 		justify-content: space-between
 		padding: 4rem 4rem
-		background: #ddd
+		background: $dark-grey
 		.footer-logo
 			margin-bottom: 1rem
 			font-size: 40px
 			font-weight: 600				
 			text-decoration: none
-			color: #000
 			display: inline-block
+			img
+				height: 110px
 		.subscribe_text
 			font-size: 16px
 			margin-bottom: 10px
+			color: $white
 		.subscribe_input
 			width: 200px
 			position: relative
@@ -1117,15 +1209,21 @@ nav.nav
 			button
 				float: right
 				border: none
-				background: #bbb
+				background: $teal
 				color: white
 				width: 45px
 				height: 30px
 		.footer-nav
-			width: 500px
+			max-width: 500px
 			display: flex
-			justify-content: space-evenly
+			flex: 1
+			justify-content: space-between
+			padding: 0 20px
 			list-style: none
+			@media (max-width: 950px)
+				padding: 0
+				width: 100%
+				max-width: unset
 			@media (max-width: 600px)
 				display: block
 				width: auto
@@ -1138,7 +1236,7 @@ nav.nav
 				font-weight: 600
 				a
 					text-decoration: none
-					color: #000
+					color: $white
 				.sub-list
 					.nav_item
 						margin-bottom: 10px
@@ -1148,28 +1246,24 @@ nav.nav
 						display: block
 						font-size: 13px
 						a
-							color: #999
+							color: $white
 							font-weight: 200
 
 		.footer-about
-			max-width: 300px				
+			max-width: 275px				
 			h5
-				margin-bottom: 1rem
+				margin-bottom: 1.5rem
 				font-weight: 600
+				color: $white
 			p
-				font-size: 12px
-				margin-bottom: 1rem
+				font-size: 14px
+				margin-bottom: 1.5rem
+				color: $white
 			.social-container
 				i
-					font-size: 16px
-					background: #444
+					font-size: 20px
 					color: white
-					border-radius: 100%
-					width: 32px
-					height: 32px
-					line-height: 32px
-					text-align: center
-					margin-right: 7.5px
+					margin-right: 20px
 		@media (max-width: 950px)
 			flex-direction: column
 			align-items: flex-start
@@ -1307,9 +1401,16 @@ nav.nav
 	color: #fff
 
 
-
-
-
-
+.has-bot-banner
+	position: relative
+	&:after
+		content: ''
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 4px
+		height: 40px
+		background: $teal
+		opacity: 0.75
 
 
