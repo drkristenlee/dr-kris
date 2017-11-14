@@ -12,7 +12,7 @@
 // Variables
 $timeline-branch-length: 35%
 $nav-height: 70px
-$nav-pad: 4rem
+$nav-pad: 62px
 
 $transition-time-in: 200ms
 $transition-time-out: 150ms 
@@ -23,8 +23,19 @@ $white: #FFFFFF
 $off-white: #D8D9D9
 $blue: #274A63
 
+$book-height: 450px
+$bottom-banner-h: 50px
+
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
+
+.clearfix
+	*zoom: 1
+	&:before, &:after
+		display: table
+		content: " "
+	&:after
+		clear: both
 
 html 
 	line-height: unset
@@ -53,6 +64,31 @@ html
 		top: 1200px
 		right: -100px
 		width: 400px
+	&.landing-book-behind
+		z-index: -1
+		top: 0
+		bottom: 0
+		margin: auto
+		&.left
+			left: 0px
+			bottom: unset
+			transform: rotate(90deg)
+			height: 240px
+			width: auto
+		&.right
+			right: 0
+			top: unset
+			bottom: -80px
+			width: 200px
+
+.button
+	padding: 12px 20px
+	color: $black
+	background: $off-white
+	font-size: 18px
+	&.primary
+		background: $teal
+		color: #FFFFFF
 
 .mobile_nav
 	display: none
@@ -283,7 +319,7 @@ nav.nav
 .section
 	position: relative
 	width: 100%
-	padding: 1rem 10vw
+	padding: 1rem $nav-pad
 	min-height: 550px
 	display: flex
 	flex-direction: column
@@ -333,7 +369,7 @@ nav.nav
 			@media (max-width: 600px)
 				flex-direction: column
 			.image-container
-				width: 500px
+				width: 50%
 				height: auto
 				.img
 					width: 100%
@@ -364,23 +400,22 @@ nav.nav
 
 	&.book_section
 		padding-left: 0
-		@media (min-width: 751px)
-			padding-right: 0
-			flex-direction: row
 		background: #fff
 		align-items: flex-start
-		flex-direction: column
-		min-height: unset
+		flex-direction: row
+		justify-content: flex-start
+		height: $book-height + 150px
 		padding-top: 4rem
 		padding-bottom: 4rem
 		.text-container 
-			width: 600px
+			z-index: 1
+			width: 50vw
 			position: relative
 			background: $dark-grey
-			padding: 50px
-			padding-left: 12vw
-			@media (min-width: 751px)
-				margin-right: 2rem
+			padding: 60px 50px 60px 12vw
+			@media (max-width: 750px)
+				.text-container 
+					width: 100%
 			.title
 				font-weight: 400
 				font-size: 30px
@@ -404,22 +439,34 @@ nav.nav
 					padding-left: 10%
 					font-size: 14px
 					color: #666
-		.image-container
-			flex: 1
-			height: 500px
-			.img
+		.image-container.float-book
+			position: absolute
+			top: 4rem
+			height: $book-height
+			text-align: center
+			right: 10%
+			width: 600px
+			z-index: 0
+			.inner-container
+				position: relative
 				width: 100%
 				height: 100%
-				background: #eee
-			@media (max-width: 750px)
-				margin: 2rem 0 1rem 0 
-				width: 100%
-				height: 250px
-		@media (max-width: 750px)
-			.text-container 
-				width: 100%
-			.image-container
-				display: none
+				.outline-box
+					position: absolute
+					width: 100%
+					bottom: -25px
+					height: 80%
+					border: 1px solid $dark-grey
+					&:after
+						z-index: -1
+						bottom: 0
+				.img
+					position: absolute
+					right: 20%
+					bottom: 0
+					margin: auto
+					height: 100%
+
 	&.news_section, &.resources_section, &.contact_section
 		min-height: unset
 		align-items: flex-start
@@ -574,9 +621,6 @@ nav.nav
 							color: #ccc
 					button
 						margin-top: 0.25rem
-						background: #eee
-						padding: 12px 20px
-						border-radius: 5px
 						@media (max-width: 750px)
 							width: 100%
 			@media (max-width: 750px)
@@ -781,7 +825,7 @@ nav.nav
 
 .section.no-flex
 	display: block
-	padding: 0 10vw
+	padding: 0 $nav-pad
 	margin: $nav-height 0
 	h3	
 		position: unset
@@ -859,11 +903,6 @@ nav.nav
 					&:after
 						bottom: -10px
 						right: -40px
-		.float_ad
-			background: $teal
-			padding: 10px 20px
-			font-size: 18px
-			color: #fff
 
 .about_hero
 	h3
@@ -1167,8 +1206,7 @@ nav.nav
 					line-height: 1.25
 		.submit-contact
 			background: #ccc
-			height: 40px
-			width: 130px
+			font-size: 14px
 			@media (max-width: 700px)
 				padding: unset
 				width: 100%
@@ -1404,13 +1442,17 @@ nav.nav
 .has-bot-banner
 	position: relative
 	&:after
-		content: ''
+		content: " "
 		position: absolute
 		left: 0
 		right: 0
 		bottom: 4px
-		height: 40px
+		height: $bottom-banner-h
 		background: $teal
 		opacity: 0.75
+	&.blue:after
+		background: $blue
+	&.opaque:after
+		opacity: 1
 
 
