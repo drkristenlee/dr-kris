@@ -196,6 +196,8 @@ html
 		position: absolute
 		top: -60px
 		left: $nav-pad
+		@media (max-width: 600px)
+			left: 0
 	&.meet
 		margin-bottom: -60px
 		margin-left: -10px
@@ -684,6 +686,20 @@ nav.nav
 					width: 180px
 					height: auto
 					background: $off-white
+					.img
+						height: 100%
+						width: 100%
+						background-size: cover
+						background-position: center center
+						&.placeholder1
+							background-image: url('http://images.huffingtonpost.com/2015-06-17-1434505183-5454270-FriendEnemypic-thumb.jpg')
+						&.placeholder2
+							background-image: url('http://images.huffingtonpost.com/2015-05-30-1433000330-9385399-anxietytrappic-thumb.jpg')
+						&.placeholder3
+							background-image: url('http://images.huffingtonpost.com/2015-10-09-1444359472-8073928-unhappy389944_640-thumb.jpg')
+						&.placeholder4
+							background-image: url('https://img.huffingtonpost.com/asset/58a8746b2900002b00f27483.jpg?ops=crop_0_2_640_421,scalefit_820_noupscale')
+							
 				.content
 					display: flex
 					flex-direction: column
@@ -722,7 +738,7 @@ nav.nav
 				grid-template-columns: repeat(1, 1fr)
 			.resource_item
 				background: $off-white
-				padding: 25px 15px
+				padding: 50px 40px
 				.subtitle
 					margin-bottom: 0.75rem
 					font-weight: 500

@@ -964,6 +964,9 @@ html {
     position: absolute;
     top: -60px;
     left: 62px; }
+    @media (max-width: 600px) {
+      .handwritten.left-corner {
+        left: 0; } }
   .handwritten.meet {
     margin-bottom: -60px;
     margin-left: -10px; }
@@ -1550,6 +1553,19 @@ nav.nav {
           width: 180px;
           height: auto;
           background: #D8D9D9; }
+          .section.press_section .press_grid .press_item .thumbnail .img {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center center; }
+            .section.press_section .press_grid .press_item .thumbnail .img.placeholder1 {
+              background-image: url("http://images.huffingtonpost.com/2015-06-17-1434505183-5454270-FriendEnemypic-thumb.jpg"); }
+            .section.press_section .press_grid .press_item .thumbnail .img.placeholder2 {
+              background-image: url("http://images.huffingtonpost.com/2015-05-30-1433000330-9385399-anxietytrappic-thumb.jpg"); }
+            .section.press_section .press_grid .press_item .thumbnail .img.placeholder3 {
+              background-image: url("http://images.huffingtonpost.com/2015-10-09-1444359472-8073928-unhappy389944_640-thumb.jpg"); }
+            .section.press_section .press_grid .press_item .thumbnail .img.placeholder4 {
+              background-image: url("https://img.huffingtonpost.com/asset/58a8746b2900002b00f27483.jpg?ops=crop_0_2_640_421,scalefit_820_noupscale"); }
         .section.press_section .press_grid .press_item .content {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -1611,7 +1627,7 @@ nav.nav {
               grid-template-columns: repeat(1, 1fr); } }
       .section.resources_section .resource_list .resource_item {
         background: #D8D9D9;
-        padding: 25px 15px; }
+        padding: 50px 40px; }
         .section.resources_section .resource_list .resource_item .subtitle {
           margin-bottom: 0.75rem;
           font-weight: 500;

@@ -127,7 +127,9 @@
 		<div class="press_grid">
 
 			<div class="press_item">
-				<div class="thumbnail"></div>
+				<div class="thumbnail">
+					<div class="img placeholder1"></div>
+				</div>
 				<div class="content">
 					<p class="title">An Article Wrote by Dr. Kris</p>
 					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
@@ -136,7 +138,9 @@
 			</div>
 
 			<div class="press_item">
-				<div class="thumbnail"></div>
+				<div class="thumbnail">
+					<div class="img placeholder2"></div>
+				</div>
 				<div class="content">
 					<p class="title">An Article Wrote by Dr. Kris</p>
 					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
@@ -145,7 +149,9 @@
 			</div>
 
 			<div class="press_item">
-				<div class="thumbnail"></div>
+				<div class="thumbnail">
+					<div class="img placeholder3"></div>
+				</div>
 				<div class="content">
 					<p class="title">An Article Wrote by Dr. Kris</p>
 					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
@@ -154,7 +160,9 @@
 			</div>
 
 			<div class="press_item">
-				<div class="thumbnail"></div>
+				<div class="thumbnail">
+					<div class="img placeholder4"></div>
+				</div>
 				<div class="content">
 					<p class="title">An Article Wrote by Dr. Kris</p>
 					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
@@ -175,7 +183,7 @@
 
 		<div class="resource_list">
 
-			{% for entry in craft.entries.section('resources').order('date asc').limit(4) %}
+			{% for entry in craft.entries.section('resources').order('date asc').limit(6) %}
 				<div class="resource_item">
 					<p class="subtitle">{{ entry.title }}</p>
 					<p class="description">{{ entry.description }}</p>
