@@ -937,7 +937,8 @@ html {
   padding: 12px 20px;
   color: #111111;
   background: #D8D9D9;
-  font-size: 16px; }
+  font-size: 16px;
+  border-radius: 0px; }
   .button.primary {
     background: #007C79;
     color: #FFFFFF; }
@@ -1548,7 +1549,7 @@ nav.nav {
           transition-timing-function: ease-in-out;
           height: 0; }
         .section.press_section .press_grid .press_item:hover:before {
-          height: 18px; }
+          height: 14px; }
         .section.press_section .press_grid .press_item .thumbnail {
           width: 180px;
           height: auto;
@@ -2393,6 +2394,7 @@ nav.nav {
       position: relative;
       display: inline-block; }
       #footer .footer_content .subscribe_input input, #footer .footer_content .subscribe_input button {
+        border-radius: 0px;
         outline: none;
         font-size: 12px; }
       #footer .footer_content .subscribe_input input {
