@@ -80,6 +80,16 @@ html
 			top: unset
 			bottom: -80px
 			width: 200px
+	&.landing-event-inkblot.left
+		top: 2200px
+		width: 400px
+		left: -200px
+		transform: rotate(90deg)
+	&.landing-event-inkblot.right
+		top: 2550px
+		width: 450px
+		right: -225px
+		transform: rotate(180deg)
 
 .button
 	padding: 12px 20px
@@ -88,6 +98,9 @@ html
 	font-size: 18px
 	&.primary
 		background: $teal
+		color: #FFFFFF
+	&.black
+		background: $dark-grey
 		color: #FFFFFF
 
 .mobile_nav
@@ -317,33 +330,30 @@ nav.nav
 				display: none
 
 .section
+	display: block
+	padding: 0 $nav-pad
+	margin: $nav-height 0
 	position: relative
 	width: 100%
-	padding: 1rem $nav-pad
 	min-height: 550px
-	display: flex
-	flex-direction: column
-	justify-content: center
-	align-items: flex-end
 	@media (max-width: 750px)
 		align-items: flex-start
 		justify-content: flex-start
 		min-height: unset
 		padding: 5rem 10vw
+	@media (max-width: 600px)
+		padding: 5rem 0
 	& > h3, & > p
 		z-index: 1
 	& > h3
+		position: unset
+		margin-bottom: 2rem
+		padding-top: 3rem
 		font-weight: 600
-		position: absolute
 		top: 5rem
 		left: 10vw
 		font-size: 30px
-		@media (max-width: 800px)
-			left: calc(90vw - 600px)
 		@media (max-width: 750px)
-			position: initial
-			left: unset
-			top: unset
 			margin-bottom: 1rem
 	& p
 		font-size: 20px
@@ -358,9 +368,9 @@ nav.nav
 		font-size: 16px
 		font-weight: 300
 		text-decoration: none
-		color: $teal
-		&.white
-			color: $white
+		color: inherit
+		&.teal
+			color: $teal
 
 	&.about_section
 		.img-text-wrapper
@@ -413,9 +423,6 @@ nav.nav
 			position: relative
 			background: $dark-grey
 			padding: 60px 50px 60px 12vw
-			@media (max-width: 750px)
-				.text-container 
-					width: 100%
 			.title
 				font-weight: 400
 				font-size: 30px
@@ -439,6 +446,14 @@ nav.nav
 					padding-left: 10%
 					font-size: 14px
 					color: #666
+		@media (max-width: 800px)
+			.text-container
+				width: 70%
+				padding: 50px 40px 50px 30px
+				.title
+					font-size: 26px
+				.general
+					font-size: 16px
 		.image-container.float-book
 			position: absolute
 			top: 4rem
@@ -466,79 +481,133 @@ nav.nav
 					bottom: 0
 					margin: auto
 					height: 100%
-
-	&.news_section, &.resources_section, &.contact_section
-		min-height: unset
-		align-items: flex-start
-		padding-top: 2rem
-		padding-bottom: 2rem
-		h3
-			position: unset
-			padding-left: 0vw
 			@media (max-width: 800px)
-				padding-left: 0
-	&.resources_section, &.news_section
-		margin-bottom: 4rem
-		@media (max-width: 750px)
-			margin-bottom: 4rem
-	&.resources_section .resource_grid,
-	&.news_section .event_list,
-	&.resources_section .resource_list
-		position: relative
-		margin: 4rem 0 0.5rem 0
-		width: 100%
-		@media (max-width: 750px)
-			margin: 2rem 0 0.5rem 0
-	&.contact_section .contact_container
-		position: relative
-		margin: 4rem 0
-		width: 100%
-		@media (max-width: 750px)
-			margin: 2rem 0
-	&.resources_section .resource_grid
-		position: relative
+				width: 75vw
+				height: 56.25vw
+				right: 5%
+			@media (max-width: 700px)
+				top: -50px
+				right: 0
+	
+
+	&.news_section 
 		display: flex
-		justify-content: space-between
-		flex-flow: wrap
-		.resource_item
-			display: inline-block
-			width: 200px;
-			.resource_img
+		justify-content: center
+		align-items: center
+		flex-direction: column
+		.event_list
+			display: flex
+			flex-direction: column
+			width: 90%
+			max-width: 900px
+			align-items: center
+			justify-content: center
+			margin-left: auto
+			margin-right: auto
+			box-sizing: border-box
+			padding: 100px 50px 30px 50px
+			margin-bottom: 20px
+			background: $teal
+			@media (max-width: 800px)
+				margin: 2rem 0
+			@media (max-width: 600px)
 				width: 100%
-				height: 200px
-				background: #eee
-				margin-bottom: 0.5rem
-			.resource_text
+			.event_entry
+				color: $white
 				width: 100%
-				p
-					font-size: 16px
-		@media (max-width: 1050px)
-			& .resource_item
-				width: 45%
-				margin-bottom: 1rem
-				& .resource_text
-					margin-bottom: 1rem
-		@media (max-width: 750px)
-			flex-flow: column wrap
-			& .resource_item
-				width: 100%
-		.chevron
-			position: absolute
-			top: 35%
-			right: -5vw
-			opacity: 0.35
-			transition-timing-function: ease-in-out
-			transition-duration: 400ms
-			&:hover
-				opacity: 1
+				margin-bottom: 2rem
+				display: flex
+				flex-direction: row
+				justify-content: space-between
+				&:last-child
+					margin-bottom: 0
+				.event_info
+					width: 250px
+					margin-right: 50px
+					p
+						font-size: 16px
+						margin-bottom: 0.25rem
+						&.subtitle
+							width: max-content
+							padding-bottom: 0.25rem
+							margin-bottom: 0.5rem
+							font-weight: 500
+							font-size: 20px
+							border-bottom: 1px solid rgba(255, 255, 255, 0.5)
+				.event_desc
+					flex: 1
+					max-width: 600px
+					font-size: 14px
+				@media (max-width: 800px)
+					flex-direction: column
+					.event_info
+						width: 100%
+						p.subtitle
+							margin-bottom: 0.25rem
+					.event_desc
+						width: 100%
+						margin-top: 1rem
+
+
+	&.press_section
+		background: $dark-grey
+		display: flex
+		justify-content: center
+		align-items: center
+		padding-top: 4rem
+		padding-bottom: 4rem
+		.press_grid
+			display: grid
+			grid-template-columns: repeat(2, 1fr)
+			grid-gap: 30px
+			@media (max-width: 900px)
+				grid-template-columns: repeat(1, 1fr)
+			.press_item
 				cursor: pointer
-			@media (max-width: 1050px)
-				top: 40%
-			@media (max-width: 750px)
-				display: none
-			&:before
-				width: 30px
-				height: 30px
+				position: relative
+				width: 100%
+				height: auto
+				display: flex
+				background: $white
+				&:before
+					content: " "
+					position: absolute
+					bottom: 0
+					left: 0
+					right: 0
+					background: $teal
+					opacity: 0.75
+					transition-duration: 250ms
+					transition-timing-function: ease-in-out
+					height: 0
+				&:hover:before
+					height: 18px	
+					
+				.thumbnail
+					width: 180px
+					height: auto
+					background: $off-white
+				.content
+					display: flex
+					flex-direction: column
+					flex: 1
+					margin-left: 20px
+					padding-right: 20px
+					justify-content: flex-start
+					padding-top: 40px
+					padding-bottom: 40px
+					.title
+						font-size: 16px
+						font-style: italic
+						text-decoration: underline
+						margin-bottom: 10px
+					.pub-date
+						font-size: 14px
+						font-style: italic
+						margin-bottom: 20px
+					.description
+						font-size: 12px
+
 	&.resources_section .resource_list
 		display: grid
 		grid-template-columns: repeat(3, 1fr)
@@ -556,82 +625,6 @@ nav.nav
 				font-weight: 500
 				font-size: 22px
 
-	&.news_section .event_list
-		@media (max-width: 800px)
-			margin: 2rem 0
-		.event_entry
-			width: 100%
-			margin-bottom: 2rem
-			display: flex
-			flex-direction: row
-			justify-content: space-between
-			.event_info
-				width: 300px
-				p
-					margin-bottom: 0.25rem
-					&.subtitle
-						margin-bottom: 0.75rem
-						font-weight: 500
-						font-size: 22px
-			.event_desc
-				max-width: 600px
-				font-size: 16px
-			@media (max-width: 800px)
-				flex-direction: column
-				.event_info
-					width: 100%
-					p.subtitle
-						margin-bottom: 0.25rem
-				.event_desc
-					width: 100%
-					margin-top: 1rem
-	&.contact_section 
-		@media (min-width: 751px)
-			padding-left: 0px
-			h3
-				padding-left: 10vw
-				@media (max-width: 800px)
-					padding-left: 10vw
-		.contact_container
-			display: flex
-			align-items: center
-			justify-content: space-between
-			.contact_img
-				width: 50%
-				height: 300px
-				background: #eee
-			.contact_form
-				width: 45%
-				.contact_block
-					&.right 
-						text-align: right
-					margin-bottom: 1rem
-					label
-						margin-bottom: 0.5rem
-						font-size: 16px
-						font-weight: 300
-					select, textarea
-						width: 100%
-						border: 1px solid #eee
-						border-radius: 5px
-						outline: none
-					select
-						height: 35px
-						option[disabled]
-							color: #ccc
-					button
-						margin-top: 0.25rem
-						@media (max-width: 750px)
-							width: 100%
-			@media (max-width: 750px)
-				flex-direction: column
-				.contact_img
-					width: 100%
-					height: 250px
-					margin-bottom: 2rem
-					display: none
-				.contact_form
-					width: 100%
 	&.client_section
 		min-height: unset
 		padding-left: 0px
@@ -822,15 +815,6 @@ nav.nav
 							left: 0
 						&:after
 							left: 0
-
-.section.no-flex
-	display: block
-	padding: 0 $nav-pad
-	margin: $nav-height 0
-	h3	
-		position: unset
-		margin-bottom: 2rem
-		padding-top: 3rem
 
 
 .has-dropdown
