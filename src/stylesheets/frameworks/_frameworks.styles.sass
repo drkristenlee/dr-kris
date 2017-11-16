@@ -1438,7 +1438,8 @@ nav.nav
 		.content
 			max-width: 1000px
 			.about_book
-				width: 500px
+				width: 100%
+				max-width: 500px
 	.content
 		width: 100%
 		max-width: 800px
@@ -1483,10 +1484,15 @@ nav.nav
 			.actions
 				.button
 					margin-right: 20px
+					font-size: 16px
 				.link
 					color: #000
 					padding-bottom: 2px
 					border-bottom: 4px solid $teal
+					font-size: 16px
+				@media (max-width: 600px)
+					.button, .link
+						font-size: 14px
 		@media (max-width: 800px)
 			flex-direction: column-reverse
 			.img

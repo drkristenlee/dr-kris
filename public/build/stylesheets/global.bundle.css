@@ -2493,7 +2493,8 @@ nav.nav {
   .book_showcase.widder .content {
     max-width: 1000px; }
     .book_showcase.widder .content .about_book {
-      width: 500px; }
+      width: 100%;
+      max-width: 500px; }
   .book_showcase .content {
     width: 100%;
     max-width: 800px;
@@ -2545,11 +2546,16 @@ nav.nav {
             font-weight: 600;
             font-style: italic; }
       .book_showcase .content .about_book .actions .button {
-        margin-right: 20px; }
+        margin-right: 20px;
+        font-size: 16px; }
       .book_showcase .content .about_book .actions .link {
         color: #000;
         padding-bottom: 2px;
-        border-bottom: 4px solid #007C79; }
+        border-bottom: 4px solid #007C79;
+        font-size: 16px; }
+      @media (max-width: 600px) {
+        .book_showcase .content .about_book .actions .button, .book_showcase .content .about_book .actions .link {
+          font-size: 14px; } }
     @media (max-width: 800px) {
       .book_showcase .content {
         -webkit-box-orient: vertical;
