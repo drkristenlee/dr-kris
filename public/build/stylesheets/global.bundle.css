@@ -1915,7 +1915,7 @@ nav.nav {
   .landing_hero .hero_container {
     width: 80%;
     max-width: 700px;
-    padding: 70px 0 0px 5vw;
+    padding: 70px 5vw 0px 5vw;
     position: relative;
     text-align: center; }
     .landing_hero .hero_container .hero_quote {
