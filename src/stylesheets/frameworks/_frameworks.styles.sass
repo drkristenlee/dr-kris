@@ -57,13 +57,13 @@ html
 		top: 50px
 		right: -100px
 	&.landing-about-inkblot.left
-		top: 1050px
-		left: -20px
-		width: 250px
+		bottom: -100px
+		left: -50px
+		width: 225px
 	&.landing-about-inkblot.right
-		top: 1200px
-		right: -100px
-		width: 400px
+		bottom: -100px
+		right: -150px
+		width: 500px
 	&.landing-book-behind
 		z-index: -1
 		top: 0
@@ -81,27 +81,42 @@ html
 			bottom: -80px
 			width: 200px
 	&.landing-event-inkblot.left
-		top: 2200px
+		top: 50px
 		width: 400px
 		left: -200px
 		transform: rotate(90deg)
 	&.landing-event-inkblot.right
-		top: 2550px
+		bottom: -50px
 		width: 450px
 		right: -225px
+		z-index: 0
 		transform: rotate(180deg)
+	&.landing-resources-inkblot.top
+		top: -225px
+		left: -20px
+		z-index: -1
+		width: 400px
+		transform: rotate(-180deg)
+	&.landing-resources-inkblot.bottom
+		bottom: -250px
+		right: 30px
+		width: 250px
+		transform: rotate(90deg)
+		z-index: -1
 
 .button
 	padding: 12px 20px
 	color: $black
 	background: $off-white
-	font-size: 18px
+	font-size: 16px
 	&.primary
 		background: $teal
 		color: #FFFFFF
 	&.black
 		background: $dark-grey
 		color: #FFFFFF
+	&.white
+		background: $white
 
 .mobile_nav
 	display: none
@@ -552,6 +567,7 @@ nav.nav
 	&.press_section
 		background: $dark-grey
 		display: flex
+		flex-direction: column
 		justify-content: center
 		align-items: center
 		padding-top: 4rem
@@ -560,6 +576,7 @@ nav.nav
 			display: grid
 			grid-template-columns: repeat(2, 1fr)
 			grid-gap: 30px
+			margin-bottom: 20px
 			@media (max-width: 900px)
 				grid-template-columns: repeat(1, 1fr)
 			.press_item
@@ -608,22 +625,36 @@ nav.nav
 					.description
 						font-size: 12px
 
-	&.resources_section .resource_list
-		display: grid
-		grid-template-columns: repeat(3, 1fr)
-		grid-gap: 20px
-		grid-auto-rows: max-content
-		@media (max-width: 900px)
-			grid-template-columns: repeat(2, 1fr)
-		@media (max-width: 600px)
-			grid-template-columns: repeat(1, 1fr)
-		.resource_item
-			background: $off-white
-			padding: 25px 15px
-			.subtitle
-				margin-bottom: 0.75rem
-				font-weight: 500
-				font-size: 22px
+	&.resources_section 
+		display: flex
+		justify-content: flex-start
+		align-items: center
+		flex-direction: column
+		.resource_list
+			display: grid
+			grid-template-columns: repeat(3, 1fr)
+			grid-gap: 20px
+			grid-auto-rows: max-content
+			margin-bottom: 40px
+			@media (max-width: 900px)
+				grid-template-columns: repeat(2, 1fr)
+			@media (max-width: 600px)
+				grid-template-columns: repeat(1, 1fr)
+			.resource_item
+				background: $off-white
+				padding: 25px 15px
+				.subtitle
+					margin-bottom: 0.75rem
+					font-weight: 500
+					font-family: 'Columbia Serial'
+					font-size: 22px
+					margin-bottom: 10px
+				.description
+					font-size: 14px
+					color: $dark-grey
+					margin-bottom: 30px
+				.more .link
+					font-size: 20px
 
 	&.client_section
 		min-height: unset

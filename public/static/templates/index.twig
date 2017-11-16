@@ -23,10 +23,6 @@
 
 	<img src="./static/images/inkblots/IB_header_left.png" class="inkblot hero-inkblot left">
 	<img src="./static/images/inkblots/IB_header_right.png" class="inkblot hero-inkblot right">
-	<img src="./static/images/inkblots/IB_meet_left.png" class="inkblot landing-about-inkblot left">
-	<img src="./static/images/inkblots/IB_meet_right.png" class="inkblot landing-about-inkblot right">
-	<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-event-inkblot left">
-	<img src="./static/images/inkblots/IB_events_right.png" class="inkblot landing-event-inkblot right">
 
 	<!-- hero section -->
 	<div class="landing_hero">
@@ -42,7 +38,11 @@
 			</a>
 		</div>
 	</div>
-	<div class="about_section section no-flex">
+
+
+	<div class="about_section section">
+		<img src="./static/images/inkblots/IB_meet_left.png" class="inkblot landing-about-inkblot left">
+		<img src="./static/images/inkblots/IB_meet_right.png" class="inkblot landing-about-inkblot right">
 
 		<h3>Meet Dr. Kris</h3>
 
@@ -92,7 +92,10 @@
 
 	</div>
 
-	<div class="news_section section no-flex">
+	<div class="news_section section">
+
+		<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-event-inkblot left">
+		<img src="./static/images/inkblots/IB_events_right.png" class="inkblot landing-event-inkblot right">
 
 		<h3>News and Events</h3>
 
@@ -113,7 +116,7 @@
 			
 		</div>
 
-		<button class="button black"><a href="./news" class="link">View All</a></button>
+		<a href="./news" class="link"><button class="button black">View All</button></a>
 
 	</div>
 
@@ -157,9 +160,13 @@
 			</div>
 
 		</div>
+
+		<a href="./news" class="link"><button class="button white">View All</button></a>
 	</div>
 
-	<div class="resources_section section no-flex">
+	<div class="resources_section section">
+		<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-resources-inkblot top">
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
 
 		<h3>Resources</h3>
 
@@ -168,14 +175,14 @@
 			{% for entry in craft.entries.section('resources').order('date asc').limit(4) %}
 				<div class="resource_item">
 					<p class="subtitle">{{ entry.title }}</p>
-					<p style="margin-bottom: 0.5rem">{{ entry.description }}</p>
-					<p>{{ entry.postDate }}</p>
+					<p class="description">{{ entry.description }}</p>
+					<p class="more"><a href="#" class="link teal">read more →</a></p>
 				</div>
 			{% endfor %}
 			
 		</div>
 
-		<a href="./resources" class="link teal">View All →</a>
+		<a href="./resources"><button class="button black">View All</button></a>
 
 	</div>
 	
