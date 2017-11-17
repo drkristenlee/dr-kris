@@ -956,6 +956,9 @@ html {
     color: #FFFFFF; }
   .button.white {
     background: #FFFFFF; }
+  .button.small {
+    padding: 10px 18px;
+    font-size: 14px; }
 
 .handwritten {
   height: 110px;
