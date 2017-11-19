@@ -892,6 +892,20 @@ html {
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
     z-index: -1; }
+  .inkblot.landing-resources-inkblot.press-banner-ink {
+    top: -150px;
+    right: -50px;
+    width: 400px;
+    z-index: 0;
+    -webkit-transform: scaleX(-1);
+            transform: scaleX(-1); }
+  .inkblot.press-grid-bottom {
+    bottom: -250px;
+    left: -100px;
+    width: 500px;
+    z-index: 0;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); }
   .inkblot.book-hero-inkblot.right {
     top: 70px;
     right: -150px;
@@ -1476,7 +1490,7 @@ nav.nav {
       margin-right: auto;
       box-sizing: border-box;
       padding: 100px 50px 30px 50px;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
       background: #007C79; }
       @media (max-width: 800px) {
         .section.news_section .event_list {
@@ -1557,7 +1571,7 @@ nav.nav {
       -ms-grid-columns: (1fr)[2];
           grid-template-columns: repeat(2, 1fr);
       grid-gap: 30px;
-      margin-bottom: 20px; }
+      margin-bottom: 40px; }
       @media (max-width: 900px) {
         .section.press_section .press_grid {
           -ms-grid-columns: (1fr)[1];
@@ -1593,14 +1607,6 @@ nav.nav {
             width: 100%;
             background-size: cover;
             background-position: center center; }
-            .section.press_section .press_grid .press_item .thumbnail .img.placeholder1 {
-              background-image: url("http://images.huffingtonpost.com/2015-06-17-1434505183-5454270-FriendEnemypic-thumb.jpg"); }
-            .section.press_section .press_grid .press_item .thumbnail .img.placeholder2 {
-              background-image: url("http://images.huffingtonpost.com/2015-05-30-1433000330-9385399-anxietytrappic-thumb.jpg"); }
-            .section.press_section .press_grid .press_item .thumbnail .img.placeholder3 {
-              background-image: url("http://images.huffingtonpost.com/2015-10-09-1444359472-8073928-unhappy389944_640-thumb.jpg"); }
-            .section.press_section .press_grid .press_item .thumbnail .img.placeholder4 {
-              background-image: url("https://img.huffingtonpost.com/asset/58a8746b2900002b00f27483.jpg?ops=crop_0_2_640_421,scalefit_820_noupscale"); }
         .section.press_section .press_grid .press_item .content {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -1630,6 +1636,18 @@ nav.nav {
             margin-bottom: 20px; }
           .section.press_section .press_grid .press_item .content .description {
             font-size: 12px; }
+    .section.press_section.less-top {
+      padding-top: 2rem; }
+    .section.press_section.no-bg {
+      background: transparent; }
+      .section.press_section.no-bg .press_grid .press_item {
+        border: 1px solid #333434; }
+    .section.press_section .press-title {
+      color: #007C79;
+      width: 100%;
+      text-align: left;
+      font-size: 28px;
+      margin-bottom: 40px; }
   .section.resources_section {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2309,7 +2327,6 @@ nav.nav {
         -ms-flex-align: center;
             align-items: center;
     background: #eee;
-    border: solid 1px #ddd;
     cursor: pointer;
     transition-timing-function: ease-in-out;
     transition-duration: 250ms; }
@@ -2323,16 +2340,14 @@ nav.nav {
       text-align: center;
       font-size: 14px;
       color: #999; }
+    .contact-method-select .contact-method:hover, .contact-method-select .contact-method.selected {
+      background: #007C79; }
+      .contact-method-select .contact-method:hover p, .contact-method-select .contact-method.selected p {
+        color: #FFFFFF; }
     .contact-method-select .contact-method:hover {
-      background: #eaeaea;
-      border-color: #dadada; }
-      .contact-method-select .contact-method:hover p {
-        color: #777; }
+      opacity: 0.6; }
     .contact-method-select .contact-method.selected {
-      background: #d0d0d0;
-      border-color: #bababa; }
-      .contact-method-select .contact-method.selected p {
-        color: #555; }
+      opacity: 1; }
 
 .contact-form-wrapper {
   width: 100%;
@@ -2750,6 +2765,65 @@ nav.nav {
     background: #274A63; }
   .has-bot-banner.opaque:after {
     opacity: 1; }
+
+#press_hero {
+  margin-top: 70px; }
+
+.press-banner {
+  width: 100%;
+  position: relative;
+  color: #FFFFFF; }
+  .press-banner .category, .press-banner .description {
+    position: relative;
+    padding: 40px 62px; }
+    @media (max-width: 750px) {
+      .press-banner .category, .press-banner .description {
+        padding: 30px 10vw; } }
+  .press-banner .category .title {
+    font-size: 28px;
+    line-height: 1.25; }
+  .press-banner .featured-media {
+    width: 100%; }
+    .press-banner .featured-media .media_item {
+      width: 100%;
+      height: 550px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: #D8D9D9; }
+  .press-banner .description {
+    overflow: hidden; }
+    .press-banner .description .title, .press-banner .description .subtitle, .press-banner .description .info {
+      max-width: 900px;
+      z-index: 1;
+      position: relative; }
+    .press-banner .description .title {
+      font-size: 28px;
+      margin-bottom: 2px;
+      line-height: 1.25; }
+    .press-banner .description .subtitle {
+      font-size: 22px;
+      font-style: italic;
+      margin-bottom: 10px; }
+    .press-banner .description .info {
+      font-size: 24px; }
+  @media (max-width: 750px) {
+    .press-banner .featured-media .media_item {
+      height: 400px; }
+    .press-banner .category .title {
+      font-size: 24px; }
+    .press-banner .description .title {
+      font-size: 24px; }
+    .press-banner .description .subtitle {
+      font-size: 18px; }
+    .press-banner .description .info {
+      font-size: 20px; } }
+  .press-banner.teal .category, .press-banner.teal .description {
+    background-color: #007C79; }
+  .press-banner.blue .category, .press-banner.blue .description {
+    background-color: #274A63; }
+  .press-banner.black .category, .press-banner.black .description {
+    background-color: #333434; }
 
 /** ==========================================================================
   * IX. TRUMPS

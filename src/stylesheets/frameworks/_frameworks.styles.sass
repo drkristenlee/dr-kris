@@ -130,7 +130,18 @@ html
 		width: 250px
 		transform: rotate(90deg)
 		z-index: -1
-
+	&.landing-resources-inkblot.press-banner-ink
+		top: -150px
+		right: -50px
+		width: 400px
+		z-index: 0
+		transform: scaleX(-1)
+	&.press-grid-bottom
+		bottom: -250px
+		left: -100px
+		width: 500px
+		z-index: 0
+		transform: rotate(180deg)
 	&.book-hero-inkblot.right
 		top: $nav-height
 		right: -150px
@@ -631,7 +642,7 @@ nav.nav
 			margin-right: auto
 			box-sizing: border-box
 			padding: 100px 50px 30px 50px
-			margin-bottom: 20px
+			margin-bottom: 40px
 			background: $teal
 			@media (max-width: 800px)
 				margin: 2rem 0
@@ -686,7 +697,7 @@ nav.nav
 			display: grid
 			grid-template-columns: repeat(2, 1fr)
 			grid-gap: 30px
-			margin-bottom: 20px
+			margin-bottom: 40px
 			@media (max-width: 900px)
 				grid-template-columns: repeat(1, 1fr)
 			.press_item
@@ -719,14 +730,6 @@ nav.nav
 						width: 100%
 						background-size: cover
 						background-position: center center
-						&.placeholder1
-							background-image: url('http://images.huffingtonpost.com/2015-06-17-1434505183-5454270-FriendEnemypic-thumb.jpg')
-						&.placeholder2
-							background-image: url('http://images.huffingtonpost.com/2015-05-30-1433000330-9385399-anxietytrappic-thumb.jpg')
-						&.placeholder3
-							background-image: url('http://images.huffingtonpost.com/2015-10-09-1444359472-8073928-unhappy389944_640-thumb.jpg')
-						&.placeholder4
-							background-image: url('https://img.huffingtonpost.com/asset/58a8746b2900002b00f27483.jpg?ops=crop_0_2_640_421,scalefit_820_noupscale')
 							
 				.content
 					display: flex
@@ -748,6 +751,18 @@ nav.nav
 						margin-bottom: 20px
 					.description
 						font-size: 12px
+		&.less-top
+			padding-top: 2rem
+		&.no-bg
+			background: transparent
+			.press_grid .press_item
+				border: 1px solid $dark-grey
+		.press-title
+			color: $teal
+			width: 100%
+			text-align: left
+			font-size: 28px
+			margin-bottom: 40px
 
 	&.resources_section 
 		display: flex
@@ -1285,7 +1300,6 @@ nav.nav
 		justify-content: center
 		align-items: center
 		background: #eee
-		border: solid 1px #ddd
 		cursor: pointer
 		transition-timing-function: ease-in-out
 		transition-duration: 250ms
@@ -1298,16 +1312,14 @@ nav.nav
 			text-align: center
 			font-size: 14px
 			color: #999
+		&:hover, &.selected
+			background: $teal
+			p
+				color: $white
 		&:hover
-			background: #eaeaea
-			border-color: #dadada
-			p
-				color: #777
+			opacity: 0.6
 		&.selected
-			background: #d0d0d0
-			border-color: #bababa
-			p
-				color: #555
+			opacity: 1
 
 .contact-form-wrapper
 	width: 100%
@@ -1662,5 +1674,76 @@ nav.nav
 		background: $blue
 	&.opaque:after
 		opacity: 1
+
+#press_hero
+	margin-top: $nav-height
+
+.press-banner
+	width: 100%
+	position: relative
+	color: $white
+	.category, .description
+		position: relative
+		padding: 40px $nav-pad
+		@media (max-width: 750px)
+			padding: 30px 10vw
+	.category
+		.title
+			font-size: 28px
+			line-height: 1.25
+	.featured-media
+		width: 100%
+		.media_item
+			width: 100%
+			height: 550px
+			background-size: cover
+			background-repeat: no-repeat
+			background-position: center center
+			background-color: $off-white
+	.description
+		overflow: hidden
+		.title, .subtitle, .info
+			max-width: 900px
+			z-index: 1
+			position: relative
+		.title
+			font-size: 28px
+			margin-bottom: 2px
+			line-height: 1.25
+		.subtitle
+			font-size: 22px
+			font-style: italic
+			margin-bottom: 10px
+		.info
+			font-size: 24px
+	@media (max-width: 750px)
+		.featured-media .media_item
+			height: 400px
+		.category
+			.title
+				font-size: 24px
+		.description
+			.title
+				font-size: 24px
+			.subtitle
+				font-size: 18px
+			.info
+				font-size: 20px
+	&.teal 
+		.category, .description
+			background-color: $teal
+	&.blue 
+		.category, .description
+			background-color: $blue
+	&.black 
+		.category, .description
+			background-color: $dark-grey
+
+
+
+
+
+
+
 
 
