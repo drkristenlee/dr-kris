@@ -723,9 +723,8 @@ nav.nav
 					transition-duration: 250ms
 					transition-timing-function: ease-in-out
 					height: 0
-				&:hover:before
-					height: 14px	
-					
+					z-index: 2
+				
 				.thumbnail
 					width: 180px
 					height: auto
@@ -735,6 +734,32 @@ nav.nav
 						width: 100%
 						background-size: cover
 						background-position: center center
+						&.video
+							position: relative
+							&:before
+								content: " "
+								opacity: 0.25
+								transition-timing-function: ease-in-out
+								transition-duration: 250ms
+								position: absolute
+								left: 0
+								right: 0
+								top: 0
+								bottom: 0
+								margin: auto
+								width: 60px
+								height: 60px
+								background-image: url(../../public/static/images/play-button.svg)
+								background-position: center center
+								background-size: cover
+								display: flex
+								justify-content: center
+								align-items: center
+				&:hover
+					&:before
+						height: 14px	
+					.thumbnail .img.video:before
+						opacity: 1
 							
 				.content
 					display: flex
@@ -746,16 +771,16 @@ nav.nav
 					padding-top: 40px
 					padding-bottom: 40px
 					.title
-						font-size: 16px
+						font-size: 18px
+						font-weight: 600
 						font-style: italic
-						text-decoration: underline
 						margin-bottom: 10px
 					.pub-date
-						font-size: 14px
+						font-size: 16px
 						font-style: italic
 						margin-bottom: 20px
 					.description
-						font-size: 12px
+						font-size: 14px
 		&.less-top
 			padding-top: 2rem
 		&.no-bg
@@ -1430,6 +1455,11 @@ nav.nav
 				a
 					text-decoration: none
 					color: $white
+					transition-timing-function: ease-in-out
+					transition-duration: 250ms
+				&:hover
+					& > a, .nav_item.main
+						color: $teal
 				.sub-list
 					.nav_item
 						margin-bottom: 10px
@@ -1441,6 +1471,13 @@ nav.nav
 						a
 							color: $white
 							font-weight: 200
+							transition-timing-function: ease-in-out
+							transition-duration: 250ms
+							&:hover
+								color: $teal
+					&:hover 
+						.nav_item.main > a
+							color: $teal
 
 		.footer-about
 			max-width: 275px				
@@ -1457,9 +1494,13 @@ nav.nav
 					margin-right: 20px
 					&:last-child
 						margin-right: 0px
-				i
-					font-size: 20px
-					color: white
+					i
+						font-size: 20px
+						color: white
+						transition-timing-function: ease-in-out
+						transition-duration: 250ms
+					&:hover i
+						color: $teal
 			.footer-copyright
 				margin-bottom: 0px
 				font-size: 13px
@@ -1695,6 +1736,7 @@ nav.nav
 		.title
 			font-size: 28px
 			line-height: 1.25
+			font-weight: 600
 	.featured-media
 		width: 100%
 		.media_item
@@ -1704,6 +1746,31 @@ nav.nav
 			background-repeat: no-repeat
 			background-position: center center
 			background-color: $off-white
+			&.video
+				position: relative
+				&:before
+					content: " "
+					opacity: 0.25
+					transition-timing-function: ease-in-out
+					transition-duration: 250ms
+					position: absolute
+					left: 0
+					right: 0
+					top: 0
+					bottom: 0
+					margin: auto
+					width: 120px
+					height: 120px
+					background-image: url(../../public/static/images/play-button.svg)
+					background-position: center center
+					background-size: cover
+					display: flex
+					justify-content: center
+					align-items: center
+				&:hover
+					cursor: pointer
+					&:before
+						opacity: 1
 	.description
 		overflow: hidden
 		.title, .subtitle, .info
@@ -1712,12 +1779,13 @@ nav.nav
 			position: relative
 		.title
 			font-size: 28px
-			margin-bottom: 2px
+			font-weight: 600
+			margin-bottom: 5px
 			line-height: 1.25
 		.subtitle
 			font-size: 22px
 			font-style: italic
-			margin-bottom: 10px
+			margin-bottom: 15px
 		.info
 			font-size: 24px
 	@media (max-width: 750px)
