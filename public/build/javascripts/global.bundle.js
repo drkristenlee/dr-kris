@@ -44,11 +44,6 @@ $(document).ready(function () {
 			$("#resources .content").removeClass('list-mode');
 		}
 	});
-
-	$('.contact-method-select .contact-method').click(function () {
-		$('.contact-method-select .contact-method').removeClass("selected");
-		$(this).toggleClass("selected");
-	});
 });
 
 /***/ })
