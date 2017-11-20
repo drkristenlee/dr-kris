@@ -2939,6 +2939,127 @@ nav.nav {
   .press-banner.black .category, .press-banner.black .description {
     background-color: #333434; }
 
+.quiz_main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 70px;
+  padding-top: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .quiz_main .quiz-wrapper {
+    width: 100%;
+    max-width: 800px;
+    position: relative; }
+    .quiz_main .quiz-wrapper .section-title {
+      margin-bottom: 2rem;
+      padding-top: 3rem;
+      font-weight: 600;
+      top: 5rem;
+      left: 10vw;
+      font-size: 30px; }
+      @media (max-width: 750px) {
+        .quiz_main .quiz-wrapper .section-title {
+          margin-bottom: 1rem; } }
+
+#quiz .quiz-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  #quiz .quiz-intro .body {
+    margin-bottom: 15px; }
+  #quiz .quiz-intro .button {
+    margin-top: 15px;
+    padding: 15px 30px;
+    font-size: 18px; }
+    @media (max-width: 500px) {
+      #quiz .quiz-intro .button {
+        width: 100%; } }
+
+#quiz .quiz-rate {
+  margin-bottom: 70px; }
+  #quiz .quiz-rate .quiz-question-block {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-bottom: 1px solid #D8D9D9;
+    padding: 30px 20px;
+    box-sizing: border-box; }
+    #quiz .quiz-rate .quiz-question-block:last-child {
+      border-bottom: none; }
+    #quiz .quiz-rate .quiz-question-block .question {
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 30px; }
+    #quiz .quiz-rate .quiz-question-block .answer_list {
+      width: 100%;
+      max-width: 500px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      #quiz .quiz-rate .quiz-question-block .answer_list .option {
+        transition-timing-function: ease-in-out;
+        transition-duration: 100ms;
+        cursor: pointer;
+        background: transparent;
+        border: 4px solid #D8D9D9;
+        border-radius: 1000px; }
+        #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(-n+3) {
+          border-color: #7a0006; }
+        #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(n+4) {
+          border-color: #007C79; }
+        #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(1), #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(6) {
+          width: 50px;
+          height: 50px; }
+        #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(2), #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(5) {
+          width: 35px;
+          height: 35px; }
+        #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(3), #quiz .quiz-rate .quiz-question-block .answer_list .option:nth-child(4) {
+          width: 25px;
+          height: 25px; }
+        #quiz .quiz-rate .quiz-question-block .answer_list .option.selected:nth-child(-n+4), #quiz .quiz-rate .quiz-question-block .answer_list .option:hover:nth-child(-n+4) {
+          background: #7a0006; }
+        #quiz .quiz-rate .quiz-question-block .answer_list .option.selected:nth-child(n+4), #quiz .quiz-rate .quiz-question-block .answer_list .option:hover:nth-child(n+4) {
+          background: #007C79; }
+  #quiz .quiz-rate .action-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 50px; }
+    #quiz .quiz-rate .action-container .button {
+      width: 100px; }
+
 /** ==========================================================================
   * IX. TRUMPS
   * ========================================================================== **/
