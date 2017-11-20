@@ -1,6 +1,8 @@
 {% extends "_webpack.templates/_webpack.template.wrapper" %}
 
 {% includeCssFile 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}
+{% includeCssFile './static/fonts/columbia.css' %}
+{% includeCssFile 'https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i' %}
 
 {% set nav_page = _nav_page|default('') %}
 
@@ -19,8 +21,8 @@
 			</li>
 			<li class="nav_item"><a class="has-dropdown">News</a>
 				<ul class="sub-list">
-					<li class="nav_item"><a href="./news#press">Press</a></li>
-					<li class="nav_item"><a href="./news#events">Events</a></li>
+					<li class="nav_item"><a href="./press">Press</a></li>
+					<li class="nav_item"><a href="./events">Events</a></li>
 				</ul>
 			</li>
 			<li class="nav_item"><a href="./contact">Contact</a></li>
@@ -34,8 +36,8 @@
 		</div>
 	</div>
 	<nav class="nav">
-		<div class="brand">
-			<a href="./">Logo</a>
+		<div class="brand _blur">
+			<a href="./"><img src="./static/images/logo.gif"></a>
 		</div>
 		<ul class="nav_list">
 			<li class="nav_item
@@ -57,10 +59,10 @@
 			<li class="nav_item 
 				{% if nav_page == 'news' %} active{% endif %}
 				">
-					<a href="./news" class="has-dropdown">News</a>
+					<a class="has-dropdown">News</a>
 					<ul class="hover-menu">
-						<li><a href="./news#press">Press</a></li>
-						<li><a href="./news#events">Events</a></li>
+						<li><a href="./press">Press</a></li>
+						<li><a href="./events">Events</a></li>
 					</ul>
 				</li>
 			<li class="nav_item 
@@ -80,15 +82,16 @@
 {% block footer %}	
 	{# FOOTER INFO #}
 	<div class="footer_content">
-		<div class="logo-nav">
-			<a href="./" class="footer-logo">Logo</a>
+		<div class="logo-nav footer-mobile-full-w">
+			<a href="./" class="footer-logo footer-mobile-hide"><img src="./static/images/logo_white.gif"></a>
 			<p class="subscribe_text">Sign up for my newsletter</p>
 			<div class="subscribe_input">
 				<input type="email" name="subscribe_email" placeholder="Enter your email here">
 				<button>Send</button>
 			</div>
 		</div>
-		<ul class="footer-nav">
+		<ul class="footer-nav footer-mobile-hide">
+			<li class="nav_item"><a href="./">Home</a></li>
 			<li class="nav_item"><a href="./about">About</a></li>
 			<li class="nav_item"><a href="./books">Books</a></li>
 			<li class="nav_item">
@@ -101,21 +104,25 @@
 			</li>
 			<li class="nav_item">
 				<ul class="sub-list">
-					<li class="nav_item main"><a href="./news">News</a></li>
-					<li class="nav_item"><a href="./news#press">Press</a></li>
-					<li class="nav_item"><a href="./news#events">Events</a></li>
+					<li class="nav_item main"><a>News</a></li>
+					<li class="nav_item"><a href="./press">Press</a></li>
+					<li class="nav_item"><a href="./events">Events</a></li>
 				</ul>
 			</li>
 			<li class="nav_item"><a href="./contact">Contact</a></li>
 		</ul>
 		<div class="footer-about">
-			<h5>About Dr. Kris</h5>
-			<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-			<div class="social-container">
-				<a href="#"><i class="fa fa-facebook"></i></a>
+			<h5 class="footer-mobile-hide">About Dr. Kris</h5>
+			<p class="footer-mobile-hide">Recovering Perfectionist. Behavioral Science Professional. Global Citizen.</p>
+			<div class="social-container footer-mobile-full-w">
+				<a href="https://www.facebook.com/The-Real-Dr-Kris-697912316968161/"><i class="fa fa-facebook"></i></a>
 				<a href="https://twitter.com/TheRealDrKris" target="_blank"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="https://instagram.com/TheRealDrKris" target="_blank"><i class="fa fa-instagram"></i></a>
+				<a href="https://www.linkedin.com/in/drkris1"><i class="fa fa-linkedin"></i></a>
 			</div>
+			<p class="footer-copyright footer-mobile-show">
+				Copyright Dr. Kris &copy; 2017
+			</p>
 		</div>
 	</div>
 {% endblock %}

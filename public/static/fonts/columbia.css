@@ -1,0 +1,144 @@
+ 
+/* xlight */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-xlight-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-xlight-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+
+}
+
+/* xlight i */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-xlightitalic-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-xlightitalic-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+
+}
+
+/* light */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-light-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-light-webfont.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+/* light italic */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-lightitalic-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-lightitalic-webfont.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+
+}
+
+/* regular */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+/* regular italic */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-italic-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-italic-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+
+}
+
+/* medium */
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-medium-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-medium-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+/* medium italic */
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-mediumitalic-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-mediumitalic-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+
+}
+
+
+/* bold */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-bold-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-bold-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+/* bold i */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-bolditalic-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-bolditalic-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+
+}
+
+/* xbold */
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-xbold-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-xbold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+/* xbold i */
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-xbolditalic-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-xbolditalic-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+
+}
+
+/* heavy */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-heavy-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-heavy-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+
+/* heavy italic */ 
+@font-face {
+    font-family: 'Columbia Serial';
+    src: url('softmaker_-_columbiaserial-heavyitalic-webfont.woff2') format('woff2'),
+         url('softmaker_-_columbiaserial-heavyitalic-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+
+}
+
+

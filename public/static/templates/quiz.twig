@@ -1,5 +1,5 @@
 {#
- # Contact template
+ # Quiz template
  # ---------------
  #
  # When this template gets loaded, it will be because someone has accessed
@@ -19,21 +19,18 @@
 
 {% extends "_layout" %}
 
-{% set _nav_page = 'contact' %}
+{% set _nav_page = 'quiz' %}
 
 {% block main %}
 	<!-- hero section -->
-	<div class="contact_main section keep-pad">
-		<img src="./static/images/inkblots/IB_book_bottom_left.png" class="inkblot contact-ink-right">
+	<div class="quiz_main section keep-pad">
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
 		
-		<div class="contact-wrapper">
-			<h3 class="section-title">Contact</h3>
-
-			<p>Select your reason for contacting Dr. Kris:</p>
+		<div class="quiz-wrapper">
+			<h3 class="section-title">Test your Mentalligence</h3>
 
 			{% verbatim %}
-			<contact-form></contact-form>
+			<quiz-element></quiz-element>
 			{% endverbatim %}
 		</div>
 
@@ -41,5 +38,5 @@
 {% endblock %}
 
 {% includeJsFile 'https://unpkg.com/vue@2.5.6/dist/vue.js' %}
-{% includeJsFile '../src/javascripts/modules/contact_vue.js' %}
+{% includeJsFile '../src/javascripts/modules/quiz_vue.js' %}
 

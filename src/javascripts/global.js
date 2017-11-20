@@ -3,7 +3,16 @@ var $ = require("jquery");
 
 console.log("Global.js file has imported");
 
+function addBackgroundImages() {
+	$('.insert-background').each(function(){
+		var link = $(this).attr('image-url');
+		$(this).css('background-image', "url('"+link+"')");
+	});
+}
+
 $(document).ready(function(){
+	addBackgroundImages();
+
 	$("#resources .category-list .category").click(function(){
 		$("#resources .category-list .category").removeClass("active");
 		$(this).addClass("active");
@@ -18,9 +27,5 @@ $(document).ready(function(){
 			$("#resources .content").removeClass('list-mode');
 		}
 	});
-
-	$('.contact-method-select .contact-method').click(function(){
-		$('.contact-method-select .contact-method').removeClass("selected");
-		$(this).toggleClass("selected");
-	});
+	
 });

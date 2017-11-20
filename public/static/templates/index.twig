@@ -20,28 +20,52 @@
 {% extends "_layout" %}
 
 {% block main %}
+
+	<img src="./static/images/inkblots/IB_header_left.png" class="inkblot hero-inkblot left">
+	<img src="./static/images/inkblots/IB_header_right.png" class="inkblot hero-inkblot right">
+
 	<!-- hero section -->
 	<div class="landing_hero">
 		<div class="hero_container">
 			<h1 class="hero_quote"><span class="open_quote quote_top"></span>
 			{% for entry in craft.entries.section('landingQuotes').limit(1) %}
 				{{ entry.headingQuote }}
-			{% endfor %}
-			<span class="open_quote quote_bottom"</span></h1>
+			{% endfor %}</h1>
 
 			<a href="./books">
-				<button class="float_ad">Check out Mentalligence!</button>
+				<button class="float_ad button primary">Check out Mentalligence!</button>
 			</a>
 		</div>
 	</div>
+
+
 	<div class="about_section section">
+		<img src="./static/images/inkblots/IB_meet_left.png" class="inkblot landing-about-inkblot left">
+		<img src="./static/images/inkblots/IB_meet_right.png" class="inkblot landing-about-inkblot right">
 
-		<h3>About Dr. Kris</h3>
+		<h3><img class="handwritten meet" src="./static/images/written/meet.png"> Dr. Kris</h3>
 
-		<p>Dr. Kristen Lee, affectionately known as "Dr. Kris", helps people design practical plans to manage stress and adapt to change. With twenty years' experience as a clinical social worker and educator, she is devoted to promoting well-being and leveraging human potential.
-		<br><br>
-		<a href="./about" class="link">Read more →</a>
-		</p>
+		<div class="img-text-wrapper">
+			<div class="image-container">
+				<div class="has-bot-banner">
+					<img src="./static/images/drkris/landing-about.jpg" class="img">
+				</div>
+			</div>
+
+			<div class="text-container">
+				<h4 class="sub-section-title">Recovering perfectionist.</h4>
+				<p>My biggest takeaway from spending the last twenty plus years as a clinician,
+				educator, researcher and activist? That everything is learning and learning is
+				everything. Lessons are always ours for the finding, if we stay woke. I live and
+				breathe and eat and study human resilience, authenticity and identity. I’ve
+				spent my entire life in a love/hate relationship with my anxiety, my one true
+				frenemy.</p>
+				<p>I write to teach, to cope, and to spur on change—to try to make sense of our
+				complicated and gorgeous human condition. Mostly, this happens by
+				rethinking and unlearning what we’re first sold.</p>
+				<p class="link-para"><a href="./about" class="link teal">Read more →</a></p>
+			</div>
+		</div>
 
 	</div>
 	<div class="book_section section">
@@ -49,69 +73,30 @@
 		<div class="text-container">
 			<h3 class="title">Mentalligence</h3>
 
-			<p class="general">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			<p class="general"><em>Mentalligence:</em> A new Psychology of Thinking: Learn What it Takes to be More Agile, Mindful and Connected in Today's World (2018)
 			<br><br>
-			<a href="./books" class="link">Read more →</a>
+			<a href="./books" class="link white"><button class="button white small">Learn more</button></a>
 			</p>
+
 		</div>
 
-		<div class="image-container">
-			<div class="img"></div>
-		</div>
-
-	</div>
-	<!--
-	<div class="resources_section section">
-
-		<h3>Resources</h3>
-
-		<div class="resource_grid">
-			<span class="chevron right"></span>
-
-			<div class="resource_item">
-				<div class="resource_img">
-				</div>
-				<div class="resource_text">
-					<p>Resource Title</p>
-					<p>Publication</p>
-					<p>Meta information</p>
-				</div>
-			</div>
-			<div class="resource_item">
-				<div class="resource_img">
-				</div>
-				<div class="resource_text">
-					<p>Resource Title</p>
-					<p>Publication</p>
-					<p>Meta information</p>
-				</div>
-			</div>
-			<div class="resource_item">
-				<div class="resource_img">
-				</div>
-				<div class="resource_text">
-					<p>Resource Title</p>
-					<p>Publication</p>
-					<p>Meta information</p>
-				</div>
-			</div>
-			<div class="resource_item">
-				<div class="resource_img">
-				</div>
-				<div class="resource_text">
-					<p>Resource Title</p>
-					<p>Publication</p>
-					<p>Meta information</p>
-				</div>
+		<div class="image-container float-book clearfix">
+			<div class="inner-container">
+				<div class="outline-box has-bot-banner blue opaque"></div>
+				<img src="./static/images/books/Mentalligence_bookcover_woShadow.png" class="img">
+				<img src="./static/images/inkblots/IB_meet_right.png" class="inkblot landing-book-behind left">
+				<img src="./static/images/inkblots/IB_meet_left.png" class="inkblot landing-book-behind right">
 			</div>
 		</div>
 
 	</div>
-	-->
 
 	<div class="news_section section">
 
-		<h3>News and Events</h3>
+		<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-event-inkblot left">
+		<img src="./static/images/inkblots/IB_events_right.png" class="inkblot landing-event-inkblot right">
+
+		<img class="title handwritten overlap" src="./static/images/written/events.png">
 
 		<div class="event_list">
 			
@@ -130,26 +115,84 @@
 			
 		</div>
 
-		<a href="./news" class="link">View All →</a>
+		<a href="./news" class="link"><button class="button black">View All</button></a>
 
 	</div>
-	<div class="resources_section section">
 
-		<h3>Resources</h3>
+	<div class="press_section section">
+
+		<img class="title handwritten left-corner large" src="./static/images/written/press.png">
+
+		<div class="press_grid">
+
+			<div class="press_item">
+				<div class="thumbnail">
+					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-06-17-1434505183-5454270-FriendEnemypic-thumb.jpg"></div>
+				</div>
+				<div class="content">
+					<p class="title">An Article Wrote by Dr. Kris</p>
+					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
+					<p class="description">A description goes here. There is definitley quality content in this article.</p>
+				</div>
+			</div>
+
+			<div class="press_item">
+				<div class="thumbnail">
+					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-05-30-1433000330-9385399-anxietytrappic-thumb.jpg"></div>
+				</div>
+				<div class="content">
+					<p class="title">An Article Wrote by Dr. Kris</p>
+					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
+					<p class="description">A description goes here. There is definitley quality content in this article.</p>
+				</div>
+			</div>
+
+			<div class="press_item">
+				<div class="thumbnail">
+					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-10-09-1444359472-8073928-unhappy389944_640-thumb.jpg"></div>
+				</div>
+				<div class="content">
+					<p class="title">An Article Wrote by Dr. Kris</p>
+					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
+					<p class="description">A description goes here. There is definitley quality content in this article.</p>
+				</div>
+			</div>
+
+			<div class="press_item">
+				<div class="thumbnail">
+					<div class="img insert-background" image-url="https://img.huffingtonpost.com/asset/58a8746b2900002b00f27483.jpg?ops=crop_0_2_640_421,scalefit_820_noupscale"></div>
+				</div>
+				<div class="content">
+					<p class="title">An Article Wrote by Dr. Kris</p>
+					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
+					<p class="description">A description goes here. There is definitley quality content in this article.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<a href="./news" class="link"><button class="button white">View All</button></a>
+	</div>
+
+	<div class="resources_section section">
+		<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-resources-inkblot top">
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
+
+		<img class="title handwritten space small" src="./static/images/written/re.png">
 
 		<div class="resource_list">
 
-			{% for entry in craft.entries.section('resources').order('date asc').limit(4) %}
+			{% for entry in craft.entries.section('resources').order('date asc').limit(6) %}
 				<div class="resource_item">
 					<p class="subtitle">{{ entry.title }}</p>
-					<p style="margin-bottom: 0.5rem">{{ entry.description }}</p>
-					<p>{{ entry.postDate }}</p>
+					<p class="description">{{ entry.description }}</p>
+					<p class="more"><a href="#" class="link teal">read more →</a></p>
 				</div>
 			{% endfor %}
 			
 		</div>
 
-		<a href="./resources" class="link">View All →</a>
+		<a href="./resources"><button class="button black">View All</button></a>
 
 	</div>
 	
