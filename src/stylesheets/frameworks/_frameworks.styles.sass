@@ -1873,7 +1873,10 @@ nav.nav
 			font-size: 18px
 			@media (max-width: 500px)
 				width: 100%
-	.quiz-rate
+	.asterik
+		color: $blue
+		font-weight: 500
+	.quiz-page
 		margin-bottom: $nav-height
 		.quiz-question-block
 			width: 100%
@@ -1890,38 +1893,134 @@ nav.nav
 				font-size: 16px
 				text-align: center
 				margin-bottom: 30px
-			.answer_list
-				width: 100%
-				max-width: 500px
+			
+			.response-container
 				display: flex
-				justify-content: space-between
 				align-items: center
+				justify-content: space-between
+				width: 100%
+				max-width: 650px
+				.answer_list
+					flex: 1
+					max-width: 400px
+					display: flex
+					justify-content: space-between
+					align-items: center
+					margin: 0 10px
+					.option
+						transition-timing-function: ease-in-out
+						transition-duration: 100ms
+						cursor: pointer
+						background: transparent
+						border: 4px solid $off-white
+						border-radius: 1000px
+						&:nth-child(-n+3)
+							border-color: $quiz-disagree
+						&:nth-child(n+4)
+							border-color: $quiz-agree
+						&:nth-child(1), &:nth-child(6)
+							width: 50px
+							height: 50px
+						&:nth-child(2), &:nth-child(5)
+							width: 35px
+							height: 35px
+						&:nth-child(3), &:nth-child(4)
+							width: 25px
+							height: 25px
+						&.selected, &:hover
+							&:nth-child(-n+4)
+								background: $quiz-disagree
+							&:nth-child(n+4)
+								background: $quiz-agree
+				.label
+					width: 58px
+					font-size: 13px
+					margin: 0
+					&.small
+						width: 55px
+				.slider-container
+					flex: 1
+					max-width: 500px
+					display: flex
+					align-items: center
+					justify-content: center
+					position: relative
+					margin: 0 10px
+					&:before
+						content: " "
+						position: absolute
+						left: 0
+						right: 0
+						top: 0
+						bottom: 0
+						margin: auto
+						width: 3px
+						height: 32px
+						border-radius: 1000px
+						background: #d3d3d3
+						z-index: 0
+					.slider
+						appearance: none
+						z-index: 1
+						width: 100%
+						height: 4px
+						background: $off-white
+						border-radius: 1000px
+						outline: none
+						&::-webkit-slider-thumb
+							appearance: none
+							width: 25px
+							height: 25px
+							background: $teal
+							cursor: pointer
+							border-radius: 1000px
+						&::-moz-range-thumb
+							width: 25px
+							height: 25px
+							background: $teal
+							cursor: pointer
+							border-radius: 1000px
+		.select-wrapper
+			width: 100%
+			max-width: 500px
+			margin: auto
+			margin-top: 30px
+			.select_options
+				width: 100%
+				margin-top: 15px
 				.option
-					transition-timing-function: ease-in-out
-					transition-duration: 100ms
 					cursor: pointer
-					background: transparent
-					border: 4px solid $off-white
-					border-radius: 1000px
-					&:nth-child(-n+3)
-						border-color: $quiz-disagree
-					&:nth-child(n+4)
-						border-color: $quiz-agree
-					&:nth-child(1), &:nth-child(6)
-						width: 50px
-						height: 50px
-					&:nth-child(2), &:nth-child(5)
-						width: 35px
-						height: 35px
-					&:nth-child(3), &:nth-child(4)
+					padding-left: 30px
+					position: relative
+					width: 100%
+					display: flex
+					justify-content: flex-start
+					align-items: center
+					margin-bottom: 10px
+					height: 25px
+					&:last-child
+						margin-bottom: 0
+					&:before
+						content: " "
+						position: absolute
+						top: 0
+						bottom: 0
+						left: 30px
+						margin: auto
 						width: 25px
 						height: 25px
-					&.selected, &:hover
-						&:nth-child(-n+4)
-							background: $quiz-disagree
-						&:nth-child(n+4)
-							background: $quiz-agree
-		
+						transition-timing-function: ease-in-out
+						transition-duration: 100ms
+						background: transparent
+						border: 3px solid $off-white
+						border-radius: 1000px
+					&:hover, &.selected
+						&:before
+							background: $teal
+					.text
+						font-size: 15px
+						padding-left: 50px
+						max-width: 400px
 		.action-container
 			display: flex
 			justify-content: space-between
