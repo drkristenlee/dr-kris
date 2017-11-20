@@ -23,16 +23,19 @@
 
 {% block main %}
 	<!-- hero section -->
-	<div class="contact_main section no-flex keep-pad">
+	<div class="contact_main section keep-pad">
+		<img src="./static/images/inkblots/IB_book_bottom_left.png" class="inkblot contact-ink-right">
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
 		
-		<h3>Contact</h3>
+		<div class="contact-wrapper">
+			<h3 class="section-title">Contact</h3>
 
-		<p>Select your reason for contacting Dr. Kris:</p>
+			<p>Select your reason for contacting Dr. Kris:</p>
 
-		{% verbatim %}
-		<contact-form></contact-form>
-		{% endverbatim %}
+			{% verbatim %}
+			<contact-form></contact-form>
+			{% endverbatim %}
+		</div>
 
 	</div>
 {% endblock %}

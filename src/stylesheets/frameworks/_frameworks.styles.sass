@@ -176,6 +176,13 @@ html
 		transform: rotate(200deg) scaleX(-1)
 		z-index: -1
 
+	&.contact-ink-right
+		left: -280px
+		top: 0px
+		width: 400px
+		transform: scaleX(-1) rotate(-20deg) 
+		z-index: -1
+
 .link
 	font-size: 16px
 	font-weight: 300
@@ -1310,6 +1317,24 @@ nav.nav
 			color: white
 
 
+.contact_main
+	display: flex
+	align-items: center
+	justify-content: center
+	.contact-wrapper
+		width: 100%
+		max-width: 800px
+		position: relative
+		.section-title
+			margin-bottom: 2rem
+			padding-top: 3rem
+			font-weight: 600
+			top: 5rem
+			left: 10vw
+			font-size: 30px
+			@media (max-width: 750px)
+				margin-bottom: 1rem
+
 .contact-method-select
 	display: flex
 	width: 100%
@@ -1356,7 +1381,7 @@ nav.nav
 	align-items: center
 	margin: 2rem 0
 	.contact-form
-		width: 700px
+		width: 100%
 		position: relative
 		.form-row
 			display: flex

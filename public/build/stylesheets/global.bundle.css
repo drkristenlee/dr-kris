@@ -945,6 +945,13 @@ html {
     -webkit-transform: rotate(200deg) scaleX(-1);
             transform: rotate(200deg) scaleX(-1);
     z-index: -1; }
+  .inkblot.contact-ink-right {
+    left: -280px;
+    top: 0px;
+    width: 400px;
+    -webkit-transform: scaleX(-1) rotate(-20deg);
+            transform: scaleX(-1) rotate(-20deg);
+    z-index: -1; }
 
 .link {
   font-size: 16px;
@@ -2326,6 +2333,31 @@ nav.nav {
       padding: 8px 20px;
       color: white; }
 
+.contact_main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .contact_main .contact-wrapper {
+    width: 100%;
+    max-width: 800px;
+    position: relative; }
+    .contact_main .contact-wrapper .section-title {
+      margin-bottom: 2rem;
+      padding-top: 3rem;
+      font-weight: 600;
+      top: 5rem;
+      left: 10vw;
+      font-size: 30px; }
+      @media (max-width: 750px) {
+        .contact_main .contact-wrapper .section-title {
+          margin-bottom: 1rem; } }
+
 .contact-method-select {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2395,7 +2427,7 @@ nav.nav {
           align-items: center;
   margin: 2rem 0; }
   .contact-form-wrapper .contact-form {
-    width: 700px;
+    width: 100%;
     position: relative; }
     .contact-form-wrapper .contact-form .form-row {
       display: -webkit-box;
