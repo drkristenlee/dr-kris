@@ -1861,6 +1861,11 @@ nav.nav
 			@media (max-width: 750px)
 				margin-bottom: 1rem
 #quiz
+	.body
+		font-size: 18px
+		margin-bottom: 15px
+		&.bold
+			font-weight: 600
 	.quiz-intro
 		display: flex
 		flex-direction: column
@@ -1980,6 +1985,50 @@ nav.nav
 							background: $teal
 							cursor: pointer
 							border-radius: 1000px
+		&.quiz-drag
+			.drag-container
+				margin-bottom: 50px
+				&:last-child
+					margin-bottom: 0
+				.explanation
+					margin-bottom: 10px
+					font-size: 18px
+					font-weight: 600
+					&:last-child
+						margin-bottom: 0
+				&.drag-choices
+					display: flex
+					align-items: center
+					justify-content: center
+					flex-direction: column
+					.option-value
+						width: 100%
+						max-width: 300px
+						height: 25px
+						margin-bottom: 10px
+						display: flex
+						align-items: center
+						&:last-child
+							margin-bottom: 0
+						.label
+							margin-right: 10px
+							font-weight: 600
+						.content
+							flex: 1
+							width: 100%
+							height: 100%
+							border: 1px solid $off-white
+				&.value-list
+					list-style: none
+					padding: 0
+					margin: 0
+					margin-top: 30px
+					.value-item
+						display: inline-block
+						margin-right: 10px
+						margin-bottom: 10px
+
+
 		.select-wrapper
 			width: 100%
 			max-width: 500px
@@ -2029,6 +2078,32 @@ nav.nav
 			.button
 				width: 100px
 
+		&.quiz-complete
+			.title
+				margin-bottom: 5px
+				text-transform: uppercase
+			.congrats
+				text-align: center
+				font-weight: 600
+			.sub-text
+				margin-bottom: 15px
+				width: 80%
+				margin-left: auto
+				margin-right: auto
+				.subbody
+					font-size: 14px
+					margin-bottom: 10px
+					strong
+						font-weight: 600
+			.get_results
+				background: $teal
+				color: $white
+				padding: 30px
+				margin: 30px 0
+				text-align: center
+			.signature
+				width: 100px
+				margin: -5px 0 5px 0
 
 
 

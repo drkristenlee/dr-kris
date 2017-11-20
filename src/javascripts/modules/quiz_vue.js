@@ -48,9 +48,33 @@ Vue.component('quiz-element', {
 			</div>
 		</div>
 
-		<div class="quiz-slide quiz-page" v-else-if="step === questions.length+1">
+		<div class="quiz-drag quiz-page" v-else-if="step === questions.length+1">
 			<div class="questions-container">
-				<p>Drag and drop to-do</p>
+				<div class="drag-explain drag-container">
+					<p v-for="para in drag_drop.paragraphs" class="explanation">{{ para }}</p>
+				</div>
+
+				<div class="drag-choices drag-container">
+					<div class="option-value">
+						<div class="label">1.</div>
+						<div class="content"></div>
+					</div>
+
+					<div class="option-value">
+						<div class="label">2.</div>
+						<div class="content"></div>
+					</div>
+
+					<div class="option-value">
+						<div class="label">3.</div>
+						<div class="content"></div>
+					</div>
+				</div>
+
+				<ul class="value-list drag-container">
+					<li v-for="value in drag_drop.values" class="value-item">{{ value }}</li>
+				</ul>
+
 			</div>
 			<div class="action-container">
 				<button class="button" @click="stepChange(-1)">Previous</button>
@@ -93,6 +117,57 @@ Vue.component('quiz-element', {
 				<button class="button primary" @click="stepChange(1)">Next</button>
 			</div>
 		</div>
+
+		<div class="quiz-complete quiz-page" v-else-if="step === questions.length+3">
+			<div class="questions-container">
+				<p class="body congrats">Congratulations! You have completed the Mentalligence quiz!</p>
+				<p class="body">Here's the skinny: You're on track, and with some finese, you can take it to another level. 
+				Like any one of us, there's always strengths to leverage, and room for improvement. In general you want to be on the lookout for:
+				<div class="sub-text">
+					<p class="subbody"><strong>Leveraging your strengths.</strong> Lorem ipsum dolor sit amet, 
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+					commodo consequat.</p>
+					<p class="subbody"><strong>Avoiding common behavioral traps.</strong> Lorem ipsum dolor sit amet, 
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+					commodo consequat.</p>
+					<p class="subbody"><strong>Elevating your values.</strong> Lorem ipsum dolor sit amet, 
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+					commodo consequat.</p>
+				</div>
+
+				<div class="get_results">
+					<p class="body">Lorem ipsum dolor sit amet, 
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+					commodo consequat.</p>
+					<button class="button white">Get my results!</button>
+				</div>
+
+				<p class="body bold title">Spread Something Good</p>
+				<p class="body">Lorem ipsum dolor sit amet, 
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+					commodo consequat.
+				</p>
+				<p class="body">Lorem ipsum dolor sit amet, 
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+					commodo consequat.
+				</p>
+				<p class="body">Take awesome care,</p>
+				<img class="signature" src="./static/images/logo.gif">
+				<p class="body">Dr. Kris</p>
+			</div>
+
+			<div class="action-container">
+				<button class="button" @click="stepChange(-1)">Previous</button>
+				<a href="./quiz"><button class="button primary">Restart</button></a>
+			</div>
+		</div>
+
 	</div>`,
 	data: function() {
 		return {
@@ -155,6 +230,20 @@ Vue.component('quiz-element', {
 					},
 				]
 			],
+			drag_drop: {
+				paragraphs: [
+					"Now it's time to rank your personal values. Click and drag to rank your top 3. For a description on the value, hover over the option.",
+					"Personal values are what make you tick. Of all things that move you, they matter most. They define your core essence - the things that are non-negotiable asepects of your being."
+				],
+				values: [
+					"Authenticity", "Empathy", "Agility", "Service",
+					"Love of learning", "Confidence", "Sustainability", "Adventure",
+					"Social conciousness", "Humility", "Presence", "Persistence",
+					"Perspective", "Connectedness", "Globally curios", "Gratitude",
+					"Optimism", "Autonomy", "Open-mindedness", "Boundlessness",
+					"Solidarity", "Creativity"
+				]
+			},
 			slide_questions: [
 				{
 					question: "For the most part, I carry out the value of FIRST in various areas of my life",

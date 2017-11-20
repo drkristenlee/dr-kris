@@ -2963,6 +2963,12 @@ nav.nav {
         .quiz_main .quiz-wrapper .section-title {
           margin-bottom: 1rem; } }
 
+#quiz .body {
+  font-size: 18px;
+  margin-bottom: 15px; }
+  #quiz .body.bold {
+    font-weight: 600; }
+
 #quiz .quiz-intro {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3124,6 +3130,62 @@ nav.nav {
             background: #007C79;
             cursor: pointer;
             border-radius: 1000px; }
+  #quiz .quiz-page.quiz-drag .drag-container {
+    margin-bottom: 50px; }
+    #quiz .quiz-page.quiz-drag .drag-container:last-child {
+      margin-bottom: 0; }
+    #quiz .quiz-page.quiz-drag .drag-container .explanation {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 600; }
+      #quiz .quiz-page.quiz-drag .drag-container .explanation:last-child {
+        margin-bottom: 0; }
+    #quiz .quiz-page.quiz-drag .drag-container.drag-choices {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+      #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value {
+        width: 100%;
+        max-width: 300px;
+        height: 25px;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center; }
+        #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value:last-child {
+          margin-bottom: 0; }
+        #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value .label {
+          margin-right: 10px;
+          font-weight: 600; }
+        #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value .content {
+          -webkit-box-flex: 1;
+              -ms-flex: 1;
+                  flex: 1;
+          width: 100%;
+          height: 100%;
+          border: 1px solid #D8D9D9; }
+    #quiz .quiz-page.quiz-drag .drag-container.value-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-top: 30px; }
+      #quiz .quiz-page.quiz-drag .drag-container.value-list .value-item {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px; }
   #quiz .quiz-page .select-wrapper {
     width: 100%;
     max-width: 500px;
@@ -3183,6 +3245,31 @@ nav.nav {
     margin-top: 50px; }
     #quiz .quiz-page .action-container .button {
       width: 100px; }
+  #quiz .quiz-page.quiz-complete .title {
+    margin-bottom: 5px;
+    text-transform: uppercase; }
+  #quiz .quiz-page.quiz-complete .congrats {
+    text-align: center;
+    font-weight: 600; }
+  #quiz .quiz-page.quiz-complete .sub-text {
+    margin-bottom: 15px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto; }
+    #quiz .quiz-page.quiz-complete .sub-text .subbody {
+      font-size: 14px;
+      margin-bottom: 10px; }
+      #quiz .quiz-page.quiz-complete .sub-text .subbody strong {
+        font-weight: 600; }
+  #quiz .quiz-page.quiz-complete .get_results {
+    background: #007C79;
+    color: #FFFFFF;
+    padding: 30px;
+    margin: 30px 0;
+    text-align: center; }
+  #quiz .quiz-page.quiz-complete .signature {
+    width: 100px;
+    margin: -5px 0 5px 0; }
 
 /** ==========================================================================
   * IX. TRUMPS
