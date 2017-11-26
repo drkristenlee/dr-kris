@@ -28,9 +28,7 @@
 	<div class="landing_hero">
 		<div class="hero_container">
 			<h1 class="hero_quote"><span class="open_quote quote_top"></span>
-			{% for entry in craft.entries.section('landingQuotes').limit(1) %}
-				{{ entry.headingQuote }}
-			{% endfor %}</h1>
+			{{ craft.entries.section('landingPage')[0].heroQuote }}</h1>
 
 			<a href="./books">
 				<button class="float_ad button primary">Check out Mentalligence!</button>
@@ -53,16 +51,8 @@
 			</div>
 
 			<div class="text-container">
-				<h4 class="sub-section-title">Recovering perfectionist.</h4>
-				<p>My biggest takeaway from spending the last twenty plus years as a clinician,
-				educator, researcher and activist? That everything is learning and learning is
-				everything. Lessons are always ours for the finding, if we stay woke. I live and
-				breathe and eat and study human resilience, authenticity and identity. I’ve
-				spent my entire life in a love/hate relationship with my anxiety, my one true
-				frenemy.</p>
-				<p>I write to teach, to cope, and to spur on change—to try to make sense of our
-				complicated and gorgeous human condition. Mostly, this happens by
-				rethinking and unlearning what we’re first sold.</p>
+				<h4 class="sub-section-title">{{ craft.entries.section('landingPage')[0].tagline }}</h4>
+				<p>{{ craft.entries.section('landingPage')[0].bio|nl2br|raw }}</p>
 				<p class="link-para"><a href="./about" class="link teal">Read more →</a></p>
 			</div>
 		</div>
