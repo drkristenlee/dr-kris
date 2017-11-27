@@ -25,15 +25,17 @@
 	
 	<div class="press-banner black" id="press_hero">
 
+		{% set topFeatured = craft.entries.section('pressPage')[0].topFeatured[0] %}
+
 		<div class="featured-media">
-			<div class="media_item insert-background video" image-url="./static/images/drkris/tedx.jpg"></div>
+			<div class="media_item insert-background {% if topFeatured.isVideo %}video{% endif %}" image-url="{{ topFeatured.thumbnailImageUrl }}"></div>
 		</div>
 		<div class="description">
 			<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-resources-inkblot press-banner-ink">
 			
-			<h3 class="title">Dr. Kris @ Tedx</h3>
-			<p class="subtitle">Jacksonville, FL on Nov. 5, 2017</p>
-			<p class="info">A short description on Dr.Kris's talk, what it's about, and how much she rocked it. Here's more words to show multiple lines.</p>
+			<h3 class="title">{{ topFeatured.title }}</h3>
+			<p class="subtitle">{{ topFeatured.publication }} on {{ topFeatured.publicationDate }}</p>
+			<p class="info">{{ topFeatured.description }}</p>
 		</div>
 
 	</div>
@@ -97,18 +99,20 @@
 
 	<div class="press-banner teal">
 
+		{% set mentionedFeatured = craft.entries.section('pressPage')[0].mentionedInFeatured[0] %}
+
 		<div class="category">
 			<h2 class="title">Mentioned In</h2>
 		</div>
 		<div class="featured-media">
-			<div class="media_item insert-background" image-url="https://img.huffingtonpost.com/asset/5a09eddf1c0000c018b3492f.jpeg?cache=hfnnx0ywci&ops=scalefit_720_noupscale"></div>
+			<div class="media_item insert-background" image-url="{{ mentionedFeatured.thumbnailImageUrl }}"></div>
 		</div>
 		<div class="description">
 			<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-resources-inkblot press-banner-ink">
 			
-			<h3 class="title">Psychologists Explain How To Deal With The Nightmare That Is Thanksgiving Dinner</h3>
-			<p class="subtitle">Huffington Post on Nov. 10, 2017</p>
-			<p class="info">It doesn't have to be this way.</p>
+			<h3 class="title">{{ mentionedFeatured.title }}</h3>
+			<p class="subtitle">{{ mentionedFeatured.publication }} on {{ mentionedFeatured.publicationDate }}</p>
+			<p class="info">{{ mentionedFeatured.description }}</p>
 		</div>
 
 	</div>
@@ -172,15 +176,18 @@
 		<div class="category">
 			<h2 class="title">Vidoes &amp; Podcasts</h2>
 		</div>
+
+		{% set videoFeatured = craft.entries.section('pressPage')[0].videoPodcastFeatured[0] %}
+
 		<div class="featured-media">
-			<div class="media_item video insert-background" image-url="./static/images/drkris/healthy-hanover-show.jpg"></div>
+			<div class="media_item video insert-background" image-url="{{ videoFeatured.thumbnailImageUrl }}"></div>
 		</div>
 		<div class="description">
 			<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-resources-inkblot press-banner-ink">
 
-			<h3 class="title">Healthy Hanover Show</h3>
-			<p class="subtitle">Hanover Show on June 23, 2017</p>
-			<p class="info">A short description on Dr.Kris's talk, what it's about, and how much she rocked it. Here's more words to show multiple lines.</p>
+			<h3 class="title">{{ videoFeatured.title }}</h3>
+			<p class="subtitle">{{ videoFeatured.publication }} on {{ videoFeatured.publicationDate }}</p>
+			<p class="info">{{ videoFeatured.description }}</p>
 		</div>
 
 	</div>

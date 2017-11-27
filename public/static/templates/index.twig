@@ -172,7 +172,7 @@
 
 		<div class="resource_list">
 
-			{% for entry in craft.entries.section('resources').order('date asc').limit(6) %}
+			{% for entry in craft.entries.section('landingPage')[0].featuredResources.limit(6) %}
 				<div class="resource_item">
 					<p class="subtitle">{{ entry.title }}</p>
 					<p class="description">{{ entry.description }}</p>
