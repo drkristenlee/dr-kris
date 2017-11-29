@@ -1,5 +1,5 @@
 {#
- # News template
+ # Events template
  # ---------------
  #
  # When this template gets loaded, it will be because someone has accessed
@@ -23,9 +23,9 @@
 
 {% block main %}
 	<!-- hero section -->
-	<div class="news_main section no-flex">
-		
-		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
+	<div class="events-hero insert-background" image-url="./static/images/events/{{ craft.entries.section('eventPage')[0].heroImage[0].getPath() }}"></div>
+
+	<div class="events_main section no-flex">
 
 		<h3>Events</h3>
 
@@ -97,12 +97,37 @@
 				</div>
 			</div>
 
-			<div class="load-container">
-				<button class="load-btn">Load more</button>
-			</div>
+		</div>
 
+		<div class="load-container">
+			<button class="button black">Load more</button>
 		</div>
 
 	</div>
+
+	<div class="section no-flex past-events">
+		<h3>Past Events</h3>
+		<div class="content">
+			<div class="carousel">
+			</div>
+		</div>
+	</div>
+
+	<div class="section no-flex booking-info">
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
+		
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-booking-inkblot left">
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-booking-inkblot right">
+
+		<h3>Booking Info</h3>
+
+		<div class="content">
+			<p class="title">For all booking inquiries, please contact:</p>
+			<p class="agent-name">Agent Name</p>
+			<p class="agent-phone">(###) ### - ####</p>
+			<p class="agent-email"><a href="#">agentemail@drkris.com</a></p>
+		</div>
+	</div>
+
 {% endblock %}
 

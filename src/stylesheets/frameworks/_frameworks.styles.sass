@@ -30,6 +30,9 @@ $footer-mobile-w: 600px
 $quiz-disagree: #7a0006
 $quiz-agree: #007C79
 
+$quattro: 'Quattrocento Sans', sans-serif
+$columbia: 'Columbia', 'Georgia', serif
+
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
 
@@ -186,6 +189,18 @@ html
 		transform: scaleX(-1) rotate(-20deg) 
 		z-index: -1
 
+	&.events-booking-inkblot.left
+		bottom: -200px
+		left: -300px
+		transform: rotate(135deg)
+		width: 600px
+	&.events-booking-inkblot.right
+		z-index: -1
+		top: -200px
+		right: -300px
+		width: 600px
+		transform: rotate(-45deg)
+
 .link
 	font-size: 16px
 	font-weight: 300
@@ -218,16 +233,16 @@ html
 		cursor: not-allowed
 
 .handwritten
-	height: 110px
+	height: 90px
 	z-index: 1
 	mix-blend-mode: multiply
 	position: relative
 	&.overlap
-		margin-bottom: -50px
+		margin-bottom: -40px
 	&.space
 		margin-bottom: 30px
 	&.small
-		height: 90px
+		height: 70px
 	&.large
 		height: 120px
 	&.left-corner
@@ -837,15 +852,10 @@ nav.nav
 
 	&.client_section
 		min-height: unset
-		padding-left: 0px
-		padding-right: 0px
 		align-items: flex-start
 		h3
 			position: initial
-			padding-left: 10vw
 			margin-bottom: 4rem
-			@media (max-width: 750px)
-				padding-left: 10vw
 		.client_carousel
 			width: 100%
 			height: 150px
@@ -868,8 +878,8 @@ nav.nav
 				background: #eee
 				margin-right: 2rem
 	&.timeline_section
-		padding-top: 4rem
-		padding-bottom: 4rem
+		padding-top: 0rem
+		padding-bottom: 0rem
 		min-height: unset
 		align-items: center
 		justify-content: center
@@ -933,8 +943,11 @@ nav.nav
 					.asset
 						width: 150px
 						height: 150px
-						background: #eee
+						background-color: #eee
 						z-index: 0
+						background-position: center center
+						background-size: cover
+						background-repeat: no-repeat
 				&:nth-child(odd)
 					.date 
 						right: $timeline-branch-length * .25
@@ -954,7 +967,7 @@ nav.nav
 					&:after
 						width: 0
 					@media (min-width: 951px)
-						margin-bottom: 200px
+						margin-bottom: 100px
 						height: 250px
 						.date 
 							top: unset
@@ -975,9 +988,8 @@ nav.nav
 							.text
 								width: 45%
 							.asset
-								width: 45%
+								width: 150px
 								height: 150px
-								background: #eee
 								margin-bottom: 1rem
 				@media (max-width: 950px)
 					height: auto
@@ -1260,17 +1272,32 @@ nav.nav
 
 .event_groups
 	width: 100%
-	padding: 1rem 0
+	padding: 2rem 4rem
+	background: $teal
+	color: $white
+	margin-bottom: 30px
 	.event_section
 		margin-bottom: 4rem
 		width: 100%
+		&:last-child
+			margin-bottom: 0
 		.title
+			position: relative
 			text-align: center
 			font-size: 20px
 			font-weight: 400
 			padding-bottom: 15px
-			border-bottom: 1px solid #aaa
 			margin-bottom: 1.5rem
+			&:before
+				content: " "
+				width: 50%
+				height: 1px
+				background: $white
+				position: absolute
+				bottom: 8px
+				left: 0
+				right: 0
+				margin: auto
 		.event-list
 			.event
 				margin-bottom: 1.5rem
@@ -1311,14 +1338,10 @@ nav.nav
 						margin-bottom: 15px
 					.description
 						max-width: unset
-	.load-container
-		text-align: center
-		.load-btn
-			background: #ccc
-			cursor: pointer
-			padding: 8px 20px
-			color: white
-
+.load-container
+	text-align: center
+	margin-left: auto
+	margin-right: auto
 
 .contact_main
 	display: flex
@@ -1841,6 +1864,60 @@ nav.nav
 		.category, .description
 			background-color: $dark-grey
 
+
+.events-hero
+	width: 100%
+	height: 550px
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center center
+	background-color: $off-white
+	position: relative
+	margin-top: $nav-height
+
+.events_main
+	margin-top: 2rem
+
+.section.past-events
+	padding: 0
+	h3
+		padding: 0 $nav-pad
+		@media (max-width: 750px)
+			padding: 5rem 10vw
+		@media (max-width: 600px)
+			padding: 5rem 0
+	.content
+		background: $dark-grey
+		height: 500px
+		width: 100%
+
+.section.booking-info
+	min-height: unset
+	margin-top: 0px
+	padding-bottom: 100px
+	h3
+		padding-top: 0
+	.content
+		background: $off-white
+		display: flex
+		width: 100%
+		margin: auto
+		margin-top: 60px
+		padding: 60px 30px
+		justify-content: center
+		align-items: center
+		flex-direction: column
+		.title
+			text-align: center
+			font-size: 24px
+			margin-bottom: 30px
+		.agent-name, .agent-phone
+			text-align: center
+			font-size: 20px
+			margin-bottom: 5px
+		.agent-email
+			text-align: center
+			font-size: 20px
 
 .quiz_main
 	display: flex

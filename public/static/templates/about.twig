@@ -38,7 +38,37 @@
 		</div>
 
 	</div>
-	<div class="client_section section">
+	
+	<div class="timeline_section section">
+
+		<h3>The Story</h3>
+		
+		<div class="timeline_container">
+
+			{% for event in craft.entries.section('timelineEvents').order('eventDate asc') %}
+				<div class="timeline_block">
+					<span class="date">{{ event.eventDate.year }}</span>
+					<div class="content">
+						<div class="text">
+							<p class="title">{{ event.title }}</p>
+							<p class="description">{{ event.eventInfo }}</p>
+						</div>
+						{% if event.eventImage|length %}
+							<div class="asset insert-background" image-url="./static/images/timeline/{{ event.eventImage[0].getPath() }}"></div>
+						{% else %}
+							<div class="asset"></div>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+	<div class="client_section section no-flex">
+
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
 
 		<h3>Clients</h3>
 
@@ -58,31 +88,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="timeline_section section">
-
-		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
-
-		<h3>The Story</h3>
-
-		
-		<div class="timeline_container">
-
-			{% for event in craft.entries.section('timelineEvents').order('eventDate asc') %}
-				<div class="timeline_block">
-					<span class="date">{{ event.eventDate.year }}</span>
-					<div class="content">
-						<div class="text">
-							<p class="title">{{ event.title }}</p>
-							<p class="description">{{ event.eventInfo }}</p>
-						</div>
-						<div class="asset"></div>
-					</div>
-				</div>
-			{% endfor %}
-
-		</div>
-
 	</div>
 {% endblock %}
 
