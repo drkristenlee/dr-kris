@@ -22,26 +22,31 @@
 {% set _nav_page = 'about' %}
 
 {% block main %}
-	<!-- hero section -->
-	<div class="about_hero section">
+	<div class="about_hero section no-flex">
 		
-		<h3>About Dr. Kris</h3>
+		<img src="./static/images/inkblots/IB_header_right.png" class="inkblot about-hero-inkblot right">
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot about-hero-inkblot bottom">
+
+		<h3 class="mobile-pad">About Dr. Kris</h3>
 
 		<div class="flex-row">
 			<div class="image-container">
-				<div class="img"></div>
+				<div class="img insert-background" image-url="./static/images/drkris/{{ craft.entries.section('aboutPage')[0].bioImage[0].getPath() }}"></div>
 			</div>
 
-			<h1 class="hero_bio">
-				{{ craft.entries.section('aboutPage')[0].bio|nl2br|raw }}
-			</h1>
+			<div class="hero_bio mobile-pad">
+				<h3 class="tagline">{{ craft.entries.section('landingPage')[0].tagline }}</h3>
+				<p class="body">{{ craft.entries.section('aboutPage')[0].bio|nl2br|raw }}</p>
+			</div>
 		</div>
 
 	</div>
 	
 	<div class="timeline_section section">
 
-		<h3>The Story</h3>
+		<img src="./static/images/inkblots/IB_events_3.png" class="inkblot about-timeline-inkblot top">
+
+		<h3 class="mobile-pad">The Story</h3>
 		
 		<div class="timeline_container">
 

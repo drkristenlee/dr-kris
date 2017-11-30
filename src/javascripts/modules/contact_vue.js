@@ -26,7 +26,7 @@ Vue.component('contact-form', {
 			<div class="contact-form">
 				<div class="form-row">
 					<div class="_half form-content">
-						<label class="label">Email Address</label>
+						<label class="label">Email Address <span class="required">*Required</span></label>
 						<input v-model="email" class="form-el" type="text" placeholder="example@email.com">
 					</div>
 					<div class="_half form-content">
@@ -36,13 +36,13 @@ Vue.component('contact-form', {
 				</div>
 				<div class="form-row" v-if="mode=='general'">
 					<div class="form-content">
-						<label class="label">Subject of Inquiry</label>
+						<label class="label">Subject of Inquiry <span class="required">*Required</span></label>
 						<input v-model="subject" class="form-el" type="text" placeholder="Interested in speaking at...">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-content">
-						<label class="label">Your message</label>
+						<label class="label">Your message <span class="required">*Required</span></label>
 						<textarea v-model="message" class="form-el" rows="6" placeholder="Enter the body of your message here"></textarea>
 					</div>
 				</div>
@@ -80,7 +80,6 @@ Vue.component('contact-form', {
 	computed: {
         canSubmit: function() {
             return this.email !== "" && 
-            	this.validPhone(this.phone) && 
             	(this.subject !== "" && this.mode == "general" || this.mode !== "general") &&
             	this.message !== "";
         }

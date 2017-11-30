@@ -189,6 +189,37 @@ html
 		transform: scaleX(-1) rotate(-20deg) 
 		z-index: -1
 
+
+	&.events-under-hero-inkblot
+		top: 400px
+		right: -250px
+		width: 800px
+		z-index: -1
+		transform: rotate(-135deg)
+
+	&.events-upcoming-inkblot.top
+		top: -50px
+		left: -175px
+		width: 500px
+		z-index: -1
+	&.events-upcoming-inkblot.bottom
+		bottom: 0px
+		right: -175px
+		width: 600px
+		z-index: -1
+		transform: rotate(-45deg)
+	&.events-upcoming-inkblot.overlap
+		bottom: 50px
+		right: -300px
+		width: 500px
+		transform: rotate(-90deg)
+	
+	&.events-past-inkblot
+		top: 0
+		left: -100px
+		z-index: -1
+		width: 300px
+
 	&.events-booking-inkblot.left
 		bottom: -200px
 		left: -300px
@@ -200,6 +231,26 @@ html
 		right: -300px
 		width: 600px
 		transform: rotate(-45deg)
+
+
+	&.about-hero-inkblot.right
+		z-index: -1
+		top: -50px
+		right: -200px
+		width: 500px
+		transform: rotate(0deg)
+	&.about-hero-inkblot.bottom
+		z-index: -1
+		bottom: -150px
+		left: -150px
+		width: 300px
+		transform: rotate(-45deg)
+	&.about-timeline-inkblot
+		z-index: -1
+		top: -100px
+		right: -300px
+		width: 600px
+		transform: rotate(90deg)
 
 .link
 	font-size: 16px
@@ -501,9 +552,9 @@ nav.nav
 		align-items: flex-start
 		justify-content: flex-start
 		min-height: unset
-		padding: 5rem 10vw
+		padding: 2rem 10vw
 	@media (max-width: 600px)
-		padding: 5rem 0
+		padding: 1rem 0
 		&.keep-pad
 			padding: 3rem 10vw
 	& > h3, & > p
@@ -549,6 +600,8 @@ nav.nav
 				@media (max-width: 600px)
 					margin-left: 0
 					width: 100%
+					padding-left: 10vw
+					padding-right: 10vw
 				.sub-section-title
 					text-transform: uppercase
 					color: $teal
@@ -728,8 +781,6 @@ nav.nav
 			grid-template-columns: repeat(2, 1fr)
 			grid-gap: 30px
 			margin-bottom: 40px
-			@media (max-width: 900px)
-				grid-template-columns: repeat(1, 1fr)
 			.press_item
 				cursor: pointer
 				position: relative
@@ -806,6 +857,9 @@ nav.nav
 						margin-bottom: 20px
 					.description
 						font-size: 14px
+			@media (max-width: 900px)
+				grid-template-columns: repeat(1, 1fr)
+				width: 100%
 		&.less-top
 			padding-top: 2rem
 		&.no-bg
@@ -818,6 +872,9 @@ nav.nav
 			text-align: left
 			font-size: 28px
 			margin-bottom: 40px
+			@media (max-width: 600px)
+				padding-left: 10vw
+				padding-right: 10vw
 
 	&.resources_section 
 		display: flex
@@ -895,33 +952,38 @@ nav.nav
 			width: 100%
 			.timeline_block
 				position: relative
-				height: 200px
+				height: 300px
 				&:before
 					content: ''
 					position: absolute
 					height: 100%
 					width: 2px
-					background: #dedede
+					background: $blue
 					left: 0
 					right: 0
 					margin: auto
 				&:after
-					content: '' 
+					content: " " 
 					position: absolute 
 					width: $timeline-branch-length
 					height: 2px 
-					background: #dedede 
+					background: $blue
 					z-index: 0 
 					bottom: 0% 
 					margin: auto
 					left: 0
 					right: 0
+				&:last-child
+					&:after
+						display: none
 				.date
 					position: absolute
 					z-index: 1
-					font-size: 100px
-					top: 10px
-					opacity: 0.25
+					font-size: 150px
+					color: $teal
+					top: -50px
+					mix-blend-mode: multiply
+					opacity: 0.75
 					font-weight: 600
 				.content
 					position: absolute
@@ -935,14 +997,15 @@ nav.nav
 						width: 200px
 						z-index: 2
 						.title
-							font-size: 14px
+							font-size: 16px
 							font-weight: 600
 							margin-bottom: 5px
 						.description
-							font-size: 12px
+							font-size: 14px
 					.asset
-						width: 150px
-						height: 150px
+						width: 250px
+						height: 250px
+						border-radius: 1000px
 						background-color: #eee
 						z-index: 0
 						background-position: center center
@@ -963,34 +1026,8 @@ nav.nav
 						left: 0
 					&:after
 						right: $timeline-branch-length
-				&:last-child
-					&:after
-						width: 0
-					@media (min-width: 951px)
-						margin-bottom: 100px
-						height: 250px
-						.date 
-							top: unset
-							right: 0
-							left: 0
-							width: min-content
-							bottom: -25px
-							margin: auto
-						.content
-							left: 0
-							right: 0
-							top: unset
-							margin: auto
-							bottom: 0px
-							align-items: flex-start
-							justify-content: space-between
-							width: 400px
-							.text
-								width: 45%
-							.asset
-								width: 150px
-								height: 150px
-								margin-bottom: 1rem
+				
+				
 				@media (max-width: 950px)
 					height: auto
 					&:before
@@ -1003,12 +1040,12 @@ nav.nav
 					.date
 						position: absolute
 						z-index: 1
-						font-size: 100px
-						bottom: 50px
+						bottom: 0px
+						font-size: 125px
+						mix-blend-mode: unset
 						top: unset
 						left: unset
 						right: 0px
-						opacity: 0.25
 						font-weight: 600
 					.content
 						position: unset
@@ -1109,24 +1146,25 @@ nav.nav
 						left: -40px
 
 .about_hero
-	h3
+	& > h3
 		position: unset
 		margin-bottom: 3rem
 		@media (max-width: 950px)
 			margin-bottom: 0rem
+			padding: 0 10vw
 	position: relative
 	width: 100%
 	display: flex
 	align-items: flex-start
 	justify-content: center
+	flex-direction: column
 	@media (min-width: 951px)
-		flex-direction: column
 		padding-right: 0
 		margin-top: 8rem
 	@media (max-width: 950px)
 		justify-content: flex-start
 		margin-top: 4rem
-		padding: 5rem 10vw
+		padding: 5rem 0 0 0
 	.flex-row
 		display: flex
 		flex-direction: column
@@ -1135,27 +1173,35 @@ nav.nav
 		.hero_bio
 			flex: 1
 			z-index: 1
-			font-size: 20px
 			margin-right: 2rem
-			font-weight: 300
-			line-height: 1.2
-			@media (max-width: 800px)
+			.tagline
 				font-size: 20px
-			@media (max-width: 950px)
+				margin-bottom: 15px
+				color: $teal
+				text-transform: uppercase
+			.body
 				font-size: 18px
+				font-weight: 300
+				@media (max-width: 800px)
+					font-size: 16px
+			@media (max-width: 950px)
 				width: 100%
+				padding: 0 10vw
 		.image-container 
 			width: 600px
-			height: 400px
+			height: 600px
 			.img
 				width: 100%
 				height: 100%
-				background: #eee
+				background-color: #eee
+				background-position: top center
+				background-size: cover
+				background-repeat: no-repeat
 			@media (max-width: 950px)
 				margin: 2rem 0 1rem 0 
 				width: 100%
-				height: 50vw
-				min-height: 300px
+				height: 60vw
+				min-height: 400px
 
 .resources_main
 	#resources
@@ -1285,7 +1331,8 @@ nav.nav
 			position: relative
 			text-align: center
 			font-size: 20px
-			font-weight: 400
+			font-weight: 500
+			font-family: $columbia
 			padding-bottom: 15px
 			margin-bottom: 1.5rem
 			&:before
@@ -1307,25 +1354,40 @@ nav.nav
 				justify-content: space-between
 				align-items: center
 				padding: 10px 10px
-				.date
-					width: 100px
-					margin-right: 10px
-					font-size: 30px
-					font-weight: 600
-				.info
-					margin-right: 10px
-					display: flex
-					flex-direction: column
-					justify-content: space-between
-					.info-title
-						font-size: 20px
-						font-weight: 400
-					.info-loc
+				&:last-child
+					margin-bottom: 0
+				.event_info
+					width: 250px
+					margin-right: 5vw
+					p
 						font-size: 16px
-						font-weight: 300
+						margin-bottom: 0.25rem
+						&.subtitle
+							width: max-content
+							padding-bottom: 0.25rem
+							margin-bottom: 5px
+							font-weight: 500
+							font-size: 20px
+							border-bottom: 1px solid rgba(255, 255, 255, 0.5)
+					.info-title
+						width: max-content
+						font-size: 24px
+						font-weight: 600
+						margin-bottom: 10px
+						padding-bottom: 5px
+						border-bottom: 1px solid rgba(255, 255, 255, 0.5)
+					.info
+						display: flex
+						flex-direction: column
+						justify-content: space-between
+						.info-date, .info-loc
+							font-size: 18px
+							font-weight: 300
 				.description
-					max-width: 50%
-					font-size: 14px
+					flex: 1
+					max-width: 600px
+					font-size: 16px
+					margin-right: auto
 				@media (max-width: 700px)
 					flex-direction: column
 					width: 100%
@@ -1431,6 +1493,9 @@ nav.nav
 					font-size: 14px
 					font-weight: 600
 					margin-bottom: 10px
+					.required
+						font-size: 12px
+						color: $blue
 				.form-el
 					width: stretch
 					border: 1px solid #aaa
@@ -1879,17 +1944,23 @@ nav.nav
 	margin-top: 2rem
 
 .section.past-events
+	min-height: unset
 	padding: 0
 	h3
 		padding: 0 $nav-pad
 		@media (max-width: 750px)
-			padding: 5rem 10vw
-		@media (max-width: 600px)
-			padding: 5rem 0
+			padding: 0 10vw
 	.content
 		background: $dark-grey
-		height: 500px
 		width: 100%
+
+#carousel
+	width: 500px
+	height: 500px
+	overflow: hidden
+	position: relative
+	margin: auto
+	color: $white
 
 .section.booking-info
 	min-height: unset
@@ -1902,7 +1973,7 @@ nav.nav
 		display: flex
 		width: 100%
 		margin: auto
-		margin-top: 60px
+		margin-top: 30px
 		padding: 60px 30px
 		justify-content: center
 		align-items: center
@@ -1918,6 +1989,8 @@ nav.nav
 		.agent-email
 			text-align: center
 			font-size: 20px
+			a
+				color: $teal
 
 .quiz_main
 	display: flex
@@ -2183,4 +2256,8 @@ nav.nav
 				margin: -5px 0 5px 0
 
 
-
+.section 
+	.mobile-pad
+		@media (max-width: 600px)
+			padding-left: 30px !important
+			padding-right: 30px !important

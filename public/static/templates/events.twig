@@ -22,12 +22,17 @@
 {% set _nav_page = 'news' %}
 
 {% block main %}
-	<!-- hero section -->
+	<img src="./static/images/inkblots/IB_events_3.png" class="inkblot events-under-hero-inkblot">
+
 	<div class="events-hero insert-background" image-url="./static/images/events/{{ craft.entries.section('eventPage')[0].heroImage[0].getPath() }}"></div>
 
 	<div class="events_main section no-flex">
 
-		<h3>Events</h3>
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-upcoming-inkblot top">
+		<img src="./static/images/inkblots/IB_events_2.png" class="inkblot events-upcoming-inkblot bottom">
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-upcoming-inkblot overlap">
+
+		<h3 class="mobile-pad">Events</h3>
 
 		<div class="event_groups">
 
@@ -36,20 +41,24 @@
 				<div class="event-list">
 					
 					<div class="event">
-						<div class="date">11/05</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
+						<div class="event_info">
+							<div class="info-title">Event Name / Type</div>
+							<div class="info">
+								<p class="info-date">12/09</p>
+								<p class="info-loc">City, State</p>
+							</div>
 						</div>
 						<p class="description">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 						</p>
 					</div>
 					<div class="event">
-						<div class="date">11/15</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
+						<div class="event_info">
+							<div class="info-title">Event Name / Type</div>
+							<div class="info">
+								<p class="info-date">12/09</p>
+								<p class="info-loc">City, State</p>
+							</div>
 						</div>
 						<p class="description">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -64,30 +73,36 @@
 				<div class="event-list">
 					
 					<div class="event">
-						<div class="date">12/09</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
+						<div class="event_info">
+							<div class="info-title">Event Name / Type</div>
+							<div class="info">
+								<p class="info-date">12/09</p>
+								<p class="info-loc">City, State</p>
+							</div>
 						</div>
 						<p class="description">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 						</p>
 					</div>
 					<div class="event">
-						<div class="date">12/20</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
+						<div class="event_info">
+							<div class="info-title">Event Name / Type</div>
+							<div class="info">
+								<p class="info-date">12/09</p>
+								<p class="info-loc">City, State</p>
+							</div>
 						</div>
 						<p class="description">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 						</p>
 					</div>
 					<div class="event">
-						<div class="date">12/22</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
+						<div class="event_info">
+							<div class="info-title">Event Name / Type</div>
+							<div class="info">
+								<p class="info-date">12/09</p>
+								<p class="info-loc">City, State</p>
+							</div>
 						</div>
 						<p class="description">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -106,10 +121,17 @@
 	</div>
 
 	<div class="section no-flex past-events">
-		<h3>Past Events</h3>
+
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot events-past-inkblot top">
+
+		<h3 class="mobile-pad">Past Events</h3>
 		<div class="content">
-			<div class="carousel">
+
+			<div id="carousel">
+				
+
 			</div>
+
 		</div>
 	</div>
 
@@ -119,7 +141,7 @@
 		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-booking-inkblot left">
 		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-booking-inkblot right">
 
-		<h3>Booking Info</h3>
+		<h3 class="mobile-pad">Booking Info</h3>
 
 		<div class="content">
 			<p class="title">For all booking inquiries, please contact:</p>
@@ -130,4 +152,3 @@
 	</div>
 
 {% endblock %}
-
