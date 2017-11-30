@@ -37,7 +37,7 @@ $quiz-disagree: #7a0006
 $quiz-agree: #007C79
 
 $quattro: 'Quattrocento Sans', sans-serif
-$columbia: 'Columbia', 'Georgia', serif
+$columbia: 'Columbia Serial', 'Georgia', serif
 
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
@@ -1297,12 +1297,12 @@ nav.nav
 						content: ''
 						position: absolute
 						width: 0
-						height: 3px
+						height: 2px
 						left: 0
 						right: 0
 						bottom: -5px
 						margin: auto
-						background: #444
+						background: $teal
 						transition-timing-function: ease-in-out
 						transition-duration: 250ms
 					&:hover:after, &.active:after
@@ -1336,16 +1336,26 @@ nav.nav
 		.filter
 			margin-bottom: 30px
 			display: flex
-			input
+			.input
 				background: white
 				border: 1px solid #aaa
 				flex-grow: 1
 				margin-right: 8px
 				padding: 10px 10px
-			select
-				width: 108px
-				background: #aaa
-				color: white
+				transition-timing-function: ease-in-out
+				transition-duration: 250ms
+				&:focus
+					border-color: $teal
+			.sorter
+				text-align: left
+				width: 30%
+				min-width: 100px
+				max-width: 120px
+				font-size: 14px
+				padding-top: 10px
+				padding-bottom: 10px
+				.drop-menu
+					background: $white-hover
 		.content
 			column-count: 3
 			column-gap: 23px
@@ -1356,36 +1366,38 @@ nav.nav
 			.resource_item
 				margin-bottom: 23px
 				break-inside: avoid-column;
-				.thumbnail
-					height: 300px
-					background: #eee
-					margin-bottom: 5px
-				.resource_title
-					font-size: 20px
-					font-weight: 600
-					margin-bottom: 2px
-				.file_type
-					font-size: 14px
-					font-weight: 200
-			&.list-mode
-				column-count: unset
-				column-gap: unset
-				.resource_item
-					display: flex
-					flex-direction: row
-					justify-content: flex-start
-					align-items: center
-					background: #eee
-					position: relative
-					.thumbnail
-						height: 70px
-						width: 70px
-						background: #fff
-						border: 2px solid #eee
-						margin: 0
-					.info
-						margin-left: 10px
-					
+				background: $off-white
+				box-sizing: border-box
+				padding: 40px 30px
+				position: relative
+				&:before
+					content: " "
+					position: absolute
+					bottom: 0
+					left: 0
+					right: 0
+					background: $teal
+					opacity: 0.75
+					transition-duration: 250ms
+					transition-timing-function: ease-in-out
+					height: 0
+					z-index: 2
+				.info
+					.resource_title
+						font-size: 22px
+						font-weight: 600
+						margin-bottom: 10px
+						font-family: $columbia
+					.meta
+						margin-bottom: 10px
+						font-size: 15px
+						font-weight: 200
+						display: flex
+						justify-content: space-between
+						width: 100%
+				&:hover
+					&:before
+						height: 14px
 
 .event_groups
 	width: 100%
@@ -1567,6 +1579,7 @@ nav.nav
 					.required
 						font-size: 12px
 						color: $blue
+						margin-left: 5px
 				.form-el
 					width: stretch
 					border: 1px solid #aaa
@@ -2048,21 +2061,22 @@ nav.nav
 		width: 100%
 		margin: auto
 		margin-top: 30px
-		padding: 60px 30px
+		padding: 70px 30px
 		justify-content: center
 		align-items: center
 		flex-direction: column
 		.title
+			font-family: $columbia
 			text-align: center
-			font-size: 24px
+			font-size: 26px
 			margin-bottom: 30px
-		.agent-name, .agent-phone
+		.agent-name, .agent-sub
 			text-align: center
-			font-size: 20px
+			font-size: 23px
 			margin-bottom: 5px
 		.agent-email
 			text-align: center
-			font-size: 20px
+			font-size: 23px
 			a
 				color: $teal
 
@@ -2129,6 +2143,7 @@ nav.nav
 				justify-content: space-between
 				width: 100%
 				max-width: 650px
+				position: relative
 				.answer_list
 					flex: 1
 					max-width: 400px
@@ -2167,6 +2182,17 @@ nav.nav
 					margin: 0
 					&.small
 						width: 55px
+
+				@media (max-width: 600px)
+					padding-bottom: 20px
+					.label
+						position: absolute
+						bottom: -15px
+						&.left
+							left: 5px
+						&.right
+							right: 5px
+							text-align: right
 				.slider-container
 					flex: 1
 					max-width: 500px

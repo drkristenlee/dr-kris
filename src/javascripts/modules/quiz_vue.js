@@ -30,13 +30,13 @@ Vue.component('quiz-element', {
 						<p class="question">{{ q.question }}<span class="asterik" v-if="step === 1 && index === 0">* This question is required</span><span class="asterik" v-else>*</span>
 						</p>
 						<div class="response-container">
-							<div class="label small">Strongly Disagree</div>
+							<div class="label small left">Strongly Disagree</div>
 							<div class="answer_list">
 								<template v-for="n in 6">
 									<div class="option" @click="q.answer=n" :class="{ selected: q.answer == n }"></div>
 								</template>
 							</div>
-							<div class="label small">Strongly Agree</div>
+							<div class="label small right">Strongly Agree</div>
 						</div>
 					</div>
 				</template>

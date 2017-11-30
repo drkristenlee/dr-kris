@@ -40,59 +40,30 @@
 			</div>
 
 			<div class="filter">
-				<input type="text" placeholder="Search for resources">
-				<select>
-					<option disabled selected>Sort By</option>
-					<option value="">Date Incr.</option>
-					<option>Date Desc.</option>
-					<option>Title Asc.</option>
-					<option>Title Desc.</option>
-				</select>
+				<input class="input" type="text" placeholder="Search for resources">
+				<button class="button dropdown sorter">
+					Sort By
+					<ul class="drop-menu">
+						<a class="buy-link"><li>Date Asc.</li></a>
+						<a class="buy-link"><li>Date Desc.</li></a>
+						<a class="buy-link"><li>Title Asc.</li></a>
+						<a class="buy-link"><li>Title Desc.</li></a>
+					</ul>
+				</button>
 			</div>
 
 			<div class="content">
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
+				
+				{% for entry in craft.entries.section('resources') %}
+					<div class="resource_item">
+						<div class="info">
+							<p class="resource_title">{{ entry.title }}</p>
+							<p class="meta"><span class="file_type">File Type</span> <span class="date">{{ entry.dateCreated|date('n/j/y') }}</span></p>
+							<p class="more"><a href="#" class="link teal">read more →</a></p>
+						</div>
 					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
+				{% endfor %}
+				
 			</div>
 
 		</div>		

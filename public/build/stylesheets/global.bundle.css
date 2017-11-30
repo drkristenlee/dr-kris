@@ -2251,12 +2251,12 @@ nav.nav {
         content: '';
         position: absolute;
         width: 0;
-        height: 3px;
+        height: 2px;
         left: 0;
         right: 0;
         bottom: -5px;
         margin: auto;
-        background: #444;
+        background: #007C79;
         transition-timing-function: ease-in-out;
         transition-duration: 250ms; }
       .resources_main #resources .top-select .category-list .category:hover:after, .resources_main #resources .top-select .category-list .category.active:after {
@@ -2293,18 +2293,28 @@ nav.nav {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
-    .resources_main #resources .filter input {
+    .resources_main #resources .filter .input {
       background: white;
       border: 1px solid #aaa;
       -webkit-box-flex: 1;
           -ms-flex-positive: 1;
               flex-grow: 1;
       margin-right: 8px;
-      padding: 10px 10px; }
-    .resources_main #resources .filter select {
-      width: 108px;
-      background: #aaa;
-      color: white; }
+      padding: 10px 10px;
+      transition-timing-function: ease-in-out;
+      transition-duration: 250ms; }
+      .resources_main #resources .filter .input:focus {
+        border-color: #007C79; }
+    .resources_main #resources .filter .sorter {
+      text-align: left;
+      width: 30%;
+      min-width: 100px;
+      max-width: 120px;
+      font-size: 14px;
+      padding-top: 10px;
+      padding-bottom: 10px; }
+      .resources_main #resources .filter .sorter .drop-menu {
+        background: #E6E6E6; }
   .resources_main #resources .content {
     -webkit-column-count: 3;
             column-count: 3;
@@ -2321,47 +2331,41 @@ nav.nav {
     .resources_main #resources .content .resource_item {
       margin-bottom: 23px;
       -webkit-column-break-inside: avoid;
-              break-inside: avoid-column; }
-      .resources_main #resources .content .resource_item .thumbnail {
-        height: 300px;
-        background: #eee;
-        margin-bottom: 5px; }
-      .resources_main #resources .content .resource_item .resource_title {
-        font-size: 20px;
+              break-inside: avoid-column;
+      background: #D8D9D9;
+      box-sizing: border-box;
+      padding: 40px 30px;
+      position: relative; }
+      .resources_main #resources .content .resource_item:before {
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #007C79;
+        opacity: 0.75;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+        height: 0;
+        z-index: 2; }
+      .resources_main #resources .content .resource_item .info .resource_title {
+        font-size: 22px;
         font-weight: 600;
-        margin-bottom: 2px; }
-      .resources_main #resources .content .resource_item .file_type {
-        font-size: 14px;
-        font-weight: 200; }
-    .resources_main #resources .content.list-mode {
-      -webkit-column-count: unset;
-              column-count: unset;
-      -webkit-column-gap: unset;
-              column-gap: unset; }
-      .resources_main #resources .content.list-mode .resource_item {
+        margin-bottom: 10px;
+        font-family: "Columbia Serial", "Georgia", serif; }
+      .resources_main #resources .content .resource_item .info .meta {
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-weight: 200;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
-        -webkit-box-pack: start;
-            -ms-flex-pack: start;
-                justify-content: flex-start;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-        background: #eee;
-        position: relative; }
-        .resources_main #resources .content.list-mode .resource_item .thumbnail {
-          height: 70px;
-          width: 70px;
-          background: #fff;
-          border: 2px solid #eee;
-          margin: 0; }
-        .resources_main #resources .content.list-mode .resource_item .info {
-          margin-left: 10px; }
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        width: 100%; }
+      .resources_main #resources .content .resource_item:hover:before {
+        height: 14px; }
 
 .event_groups {
   width: 100%;
@@ -2379,7 +2383,7 @@ nav.nav {
       text-align: center;
       font-size: 20px;
       font-weight: 500;
-      font-family: "Columbia", "Georgia", serif;
+      font-family: "Columbia Serial", "Georgia", serif;
       padding-bottom: 15px;
       margin-bottom: 1.5rem; }
       .event_groups .event_section .title:before {
@@ -2613,7 +2617,8 @@ nav.nav {
           margin-bottom: 10px; }
           .contact-form-wrapper .contact-form .form-row .form-content .label .required {
             font-size: 12px;
-            color: #274A63; }
+            color: #274A63;
+            margin-left: 5px; }
         .contact-form-wrapper .contact-form .form-row .form-content .form-el {
           width: -webkit-fill-available;
           width: -moz-available;
@@ -3141,7 +3146,7 @@ nav.nav {
     width: 100%;
     margin: auto;
     margin-top: 30px;
-    padding: 60px 30px;
+    padding: 70px 30px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -3153,16 +3158,17 @@ nav.nav {
         -ms-flex-direction: column;
             flex-direction: column; }
     .section.booking-info .content .title {
+      font-family: "Columbia Serial", "Georgia", serif;
       text-align: center;
-      font-size: 24px;
+      font-size: 26px;
       margin-bottom: 30px; }
-    .section.booking-info .content .agent-name, .section.booking-info .content .agent-phone {
+    .section.booking-info .content .agent-name, .section.booking-info .content .agent-sub {
       text-align: center;
-      font-size: 20px;
+      font-size: 23px;
       margin-bottom: 5px; }
     .section.booking-info .content .agent-email {
       text-align: center;
-      font-size: 20px; }
+      font-size: 23px; }
       .section.booking-info .content .agent-email a {
         color: #007C79; }
 
@@ -3258,7 +3264,8 @@ nav.nav {
           -ms-flex-pack: justify;
               justify-content: space-between;
       width: 100%;
-      max-width: 650px; }
+      max-width: 650px;
+      position: relative; }
       #quiz .quiz-page .quiz-question-block .response-container .answer_list {
         -webkit-box-flex: 1;
             -ms-flex: 1;
@@ -3304,6 +3311,17 @@ nav.nav {
         margin: 0; }
         #quiz .quiz-page .quiz-question-block .response-container .label.small {
           width: 55px; }
+      @media (max-width: 600px) {
+        #quiz .quiz-page .quiz-question-block .response-container {
+          padding-bottom: 20px; }
+          #quiz .quiz-page .quiz-question-block .response-container .label {
+            position: absolute;
+            bottom: -15px; }
+            #quiz .quiz-page .quiz-question-block .response-container .label.left {
+              left: 5px; }
+            #quiz .quiz-page .quiz-question-block .response-container .label.right {
+              right: 5px;
+              text-align: right; } }
       #quiz .quiz-page .quiz-question-block .response-container .slider-container {
         -webkit-box-flex: 1;
             -ms-flex: 1;
