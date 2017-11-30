@@ -34,7 +34,14 @@
 				<p class="book-title"><strong>Mentalligence:</strong><br> A New Psychology of Thinking (Learn What it Takes to be More Agile, Mindful and Connected in Today's World)</p>
 				<p class="release-date">Coming 2018!</p>
 				<div class="actions">
-					<button class="button primary">Buy the Book</button>
+					<button class="button primary dropdown">
+						Buy the Book
+						<ul class="drop-menu">
+							{% for link in craft.entries.section('mentalligenceBuyLinks').order('date asc') %}
+								<a class="buy-link" href="{{ link.buyLink }}" target="_blank"><li>{{ link.seller }}</li></a>
+							{% endfor %}
+						</ul>
+					</button>
 					<a href="#" class="link">Read an excerpt →</a>
 				</div>
 			</div>
@@ -82,7 +89,14 @@
 					</div>
 				</div>
 				<div class="actions">
-					<button class="button primary">Buy the Book</button>
+					<button class="button primary dropdown">
+						Buy the Book
+						<ul class="drop-menu">
+							{% for link in craft.entries.section('resetBuyLinks').order('date asc') %}
+								<a class="buy-link" href="{{ link.buyLink }}" target="_blank"><li>{{ link.seller }}</li></a>
+							{% endfor %}
+						</ul>
+					</button>
 				</div>
 			</div>
 
@@ -90,38 +104,6 @@
 
 		</div>
 	</div>
-
-	<!--
-	<div class="list_quotes">
-		<div class="quote_item">
-			<p class="body">
-				"Lee's voice and the book's structure will be useful to readers looking for a leg up...A well written, sensible self-help guide"
-			</p>
-			<p class="author">
-				- Kirkus Reviews
-			</p>
-		</div>
-		<div class="quote_item">
-			<p class="body">
-				"A rational, clearly outlined debut guide to recognizign and tolerating the sress of everyday life"
-			</p>
-			<p class="author">
-				- Kirkus Reviews
-			</p>
-		</div>
-		<div class="quote_item">
-			<p class="body">
-				"Filled with skills you can start applying to your life today, <em>Mentalligence</em> serves as a practical guide to coping with stress. Backed by scientific evidence, yet presented in an easy-to-digest format, Dr. Kris' adivce will prepare you for challenges of all sizes.."
-			</p>
-			<p class="author">
-				- Amy Morin, LCSW &amp; bestselling author of <em>13 Things Mentally Strong People Don't Do</em>
-			</p>
-		</div>
-		<div class="cta-container">
-			<button class="cta">Buy the Book Now!</button>
-		</div>
-	</div>
-	-->
 	
 {% endblock %}
 

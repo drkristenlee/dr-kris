@@ -23,6 +23,12 @@ $white: #FFFFFF
 $off-white: #D8D9D9
 $blue: #274A63
 
+$teal-hover: #006360
+$white-hover: #E6E6E6
+$off-white-hover: #BFC0C0
+$dark-grey-hover: #1A1B1B
+$blue-hover: #0E314A
+
 $book-height: 450px
 $bottom-banner-h: 50px
 $footer-mobile-w: 600px
@@ -268,20 +274,85 @@ html
 	background: $off-white
 	font-size: 16px
 	border-radius: 0px
+	transition-timing-function: ease-in-out
+	transition-duration: 250ms
+	&:hover, &.active
+		background: $off-white-hover
 	&.primary
 		background: $teal
 		color: #FFFFFF
+		&:hover, &.active
+			background: $teal-hover
 	&.black
 		background: $dark-grey
 		color: #FFFFFF
+		&:hover, &.active
+			background: $dark-grey-hover
 	&.white
 		background: $white
+		&:hover, &.active
+			background: $white-hover
 	&.small
 		padding: 10px 18px
 		font-size: 14px
 	&:disabled
 		opacity: 0.5
 		cursor: not-allowed
+	&.dropdown
+		position: relative
+		padding-left: 15px
+		padding-right: 30px
+		&:before
+			content: " "
+			width: 0 
+			height: 0
+			border-left: 5px solid transparent
+			border-right: 5px solid transparent
+			border-top: 5px solid $white
+			top: 0
+			bottom: 0
+			right: 10px
+			margin: auto
+			position: absolute
+			transition-timing-function: ease-in-out
+			transition-duration: 250ms
+		.drop-menu
+			z-index: 0
+			position: absolute
+			left: 0
+			right: 0
+			top: 100%
+			transform-origin: top center
+			background: $off-white
+			padding: 15px 10px
+			box-sizing: border-box
+			opacity: 0
+			pointer-events: none
+			transition-timing-function: ease-in-out
+			transition-duration: 250ms
+			text-align: left
+			.buy-link
+				color: $dark-grey
+				text-decoration: none
+				li
+					border-bottom: 1px solid $off-white-hover
+					margin-bottom: 7px
+					padding-bottom: 7px
+					list-style: none
+					font-size: 13px
+				&:last-child
+					li
+						margin-bottom: 0
+						border-bottom: none
+						padding-bottom: 0
+				&:hover
+					color: $teal
+		&.active
+			.drop-menu
+				pointer-events: initial
+				opacity: 1
+			&:before
+				transform: rotate(180deg)
 
 .handwritten
 	height: 90px
@@ -1532,15 +1603,17 @@ nav.nav
 			color: $white
 		.subscribe_input
 			width: 200px
+			height: 30px
 			position: relative
-			display: inline-block
+			display: inline-flex
 			input, button
 				border-radius: 0px
 				outline: none
 				font-size: 12px
+				box-sizing: border-box
+				height: 100%
 			input
-				width: 135px
-				height: 28px
+				width: 70%
 				background: white
 				padding: 1px 10px
 			button
@@ -1548,8 +1621,11 @@ nav.nav
 				border: none
 				background: $teal
 				color: white
-				width: 45px
-				height: 30px
+				width: 30%
+				transition-timing-function: ease-in-out
+				transition-duration: 250ms
+				&:hover
+					background: $teal-hover
 		.footer-nav
 			max-width: 500px
 			display: flex
@@ -1631,14 +1707,10 @@ nav.nav
 				width: 350px
 				.subscribe_input
 					width: 100%
+					height: 35px
 					input, button
 						box-sizing: border-box
-						height: 35px
 						font-size: 14px
-					input
-						width: 70%
-					button
-						width: 30%
 			.footer-nav .nav_item
 				width: 100%
 				margin-bottom: 1rem
@@ -1837,6 +1909,8 @@ nav.nav
 		background: $blue
 	&.opaque:after
 		opacity: 1
+	&.flush:after
+		bottom: 0px
 
 #press_hero
 	margin-top: $nav-height

@@ -30,6 +30,10 @@ function addBackgroundImages() {
 $(document).ready(function () {
 	addBackgroundImages();
 
+	$('.button.dropdown').click(function (e) {
+		$(e.target).toggleClass("active");
+	});
+
 	$("#resources .category-list .category").click(function () {
 		$("#resources .category-list .category").removeClass("active");
 		$(this).addClass("active");

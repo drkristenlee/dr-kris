@@ -1032,21 +1032,86 @@ html {
   color: #111111;
   background: #D8D9D9;
   font-size: 16px;
-  border-radius: 0px; }
+  border-radius: 0px;
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms; }
+  .button:hover, .button.active {
+    background: #BFC0C0; }
   .button.primary {
     background: #007C79;
     color: #FFFFFF; }
+    .button.primary:hover, .button.primary.active {
+      background: #006360; }
   .button.black {
     background: #333434;
     color: #FFFFFF; }
+    .button.black:hover, .button.black.active {
+      background: #1A1B1B; }
   .button.white {
     background: #FFFFFF; }
+    .button.white:hover, .button.white.active {
+      background: #E6E6E6; }
   .button.small {
     padding: 10px 18px;
     font-size: 14px; }
   .button:disabled {
     opacity: 0.5;
     cursor: not-allowed; }
+  .button.dropdown {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 30px; }
+    .button.dropdown:before {
+      content: " ";
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #FFFFFF;
+      top: 0;
+      bottom: 0;
+      right: 10px;
+      margin: auto;
+      position: absolute;
+      transition-timing-function: ease-in-out;
+      transition-duration: 250ms; }
+    .button.dropdown .drop-menu {
+      z-index: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      -webkit-transform-origin: top center;
+              transform-origin: top center;
+      background: #D8D9D9;
+      padding: 15px 10px;
+      box-sizing: border-box;
+      opacity: 0;
+      pointer-events: none;
+      transition-timing-function: ease-in-out;
+      transition-duration: 250ms;
+      text-align: left; }
+      .button.dropdown .drop-menu .buy-link {
+        color: #333434;
+        text-decoration: none; }
+        .button.dropdown .drop-menu .buy-link li {
+          border-bottom: 1px solid #BFC0C0;
+          margin-bottom: 7px;
+          padding-bottom: 7px;
+          list-style: none;
+          font-size: 13px; }
+        .button.dropdown .drop-menu .buy-link:last-child li {
+          margin-bottom: 0;
+          border-bottom: none;
+          padding-bottom: 0; }
+        .button.dropdown .drop-menu .buy-link:hover {
+          color: #007C79; }
+    .button.dropdown.active .drop-menu {
+      pointer-events: initial;
+      opacity: 1; }
+    .button.dropdown.active:before {
+      -webkit-transform: rotate(180deg);
+              transform: rotate(180deg); }
 
 .handwritten {
   height: 90px;
@@ -2592,15 +2657,19 @@ nav.nav {
       color: #FFFFFF; }
     #footer .footer_content .subscribe_input {
       width: 200px;
+      height: 30px;
       position: relative;
-      display: inline-block; }
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex; }
       #footer .footer_content .subscribe_input input, #footer .footer_content .subscribe_input button {
         border-radius: 0px;
         outline: none;
-        font-size: 12px; }
+        font-size: 12px;
+        box-sizing: border-box;
+        height: 100%; }
       #footer .footer_content .subscribe_input input {
-        width: 135px;
-        height: 28px;
+        width: 70%;
         background: white;
         padding: 1px 10px; }
       #footer .footer_content .subscribe_input button {
@@ -2608,8 +2677,11 @@ nav.nav {
         border: none;
         background: #007C79;
         color: white;
-        width: 45px;
-        height: 30px; }
+        width: 30%;
+        transition-timing-function: ease-in-out;
+        transition-duration: 250ms; }
+        #footer .footer_content .subscribe_input button:hover {
+          background: #006360; }
     #footer .footer_content .footer-nav {
       max-width: 500px;
       display: -webkit-box;
@@ -2699,15 +2771,11 @@ nav.nav {
           margin-bottom: 2rem;
           width: 350px; }
           #footer .footer_content .logo-nav .subscribe_input {
-            width: 100%; }
+            width: 100%;
+            height: 35px; }
             #footer .footer_content .logo-nav .subscribe_input input, #footer .footer_content .logo-nav .subscribe_input button {
               box-sizing: border-box;
-              height: 35px;
               font-size: 14px; }
-            #footer .footer_content .logo-nav .subscribe_input input {
-              width: 70%; }
-            #footer .footer_content .logo-nav .subscribe_input button {
-              width: 30%; }
         #footer .footer_content .footer-nav .nav_item {
           width: 100%;
           margin-bottom: 1rem;
@@ -2931,6 +2999,8 @@ nav.nav {
     background: #274A63; }
   .has-bot-banner.opaque:after {
     opacity: 1; }
+  .has-bot-banner.flush:after {
+    bottom: 0px; }
 
 #press_hero {
   margin-top: 70px; }
