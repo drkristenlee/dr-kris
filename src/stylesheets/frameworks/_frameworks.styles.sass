@@ -124,6 +124,7 @@ html
 		width: 400px
 		left: -200px
 		transform: rotate(90deg)
+		z-index: -1
 	&.landing-event-inkblot.right
 		bottom: 0px
 		width: 450px
@@ -299,6 +300,7 @@ html
 		opacity: 0.5
 		cursor: not-allowed
 	&.dropdown
+		z-index: 100
 		position: relative
 		padding-left: 15px
 		padding-right: 30px
@@ -317,7 +319,7 @@ html
 			transition-timing-function: ease-in-out
 			transition-duration: 250ms
 		.drop-menu
-			z-index: 0
+			z-index: 1
 			position: absolute
 			left: 0
 			right: 0
@@ -369,13 +371,17 @@ html
 		height: 120px
 	&.left-corner
 		position: absolute
-		top: -60px
+		top: -50px
 		left: $nav-pad
 		@media (max-width: 600px)
 			left: 0
 	&.meet
-		margin-bottom: -60px
+		margin-bottom: -55px
 		margin-left: -10px
+	&.events
+		height: 100px
+	&.press
+		height: 75px
 
 .mobile_nav
 	display: none
@@ -599,7 +605,7 @@ nav.nav
 				text-align: left
 				li
 					list-style: none
-					font-size: 12px
+					font-size: 13px
 					margin-bottom: 10px
 					&:last-child
 						margin-bottom: 0
@@ -795,7 +801,7 @@ nav.nav
 			margin-left: auto
 			margin-right: auto
 			box-sizing: border-box
-			padding: 100px 50px 30px 50px
+			padding: 70px 50px 30px 50px
 			margin-bottom: 40px
 			background: $teal
 			@media (max-width: 800px)
@@ -1023,7 +1029,7 @@ nav.nav
 			width: 100%
 			.timeline_block
 				position: relative
-				height: 300px
+				height: 320px
 				&:before
 					content: ''
 					position: absolute
@@ -1058,12 +1064,13 @@ nav.nav
 					font-weight: 600
 				.content
 					position: absolute
-					top: 0px
+					top: 20px
 					bottom: 0px
 					display: flex
 					align-items: center
 					justify-content: space-around
 					width: 50%
+					padding-top: 20px
 					.text
 						width: 200px
 						z-index: 2
@@ -1203,17 +1210,17 @@ nav.nav
 				&:after
 					content: ''
 					position: absolute
-					width: 35px
-					height: 30px
+					width: 55px
+					height: 50px
 					background-image: url(../../public/static/images/quote.svg)
 					background-repeat: no-repeat
 					background-size: cover
 					background-position: center center
 					opacity: 1
-					z-index: 0
+					z-index: -1
 				&.quote_top
 					&:after
-						top: -10px
+						top: -25px
 						left: -40px
 
 .about_hero
@@ -1237,6 +1244,7 @@ nav.nav
 		margin-top: 4rem
 		padding: 5rem 0 0 0
 	.flex-row
+		width: 100%
 		display: flex
 		flex-direction: column
 		@media (min-width: 950px)
@@ -1244,7 +1252,7 @@ nav.nav
 		.hero_bio
 			flex: 1
 			z-index: 1
-			margin-right: 2rem
+			margin-right: 4rem
 			.tagline
 				font-size: 20px
 				margin-bottom: 15px
@@ -1259,7 +1267,7 @@ nav.nav
 				width: 100%
 				padding: 0 10vw
 		.image-container 
-			width: 600px
+			width: 500px
 			height: 600px
 			.img
 				width: 100%
@@ -1336,10 +1344,12 @@ nav.nav
 		.filter
 			margin-bottom: 30px
 			display: flex
+			justify-content: space-between
 			.input
 				background: white
 				border: 1px solid #aaa
 				flex-grow: 1
+				max-width: 64.25%
 				margin-right: 8px
 				padding: 10px 10px
 				transition-timing-function: ease-in-out
@@ -1350,12 +1360,15 @@ nav.nav
 				text-align: left
 				width: 30%
 				min-width: 100px
-				max-width: 120px
+				max-width: 16%
 				font-size: 14px
 				padding-top: 10px
 				padding-bottom: 10px
 				.drop-menu
 					background: $white-hover
+			@media (max-width: 900px)
+				.input
+					max-width: unset
 		.content
 			column-count: 3
 			column-gap: 23px
@@ -1406,8 +1419,10 @@ nav.nav
 	color: $white
 	margin-bottom: 30px
 	.event_section
+		margin: auto
 		margin-bottom: 4rem
 		width: 100%
+		max-width: 850px
 		&:last-child
 			margin-bottom: 0
 		.title
@@ -1441,7 +1456,7 @@ nav.nav
 					margin-bottom: 0
 				.event_info
 					width: 250px
-					margin-right: 5vw
+					margin-right: 4vw
 					p
 						font-size: 16px
 						margin-bottom: 0.25rem
@@ -1468,7 +1483,6 @@ nav.nav
 							font-weight: 300
 				.description
 					flex: 1
-					max-width: 600px
 					font-size: 16px
 					margin-right: auto
 				@media (max-width: 700px)
@@ -2019,10 +2033,10 @@ nav.nav
 
 .events-hero
 	width: 100%
-	height: 550px
+	height: 400px
 	background-size: cover
 	background-repeat: no-repeat
-	background-position: center center
+	background-position: 100% 20%
 	background-color: $off-white
 	position: relative
 	margin-top: $nav-height
