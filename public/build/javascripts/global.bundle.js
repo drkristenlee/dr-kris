@@ -27,7 +27,15 @@ function addBackgroundImages() {
 	});
 }
 
+function closeNotifBanner() {
+	$('#notification_banner').remove();
+}
+
 $(document).ready(function () {
+	if ($('#notification_banner .close-btn') !== null) {
+		$('#notification_banner .close-btn').click(closeNotifBanner);
+	}
+
 	addBackgroundImages();
 
 	$('.button.dropdown').click(function (e) {

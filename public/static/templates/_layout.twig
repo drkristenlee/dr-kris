@@ -8,71 +8,80 @@
 
 {# HEADER #}
 {% block header %}
-	<div class="mobile_nav_list">		
-		<ul class="navigation">
-			<li class="nav_item"><a href="./">Home</a></li>
-			<li class="nav_item"><a href="./about">About</a></li>
-			<li class="nav_item"><a href="./books">Books</a></li>
-			<li class="nav_item"><a class="has-dropdown">Resources</a>
-				<ul class="sub-list">
-					<li class="nav_item"><a href="./resources#worksheets">Worksheets</a></li>
-					<li class="nav_item"><a href="./resources#presentations">Presentations</a></li>
-					<li class="nav_item"><a href="./resources#videos">Videos</a></li>
-					<li class="nav_item"><a href="./quiz">Quiz</a></li>
-				</ul>
-			</li>
-			<li class="nav_item"><a class="has-dropdown">News</a>
-				<ul class="sub-list">
-					<li class="nav_item"><a href="./press">Press</a></li>
-					<li class="nav_item"><a href="./events">Events</a></li>
-				</ul>
-			</li>
-			<li class="nav_item"><a href="./contact">Contact</a></li>
-		</ul>
-	</div>
-	<div class="mobile_nav">
-		<div class="container">
-			<span class="nav-line"></span>
-			<span class="nav-line"></span>
-			<span class="nav-line"></span>
-		</div>
-	</div>
-	<nav class="nav">
-		<div class="brand _blur">
-			<a href="./"><img src="./static/images/logo.gif"></a>
-		</div>
-		<ul class="nav_list">
-			<li class="nav_item
-				{% if nav_page == 'about' %} active{% endif %}
-				"><a href="./about">About</a></li>
-			<li class="nav_item 
-				{% if nav_page == 'books' %} active{% endif %}
-				"><a href="./books">Books</a></li>
-			<li class="nav_item 
-				{% if nav_page == 'resources' %} active{% endif %}
-				">
-					<a href="./resources" class="has-dropdown">Resources</a>
-					<ul class="hover-menu">
-						<li><a href="./resources#worksheets">Worksheets</a></li>
-						<li><a href="./resources#presentations">Presentations</a></li>
-						<li><a href="./resources#videos">Videos</a></li>
-						<li><a href="./quiz">Quiz</a></li>
+	{# NOTIFICATION BANNER #}
+	{% block notif_banner %}
+	{% endblock %}
+
+	<div id="navigation-wrapper">
+
+		<div class="mobile_nav_list">		
+			<ul class="navigation">
+				<li class="nav_item"><a href="./">Home</a></li>
+				<li class="nav_item"><a href="./about">About</a></li>
+				<li class="nav_item"><a href="./books">Books</a></li>
+				<li class="nav_item"><a class="has-dropdown">Resources</a>
+					<ul class="sub-list">
+						<li class="nav_item"><a href="./resources#worksheets">Worksheets</a></li>
+						<li class="nav_item"><a href="./resources#presentations">Presentations</a></li>
+						<li class="nav_item"><a href="./resources#videos">Videos</a></li>
+						<li class="nav_item"><a href="./quiz">Quiz</a></li>
 					</ul>
 				</li>
-			<li class="nav_item 
-				{% if nav_page == 'news' %} active{% endif %}
-				">
-					<a class="has-dropdown">News</a>
-					<ul class="hover-menu">
-						<li><a href="./press">Press</a></li>
-						<li><a href="./events">Events</a></li>
+				<li class="nav_item"><a class="has-dropdown">News</a>
+					<ul class="sub-list">
+						<li class="nav_item"><a href="./press">Press</a></li>
+						<li class="nav_item"><a href="./events">Events</a></li>
 					</ul>
 				</li>
-			<li class="nav_item 
-				{% if nav_page == 'contact' %} active{% endif %}
-				"><a href="./contact">Contact</a></li>
-		</ul>
-	</nav>
+				<li class="nav_item"><a href="./contact">Contact</a></li>
+			</ul>
+		</div>
+		<div class="mobile_nav">
+			<div class="container">
+				<span class="nav-line"></span>
+				<span class="nav-line"></span>
+				<span class="nav-line"></span>
+			</div>
+		</div>
+
+		<nav class="nav">
+			<div class="brand _blur">
+				<a href="./"><img src="./static/images/logo.gif"></a>
+			</div>
+			<ul class="nav_list">
+				<li class="nav_item
+					{% if nav_page == 'about' %} active{% endif %}
+					"><a href="./about">About</a></li>
+				<li class="nav_item 
+					{% if nav_page == 'books' %} active{% endif %}
+					"><a href="./books">Books</a></li>
+				<li class="nav_item 
+					{% if nav_page == 'resources' %} active{% endif %}
+					">
+						<a href="./resources" class="has-dropdown">Resources</a>
+						<ul class="hover-menu">
+							<li><a href="./resources#worksheets">Worksheets</a></li>
+							<li><a href="./resources#presentations">Presentations</a></li>
+							<li><a href="./resources#videos">Videos</a></li>
+							<li><a href="./quiz">Quiz</a></li>
+						</ul>
+					</li>
+				<li class="nav_item 
+					{% if nav_page == 'news' %} active{% endif %}
+					">
+						<a class="has-dropdown">News</a>
+						<ul class="hover-menu">
+							<li><a href="./press">Press</a></li>
+							<li><a href="./events">Events</a></li>
+						</ul>
+					</li>
+				<li class="nav_item 
+					{% if nav_page == 'contact' %} active{% endif %}
+					"><a href="./contact">Contact</a></li>
+			</ul>
+		</nav>
+
+	</div>
 {% endblock %}
 
 {# MAIN #}

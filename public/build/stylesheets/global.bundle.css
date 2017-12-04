@@ -794,6 +794,68 @@ button {
 html {
   line-height: unset; }
 
+#navigation-wrapper {
+  position: relative; }
+
+#notification_banner {
+  padding: 15px 0;
+  background: #007C79;
+  color: #FFFFFF;
+  position: relative;
+  margin-bottom: 5px; }
+  #notification_banner a {
+    text-decoration: none;
+    color: inherit; }
+  #notification_banner .text {
+    margin: auto;
+    text-align: center;
+    font-size: 14px; }
+  #notification_banner .close-banner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 62px;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    #notification_banner .close-banner .close-btn {
+      margin: auto;
+      position: relative;
+      height: 20px;
+      width: 20px;
+      cursor: pointer; }
+      #notification_banner .close-banner .close-btn .line {
+        width: 90%;
+        height: 1px;
+        border-radius: 2px;
+        background: #D8D9D9;
+        transition-timing-function: ease-in-out;
+        transition-duration: 250ms;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto; }
+        #notification_banner .close-banner .close-btn .line:nth-child(1) {
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg); }
+        #notification_banner .close-banner .close-btn .line:nth-child(2) {
+          -webkit-transform: rotate(-45deg);
+                  transform: rotate(-45deg); }
+      #notification_banner .close-banner .close-btn:hover .line {
+        background: #FFFFFF; }
+    @media (max-width: 450px) {
+      #notification_banner .close-banner {
+        right: 15px; } }
+
 #content {
   position: relative;
   overflow: hidden; }
@@ -1017,6 +1079,23 @@ html {
     width: 600px;
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg); }
+  .inkblot.about-clients-inkblot.top {
+    z-index: -1;
+    top: -250px;
+    right: -300px;
+    width: 400px;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg); }
+    @media (max-width: 950px) {
+      .inkblot.about-clients-inkblot.top {
+        top: -175px; } }
+  .inkblot.about-clients-inkblot.bottom {
+    z-index: -1;
+    bottom: -225px;
+    right: -200px;
+    width: 300px;
+    -webkit-transform: rotate(-70deg);
+            transform: rotate(-70deg); }
 
 .link {
   font-size: 16px;
@@ -1310,7 +1389,8 @@ body.mobileOverlay {
         transition-delay: 200ms; }
 
 nav.nav {
-  position: absolute;
+  position: relative;
+  margin-bottom: -70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2052,7 +2132,8 @@ nav.nav {
           right: 30%; }
         @media (max-width: 950px) {
           .section.timeline_section .timeline_container .timeline_block {
-            height: auto; }
+            height: auto;
+            max-width: 600px; }
             .section.timeline_section .timeline_container .timeline_block:before {
               right: unset;
               left: 0; }
@@ -2077,7 +2158,7 @@ nav.nav {
               display: -webkit-box;
               display: -ms-flexbox;
               display: flex;
-              padding: 4rem 1rem;
+              padding: 4rem 1rem 2rem 1rem;
               -webkit-box-align: start;
                   -ms-flex-align: start;
                       align-items: flex-start;
@@ -2085,9 +2166,9 @@ nav.nav {
                   -ms-flex-pack: start;
                       justify-content: flex-start;
               -webkit-box-orient: vertical;
-              -webkit-box-direction: normal;
-                  -ms-flex-direction: column;
-                      flex-direction: column;
+              -webkit-box-direction: reverse;
+                  -ms-flex-direction: column-reverse;
+                      flex-direction: column-reverse;
               width: 100%; }
               .section.timeline_section .timeline_container .timeline_block .content .text {
                 width: 100%;
@@ -2096,18 +2177,31 @@ nav.nav {
                   font-size: 16px; }
                 .section.timeline_section .timeline_container .timeline_block .content .text .description {
                   font-size: 14px; }
+              .section.timeline_section .timeline_container .timeline_block .content .asset {
+                margin-bottom: 20px;
+                width: 200px;
+                height: 200px; }
             .section.timeline_section .timeline_container .timeline_block:nth-child(odd) .date, .section.timeline_section .timeline_container .timeline_block:nth-child(even) .date {
-              left: unset;
-              right: 0px; }
+              left: 150px;
+              right: unset;
+              top: 10px; }
             .section.timeline_section .timeline_container .timeline_block:nth-child(odd) .content, .section.timeline_section .timeline_container .timeline_block:nth-child(even) .content {
               -webkit-box-orient: vertical;
-              -webkit-box-direction: normal;
-                  -ms-flex-direction: column;
-                      flex-direction: column;
+              -webkit-box-direction: reverse;
+                  -ms-flex-direction: column-reverse;
+                      flex-direction: column-reverse;
               right: unset;
               left: 0; }
             .section.timeline_section .timeline_container .timeline_block:nth-child(odd):after, .section.timeline_section .timeline_container .timeline_block:nth-child(even):after {
               left: 0; } }
+        @media (max-width: 500px) {
+          .section.timeline_section .timeline_container .timeline_block:nth-child(odd) .date, .section.timeline_section .timeline_container .timeline_block:nth-child(even) .date {
+            left: unset;
+            right: 15px;
+            font-size: 100px; }
+          .section.timeline_section .timeline_container .timeline_block:nth-child(odd) .content .asset, .section.timeline_section .timeline_container .timeline_block:nth-child(even) .content .asset {
+            width: 175px;
+            height: 175px; } }
   .section.team_section .meet-team-container {
     margin: 60px 0; }
     .section.team_section .meet-team-container .member-block {
@@ -2232,7 +2326,7 @@ nav.nav {
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center center;
-          opacity: 0.5;
+          opacity: 0.65;
           z-index: -1; }
         .landing_hero .hero_container .hero_quote .open_quote.quote_top:after {
           top: -25px;

@@ -35,7 +35,7 @@
 				<p class="release-date">Coming 2018!</p>
 				<div class="actions">
 					<button class="button primary dropdown">
-						Buy the Book
+						{{ craft.entries.section('bookPage')[0].mentalligenceButtonText }}
 						<ul class="drop-menu">
 							{% for link in craft.entries.section('mentalligenceBuyLinks').order('date asc') %}
 								<a class="buy-link" href="{{ link.buyLink }}" target="_blank"><li>{{ link.seller }}</li></a>
@@ -57,9 +57,9 @@
 
 		<div class="content">
 			<h2 class="title">What is Mentalligence?</h2>
-			<p class="text">My biggest takeaway from spending the last twenty plus years as a clinician, educator, researcher, and activist? That everything is learning and learning is everything. Lessons are always ours for the finding, if we stay woke. I live and breath and eat and study human resilience, authenticity, and identity. I've spent my entire life in a love/hate relationship with my anxiety, my one true frenemy.</p>
-
-			<p class="text">I write to teach, to cope, to spur on change - to try to make sense of our complicated and gorgeous human condition. Mostly, this happens by rethinking and unlearning what we're first sold.</p>
+			<p class="text">
+				{{ craft.entries.section('bookPage')[0].whatIsMentalligence|nl2br|raw }}
+			</p>
 		</div>
 
 		<div class="content">
@@ -77,7 +77,9 @@
 
 			<div class="about_book">
 				<h2 class="head">About Reset</h2>
-				<p class="body">I write to teach, to cope, to spur on change - to try to make sense of our complicated and gorgeous human condition. Mostly, this happens by rethinking and unlearning what we're first sold.</p>
+				<p class="body">
+					{{ craft.entries.section('bookPage')[0].aboutReset|nl2br|raw }}
+				</p>
 				<div class="reviews">
 					<div class="review_item">
 						<p class="text">Join Dr. Kris as she chats about ways you can be a more global thinker in today's workaholic world.</p>
@@ -90,7 +92,7 @@
 				</div>
 				<div class="actions">
 					<button class="button primary dropdown">
-						Buy the Book
+						{{ craft.entries.section('bookPage')[0].resetButtonText }}
 						<ul class="drop-menu">
 							{% for link in craft.entries.section('resetBuyLinks').order('date asc') %}
 								<a class="buy-link" href="{{ link.buyLink }}" target="_blank"><li>{{ link.seller }}</li></a>

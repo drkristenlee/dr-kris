@@ -53,6 +53,59 @@ $columbia: 'Columbia Serial', 'Georgia', serif
 html 
 	line-height: unset
 
+#navigation-wrapper
+	position: relative
+
+#notification_banner
+	padding: 15px 0
+	background: $teal
+	color: $white
+	position: relative
+	margin-bottom: 5px
+	a
+		text-decoration: none
+		color: inherit
+	.text
+		margin: auto
+		text-align: center
+		font-size: 14px
+	.close-banner
+		position: absolute
+		top: 0
+		bottom: 0
+		right: $nav-pad
+		height: 100%
+		display: flex
+		align-items: center
+		justify-content: center
+		.close-btn
+			margin: auto
+			position: relative
+			height: 20px
+			width: 20px
+			cursor: pointer
+			.line
+				width: 90%
+				height: 1px
+				border-radius: 2px
+				background: $off-white
+				transition-timing-function: ease-in-out
+				transition-duration: 250ms
+				position: absolute
+				top: 0
+				bottom: 0
+				left: 0
+				right: 0
+				margin: auto
+				&:nth-child(1)
+					transform: rotate(45deg)	
+				&:nth-child(2)
+					transform: rotate(-45deg)
+			&:hover
+				.line
+					background: $white	
+		@media (max-width: 450px)
+			right: 15px
 #content
 	position: relative
 	overflow: hidden
@@ -258,6 +311,20 @@ html
 		right: -300px
 		width: 600px
 		transform: rotate(90deg)
+	&.about-clients-inkblot.top
+		z-index: -1
+		top: -250px
+		right: -300px
+		width: 400px
+		transform: rotate(90deg)
+		@media (max-width: 950px)
+			top: -175px
+	&.about-clients-inkblot.bottom
+		z-index: -1
+		bottom: -225px
+		right: -200px
+		width: 300px
+		transform: rotate(-70deg)
 
 .link
 	font-size: 16px
@@ -532,7 +599,8 @@ body.mobileOverlay
 				transition-delay: $transition-time-in
 
 nav.nav
-	position: absolute
+	position: relative
+	margin-bottom: -$nav-height
 	display: flex
 	align-items: flex-start
 	justify-content: space-between
@@ -1130,6 +1198,7 @@ nav.nav
 				
 				@media (max-width: 950px)
 					height: auto
+					max-width: 600px
 					&:before
 						right: unset
 						left: 0
@@ -1152,10 +1221,10 @@ nav.nav
 						top: unset
 						bottom: unset
 						display: flex
-						padding: 4rem 1rem
+						padding: 4rem 1rem 2rem 1rem
 						align-items: flex-start
 						justify-content: flex-start
-						flex-direction: column
+						flex-direction: column-reverse
 						width: 100%
 						.text
 							width: 100%
@@ -1164,16 +1233,32 @@ nav.nav
 								font-size: 16px
 							.description
 								font-size: 14px
+						.asset
+							margin-bottom: 20px
+							width: 200px
+							height: 200px
 					&:nth-child(odd), &:nth-child(even)
 						.date 
-							left: unset
-							right: 0px
+							left: 150px
+							right: unset
+							top: 10px
 						.content
-							flex-direction: column
+							flex-direction: column-reverse
 							right: unset
 							left: 0
 						&:after
 							left: 0
+				@media (max-width: 500px)
+					&:nth-child(odd), &:nth-child(even)
+						.date 
+							left: unset
+							right: 15px
+							font-size: 100px
+						.content .asset
+							width: 175px
+							height: 175px
+
+
 	&.team_section
 		.meet-team-container
 			margin: 60px 0
@@ -1273,7 +1358,7 @@ nav.nav
 					background-repeat: no-repeat
 					background-size: cover
 					background-position: center center
-					opacity: 0.5
+					opacity: 0.65
 					z-index: -1
 				&.quote_top
 					&:after

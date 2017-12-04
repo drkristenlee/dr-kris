@@ -19,6 +19,18 @@
 
 {% extends "_layout" %}
 
+{% block notif_banner %}
+	<div id="notification_banner">
+		<a href="./quiz"><p class="text">Test your Mentalligence with this quiz!</p></a>
+		<div class="close-banner">
+			<div class="close-btn">
+				<span class="line"></span>
+				<span class="line"></span>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
 {% block main %}
 
 	<img src="./static/images/inkblots/IB_header_left.png" class="inkblot hero-inkblot left">
