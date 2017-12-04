@@ -56,6 +56,16 @@ html
 #navigation-wrapper
 	position: relative
 
+@keyframes underlineBounce
+	0%
+		bottom: -3px
+	50%
+		bottom: -5px
+	90%
+		bottom: -1px
+	100%
+		bottom: -3px
+
 #notification_banner
 	padding: 15px 0
 	background: $teal
@@ -69,6 +79,9 @@ html
 		margin: auto
 		text-align: center
 		font-size: 14px
+		position: relative
+		width: max-content
+		
 	.close-banner
 		position: absolute
 		top: 0
@@ -386,7 +399,7 @@ html
 			transition-timing-function: ease-in-out
 			transition-duration: 250ms
 		.drop-menu
-			z-index: 1
+			z-index: 100
 			position: absolute
 			left: 0
 			right: 0
@@ -409,6 +422,19 @@ html
 					padding-bottom: 7px
 					list-style: none
 					font-size: 13px
+				&:last-child
+					li
+						margin-bottom: 0
+						border-bottom: none
+						padding-bottom: 0
+				&:hover
+					color: $teal
+			& > li
+				border-bottom: 1px solid $off-white-hover
+				margin-bottom: 7px
+				padding-bottom: 7px
+				list-style: none
+				font-size: 13px
 				&:last-child
 					li
 						margin-bottom: 0
@@ -1097,12 +1123,18 @@ nav.nav
 					width: unset
 					max-width: unset
 					filter: grayscale(1)
+					mix-blend-mode: multiply
 					transition-timing-function: ease-in-out
 					transition-duration: 500ms
 					transition-property: filter
 				&:hover
 					.client-logo
 						filter: grayscale(0)
+			@media (max-width: 600px)
+				height: 200px
+				.client_item
+					.client-logo
+						height: 60px
 	&.timeline_section
 		padding-top: 0rem
 		padding-bottom: 0rem
@@ -1285,6 +1317,7 @@ nav.nav
 						font-weight: 600
 						font-size: 24px
 						margin-bottom: 20px
+						color: $blue
 					.bio
 						font-size: 18px
 				@media (max-width: 700px)
@@ -2218,10 +2251,10 @@ nav.nav
 			.image
 				width: 100%
 				height: 400px
-				background-color: #AAA
+				background-size: cover
+				background-position: center
+				background-repeat: no-repeat
 				margin-bottom: 30px
-				&.pink
-					background-color: pink
 			.text
 				display: flex
 				flex-direction: column
@@ -2363,6 +2396,33 @@ nav.nav
 			@media (max-width: 750px)
 				margin-bottom: 1rem
 #quiz
+	.progress-indicator
+		width: 100%
+		position: relative
+		display: flex
+		justify-content: space-between
+		margin-bottom: 30px
+		&:before
+			content: " "
+			z-index: 0
+			width: 100%
+			height: 2px
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			margin: auto
+			background: $dark-grey
+			position: absolute
+		.progress-circle
+			position: relative
+			background: $white
+			border: 2px solid $dark-grey
+			border-radius: 1000px
+			width: 25px
+			height: 25px
+			&.complete
+				background: $teal
 	.body
 		font-size: 18px
 		margin-bottom: 15px
@@ -2380,6 +2440,25 @@ nav.nav
 			font-size: 18px
 			@media (max-width: 500px)
 				width: 100%
+		.disclaimer 
+			font-size: 12px
+			text-transform: uppercase
+			width: 100%
+			text-align: left
+			margin-bottom: 15px
+			.terms-conditions
+				text-decoration: none
+				color: inherit
+				position: relative
+				&:before
+					content: " "
+					position: absolute
+					bottom: -2px
+					left: 0
+					right: 0
+					margin: auto
+					height: 1px
+					background: $dark-grey
 	.asterik
 		color: $blue
 		font-weight: 500
@@ -2518,20 +2597,28 @@ nav.nav
 					.option-value
 						width: 100%
 						max-width: 300px
-						height: 25px
 						margin-bottom: 10px
 						display: flex
 						align-items: center
 						&:last-child
 							margin-bottom: 0
+						position: relative
+						&:nth-child(1)
+							z-index: 3
+						&:nth-child(2)
+							z-index: 2
+						&:nth-child(3)
+							z-index: 1
 						.label
+							width: 10px
 							margin-right: 10px
 							font-weight: 600
 						.content
 							flex: 1
 							width: 100%
-							height: 100%
-							border: 1px solid $off-white
+							.drop-menu
+								max-height: 250px
+								overflow-y: scroll
 				&.value-list
 					list-style: none
 					padding: 0

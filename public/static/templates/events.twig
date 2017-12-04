@@ -143,53 +143,19 @@
 						<div class="image"></div>
 					</div>
 
-					<div class="slide">
-						<div class="image pink"></div>
+					{% for event in craft.entries.section('eventCarousel') %}
+						<div class="slide">
+							<div class="image insert-background" image-url="./static/images/events/{{ event.carouselImage[0].getPath() }}"></div>
 
-						<div class="text">
-							<p class="title">Temp Slide 1</p>
-							<p class="subtitle"><strong>6/12/17</strong> <span class="dot"></span> <em>Cambridge, MA</em></p>
-							<p class="description">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							</p>
+							<div class="text">
+								<p class="title">{{ event.title }}</p>
+								<p class="subtitle"><strong>{{ event.date|date("m/d/y") }}</strong> <span class="dot"></span> <em>{{ event.location }}</em></p>
+								<p class="description">
+									{{ event.eventDescription }}
+								</p>
+							</div>
 						</div>
-					</div>
-
-					<div class="slide">
-						<div class="image"></div>
-
-						<div class="text">
-							<p class="title">Temp Slide 2</p>
-							<p class="subtitle"><strong>6/12/17</strong> <span class="dot"></span> <em>Cambridge, MA</em></p>
-							<p class="description">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							</p>
-						</div>
-					</div>
-
-					<div class="slide">
-						<div class="image pink"></div>
-
-						<div class="text">
-							<p class="title">Temp Slide 3</p>
-							<p class="subtitle"><strong>6/12/17</strong> <span class="dot"></span> <em>Cambridge, MA</em></p>
-							<p class="description">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							</p>
-						</div>
-					</div>
-
-					<div class="slide">
-						<div class="image"></div>
-
-						<div class="text">
-							<p class="title">Temp Slide 4</p>
-							<p class="subtitle"><strong>6/12/17</strong> <span class="dot"></span> <em>Cambridge, MA</em></p>
-							<p class="description">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							</p>
-						</div>
-					</div>
+					{% endfor %}
 
 					<!-- buffer slide -->
 					<div class="slide buffer">

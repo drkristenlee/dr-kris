@@ -7,18 +7,29 @@
 // <home-feed>
 Vue.component('quiz-element', {
 	template: `<div id="quiz">
-		<div class="quiz-intro" v-if="step === 0">
-			<p class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-			ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-			dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-			officia deserunt mollit anim id est laborum.</p>
+		<div class="progress-indicator">
+			<div class="complete progress-circle" v-for="n in step"></div>
 
-			<p class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-			ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-			dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-			officia deserunt mollit anim id est laborum.</p>
+			<div class="progress-circle" v-for="n in (3 + questions.length - step)"></div>
+		</div>
+
+		<div class="quiz-intro" v-if="step === 0">
+			<p class="body">The Mentalligence Quiz gives you feedback on how to rethink thoughts and behaviors that might 
+			be getting in the way of living a mindful, connected life. Mentalligence helps you build the mindsets, skills,
+			and habits needed to avoid common behavioral traps that lead to shutting down, numbing out, binding up, and
+			staying stuck. It helps inspire connection, proactivity, and creativity in your everyday choices to help
+			you find what positive psychologists call "The Good Life", the capacity to flourish in your relationships
+			at home, work, and beyond.</p>
+
+			<p class="body">This quiz takes more than two seconds to complete, but it's worth it (it's not a drive thru option,
+			but you don't have to park it here all day, either). Plan on spending no more than fifteen minutes. You will recieve
+			a personalized report that gives you concrete strategies to help you become more agile, mindful, and conneted, aka 
+			"Mentalligent". As you might be guessing it, the Quiz embodies the principles of my book, Mentalligence: A New
+			Psychology of Thinking, available for pre-order and scheduled to debut on one of my favorite days ever, February 6th
+			(my daughter's birthday, XO, darling). You can also learn more by connecting with my @TheRealDrKris.</p>
+
+			<p class="disclaimer">By using this quiz you agree to <a href="#" class="terms-conditions">these terms and 
+			conditions</a></p>
 
 			<button class="button primary" @click="startQuiz">Begin Quiz</button>
 		</div>
@@ -57,17 +68,32 @@ Vue.component('quiz-element', {
 				<div class="drag-choices drag-container">
 					<div class="option-value">
 						<div class="label">1.</div>
-						<div class="content"></div>
+						<button class="button dropdown content" @click="toggleActive">
+							Select a value...
+							<ul class="drop-menu">
+								<li v-for="value in drag_drop.values">{{ value }}</li>
+							</ul>
+						</button>
 					</div>
 
 					<div class="option-value">
 						<div class="label">2.</div>
-						<div class="content"></div>
+						<button class="button dropdown content" @click="toggleActive">
+							Select a value...
+							<ul class="drop-menu">
+								<li v-for="value in drag_drop.values">{{ value }}</li>
+							</ul>
+						</button>
 					</div>
 
 					<div class="option-value">
 						<div class="label">3.</div>
-						<div class="content"></div>
+						<button class="button dropdown content" @click="toggleActive">
+							Select a value...
+							<ul class="drop-menu">
+								<li v-for="value in drag_drop.values">{{ value }}</li>
+							</ul>
+						</button>
 					</div>
 				</div>
 
@@ -147,16 +173,15 @@ Vue.component('quiz-element', {
 				</div>
 
 				<p class="body bold title">Spread Something Good</p>
-				<p class="body">Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-					commodo consequat.
+				<p class="body">If you want to get to the Good Life, and help those in your reach to do the same,
+				please share via your social network. I hope it will spark dynamic conversations, and that you will
+				link arms with me to bring us forward in our world that seems to be taking steps backwards.
 				</p>
-				<p class="body">Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-					commodo consequat.
-				</p>
+				<p class="body">The concept of Mentalligence was born out of my clinical work, teaching, and research.
+				It's left me spinning, in a good way. There's so much to learn, unlearn, and relearn. I hope it will
+				help you do the same!</p>
+				<p class="body">To learn more, check out my new book Mentalligence: A New Psychology of Thinking.
+				<br>Learning is everything, everything is learning!</p>
 				<p class="body">Take awesome care,</p>
 				<img class="signature" src="./static/images/logo.gif">
 				<p class="body">Dr. Kris</p>
@@ -239,7 +264,7 @@ Vue.component('quiz-element', {
 					"Authenticity", "Empathy", "Agility", "Service",
 					"Love of learning", "Confidence", "Sustainability", "Adventure",
 					"Social conciousness", "Humility", "Presence", "Persistence",
-					"Perspective", "Connectedness", "Globally curios", "Gratitude",
+					"Perspective", "Connectedness", "Globally curious", "Gratitude",
 					"Optimism", "Autonomy", "Open-mindedness", "Boundlessness",
 					"Solidarity", "Creativity"
 				]
@@ -281,6 +306,9 @@ Vue.component('quiz-element', {
 			Vue.nextTick(function(){
 				window.scroll(0, 0);
 			});
+		},
+		toggleActive: function(event){
+			event.currentTarget.classList.toggle('active');
 		},
 		submitQuiz: function() {
 			

@@ -797,6 +797,26 @@ html {
 #navigation-wrapper {
   position: relative; }
 
+@-webkit-keyframes underlineBounce {
+  0% {
+    bottom: -3px; }
+  50% {
+    bottom: -5px; }
+  90% {
+    bottom: -1px; }
+  100% {
+    bottom: -3px; } }
+
+@keyframes underlineBounce {
+  0% {
+    bottom: -3px; }
+  50% {
+    bottom: -5px; }
+  90% {
+    bottom: -1px; }
+  100% {
+    bottom: -3px; } }
+
 #notification_banner {
   padding: 15px 0;
   background: #007C79;
@@ -809,7 +829,11 @@ html {
   #notification_banner .text {
     margin: auto;
     text-align: center;
-    font-size: 14px; }
+    font-size: 14px;
+    position: relative;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content; }
   #notification_banner .close-banner {
     position: absolute;
     top: 0;
@@ -1157,7 +1181,7 @@ html {
       transition-timing-function: ease-in-out;
       transition-duration: 250ms; }
     .button.dropdown .drop-menu {
-      z-index: 1;
+      z-index: 100;
       position: absolute;
       left: 0;
       right: 0;
@@ -1186,6 +1210,18 @@ html {
           border-bottom: none;
           padding-bottom: 0; }
         .button.dropdown .drop-menu .buy-link:hover {
+          color: #007C79; }
+      .button.dropdown .drop-menu > li {
+        border-bottom: 1px solid #BFC0C0;
+        margin-bottom: 7px;
+        padding-bottom: 7px;
+        list-style: none;
+        font-size: 13px; }
+        .button.dropdown .drop-menu > li:last-child li {
+          margin-bottom: 0;
+          border-bottom: none;
+          padding-bottom: 0; }
+        .button.dropdown .drop-menu > li:hover {
           color: #007C79; }
     .button.dropdown.active .drop-menu {
       pointer-events: initial;
@@ -2021,6 +2057,7 @@ nav.nav {
           max-width: unset;
           -webkit-filter: grayscale(1);
                   filter: grayscale(1);
+          mix-blend-mode: multiply;
           transition-timing-function: ease-in-out;
           transition-duration: 500ms;
           transition-property: -webkit-filter;
@@ -2029,6 +2066,11 @@ nav.nav {
         .section.client_section .client_carousel .client_item:hover .client-logo {
           -webkit-filter: grayscale(0);
                   filter: grayscale(0); }
+      @media (max-width: 600px) {
+        .section.client_section .client_carousel {
+          height: 200px; }
+          .section.client_section .client_carousel .client_item .client-logo {
+            height: 60px; } }
   .section.timeline_section {
     padding-top: 0rem;
     padding-bottom: 0rem;
@@ -2237,7 +2279,8 @@ nav.nav {
         .section.team_section .meet-team-container .member-block .content .title {
           font-weight: 600;
           font-size: 24px;
-          margin-bottom: 20px; }
+          margin-bottom: 20px;
+          color: #274A63; }
         .section.team_section .meet-team-container .member-block .content .bio {
           font-size: 18px; }
       @media (max-width: 700px) {
@@ -3343,10 +3386,10 @@ nav.nav {
       #carousel .slide-deck .slide .image {
         width: 100%;
         height: 400px;
-        background-color: #AAA;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         margin-bottom: 30px; }
-        #carousel .slide-deck .slide .image.pink {
-          background-color: pink; }
       #carousel .slide-deck .slide .text {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -3514,6 +3557,38 @@ nav.nav {
         .quiz_main .quiz-wrapper .section-title {
           margin-bottom: 1rem; } }
 
+#quiz .progress-indicator {
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px; }
+  #quiz .progress-indicator:before {
+    content: " ";
+    z-index: 0;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background: #333434;
+    position: absolute; }
+  #quiz .progress-indicator .progress-circle {
+    position: relative;
+    background: #FFFFFF;
+    border: 2px solid #333434;
+    border-radius: 1000px;
+    width: 25px;
+    height: 25px; }
+    #quiz .progress-indicator .progress-circle.complete {
+      background: #007C79; }
+
 #quiz .body {
   font-size: 18px;
   margin-bottom: 15px; }
@@ -3540,6 +3615,25 @@ nav.nav {
     @media (max-width: 500px) {
       #quiz .quiz-intro .button {
         width: 100%; } }
+  #quiz .quiz-intro .disclaimer {
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 15px; }
+    #quiz .quiz-intro .disclaimer .terms-conditions {
+      text-decoration: none;
+      color: inherit;
+      position: relative; }
+      #quiz .quiz-intro .disclaimer .terms-conditions:before {
+        content: " ";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 1px;
+        background: #333434; }
 
 #quiz .asterik {
   color: #274A63;
@@ -3720,26 +3814,34 @@ nav.nav {
       #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value {
         width: 100%;
         max-width: 300px;
-        height: 25px;
         margin-bottom: 10px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-align: center;
             -ms-flex-align: center;
-                align-items: center; }
+                align-items: center;
+        position: relative; }
         #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value:last-child {
           margin-bottom: 0; }
+        #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value:nth-child(1) {
+          z-index: 3; }
+        #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value:nth-child(2) {
+          z-index: 2; }
+        #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value:nth-child(3) {
+          z-index: 1; }
         #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value .label {
+          width: 10px;
           margin-right: 10px;
           font-weight: 600; }
         #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value .content {
           -webkit-box-flex: 1;
               -ms-flex: 1;
                   flex: 1;
-          width: 100%;
-          height: 100%;
-          border: 1px solid #D8D9D9; }
+          width: 100%; }
+          #quiz .quiz-page.quiz-drag .drag-container.drag-choices .option-value .content .drop-menu {
+            max-height: 250px;
+            overflow-y: scroll; }
     #quiz .quiz-page.quiz-drag .drag-container.value-list {
       list-style: none;
       padding: 0;
