@@ -73,26 +73,38 @@
 
 	<div class="client_section section no-flex">
 
-		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
-
-		<h3>Clients</h3>
+		<h3 class="mobile-pad">Clients</h3>
 
 		<div class="client_carousel">
 			<div class="offset_container">
+				{% for client in craft.entries.section('clientList').order('postDate asc') %}
 				<div class="client_item">
+					<img class="client-logo" src="./static/images/clients/{{ client.clientLogo[0].getPath() }}">
 				</div>
-				<div class="client_item">
-				</div>
-				<div class="client_item">
-				</div>
-				<div class="client_item">
-				</div>
-				<div class="client_item">
-				</div>
-				<div class="client_item">
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
+
+	<div class="team_section section no-flex">
+
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
+
+		<h3 class="mobile-pad">Meet the Team</h3>
+
+		<div class="meet-team-container mobile-pad">
+			{% for member in craft.entries.section('meetTheTeam').order('postDate asc') %}
+				<div class="member-block">
+					<div class="image insert-background" image-url="./static/images/meet-team/{{ member.memberProfileImage[0].getPath() }}"></div>
+					<div class="content">
+						<p class="title">{{ member.title }}, {{ member.position }}</p>
+						<p class="bio">{{ member.memberBio }}</p>
+					</div>
+				</div>
+			{% endfor %}	
+		</div>	
+
+	</div>
 {% endblock %}
 
+{% includeJsFile "../src/javascripts/modules/client_logos.js" %}
