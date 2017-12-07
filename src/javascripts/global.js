@@ -6,13 +6,17 @@ console.log("Global.js file has imported");
 function addBackgroundImages() {
 	$('.insert-background').each(function(){
 		var link = $(this).attr('image-url');
-		$(this).css('background-image', "url('"+link+"')");
+		$(this).css('background-image', `url("`+link+`")`);
 	});
 }
 
 function closeNotifBanner() {
 	$('#notification_banner').remove();
 }
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	$('#container').addClass('loaded');
+});
 
 $(document).ready(function(){
 	if ($('#notification_banner .close-btn') !== null) {
@@ -23,6 +27,10 @@ $(document).ready(function(){
 
 	$('.button.dropdown').click(function(e){
 		$(e.target).toggleClass("active");
+	});
+
+	$('#footer .subscribe_input button').click(function(e){
+		$(e.target).parent().toggleClass("completed");
 	});
 
 	$("#resources .category-list .category").click(function(){

@@ -119,6 +119,18 @@ html
 					background: $white	
 		@media (max-width: 450px)
 			right: 15px
+
+#container 
+	transition-timing-function: ease-in-out
+	transition-duration: 400ms
+	transition-delay: 100ms
+	filter: blur(10px)
+	opacity: 0
+	will-change: opacity, filter
+	&.loaded
+		filter: unset
+		opacity: 1
+
 #content
 	position: relative
 	overflow: hidden
@@ -344,8 +356,11 @@ html
 	font-weight: 300
 	text-decoration: none
 	color: inherit
+	position: relative
 	&.teal
 		color: $teal
+		&:hover
+			color: $teal-hover
 	&.white
 		color: $white
 
@@ -1908,6 +1923,7 @@ nav.nav
 			height: 30px
 			position: relative
 			display: inline-flex
+			overflow: hidden
 			input, button
 				border-radius: 0px
 				outline: none
@@ -1928,6 +1944,35 @@ nav.nav
 				transition-duration: 250ms
 				&:hover
 					background: $teal-hover
+			.success-message
+				content: " "
+				position: absolute
+				top: 100%
+				height: 100%
+				width: 100%
+				left: 0
+				right: 0
+				background: $teal
+				z-index: 100
+				transition-timing-function: ease-in-out
+				transition-duration: 250ms
+				display: flex
+				justify-content: center
+				align-items: center
+				.text
+					color: $white
+					opacity: 0
+					transition-timing-function: ease-in-out
+					transition-duration: 250ms
+					transition-delay: 100ms
+					.fa
+						font-size: 13px
+						margin-right: 2px
+			&.completed
+				.success-message
+					top: 0
+					.text
+						opacity: 1
 		.footer-nav
 			max-width: 500px
 			display: flex
@@ -2107,6 +2152,20 @@ nav.nav
 					padding-bottom: 2px
 					border-bottom: 4px solid $teal
 					font-size: 16px
+					&.excerpt-link
+						position: relative
+						padding-right: 20px
+						.float-arrow
+							position: absolute
+							top: 0
+							bottom: 0
+							margin: auto
+							right: 0px
+							transition-timing-function: cubic-bezier(0.13, 0.63, 0.54, 2.82)
+							transition-duration: 200ms
+						&:hover
+							.float-arrow
+								right: -5px
 				@media (max-width: 600px)
 					.button, .link
 						font-size: 14px
@@ -2499,7 +2558,6 @@ nav.nav
 	justify-content: center
 	.quiz-wrapper
 		width: 100%
-		max-width: 800px
 		position: relative
 		.section-title
 			margin-bottom: 2rem
@@ -2511,6 +2569,11 @@ nav.nav
 			@media (max-width: 750px)
 				margin-bottom: 1rem
 #quiz
+	max-width: 800px
+	margin: auto
+	&.completed
+		margin-top: 80px
+		max-width: 1000px
 	.progress-indicator
 		width: 100%
 		position: relative
@@ -2548,19 +2611,39 @@ nav.nav
 		flex-direction: column
 		align-items: center
 		.body
-			margin-bottom: 15px
-		.button
-			margin-top: 15px
-			padding: 15px 30px
-			font-size: 18px
-			@media (max-width: 500px)
+			margin-bottom: 25px
+		.label
+			margin-bottom: 10px
+			color: $teal
+		.button-group
+			display: flex
+			width: 100%
+			max-width: 400px
+			position: relative
+			.input
+				flex: 1
 				width: 100%
+				height: 48px
+				border: 1px solid $dark-grey
+				box-sizing: border-box
+				padding: 15px 30px
+				font-size: 18px
+				margin: 0
+			.button
+				flex-shrink: 0
+				padding: 15px 30px
+				box-sizing: border-box
+				font-size: 18px
+			@media (max-width: 600px)
+				.input, .button
+					font-size: 14px
+					padding: 15px 20px
 		.disclaimer 
 			font-size: 12px
 			text-transform: uppercase
 			width: 100%
 			text-align: left
-			margin-bottom: 15px
+			margin-bottom: 40px
 			.terms-conditions
 				text-decoration: none
 				color: inherit
@@ -2800,14 +2883,14 @@ nav.nav
 			align-items: center
 			margin-top: 50px
 			.button
-				width: 100px
+				width: 110px
 
 		&.quiz-complete
 			.title
-				margin-bottom: 5px
 				text-transform: uppercase
 			.congrats
-				text-align: center
+				font-weight: 600
+			strong
 				font-weight: 600
 			.sub-text
 				margin-bottom: 15px
@@ -2823,13 +2906,93 @@ nav.nav
 				background: $teal
 				color: $white
 				padding: 30px
-				margin: 30px 0
-				text-align: center
+				margin: 30px 0 50px 0
 			.signature
-				width: 100px
+				width: 200px
 				margin: -5px 0 5px 0
-
-
+			.breakdown-section
+				margin-bottom: 60px
+				.breakdown-title
+					font-weight: 600
+					margin-bottom: 5px
+				.result-label
+					font-weight: 600
+					text-transform: uppercase
+				.skill-bar
+					margin-bottom: 25px
+					width: 100%
+					max-width: 400px
+					background: $off-white
+					height: 50px
+					position: relative
+					&:before
+						content: " "
+						position: absolute
+						top: 8%
+						bottom: 8%
+						left: 1%
+						background: $teal
+					&.advanced:before
+						width: 98%
+					&.intermediate:before
+						width: 73.5%
+					&.foundational:before
+						width: 49%
+					&.lagging:before
+						width: 24.5%
+				.top-values-breakdown
+					width: 100%
+					max-width: 300px
+					margin: auto
+					margin-bottom: 60px
+					text-align: center
+					background: $teal
+					padding: 10px 5px
+					.value
+						width: 100%
+						margin-bottom: 10px
+						text-transform: uppercase
+						color: $white
+						text-align: center
+						&:last-child
+							margin-bottom: 0px
+				.btn-container
+					margin-top: 40px
+					margin-bottom: 30px
+					width: 100%
+					text-align: center
+					.button
+						width: 100%
+						max-width: 300px
+				.full-list-values
+					margin-top: 60px
+					margin-bottom: -20px
+					display: none
+					flex-direction: column
+					align-items: center
+					text-align: center
+					.value-name, .value-info
+						max-width: 600px
+					.value-name
+						font-weight: 600
+						margin-bottom: 0px
+						font-size: 18px
+					.value-info
+						margin-bottom: 30px
+						font-size: 16px
+					&.visible
+						display: flex
+			.link
+				font-size: inherit
+				font-weight: 600
+				&:hover
+					color: $teal-hover
+			.print-link
+				color: $teal
+				font-weight: 600
+				cursor: pointer
+				&:hover
+					color: $teal-hover
 .section 
 	.mobile-pad
 		@media (max-width: 600px)
