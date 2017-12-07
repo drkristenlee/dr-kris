@@ -785,6 +785,12 @@ nav.nav
 					&.link-para
 						margin-top: 40px
 						margin-bottom: 0
+						.anim-arrow
+							transition-timing-function: ease-in-out
+							transition-duration: 150ms
+						&:hover
+							.anim-arrow
+								padding-left: 5px
 		@media (max-width: 800px)
 			margin-top: 0px
 
@@ -1065,6 +1071,20 @@ nav.nav
 			.resource_item
 				background: $off-white
 				padding: 50px 40px
+				position: relative
+				.overlay_link
+					position: absolute
+					top: 0
+					left: 0
+					bottom: 0
+					right: 0
+					z-index: 1
+				.anim-arrow
+					transition-timing-function: ease-in-out
+					transition-duration: 150ms
+				&:hover
+					.anim-arrow
+						padding-left: 5px
 				.subtitle
 					margin-bottom: 0.75rem
 					font-weight: 500
@@ -1296,6 +1316,8 @@ nav.nav
 			margin: 60px 0
 			.member-block
 				display: flex
+				max-width: 1100px
+				margin: auto
 				flex-direction: row
 				justify-content: center
 				align-items: center
@@ -1309,7 +1331,7 @@ nav.nav
 					background-size: cover
 					background-position: center
 					background-repeat: no-repeat
-					margin-right: 30px
+					margin-right: 60px
 				.content
 					flex: 1
 					width: 100%
@@ -1320,7 +1342,7 @@ nav.nav
 						color: $blue
 					.bio
 						font-size: 18px
-				@media (max-width: 700px)
+				@media (max-width: 750px)
 					flex-direction: column
 					.image
 						margin-bottom: 20px
@@ -1539,6 +1561,8 @@ nav.nav
 				font-size: 14px
 				padding-top: 10px
 				padding-bottom: 10px
+				&:before
+					border-top-color: $dark-grey
 				.drop-menu
 					background: $white-hover
 			@media (max-width: 900px)
@@ -1547,17 +1571,19 @@ nav.nav
 		.content
 			column-count: 3
 			column-gap: 23px
-			@media (max-width: 900px)
+			@media (max-width: 1000px)
 				column-count: 2
-			@media (max-width: 600px)
+			@media (max-width: 700px)
 				column-count: 1
 			.resource_item
 				margin-bottom: 23px
-				break-inside: avoid-column;
+				break-inside: avoid-column
 				background: $off-white
 				box-sizing: border-box
 				padding: 40px 30px
 				position: relative
+				display: flex
+				flex-direction: row
 				&:before
 					content: " "
 					position: absolute
@@ -1570,6 +1596,29 @@ nav.nav
 					transition-timing-function: ease-in-out
 					height: 0
 					z-index: 2
+				.overlay_link
+					position: absolute
+					top: 0
+					left: 0
+					bottom: 0
+					right: 0
+					z-index: 1
+				.thumbnail
+					width: 100px
+					height: 100px
+					margin-right: 20px
+					position: relative
+					flex-shrink: 0
+					.img-ink
+						width: 100%
+						height: 100%
+						backface-visibility: hidden
+						&.rot90
+							transform: rotate(90deg)
+						&.rot180
+							transform: rotate(180deg)
+						&.rot270
+							transform: rotate(270deg)
 				.info
 					.resource_title
 						font-size: 22px
@@ -1583,12 +1632,21 @@ nav.nav
 						display: flex
 						justify-content: space-between
 						width: 100%
+						.file_type
+							margin-right: 15px
+				.anim-arrow
+					transition-timing-function: ease-in-out
+					transition-duration: 150ms
 				&:hover
 					&:before
 						height: 14px
+					.anim-arrow
+						padding-left: 5px
 
 .event_groups
 	width: 100%
+	max-width: 1000px
+	margin: auto
 	padding: 2rem 4rem
 	background: $teal
 	color: $white
@@ -1977,16 +2035,18 @@ nav.nav
 				margin-bottom: 35px
 				width: 80%
 				line-height: 1.25
+				@media (max-width: 700px)
+					width: 100%
 			.release-date
 				font-size: 18px
 				margin-bottom: 20px
 			.body
 				font-size: 18px
-				margin-bottom: 20px
+				margin-bottom: 30px
 			.reviews
-				margin-bottom: 20px
+				margin-bottom: 30px
 				.review_item
-					margin-bottom: 20px
+					margin-bottom: 25px
 					&:last-child
 						margin-bottom: 0
 					.text
@@ -2026,6 +2086,7 @@ nav.nav
 .book_preview.section
 	width: 100%
 	padding: 4rem $nav-pad
+	min-height: unset
 	.content
 		margin: auto
 		width: 100%
@@ -2041,6 +2102,15 @@ nav.nav
 			margin-bottom: 20px
 			&:last-child
 				margin-bottom: none
+		.review_item
+			margin-bottom: 40px
+			&:last-child
+				margin-bottom: 0
+			.text
+				margin-bottom: 17px					
+			.author
+				font-weight: 600
+				font-style: italic
 
 .list_quotes
 	padding: 0 10vw
@@ -2340,11 +2410,14 @@ nav.nav
 			&:hover
 				border-top: 8px solid $teal
 				border-right: 8px solid $teal
-				box-shadow: 8px -8px 0 $white
+				box-shadow: 6px -6px 0 $white
 				&.left
-					left: -8px
+					left: -2px
 				&.right
-					right: -8px
+					right: -2px
+			@media (max-width: 600px)
+				width: 50px
+				height: 50px
 
 .section.booking-info
 	min-height: unset

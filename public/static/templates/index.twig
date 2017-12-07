@@ -64,7 +64,7 @@
 			<div class="text-container mobile-pad">
 				<h4 class="sub-section-title">{{ craft.entries.section('landingPage')[0].tagline }}</h4>
 				<p>{{ craft.entries.section('landingPage')[0].bio|nl2br|raw }}</p>
-				<p class="link-para"><a href="./about" class="link teal">Read more →</a></p>
+				<p class="link-para"><a href="./about" class="link teal">Read more <span class="anim-arrow">→</span></a></p>
 			</div>
 		</div>
 
@@ -185,9 +185,10 @@
 
 			{% for entry in craft.entries.section('landingPage')[0].featuredResources.limit(6) %}
 				<div class="resource_item">
+					<a href="#" class="overlay_link"></a>
 					<p class="subtitle">{{ entry.title }}</p>
 					<p class="description">{{ entry.description }}</p>
-					<p class="more"><a href="#" class="link teal">read more →</a></p>
+					<p class="more"><a class="link teal">download <span class="anim-arrow">→</span></a></p>
 				</div>
 			{% endfor %}
 			

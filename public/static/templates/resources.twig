@@ -53,13 +53,18 @@
 			</div>
 
 			<div class="content">
-				
+				{% set range = range(1, 4) %}
+
 				{% for entry in craft.entries.section('resources') %}
 					<div class="resource_item">
+						<a href="#" class="overlay_link"></a>
+						<div class="thumbnail">
+							<img class="img-ink {{ random(["", "rot90", "rot180", "rot270"]) }}" src="./static/images/inkblots/resource_ink/Resources_Icon{{random(range)}}.png" >
+						</div>
 						<div class="info">
 							<p class="resource_title">{{ entry.title }}</p>
 							<p class="meta"><span class="file_type">File Type</span> <span class="date">{{ entry.dateCreated|date('n/j/y') }}</span></p>
-							<p class="more"><a href="#" class="link teal">read more →</a></p>
+							<p class="more"><a class="link teal">download <span class="anim-arrow">→</span></a></p>
 						</div>
 					</div>
 				{% endfor %}

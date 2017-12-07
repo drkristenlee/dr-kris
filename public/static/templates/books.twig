@@ -32,7 +32,7 @@
 			<div class="about_book">
 				<h2 class="head">The airbrushed you isn't sustainable, or even half as awesome.</h2>
 				<p class="book-title"><strong>Mentalligence:</strong><br> A New Psychology of Thinking (Learn What it Takes to be More Agile, Mindful and Connected in Today's World)</p>
-				<p class="release-date">Coming 2018!</p>
+				<p class="release-date">{{ craft.entries.section('bookPage')[0].mentalligenceCallToAction }}</p>
 				<div class="actions">
 					<button class="button primary dropdown">
 						{{ craft.entries.section('bookPage')[0].mentalligenceButtonText }}
@@ -62,11 +62,17 @@
 			</p>
 		</div>
 
+		{% if craft.entries.section('bookPage')[0].praiseForMentalligence | length %}
 		<div class="content">
 			<h2 class="title">Praise for Mentalligence</h2>
-			<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			{% for review in craft.entries.section('bookPage')[0].praiseForMentalligence %}
+				<div class="review_item">
+					<p class="text">{{ review.reviewText }}</p>
+					<p class="author">- {{ review.reviewAuthor }}</p>
+				</div>
+			{% endfor %}
 		</div>
+		{% endif %}
 	</div>
 
 	<div class="section book_showcase inverse widder">
@@ -80,16 +86,18 @@
 				<p class="body">
 					{{ craft.entries.section('bookPage')[0].aboutReset|nl2br|raw }}
 				</p>
+
+				{% if craft.entries.section('bookPage')[0].praiseForReset | length > 0 %}
 				<div class="reviews">
-					<div class="review_item">
-						<p class="text">Join Dr. Kris as she chats about ways you can be a more global thinker in today's workaholic world.</p>
-						<p class="author">- Kirkus Reviews</p>
-					</div>
-					<div class="review_item">
-						<p class="text">Join Dr. Kris as she chats about ways you can be a more global thinker in today's workaholic world.</p>
-						<p class="author">- Kirkus Reviews</p>
-					</div>
+					{% for review in craft.entries.section('bookPage')[0].praiseForReset %}
+						<div class="review_item">
+							<p class="text">{{ review.reviewText }}</p>
+							<p class="author">- {{ review.reviewAuthor }}</p>
+						</div>
+					{% endfor %}
 				</div>
+				{% endif %}
+
 				<div class="actions">
 					<button class="button primary dropdown">
 						{{ craft.entries.section('bookPage')[0].resetButtonText }}
