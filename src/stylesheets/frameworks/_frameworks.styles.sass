@@ -436,10 +436,9 @@ html
 				list-style: none
 				font-size: 13px
 				&:last-child
-					li
-						margin-bottom: 0
-						border-bottom: none
-						padding-bottom: 0
+					margin-bottom: 0
+					border-bottom: none
+					padding-bottom: 0
 				&:hover
 					color: $teal
 		&.active
@@ -786,8 +785,8 @@ nav.nav
 						margin-top: 40px
 						margin-bottom: 0
 						.anim-arrow
-							transition-timing-function: ease-in-out
-							transition-duration: 150ms
+							transition-timing-function: cubic-bezier(0.13, 0.63, 0.54, 2.82)
+							transition-duration: 200ms
 						&:hover
 							.anim-arrow
 								padding-left: 5px
@@ -954,14 +953,19 @@ nav.nav
 		padding-top: 4rem
 		padding-bottom: 4rem
 		.press_grid
-			display: grid
-			grid-template-columns: repeat(2, 1fr)
-			grid-gap: 30px
+			display: flex
+			width: 100%
+			flex-direction: row
+			flex-wrap: wrap
+			justify-content: space-between
 			margin-bottom: 40px
 			.press_item
 				cursor: pointer
 				position: relative
-				width: 100%
+				width: 48.5%
+				margin-bottom: 30px
+				@media (max-width: 900px)
+					width: 100%
 				height: auto
 				display: flex
 				background: $white
@@ -1034,9 +1038,6 @@ nav.nav
 						margin-bottom: 20px
 					.description
 						font-size: 14px
-			@media (max-width: 900px)
-				grid-template-columns: repeat(1, 1fr)
-				width: 100%
 		&.less-top
 			padding-top: 2rem
 		&.no-bg
@@ -1059,19 +1060,36 @@ nav.nav
 		align-items: center
 		flex-direction: column
 		.resource_list
-			display: grid
-			grid-template-columns: repeat(3, 1fr)
-			grid-gap: 20px
-			grid-auto-rows: max-content
-			margin-bottom: 40px
-			@media (max-width: 900px)
-				grid-template-columns: repeat(2, 1fr)
-			@media (max-width: 600px)
-				grid-template-columns: repeat(1, 1fr)
+			display: flex
+			width: 100%
+			flex-direction: row
+			flex-wrap: wrap
+			justify-content: space-between
 			.resource_item
+				margin-bottom: 23px
 				background: $off-white
-				padding: 50px 40px
+				box-sizing: border-box
+				padding: 40px 30px
 				position: relative
+				display: flex
+				flex-direction: row
+				&:before
+					content: " "
+					position: absolute
+					bottom: 0
+					left: 0
+					right: 0
+					background: $teal
+					opacity: 0.75
+					transition-duration: 250ms
+					transition-timing-function: ease-in-out
+					height: 0
+					z-index: 2
+				width: 32%
+				@media (max-width: 1000px)
+					width: 49%
+				@media (max-width: 700px)
+					width: 100%
 				.overlay_link
 					position: absolute
 					top: 0
@@ -1079,24 +1097,45 @@ nav.nav
 					bottom: 0
 					right: 0
 					z-index: 1
+				.thumbnail
+					width: 100px
+					height: 100px
+					margin-right: 20px
+					position: relative
+					flex-shrink: 0
+					.img-ink
+						width: 100%
+						height: 100%
+						backface-visibility: hidden
+						&.rot90
+							transform: rotate(90deg)
+						&.rot180
+							transform: rotate(180deg)
+						&.rot270
+							transform: rotate(270deg)
+				.info
+					.resource_title
+						font-size: 22px
+						font-weight: 600
+						margin-bottom: 10px
+						font-family: $columbia
+					.meta
+						margin-bottom: 10px
+						font-size: 15px
+						font-weight: 200
+						display: flex
+						justify-content: space-between
+						width: 100%
+						.file_type
+							margin-right: 15px
 				.anim-arrow
-					transition-timing-function: ease-in-out
-					transition-duration: 150ms
+					transition-timing-function: cubic-bezier(0.13, 0.63, 0.54, 2.82)
+					transition-duration: 200ms
 				&:hover
+					&:before
+						height: 14px
 					.anim-arrow
 						padding-left: 5px
-				.subtitle
-					margin-bottom: 0.75rem
-					font-weight: 500
-					font-family: 'Columbia Serial'
-					font-size: 22px
-					margin-bottom: 10px
-				.description
-					font-size: 14px
-					color: $dark-grey
-					margin-bottom: 30px
-				.more .link
-					font-size: 20px
 
 	&.client_section
 		min-height: unset
@@ -1569,15 +1608,13 @@ nav.nav
 				.input
 					max-width: unset
 		.content
-			column-count: 3
-			column-gap: 23px
-			@media (max-width: 1000px)
-				column-count: 2
-			@media (max-width: 700px)
-				column-count: 1
+			display: flex
+			width: 100%
+			flex-direction: row
+			flex-wrap: wrap
+			justify-content: space-between
 			.resource_item
 				margin-bottom: 23px
-				break-inside: avoid-column
 				background: $off-white
 				box-sizing: border-box
 				padding: 40px 30px
@@ -1596,6 +1633,11 @@ nav.nav
 					transition-timing-function: ease-in-out
 					height: 0
 					z-index: 2
+				width: 32%
+				@media (max-width: 1000px)
+					width: 49%
+				@media (max-width: 700px)
+					width: 100%
 				.overlay_link
 					position: absolute
 					top: 0
@@ -1635,8 +1677,8 @@ nav.nav
 						.file_type
 							margin-right: 15px
 				.anim-arrow
-					transition-timing-function: ease-in-out
-					transition-duration: 150ms
+					transition-timing-function: cubic-bezier(0.13, 0.63, 0.54, 2.82)
+					transition-duration: 200ms
 				&:hover
 					&:before
 						height: 14px
@@ -2689,9 +2731,17 @@ nav.nav
 						.content
 							flex: 1
 							width: 100%
+							&:before
+								border-top-color: $dark-grey
+							&.primary:before
+								border-top-color: $white
 							.drop-menu
 								max-height: 250px
 								overflow-y: scroll
+								li
+									color: $dark-grey
+									&:hover
+										color: $teal
 				&.value-list
 					list-style: none
 					padding: 0

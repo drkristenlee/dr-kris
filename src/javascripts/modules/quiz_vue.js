@@ -55,7 +55,7 @@ Vue.component('quiz-element', {
 
 			<div class="action-container">
 				<button class="button" @click="stepChange(-1)">Previous</button>
-				<button class="button primary" @click="stepChange(1)">Next</button>
+				<button class="button primary" @click="stepChange(1)" :disabled="!questionsAnswered(step)">Next</button>
 			</div>
 		</div>
 
@@ -68,30 +68,60 @@ Vue.component('quiz-element', {
 				<div class="drag-choices drag-container">
 					<div class="option-value">
 						<div class="label">1.</div>
-						<button class="button dropdown content" @click="toggleActive">
-							Select a value...
+						<button class="button dropdown content" :class="{ 'primary': this.drag_drop.selected.first !== null }" @click="toggleActive">
+							<template v-if="this.drag_drop.selected.first !== null">
+								{{ this.drag_drop.selected.first }}
+							</template>
+							<template v-else>
+								Select a value...
+							</template>
 							<ul class="drop-menu">
-								<li v-for="value in drag_drop.values">{{ value }}</li>
+								<template v-for="value in drag_drop.values">
+									<li v-if="drag_drop.selected.first !== value &&
+									drag_drop.selected.second !== value &&
+									drag_drop.selected.third !== value"
+									@click="drag_drop.selected.first = value;">{{ value }}</li>
+								</template>
 							</ul>
 						</button>
 					</div>
 
 					<div class="option-value">
 						<div class="label">2.</div>
-						<button class="button dropdown content" @click="toggleActive">
-							Select a value...
+						<button class="button dropdown content" :class="{ 'primary': this.drag_drop.selected.second !== null }" @click="toggleActive">
+							<template v-if="this.drag_drop.selected.second !== null">
+								{{ this.drag_drop.selected.second }}
+							</template>
+							<template v-else>
+								Select a value...
+							</template>
 							<ul class="drop-menu">
-								<li v-for="value in drag_drop.values">{{ value }}</li>
+								<template v-for="value in drag_drop.values">
+									<li v-if="drag_drop.selected.first !== value &&
+									drag_drop.selected.second !== value &&
+									drag_drop.selected.third !== value"
+									@click="drag_drop.selected.second = value;">{{ value }}</li>
+								</template>
 							</ul>
 						</button>
 					</div>
 
 					<div class="option-value">
 						<div class="label">3.</div>
-						<button class="button dropdown content" @click="toggleActive">
-							Select a value...
+						<button class="button dropdown content" :class="{ 'primary': this.drag_drop.selected.third !== null }" @click="toggleActive">
+							<template v-if="this.drag_drop.selected.third !== null">
+								{{ this.drag_drop.selected.third }}
+							</template>
+							<template v-else>
+								Select a value...
+							</template>
 							<ul class="drop-menu">
-								<li v-for="value in drag_drop.values">{{ value }}</li>
+								<template v-for="value in drag_drop.values">
+									<li v-if="drag_drop.selected.first !== value &&
+									drag_drop.selected.second !== value &&
+									drag_drop.selected.third !== value"
+									@click="drag_drop.selected.third = value;">{{ value }}</li>
+								</template>
 							</ul>
 						</button>
 					</div>
@@ -104,7 +134,10 @@ Vue.component('quiz-element', {
 			</div>
 			<div class="action-container">
 				<button class="button" @click="stepChange(-1)">Previous</button>
-				<button class="button primary" @click="stepChange(1)">Next</button>
+				<button class="button primary" @click="stepChange(1)"
+				:disabled="this.drag_drop.selected.first == null || 
+				this.drag_drop.selected.second == null ||
+				this.drag_drop.selected.third == null">Next</button>
 			</div>
 		</div>
 
@@ -140,7 +173,8 @@ Vue.component('quiz-element', {
 
 			<div class="action-container">
 				<button class="button" @click="stepChange(-1)">Previous</button>
-				<button class="button primary" @click="stepChange(1)">Next</button>
+				<button class="button primary" @click="stepChange(1)"
+				:disabled="this.mindset_question.answer == null">Next</button>
 			</div>
 		</div>
 
@@ -150,25 +184,22 @@ Vue.component('quiz-element', {
 				<p class="body">Here's the skinny: You're on track, and with some finese, you can take it to another level. 
 				Like any one of us, there's always strengths to leverage, and room for improvement. In general you want to be on the lookout for:
 				<div class="sub-text">
-					<p class="subbody"><strong>Leveraging your strengths.</strong> Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-					commodo consequat.</p>
-					<p class="subbody"><strong>Avoiding common behavioral traps.</strong> Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-					commodo consequat.</p>
-					<p class="subbody"><strong>Elevating your values.</strong> Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-					commodo consequat.</p>
+					<p class="subbody"><strong>Leveraging your strengths.</strong> You can benefit from working
+					to build up four specific lenses: reflective, mindful, global, and creative lenses, to help
+					you see and do better.</p>
+					<p class="subbody"><strong>Avoiding common behavioral traps.</strong> Sleepwalking, perfectionism,
+					centricism and lockdown can leave us all in downward spiral trends.</p>
+					<p class="subbody"><strong>Elevating your values.</strong> Most of us have waaay more than
+					three values, but our top picks are ones we want to see connected to our daily behaviors.
+					Research shows that living a value-based life is where's it at There's no time for anything else.</p>
 				</div>
 
 				<div class="get_results">
-					<p class="body">Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-					commodo consequat.</p>
+					<p class="body">Thanks for spending time reflecting on this. Now it's time to find out how to take
+					this thinking and translate it into deeper awareness and action. I'm excited to share a free 
+					MENTALLIGENCE REPORT, based on your answers. This will give you a general framework to give you an
+					edge in building the kind of thinking and behavioral agility that helps us show up in full splendor
+					and work for better outcomes for all.</p>
 					<button class="button white">Get my results!</button>
 				</div>
 
@@ -187,10 +218,6 @@ Vue.component('quiz-element', {
 				<p class="body">Dr. Kris</p>
 			</div>
 
-			<div class="action-container">
-				<button class="button" @click="stepChange(-1)">Previous</button>
-				<a href="./quiz"><button class="button primary">Restart</button></a>
-			</div>
 		</div>
 
 	</div>`,
@@ -204,60 +231,193 @@ Vue.component('quiz-element', {
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I often go along to get along.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I regularly work to imagine myself in someone else's shoes.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I spend a good portion of my time people pleasing and building my own image.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "It's relativley easy of me to stand up for myself in situations.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I regularly reflect on my behavior and make necessary tweaks.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I'm fairly sensitive to negative feedback.",
+						answer: null
+					},
+
+					{
+						question: "I can see the lessons within the setbacks I've faced.",
+						answer: null
+					},
+					{
+						question: `I spend a fair amount of time checking "facts" from multiple, credible sources.`,
+						answer: null
+					},
+					{
+						question: "Once I make up my mind, I don't look back.",
+						answer: null
+					},
+					{
+						question: "I let things build up before noticing I need to make changes.",
+						answer: null
+					},
+					{
+						question: "What other people think drives most of my behavior.",
 						answer: null
 					},
 				],
 				[
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I can readily name three of my strengths, and own them with confidence.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I expect setbacks to happen, but most of the time I keep pressing on.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I have solid people in my life that I can trust enough to open up to.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "After taking a risk and things not going well, I'm willing to try again.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I take time to form my own opinions.",
 						answer: null
 					},
 					{
-						question: "I am comfortable with people getting to know the real me.",
+						question: "I tend to spend my time wisely.",
+						answer: null
+					},
+					{
+						question: "It's challenging to determine between my needs and wants.",
+						answer: null
+					},
+					{
+						question: "I often feel grateful for what I have",
+						answer: null
+					},
+					{
+						question: "I like to share my resources, and tend to do so on a regular basis.",
+						answer: null
+					},
+				],
+				[
+					{
+						question: `I am more likely to believe the opinions of an "expert" or leader over my own.`,
+						answer: null
+					},
+					{
+						question: "I spend most of my time with people who share my similar views.",
+						answer: null
+					},
+					{
+						question: `I'm comfortable being a non-conformist when a situation calls for it.`,
+						answer: null
+					},
+					{
+						question: `I'd be able to leave behind old thinking that doesn't fit my current values.`,
+						answer: null
+					},
+					{
+						question: `I've been able to pinpoint my biases and try my best to overcome them.`,
+						answer: null
+					},
+					{
+						question: `Society would be better off if people put aside their differences.`,
+						answer: null
+					},
+					{
+						question: `I've learned a lot from people I once though didn't have much in common with me.`,
+						answer: null
+					},
+					{
+						question: `The times I've traveled outside my boundaries (group, city, state, country) have taught me valuable lessons`,
+						answer: null
+					},
+					{
+						question: `Most of my behavior falls within society's stereotypical expectations of me.`,
+						answer: null
+					},
+					{
+						question: `I have friends and associates from many different places.`,
+						answer: null
+					},
+					{
+						question: `I find myself frustrated with stereotypes and prejudices.`,
+						answer: null
+					},
+					{
+						question: `In general, I think it's best to find a common ground with those I don't see eye to eye with.`,
+						answer: null
+					},
+					{
+						question: `I am able to communicate in more than one language.`,
+						answer: null
+					},
+				],
+				[
+					{
+						question: `I am living a creative life, by choice.`,
+						answer: null
+					},
+					{
+						question: `I have role models who have inspired me to take the road less traveled.`,
+						answer: null
+					},
+					{
+						question: `My values are represented in my everyday behavior.`,
+						answer: null
+					},
+					{
+						question: `I am able to set boundaries so that other people's priorities don't run my life.`,
+						answer: null
+					},
+					{
+						question: `Ethics are important to me.`,
+						answer: null
+					},
+					{
+						question: `I am able to take needed breaks, rests or vacations from my demands.`,
+						answer: null
+					},
+					{
+						question: `My work (school and/or employment) consumes me more than I'd like.`,
+						answer: null
+					},
+					{
+						question: `The kind of pace I'm keeping is sustainable.`,
+						answer: null
+					},
+					{
+						question: `There's room in my life for leisure/fun.`,
+						answer: null
+					},
+					{
+						question: `I have a solid amount of confidence in my ability to learn new things.`,
+						answer: null
+					},
+					{
+						question: `I'm commited to finding new growth opportunities.`,
 						answer: null
 					},
 				]
 			],
 			drag_drop: {
 				paragraphs: [
-					"Now it's time to rank your personal values. Click and drag to rank your top 3. For a description on the value, hover over the option.",
+					"Now it's time to rank your personal values. Select your top 3 from the dropdowns. For a description on the value, hover over the option.",
 					"Personal values are what make you tick. Of all things that move you, they matter most. They define your core essence - the things that are non-negotiable asepects of your being."
 				],
 				values: [
@@ -267,7 +427,12 @@ Vue.component('quiz-element', {
 					"Perspective", "Connectedness", "Globally curious", "Gratitude",
 					"Optimism", "Autonomy", "Open-mindedness", "Boundlessness",
 					"Solidarity", "Creativity"
-				]
+				],
+				selected: {
+					first: null,
+					second: null,
+					third: null
+				}
 			},
 			slide_questions: [
 				{
@@ -306,6 +471,15 @@ Vue.component('quiz-element', {
 			Vue.nextTick(function(){
 				window.scroll(0, 0);
 			});
+		},
+		questionsAnswered: function(qPage) {
+			return true;
+			for (var i=0; i < this.questions[qPage-1].length; i++) {
+				if ( this.questions[qPage-1][i].answer == null ) {
+					return false;
+				}
+			}
+			return true;
 		},
 		toggleActive: function(event){
 			event.currentTarget.classList.toggle('active');
