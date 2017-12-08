@@ -32,7 +32,7 @@ return [
                     'title' => $entry->title,
                     'publication' => $entry->publication,
                     'publicationDate' => $entry->publicationDate,
-                    'description' => $entry->title,
+                    'description' => $entry->description,
                     'linkToContent' => $entry->linkToContent,
                     'thumbnailImageUrl' => $entry->thumbnailImageUrl
                 ];
@@ -48,7 +48,7 @@ return [
                     'title' => $entry->title,
                     'publication' => $entry->publication,
                     'publicationDate' => $entry->publicationDate,
-                    'description' => $entry->title,
+                    'description' => $entry->description,
                     'linkToContent' => $entry->linkToContent,
                     'thumbnailImageUrl' => $entry->thumbnailImageUrl
                 ];
@@ -64,7 +64,7 @@ return [
                     'title' => $entry->title,
                     'publication' => $entry->publication,
                     'publicationDate' => $entry->publicationDate,
-                    'description' => $entry->title,
+                    'description' => $entry->description,
                     'linkToContent' => $entry->linkToContent,
                     'thumbnailImageUrl' => $entry->thumbnailImageUrl
                 ];
