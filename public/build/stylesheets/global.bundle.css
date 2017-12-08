@@ -3676,9 +3676,6 @@ nav.nav {
       #carousel .slide-deck .slide.buffer {
         opacity: 0 !important;
         pointer-events: none; }
-        @media (max-width: 700px) {
-          #carousel .slide-deck .slide.buffer {
-            display: none; } }
       #carousel .slide-deck .slide.active {
         opacity: 1; }
   #carousel .control {
