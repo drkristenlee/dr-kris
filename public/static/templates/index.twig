@@ -116,7 +116,7 @@
 			
 		</div>
 
-		<a href="./news" class="link"><button class="button black">View All</button></a>
+		<a href="./events" class="link"><button class="button black">View All</button></a>
 
 	</div>
 
@@ -128,6 +128,7 @@
 
 			{% for entry in craft.entries.section('landingPage')[0].featuredPress.limit(4) %}
 				<div class="press_item">
+					<a href="{{ entry.linkToContent }}" target="_blank" class="overlay_link"></a>
 					<div class="thumbnail
 					{% if entry.type == "pressVideoAndPodcasts" %}
 					 video
@@ -143,7 +144,7 @@
 
 		</div>
 
-		<a href="./news" class="link"><button class="button white">View All</button></a>
+		<a href="./press" class="link"><button class="button white">View All</button></a>
 	</div>
 
 	<div class="resources_section section">

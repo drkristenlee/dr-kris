@@ -86,8 +86,24 @@
 
 {# MAIN #}
 {% block main %}
-	<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-	<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+	<img src="./static/images/inkblots/IB_header_left.png" class="inkblot hero-inkblot left oops">
+	<img src="./static/images/inkblots/IB_header_right.png" class="inkblot hero-inkblot right oops">
+
+	<div class="landing_hero">
+		<div class="hero_container">
+			<h1 class="hero_quote not-found-heading">Oops, the page you are looking for doesn't exist!</h1>
+			<p class="not-found-para">No worries though, there are many great things to explore on this site. Check out my books, read articles
+			I've written, or even take the Mentalligence Quiz if you haven't already!</p>
+			<div class="not-found-buttons">
+				<a href="./books" class="button-link">
+					<button class="float_ad button primary">Check out Mentalligence!</button>
+				</a>
+				<a href="./quiz" class="button-link">
+					<button class="float_ad button">Take the Quiz!</button>
+				</a>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 {# FOOTER #}

@@ -28,6 +28,7 @@
 		{% set topFeatured = craft.entries.section('pressPage')[0].topFeatured[0] %}
 
 		<div class="featured-media">
+			<a href="{{ topFeatured.linkToContent }}" target="_blank" class="overlay_link"></a>
 			<div class="media_item insert-background {% if topFeatured.isVideo %}video{% endif %}" image-url="{{ topFeatured.thumbnailImageUrl }}"></div>
 		</div>
 		<div class="description">
@@ -52,6 +53,7 @@
 			<h2 class="title">Mentioned In</h2>
 		</div>
 		<div class="featured-media">
+			<a href="{{ mentionedFeatured.linkToContent }}" target="_blank" class="overlay_link"></a>
 			<div class="media_item insert-background" image-url="{{ mentionedFeatured.thumbnailImageUrl }}"></div>
 		</div>
 		<div class="description">
@@ -76,6 +78,7 @@
 		{% set videoFeatured = craft.entries.section('pressPage')[0].videoPodcastFeatured[0] %}
 
 		<div class="featured-media">
+			<a href="{{ videoFeatured.linkToContent }}" target="_blank" class="overlay_link"></a>
 			<div class="media_item video insert-background" image-url="{{ videoFeatured.thumbnailImageUrl }}"></div>
 		</div>
 		<div class="description">

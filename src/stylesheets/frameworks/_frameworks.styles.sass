@@ -131,6 +131,27 @@ html
 		filter: unset
 		opacity: 1
 
+.not-found-heading
+	margin-bottom: 30px !important
+.not-found-para
+	font-size: 18px
+	margin-bottom: 40px
+.not-found-buttons
+	.button-link
+		text-decoration: none
+		margin-right: 10px
+		&:last-child
+			margin-right: 0px
+	@media(max-width: 500px)
+		display: flex
+		flex-direction: column
+		.button-link
+			margin-bottom: 15px
+			margin-right: 0
+			.button
+				width: 100%
+				max-width: 300px
+
 #content
 	position: relative
 	overflow: hidden
@@ -147,16 +168,27 @@ html
 		transform: rotate(180deg)
 		@media (max-width: 500px)
 			top: 400px
-
+		&.oops
+			@media(max-width: 900px)
+				top: unset
+				bottom: -100px
+				left: -150px
 	&.hero-inkblot.right
 		z-index: -1
 		top: 50px
 		right: -100px
+		&.oops
+			@media(max-width: 900px)
+				top: 0px
+				right: -150px
 	&.hero-inkblot.left, &.hero-inkblot.right
 		@media (max-width: 800px)
 			width: 50vw
 		@media (max-width: 500px)
 			width: 250px
+		&.oops
+			@media(max-width: 900px)
+				width: 300px
 
 	&.landing-about-inkblot.left
 		top: 300px
@@ -363,6 +395,14 @@ html
 			color: $teal-hover
 	&.white
 		color: $white
+
+.overlay_link
+	position: absolute
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 1
 
 .button
 	padding: 12px 20px
@@ -2346,10 +2386,10 @@ nav.nav
 					display: flex
 					justify-content: center
 					align-items: center
-				&:hover
-					cursor: pointer
-					&:before
-						opacity: 1
+		&:hover
+			cursor: pointer
+			.media_item.video:before
+				opacity: 1
 	.description
 		overflow: hidden
 		.title, .subtitle, .info
