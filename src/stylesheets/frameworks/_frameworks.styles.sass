@@ -462,7 +462,9 @@ html
 				opacity: 1
 			&:before
 				transform: rotate(180deg)
-
+	&.loader
+		&.hidden
+			display: none
 .handwritten
 	height: 90px
 	z-index: 1
@@ -987,50 +989,55 @@ nav.nav
 				&:before
 					content: " "
 					position: absolute
-					bottom: 0
-					left: 0
-					right: 0
+					bottom: -1px
+					left: -1px
+					right: -1px
 					background: $teal
 					opacity: 0.75
 					transition-duration: 250ms
 					transition-timing-function: ease-in-out
 					height: 0
 					z-index: 2
-				
+				.overlay_link
+					position: absolute
+					top: 0
+					left: 0
+					bottom: 0
+					right: 0
+					z-index: 1
 				.thumbnail
 					width: 180px
 					height: auto
-					background: $off-white
-					.img
-						height: 100%
-						width: 100%
-						background-size: cover
-						background-position: center center
-						&.video
-							position: relative
-							&:before
-								content: " "
-								opacity: 0.25
-								transition-timing-function: ease-in-out
-								transition-duration: 250ms
-								position: absolute
-								left: 0
-								right: 0
-								top: 0
-								bottom: 0
-								margin: auto
-								width: 60px
-								height: 60px
-								background-image: url(../../public/static/images/play-button.svg)
-								background-position: center center
-								background-size: cover
-								display: flex
-								justify-content: center
-								align-items: center
+					background-color: $off-white
+					background-position: center center
+					background-size: cover
+					background-repeat: no-repeat
+					position: relative
+					&.video
+						position: relative
+						&:before
+							content: " "
+							opacity: 0.25
+							transition-timing-function: ease-in-out
+							transition-duration: 250ms
+							position: absolute
+							left: 0
+							right: 0
+							top: 0
+							bottom: 0
+							margin: auto
+							width: 60px
+							height: 60px
+							background-image: url(../../public/static/images/play-button.svg)
+							background-position: center center
+							background-size: cover
+							display: flex
+							justify-content: center
+							align-items: center
 				&:hover
 					&:before
 						height: 14px	
-					.thumbnail .img.video:before
+					.thumbnail.video:before
 						opacity: 1
 							
 				.content
@@ -1622,6 +1629,13 @@ nav.nav
 			@media (max-width: 900px)
 				.input
 					max-width: unset
+		.action-container
+			width: 100%
+			text-align: center
+			margin-top: 15px
+		.button.loader
+			&.hidden
+				display: none
 		.content
 			display: flex
 			width: 100%

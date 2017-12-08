@@ -1245,6 +1245,8 @@ html {
     .button.dropdown.active:before {
       -webkit-transform: rotate(180deg);
               transform: rotate(180deg); }
+  .button.loader.hidden {
+    display: none; }
 
 .handwritten {
   height: 90px;
@@ -1882,54 +1884,60 @@ nav.nav {
         .section.press_section .press_grid .press_item:before {
           content: " ";
           position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
+          bottom: -1px;
+          left: -1px;
+          right: -1px;
           background: #007C79;
           opacity: 0.75;
           transition-duration: 250ms;
           transition-timing-function: ease-in-out;
           height: 0;
           z-index: 2; }
+        .section.press_section .press_grid .press_item .overlay_link {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1; }
         .section.press_section .press_grid .press_item .thumbnail {
           width: 180px;
           height: auto;
-          background: #D8D9D9; }
-          .section.press_section .press_grid .press_item .thumbnail .img {
-            height: 100%;
-            width: 100%;
-            background-size: cover;
-            background-position: center center; }
-            .section.press_section .press_grid .press_item .thumbnail .img.video {
-              position: relative; }
-              .section.press_section .press_grid .press_item .thumbnail .img.video:before {
-                content: " ";
-                opacity: 0.25;
-                transition-timing-function: ease-in-out;
-                transition-duration: 250ms;
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                margin: auto;
-                width: 60px;
-                height: 60px;
-                background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNTEwIDUxMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEwIDUxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxnPgoJPGcgaWQ9InBsYXktY2lyY2xlLW91dGxpbmUiPgoJCTxwYXRoIGQ9Ik0yMDQsMzY5Ljc1TDM1NywyNTVMMjA0LDE0MC4yNVYzNjkuNzV6IE0yNTUsMEMxMTQuNzUsMCwwLDExNC43NSwwLDI1NXMxMTQuNzUsMjU1LDI1NSwyNTVzMjU1LTExNC43NSwyNTUtMjU1ICAgIFMzOTUuMjUsMCwyNTUsMHogTTI1NSw0NTljLTExMi4yLDAtMjA0LTkxLjgtMjA0LTIwNFMxNDIuOCw1MSwyNTUsNTFzMjA0LDkxLjgsMjA0LDIwNFMzNjcuMiw0NTksMjU1LDQ1OXoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNGQ0Y3RjciIGZpbGw9IiNGREZBRkEiLz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+Cg==);
-                background-position: center center;
-                background-size: cover;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-pack: center;
-                    -ms-flex-pack: center;
-                        justify-content: center;
-                -webkit-box-align: center;
-                    -ms-flex-align: center;
-                        align-items: center; }
+          background-color: #D8D9D9;
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          position: relative; }
+          .section.press_section .press_grid .press_item .thumbnail.video {
+            position: relative; }
+            .section.press_section .press_grid .press_item .thumbnail.video:before {
+              content: " ";
+              opacity: 0.25;
+              transition-timing-function: ease-in-out;
+              transition-duration: 250ms;
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+              width: 60px;
+              height: 60px;
+              background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNTEwIDUxMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEwIDUxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxnPgoJPGcgaWQ9InBsYXktY2lyY2xlLW91dGxpbmUiPgoJCTxwYXRoIGQ9Ik0yMDQsMzY5Ljc1TDM1NywyNTVMMjA0LDE0MC4yNVYzNjkuNzV6IE0yNTUsMEMxMTQuNzUsMCwwLDExNC43NSwwLDI1NXMxMTQuNzUsMjU1LDI1NSwyNTVzMjU1LTExNC43NSwyNTUtMjU1ICAgIFMzOTUuMjUsMCwyNTUsMHogTTI1NSw0NTljLTExMi4yLDAtMjA0LTkxLjgtMjA0LTIwNFMxNDIuOCw1MSwyNTUsNTFzMjA0LDkxLjgsMjA0LDIwNFMzNjcuMiw0NTksMjU1LDQ1OXoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNGQ0Y3RjciIGZpbGw9IiNGREZBRkEiLz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+Cg==);
+              background-position: center center;
+              background-size: cover;
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-pack: center;
+                  -ms-flex-pack: center;
+                      justify-content: center;
+              -webkit-box-align: center;
+                  -ms-flex-align: center;
+                      align-items: center; }
         .section.press_section .press_grid .press_item:hover:before {
           height: 14px; }
-        .section.press_section .press_grid .press_item:hover .thumbnail .img.video:before {
+        .section.press_section .press_grid .press_item:hover .thumbnail.video:before {
           opacity: 1; }
         .section.press_section .press_grid .press_item .content {
           display: -webkit-box;
@@ -2655,6 +2663,12 @@ nav.nav {
     @media (max-width: 900px) {
       .resources_main #resources .filter .input {
         max-width: unset; } }
+  .resources_main #resources .action-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px; }
+  .resources_main #resources .button.loader.hidden {
+    display: none; }
   .resources_main #resources .content {
     display: -webkit-box;
     display: -ms-flexbox;

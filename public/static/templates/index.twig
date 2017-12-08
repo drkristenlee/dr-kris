@@ -126,49 +126,20 @@
 
 		<div class="press_grid">
 
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-06-17-1434505183-5454270-FriendEnemypic-thumb.jpg"></div>
+			{% for entry in craft.entries.section('landingPage')[0].featuredPress.limit(4) %}
+				<div class="press_item">
+					<div class="thumbnail
+					{% if entry.type == "pressVideoAndPodcasts" %}
+					 video
+					{% endif %}
+					" style="background-image: url('{{ entry.thumbnailImageUrl }}')"></div>
+					<div class="content">
+						<p class="title">{{ entry.title }}</p>
+						<p class="pub-date">{{ entry.publication }}, {{ entry.publicationDate }}</p>
+						<p class="description">{{ entry.description }}</p>
+					</div>
 				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
-
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-05-30-1433000330-9385399-anxietytrappic-thumb.jpg"></div>
-				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
-
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-10-09-1444359472-8073928-unhappy389944_640-thumb.jpg"></div>
-				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
-
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="https://img.huffingtonpost.com/asset/58a8746b2900002b00f27483.jpg?ops=crop_0_2_640_421,scalefit_820_noupscale"></div>
-				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
+			{% endfor %}
 
 		</div>
 
@@ -186,13 +157,13 @@
 			
 			{% for entry in craft.entries.section('landingPage')[0].featuredResources.limit(6) %}
 				<div class="resource_item">
-					<a href="#" class="overlay_link"></a>
+					<a href="./uploads/resources/{{ entry.resourceFile[0].getPath() }}" download class="overlay_link"></a>
 					<div class="thumbnail">
 						<img class="img-ink {{ random(["", "rot90", "rot180", "rot270"]) }}" src="./static/images/inkblots/resource_ink/Resources_Icon{{random(range)}}.png" >
 					</div>
 					<div class="info">
 						<p class="resource_title">{{ entry.title }}</p>
-						<p class="meta"><span class="file_type">File Type</span> <span class="date">{{ entry.dateCreated|date('n/j/y') }}</span></p>
+						<p class="meta"><span class="file_type">.{{ entry.resourceFile[0].extension|upper }}</span> <span class="date">{{ entry.dateCreated|date('n/j/y') }}</span></p>
 						<p class="more"><a class="link teal">download <span class="anim-arrow">→</span></a></p>
 					</div>
 				</div>

@@ -29,49 +29,13 @@
 		
 		<h3>Resources</h3>
 
-		<div id="resources">
-
-			<div class="top-select">
-				<ul class="category-list">
-					<li class="category active">Worksheets</li>
-					<li class="category">Presentations</li>
-					<li class="category">Videos</li>
-				</ul>
-			</div>
-
-			<div class="filter">
-				<input class="input" type="text" placeholder="Search for resources">
-				<button class="button dropdown sorter">
-					Sort By
-					<ul class="drop-menu">
-						<a class="buy-link"><li>Date Asc.</li></a>
-						<a class="buy-link"><li>Date Desc.</li></a>
-						<a class="buy-link"><li>Title Asc.</li></a>
-						<a class="buy-link"><li>Title Desc.</li></a>
-					</ul>
-				</button>
-			</div>
-
-			<div class="content">
-				{% set range = range(1, 4) %}
-
-				{% for entry in craft.entries.section('resources') %}
-					<div class="resource_item">
-						<a href="#" class="overlay_link"></a>
-						<div class="thumbnail">
-							<img class="img-ink {{ random(["", "rot90", "rot180", "rot270"]) }}" src="./static/images/inkblots/resource_ink/Resources_Icon{{random(range)}}.png" >
-						</div>
-						<div class="info">
-							<p class="resource_title">{{ entry.title }}</p>
-							<p class="meta"><span class="file_type">File Type</span> <span class="date">{{ entry.dateCreated|date('n/j/y') }}</span></p>
-							<p class="more"><a class="link teal">download <span class="anim-arrow">→</span></a></p>
-						</div>
-					</div>
-				{% endfor %}
-				
-			</div>
-
-		</div>		
+		{% verbatim %}
+			<resources-grid></resources-grid>
+		{% endverbatim %}
 
 	</div>
 {% endblock %}
+
+{% includeJsFile 'https://unpkg.com/vue@2.5.6/dist/vue.js' %}
+{% includeJsFile 'https://code.jquery.com/jquery-3.2.1.min.js' first %}
+{% includeJsFile '../src/javascripts/modules/resources_vue.js' %}
