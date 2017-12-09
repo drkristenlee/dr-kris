@@ -42,6 +42,10 @@ $columbia: 'Columbia Serial', 'Georgia', serif
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
 
+@font-face
+	font-family: "scout-theme"
+	src: url('../../public/static/fonts/scout-theme-2016.woff') format("woff"), url('../../public/static/fonts/scout-theme-2016.ttf') format("ttf")
+
 .clearfix
 	*zoom: 1
 	&:before, &:after
@@ -2092,6 +2096,7 @@ nav.nav
 				margin-bottom: 1.5rem
 				color: $white
 			.social-container
+				margin-bottom: 20px
 				a
 					margin-right: 20px
 					&:last-child
@@ -2105,7 +2110,26 @@ nav.nav
 						color: $teal
 			.footer-copyright
 				margin-bottom: 0px
-				font-size: 13px
+				font-size: 14px
+			.made-with-love
+				margin-top: 15px
+				margin-bottom: 0
+				font-size: 14px
+				opacity: 0.5
+				.fa-heart
+					font-size: 12px
+				.scout-logo
+					vertical-align: sub
+					&:before
+						content: "\63"
+						font-family: 'scout-theme'!important
+						font-style: normal!important
+						font-weight: 400!important
+						font-variant: normal!important
+						text-transform: none!important
+						speak: none
+						-webkit-font-smoothing: antialiased
+
 		@media (max-width: 950px)
 			flex-direction: column
 			align-items: flex-start
@@ -2132,10 +2156,15 @@ nav.nav
 				.subscribe_text
 					font-size: 20px
 					margin-bottom: 20px
-			.social-container
-				margin-bottom: 20px
-				i
-					font-size: 24px !important
+			.footer-about
+				.social-container
+					.fa
+						font-size: 24px
+				.footer-copyright
+					font-size: 16px
+				.made-with-love
+					text-align: center
+					margin-top: 15px
 			.footer-mobile-hide
 				display: none
 			.footer-mobile-full-w
