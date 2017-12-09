@@ -1,10 +1,11 @@
+{% set nav_page = _nav_page|default('') %}
+{% set siteName = 'Dr. Kris | Recovering Perfectionist' %}
+
 {% extends "_webpack.templates/_webpack.template.wrapper" %}
 
 {% includeCssFile 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}
 {% includeCssFile './static/fonts/columbia.css' %}
 {% includeCssFile 'https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i' %}
-
-{% set nav_page = _nav_page|default('') %}
 
 {# HEADER #}
 {% block header %}

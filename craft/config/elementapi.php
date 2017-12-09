@@ -5,7 +5,7 @@ return [
     'endpoints' => [
         'api/resources.json' => [
             'elementType' => 'Entry',
-            'elementsPerPage' => 3,
+            'elementsPerPage' => 6,
             'pageParam' => 'pg',
             'criteria' => ['section' => 'resources'],
             'transformer' => function(EntryModel $entry) {

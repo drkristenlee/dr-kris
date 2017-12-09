@@ -45,14 +45,14 @@ Vue.component('press-media-grid', {
 					contentType: "application/json",
 					success: function(returnData) {
 						self.results = self.results.concat(returnData.data);
-						console.log(returnData)
+						//console.log(returnData);
 						if (returnData.meta.pagination.total_pages == self.pg) {
 							self.doneLoading = true;
 						}
 						self.pg++;
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(errorThrown);
+						//console.log(errorThrown);
 					}
 				});
 			});
@@ -103,14 +103,14 @@ Vue.component('press-mentioned-grid', {
 					contentType: "application/json",
 					success: function(returnData) {
 						self.results = self.results.concat(returnData.data);
-						console.log(returnData)
+						//console.log(returnData);
 						if (returnData.meta.pagination.total_pages == self.pg) {
 							self.doneLoading = true;
 						}
 						self.pg++;
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(errorThrown);
+						//console.log(errorThrown);
 					}
 				});
 			});
@@ -163,14 +163,14 @@ Vue.component('press-written-grid', {
 					contentType: "application/json",
 					success: function(returnData) {
 						self.results = self.results.concat(returnData.data);
-						console.log(returnData)
+						//console.log(returnData);
 						if (returnData.meta.pagination.total_pages == self.pg) {
 							self.doneLoading = true;
 						}
 						self.pg++;
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(errorThrown);
+						//console.log(errorThrown);
 					}
 				});
 			});

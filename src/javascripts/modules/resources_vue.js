@@ -17,7 +17,7 @@ Vue.component('resources-grid', {
 			</div>
 
 			<div class="filter">
-				<input class="input" type="text" placeholder="Search for resources">
+				<input class="input" type="text" placeholder="Search for resources by title or file extension" v-model="search">
 				<button class="button dropdown sorter">
 					Sort By
 					<ul class="drop-menu">
@@ -32,10 +32,10 @@ Vue.component('resources-grid', {
 			<div class="content">
 
 				<template v-for="entry in results">
-					<div class="resource_item">
+					<div class="resource_item" v-if="isFiltered(entry)">
 						<a v-bind:href="'./uploads/resources/'+ entry.filePath" download class="overlay_link"></a>
-						<div class="thumbnail" :class="'rot'+(getRandomNumber(1,4) * 90)">
-							<img class="img-ink" :src="'./static/images/inkblots/resource_ink/Resources_Icon' + getRandomNumber(1,4) + '.png'" >
+						<div class="thumbnail" :class="'rot'+(entry.randInt * 90)">
+							<img class="img-ink" :src="'./static/images/inkblots/resource_ink/Resources_Icon' + entry.randInt + '.png'" >
 						</div>
 						<div class="info">
 							<p class="resource_title">{{ entry.title }}</p>
@@ -69,6 +69,9 @@ Vue.component('resources-grid', {
 					url: "./api/resources.json?pg="+self.pg,
 					contentType: "application/json",
 					success: function(returnData) {
+						for (var i=0; i<returnData.data.length; i++) {
+							returnData.data[i].randInt = self.getRandomNumber(1,4);
+						}
 						self.results = self.results.concat(returnData.data);
 						if (returnData.meta.pagination.total_pages == self.pg) {
 							self.doneLoading = true;
@@ -89,6 +92,10 @@ Vue.component('resources-grid', {
 		parseDate: function(datestring) {
 			var d = new Date(datestring);
 			return d.getMonth() + "/" + d.getDate() + "/" + d.getYear();
+		},
+		isFiltered: function(entry) {
+			return entry.title.toLowerCase().includes(this.search.toLowerCase()) || 
+			entry.fileType.toLowerCase() == this.search.toLowerCase();
 		}
 	},
 	mounted: function() {
