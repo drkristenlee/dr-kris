@@ -203,9 +203,15 @@ Vue.component('quiz-element', {
 					</p>
 					<p class="body"><strong>Leveraging your strengths.</strong> You can benefit from working
 					to build up four specific lenses: reflective, mindful, global, and creative lenses, to help
-					you see and do better.</p>
+					you see and do better. You seem to do well in being {{ this.highestArea() }}, and should focus in on 
+					continuing to cultivate these aspects of yourself that seem to be strong suits for you.</p>
+
 					<p class="body"><strong>Avoiding common behavioral traps.</strong> Sleepwalking, perfectionism,
-					centricism and lockdown can leave us all in downward spiral trends.</p>
+					centricism and lockdown can leave us all in downward spiral trends. Your results suggest you could 
+					benefit from additional skill development in being {{ this.lowestAreas() }} to help you spiral upwards.
+					Remember that everything is learning, and that you are at point in your development, and research 
+					shows that by identifying areas of growth, we’re more likely to make progress.</p>
+					
 					<p class="body"><strong>Elevating your values.</strong> Most of us have waaay more than
 					three values, but our top picks are ones we want to see connected to our daily behaviors.
 					As a person who prioritizes {{ this.drag_drop.selected.first }}, 
@@ -976,7 +982,7 @@ Vue.component('quiz-element', {
 			],
 			drag_drop: {
 				paragraphs: [
-					"Now it's time to rank your personal values. Select your top 3 from the dropdowns. For a description on the value, hover over the option.",
+					"Now it's time to rank your personal values. Select your top 3 from the dropdowns. All values are listed below the dropdowns for reference.",
 					"Personal values are what make you tick. Of all things that move you, they matter most. They define your core essence - the things that are non-negotiable asepects of your being."
 				],
 				values: [
@@ -1032,6 +1038,35 @@ Vue.component('quiz-element', {
 		}
 	},
 	methods: {
+		highestArea: function() {
+			var list = [
+				{ name: "reflective", score: this.results.reflect/138 },
+				{ name: "mindful", score: this.results.mindful/118 },
+				{ name: "global", score: this.results.global/112 },
+				{ name: "imaginative", score: this.results.imagineering/123 }
+			];
+			var currentName;
+			var max;
+			for (var i = 0; i < list.length; i++) {
+				if (max == null || list[i].score > max) {
+					max = list[i].score;
+					currentName = list[i].name;
+				}
+			}
+			return currentName;
+		},
+		lowestAreas: function() {
+			var list = [
+				{ name: "reflective", score: this.results.reflect/138 },
+				{ name: "mindful", score: this.results.mindful/118 },
+				{ name: "global", score: this.results.global/112 },
+				{ name: "imaginative", score: this.results.imagineering/123 }
+			];
+			var sorted = list.sort(function(a, b) {
+			    return a.score - b.score;
+			});
+			return sorted[0].name + " and " + sorted[1].name;
+		},
 		startQuiz: function() {
 			this.step = 1;
 			Vue.nextTick(function(){

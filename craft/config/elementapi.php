@@ -16,7 +16,7 @@ return [
                 
                 return [
                     'title' => $entry->title,
-                    'date' => $entry->dateCreated,
+                    'date' => $entry->dateCreated->w3cDate(),
                     'filePath' => $assetUrl,
                     'fileType' => pathinfo($assetUrl, PATHINFO_EXTENSION)
                 ];

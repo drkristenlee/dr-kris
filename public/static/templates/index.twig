@@ -101,18 +101,27 @@
 
 		<div class="event_list">
 			
-			{% for entry in craft.entries.section('events').order('date asc').limit(3) %}
-			
-				<div class="event_entry">
-					<div class="event_info">
-						<p class="subtitle">{{ entry.title }}</p>
-						<p>{{ entry.date|date("F j, Y") }}</p>
-						<p>{{ entry.location }}</p>
-					</div>
-					<p class="event_desc">{{ entry.eventDescription }}</p>
-				</div>
+			{% set upcoming_events = craft.entries.find({
+			    section: 'events',
+			    date: '>= ' ~ now.w3cDate(),
+			    order: 'date asc',
+			    limit: 3
+			}) %}
 
-			{% endfor%}
+			{% if not upcoming_events|length %}
+				<p class="no_events_placeholder">No upcoming events planned yet</p>
+			{% else %}
+				{% for entry in upcoming_events %}
+					<div class="event_entry">
+						<div class="event_info">
+							<p class="subtitle">{{ entry.title }}</p>
+							<p>{{ entry.date|date("F j, Y") }}</p>
+							<p>{{ entry.location }}</p>
+						</div>
+						<p class="event_desc">{{ entry.eventDescription }}</p>
+					</div>
+				{% endfor%}
+			{% endif %}
 			
 		</div>
 

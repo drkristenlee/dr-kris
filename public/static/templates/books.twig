@@ -20,8 +20,18 @@
 {% extends "_layout" %}
 
 {% set _nav_page = 'books' %}
+{% set bookOverflowCSS %}
+#content {
+    overflow: initial;
+}
+#container {
+	overflow: hidden;
+}
+{% endset %}
 
 {% block main %}
+	{% includeCss bookOverflowCSS %}
+
 	<img src="./static/images/inkblots/IB_header_right.png" class="inkblot book-hero-inkblot right">
 
 	<!-- hero section -->
@@ -77,7 +87,9 @@
 
 	<div class="section book_showcase inverse widder">
 		<img src="./static/images/inkblots/IB_meet_left.png" class="inkblot book-reset-inkblot topright">
-		<img src="./static/images/inkblots/IB_footer.png" class="inkblot book-reset-inkblot bottom">
+		<div class="inkblot-cutoff">
+			<img src="./static/images/inkblots/IB_footer.png" class="inkblot book-reset-inkblot bottom">
+		</div>
 
 		<div class="content">
 

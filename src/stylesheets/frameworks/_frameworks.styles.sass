@@ -135,6 +135,7 @@ html
 		filter: unset
 		opacity: 1
 
+
 .not-found-heading
 	margin-bottom: 30px !important
 .not-found-para
@@ -1668,6 +1669,8 @@ nav.nav
 				padding-bottom: 10px
 				&:before
 					border-top-color: $dark-grey
+				&.primary:before
+					border-top-color: $white
 				.drop-menu
 					background: $white-hover
 			@media (max-width: 900px)
@@ -2190,6 +2193,14 @@ nav.nav
 			.about_book
 				width: 100%
 				max-width: 500px
+	.inkblot-cutoff
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		z-index: -1
+		overflow: hidden
 	.content
 		width: 100%
 		max-width: 800px
@@ -2718,6 +2729,7 @@ nav.nav
 				font-size: 18px
 				margin: 0
 			.button
+				margin-left: -1px
 				flex-shrink: 0
 				padding: 15px 30px
 				box-sizing: border-box
@@ -3086,3 +3098,15 @@ nav.nav
 		@media (max-width: 600px)
 			padding-left: 30px !important
 			padding-right: 30px !important
+
+
+.no_events_placeholder
+	color: $white
+	opacity: 0.5
+	padding: 40px 0 70px 0
+	text-align: center
+	&.main
+		font-size: 22px
+		padding: 80px 0 80px 0
+
+

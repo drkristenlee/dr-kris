@@ -2711,6 +2711,8 @@ nav.nav {
       padding-bottom: 10px; }
       .resources_main #resources .filter .sorter:before {
         border-top-color: #333434; }
+      .resources_main #resources .filter .sorter.primary:before {
+        border-top-color: #FFFFFF; }
       .resources_main #resources .filter .sorter .drop-menu {
         background: #E6E6E6; }
     @media (max-width: 900px) {
@@ -3353,6 +3355,14 @@ nav.nav {
     .book_showcase.widder .content .about_book {
       width: 100%;
       max-width: 500px; }
+  .book_showcase .inkblot-cutoff {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    overflow: hidden; }
   .book_showcase .content {
     width: 100%;
     max-width: 800px;
@@ -3944,6 +3954,7 @@ nav.nav {
         font-size: 18px;
         margin: 0; }
       #quiz .quiz-intro .button-group .button {
+        margin-left: -1px;
         -ms-flex-negative: 0;
             flex-shrink: 0;
         padding: 15px 30px;
@@ -4373,6 +4384,15 @@ nav.nav {
   .section .mobile-pad {
     padding-left: 30px !important;
     padding-right: 30px !important; } }
+
+.no_events_placeholder {
+  color: #FFFFFF;
+  opacity: 0.5;
+  padding: 40px 0 70px 0;
+  text-align: center; }
+  .no_events_placeholder.main {
+    font-size: 22px;
+    padding: 80px 0 80px 0; }
 
 /** ==========================================================================
   * IX. TRUMPS
