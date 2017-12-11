@@ -1,5 +1,5 @@
 {#
- # News template
+ # Events template
  # ---------------
  #
  # When this template gets loaded, it will be because someone has accessed
@@ -22,87 +22,137 @@
 {% set _nav_page = 'news' %}
 
 {% block main %}
-	<!-- hero section -->
-	<div class="news_main section no-flex">
-		
-		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
+	<img src="./static/images/inkblots/IB_events_3.png" class="inkblot events-under-hero-inkblot">
 
-		<h3>Events</h3>
+	<div class="events-hero insert-background" image-url="./static/images/events/{{ craft.entries.section('eventPage')[0].heroImage[0].getPath() }}"></div>
+
+	<div class="events_main section no-flex">
+
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-upcoming-inkblot top">
+		<img src="./static/images/inkblots/IB_events_2.png" class="inkblot events-upcoming-inkblot bottom">
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-upcoming-inkblot overlap">
+
+		<h3 class="mobile-pad">Events</h3>
+
+		{% set upcomingEvents = craft.entries.find({
+		    section: 'events',
+		    date: '>= ' ~ now.w3cDate(),
+		    order: 'date asc'
+		}) %}
 
 		<div class="event_groups">
 
-			<div class="event_section">
-				<p class="title">November 2017</p>
-				<div class="event-list">
-					
-					<div class="event">
-						<div class="date">11/05</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
-						</div>
-						<p class="description">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class="event">
-						<div class="date">11/15</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
-						</div>
-						<p class="description">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
+			{% if not upcomingEvents|length %}
+				<p class="no_events_placeholder main">No upcoming events planned yet</p>
+			{% else %}
 
-				</div>
-			</div>
+				{% for year, entriesInYear in upcomingEvents | group("date.year") %}
+			        {% for month, entriesInMonth in entriesInYear | group("date|date('F')") %}
+			            
+			            <div class="event_section">
+							<p class="title">{{ month }} {{ year }}</p>
+							<div class="event-list">
+								
+								 {% for entry in entriesInMonth %}
+									<div class="event">
+										<div class="event_info">
+											<div class="info-title">{{ entry.title }}</div>
+											<div class="info">
+												<p class="info-date">{{ entry.date|date('n/j') }}</p>
+												<p class="info-loc">{{ entry.location }}</p>
+											</div>
+										</div>
+										<p class="description">
+											{{ entry.eventDescription }}
+										</p>
+									</div>
+								{% endfor %}
 
-			<div class="event_section">
-				<p class="title">December 2017</p>
-				<div class="event-list">
-					
-					<div class="event">
-						<div class="date">12/09</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
+							</div>
 						</div>
-						<p class="description">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class="event">
-						<div class="date">12/20</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
-						</div>
-						<p class="description">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
-					<div class="event">
-						<div class="date">12/22</div>
-						<div class="info">
-							<p class="info-title">Event Name / Type</p>
-							<p class="info-loc">City, State</p>
-						</div>
-						<p class="description">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-						</p>
-					</div>
 
-				</div>
-			</div>
+			        {% endfor %}
+				{% endfor %}
 
-			<div class="load-container">
-				<button class="load-btn">Load more</button>
-			</div>
+			{% endif %}
 
 		</div>
 
+		<div class="load-container">
+			<button class="button black">Load more</button>
+		</div>
+
 	</div>
+
+	<div class="section no-flex past-events">
+
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot events-past-inkblot top">
+
+		<h3 class="mobile-pad">Past Events</h3>
+		<div class="content">
+
+			<div id="carousel">
+				
+				<div class="control back">
+					<div class="arrow left"></div>
+				</div>
+				<div class="control next">
+					<div class="arrow right"></div>
+				</div>
+
+				<div class="slide-deck siema">
+
+					<!-- buffer slide -->
+					<div class="slide buffer">
+						<div class="image"></div>
+					</div>
+
+					{% for event in craft.entries.section('eventCarousel') %}
+						<div class="slide">
+							<div class="image insert-background" image-url="./static/images/events/{{ event.carouselImage[0].getPath() }}"></div>
+
+							<div class="text">
+								<p class="title">{{ event.title }}</p>
+								<p class="subtitle"><strong>{{ event.date|date("m/d/y") }}</strong> <span class="dot"></span> <em>{{ event.location }}</em></p>
+								<p class="description">
+									{{ event.eventDescription }}
+								</p>
+							</div>
+						</div>
+					{% endfor %}
+
+					<!-- buffer slide -->
+					<div class="slide buffer">
+						<div class="image"></div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="section no-flex booking-info">
+		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
+		
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-booking-inkblot left">
+		<img src="./static/images/inkblots/IB_events_1.png" class="inkblot events-booking-inkblot right">
+
+		<div class="content">
+			<p class="title">For all booking inquiries, please contact:</p>
+			<p class="agent-name">Abbe Nasshan</p>
+			<p class="agent-sub">Communications Director</p>
+			<p class="agent-email"><a href="#">connect@kristenlee.com</a></p>
+		</div>
+	</div>
+
 {% endblock %}
+
+{% includeJsFile "../src/javascripts/modules/siema.min.js" first %}
+{% includeJsFile "../src/javascripts/modules/carousel.js" %}
+
+
+
+
 

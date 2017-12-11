@@ -20,8 +20,18 @@
 {% extends "_layout" %}
 
 {% set _nav_page = 'books' %}
+{% set bookOverflowCSS %}
+#content {
+    overflow: initial;
+}
+#container {
+	overflow: hidden;
+}
+{% endset %}
 
 {% block main %}
+	{% includeCss bookOverflowCSS %}
+
 	<img src="./static/images/inkblots/IB_header_right.png" class="inkblot book-hero-inkblot right">
 
 	<!-- hero section -->
@@ -32,10 +42,17 @@
 			<div class="about_book">
 				<h2 class="head">The airbrushed you isn't sustainable, or even half as awesome.</h2>
 				<p class="book-title"><strong>Mentalligence:</strong><br> A New Psychology of Thinking (Learn What it Takes to be More Agile, Mindful and Connected in Today's World)</p>
-				<p class="release-date">Coming 2018!</p>
+				<p class="release-date">{{ craft.entries.section('bookPage')[0].mentalligenceCallToAction }}</p>
 				<div class="actions">
-					<button class="button primary">Buy the Book</button>
-					<a href="#" class="link">Read an excerpt →</a>
+					<button class="button primary dropdown">
+						{{ craft.entries.section('bookPage')[0].mentalligenceButtonText }}
+						<ul class="drop-menu">
+							{% for link in craft.entries.section('mentalligenceBuyLinks').order('date asc') %}
+								<a class="buy-link" href="{{ link.buyLink }}" target="_blank"><li>{{ link.seller }}</li></a>
+							{% endfor %}
+						</ul>
+					</button>
+					<a href="#" class="link excerpt-link">Read an excerpt <span class="float-arrow">→</span></a>
 				</div>
 			</div>
 
@@ -50,39 +67,58 @@
 
 		<div class="content">
 			<h2 class="title">What is Mentalligence?</h2>
-			<p class="text">My biggest takeaway from spending the last twenty plus years as a clinician, educator, researcher, and activist? That everything is learning and learning is everything. Lessons are always ours for the finding, if we stay woke. I live and breath and eat and study human resilience, authenticity, and identity. I've spent my entire life in a love/hate relationship with my anxiety, my one true frenemy.</p>
-
-			<p class="text">I write to teach, to cope, to spur on change - to try to make sense of our complicated and gorgeous human condition. Mostly, this happens by rethinking and unlearning what we're first sold.</p>
+			<p class="text">
+				{{ craft.entries.section('bookPage')[0].whatIsMentalligence|nl2br|raw }}
+			</p>
 		</div>
 
+		{% if craft.entries.section('bookPage')[0].praiseForMentalligence | length %}
 		<div class="content">
 			<h2 class="title">Praise for Mentalligence</h2>
-			<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			{% for review in craft.entries.section('bookPage')[0].praiseForMentalligence %}
+				<div class="review_item">
+					<p class="text">{{ review.reviewText }}</p>
+					<p class="author">- {{ review.reviewAuthor }}</p>
+				</div>
+			{% endfor %}
 		</div>
+		{% endif %}
 	</div>
 
 	<div class="section book_showcase inverse widder">
 		<img src="./static/images/inkblots/IB_meet_left.png" class="inkblot book-reset-inkblot topright">
-		<img src="./static/images/inkblots/IB_footer.png" class="inkblot book-reset-inkblot bottom">
+		<div class="inkblot-cutoff">
+			<img src="./static/images/inkblots/IB_footer.png" class="inkblot book-reset-inkblot bottom">
+		</div>
 
 		<div class="content">
 
 			<div class="about_book">
 				<h2 class="head">About Reset</h2>
-				<p class="body">I write to teach, to cope, to spur on change - to try to make sense of our complicated and gorgeous human condition. Mostly, this happens by rethinking and unlearning what we're first sold.</p>
+				<p class="body">
+					{{ craft.entries.section('bookPage')[0].aboutReset|nl2br|raw }}
+				</p>
+
+				{% if craft.entries.section('bookPage')[0].praiseForReset | length > 0 %}
 				<div class="reviews">
-					<div class="review_item">
-						<p class="text">Join Dr. Kris as she chats about ways you can be a more global thinker in today's workaholic world.</p>
-						<p class="author">- Kirkus Reviews</p>
-					</div>
-					<div class="review_item">
-						<p class="text">Join Dr. Kris as she chats about ways you can be a more global thinker in today's workaholic world.</p>
-						<p class="author">- Kirkus Reviews</p>
-					</div>
+					{% for review in craft.entries.section('bookPage')[0].praiseForReset %}
+						<div class="review_item">
+							<p class="text">{{ review.reviewText }}</p>
+							<p class="author">- {{ review.reviewAuthor }}</p>
+						</div>
+					{% endfor %}
 				</div>
+				{% endif %}
+
 				<div class="actions">
-					<button class="button primary">Buy the Book</button>
+					<button class="button primary dropdown">
+						{{ craft.entries.section('bookPage')[0].resetButtonText }}
+						<ul class="drop-menu">
+							{% for link in craft.entries.section('resetBuyLinks').order('date asc') %}
+								<a class="buy-link" href="{{ link.buyLink }}" target="_blank"><li>{{ link.seller }}</li></a>
+							{% endfor %}
+						</ul>
+					</button>
 				</div>
 			</div>
 
@@ -90,38 +126,6 @@
 
 		</div>
 	</div>
-
-	<!--
-	<div class="list_quotes">
-		<div class="quote_item">
-			<p class="body">
-				"Lee's voice and the book's structure will be useful to readers looking for a leg up...A well written, sensible self-help guide"
-			</p>
-			<p class="author">
-				- Kirkus Reviews
-			</p>
-		</div>
-		<div class="quote_item">
-			<p class="body">
-				"A rational, clearly outlined debut guide to recognizign and tolerating the sress of everyday life"
-			</p>
-			<p class="author">
-				- Kirkus Reviews
-			</p>
-		</div>
-		<div class="quote_item">
-			<p class="body">
-				"Filled with skills you can start applying to your life today, <em>Mentalligence</em> serves as a practical guide to coping with stress. Backed by scientific evidence, yet presented in an easy-to-digest format, Dr. Kris' adivce will prepare you for challenges of all sizes.."
-			</p>
-			<p class="author">
-				- Amy Morin, LCSW &amp; bestselling author of <em>13 Things Mentally Strong People Don't Do</em>
-			</p>
-		</div>
-		<div class="cta-container">
-			<button class="cta">Buy the Book Now!</button>
-		</div>
-	</div>
-	-->
 	
 {% endblock %}
 

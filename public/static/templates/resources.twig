@@ -29,78 +29,13 @@
 		
 		<h3>Resources</h3>
 
-		<div id="resources">
-
-			<div class="top-select">
-				<ul class="category-list">
-					<li class="category active">Worksheets</li>
-					<li class="category">Presentations</li>
-					<li class="category">Videos</li>
-				</ul>
-				<ul class="type-select">
-					<li class="list-type" id="list-view-select">List View</li>
-					<li class="list-type active" id="grid-view-select">Grid View</li>
-				</ul>
-			</div>
-
-			<div class="filter">
-				<input type="text" placeholder="Search for resources">
-				<select>
-					<option disabled selected>Sort By</option>
-					<option value="">Date Incr.</option>
-					<option>Date Desc.</option>
-					<option>Title Asc.</option>
-					<option>Title Desc.</option>
-				</select>
-			</div>
-
-			<div class="content">
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-				<div class="resource_item">
-					<div class="thumbnail"></div>
-					<div class="info">
-						<p class="resource_title">Item Name</p>
-						<p class="file_type">File Type</p>
-					</div>
-				</div>
-			</div>
-
-		</div>		
+		{% verbatim %}
+			<resources-grid></resources-grid>
+		{% endverbatim %}
 
 	</div>
 {% endblock %}
 
+{% includeJsFile 'https://unpkg.com/vue@2.5.6/dist/vue.js' %}
+{% includeJsFile 'https://code.jquery.com/jquery-3.2.1.min.js' first %}
+{% includeJsFile '../src/javascripts/modules/resources_vue.js' %}

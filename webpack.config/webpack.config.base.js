@@ -102,6 +102,7 @@ const webpackBaseConfig = function(env) {
             new HtmlWebpackPlugin({
               template: './src/webpack.templates/_webpack.template.wrapper.twig',
               filename: '../static/templates/_webpack.templates/_webpack.template.wrapper.twig',
+              favicon: './src/favicon.png'
             }),
 
             new WebpackNotifierPlugin({alwaysNotify: true}),

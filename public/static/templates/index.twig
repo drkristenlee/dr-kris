@@ -19,18 +19,27 @@
 
 {% extends "_layout" %}
 
+{% block notif_banner %}
+	<div id="notification_banner">
+		<a href="./quiz"><p class="text">Test your Mentalligence with this quiz!</p></a>
+		<div class="close-banner">
+			<div class="close-btn">
+				<span class="line"></span>
+				<span class="line"></span>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
 {% block main %}
 
 	<img src="./static/images/inkblots/IB_header_left.png" class="inkblot hero-inkblot left">
 	<img src="./static/images/inkblots/IB_header_right.png" class="inkblot hero-inkblot right">
 
-	<!-- hero section -->
 	<div class="landing_hero">
 		<div class="hero_container">
 			<h1 class="hero_quote"><span class="open_quote quote_top"></span>
-			{% for entry in craft.entries.section('landingQuotes').limit(1) %}
-				{{ entry.headingQuote }}
-			{% endfor %}</h1>
+			{{ craft.entries.section('landingPage')[0].heroQuote }}</h1>
 
 			<a href="./books">
 				<button class="float_ad button primary">Check out Mentalligence!</button>
@@ -52,18 +61,10 @@
 				</div>
 			</div>
 
-			<div class="text-container">
-				<h4 class="sub-section-title">Recovering perfectionist.</h4>
-				<p>My biggest takeaway from spending the last twenty plus years as a clinician,
-				educator, researcher and activist? That everything is learning and learning is
-				everything. Lessons are always ours for the finding, if we stay woke. I live and
-				breathe and eat and study human resilience, authenticity and identity. I’ve
-				spent my entire life in a love/hate relationship with my anxiety, my one true
-				frenemy.</p>
-				<p>I write to teach, to cope, and to spur on change—to try to make sense of our
-				complicated and gorgeous human condition. Mostly, this happens by
-				rethinking and unlearning what we’re first sold.</p>
-				<p class="link-para"><a href="./about" class="link teal">Read more →</a></p>
+			<div class="text-container mobile-pad">
+				<h4 class="sub-section-title">{{ craft.entries.section('landingPage')[0].tagline }}</h4>
+				<p>{{ craft.entries.section('landingPage')[0].bio|nl2br|raw }}</p>
+				<p class="link-para"><a href="./about" class="link teal">Read more <span class="anim-arrow">→</span></a></p>
 			</div>
 		</div>
 
@@ -96,82 +97,63 @@
 		<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-event-inkblot left">
 		<img src="./static/images/inkblots/IB_events_right.png" class="inkblot landing-event-inkblot right">
 
-		<img class="title handwritten overlap" src="./static/images/written/events.png">
+		<img class="title handwritten overlap events" src="./static/images/written/events.png">
 
 		<div class="event_list">
 			
-			{% for entry in craft.entries.section('events').order('date asc').limit(3) %}
-			
-				<div class="event_entry">
-					<div class="event_info">
-						<p class="subtitle">{{ entry.title }}</p>
-						<p>{{ entry.date }}</p>
-						<p>{{ entry.location }}</p>
-					</div>
-					<p class="event_desc">{{ entry.eventDescription }}</p>
-				</div>
+			{% set upcoming_events = craft.entries.find({
+			    section: 'events',
+			    date: '>= ' ~ now.w3cDate(),
+			    order: 'date asc',
+			    limit: 3
+			}) %}
 
-			{% endfor%}
+			{% if not upcoming_events|length %}
+				<p class="no_events_placeholder">No upcoming events planned yet</p>
+			{% else %}
+				{% for entry in upcoming_events %}
+					<div class="event_entry">
+						<div class="event_info">
+							<p class="subtitle">{{ entry.title }}</p>
+							<p>{{ entry.date|date("F j, Y") }}</p>
+							<p>{{ entry.location }}</p>
+						</div>
+						<p class="event_desc">{{ entry.eventDescription }}</p>
+					</div>
+				{% endfor%}
+			{% endif %}
 			
 		</div>
 
-		<a href="./news" class="link"><button class="button black">View All</button></a>
+		<a href="./events" class="link"><button class="button black">View All</button></a>
 
 	</div>
 
 	<div class="press_section section">
 
-		<img class="title handwritten left-corner large" src="./static/images/written/press.png">
+		<img class="title handwritten left-corner press" src="./static/images/written/press.png">
 
 		<div class="press_grid">
 
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-06-17-1434505183-5454270-FriendEnemypic-thumb.jpg"></div>
+			{% for entry in craft.entries.section('landingPage')[0].featuredPress.limit(4) %}
+				<div class="press_item">
+					<a href="{{ entry.linkToContent }}" target="_blank" class="overlay_link"></a>
+					<div class="thumbnail
+					{% if entry.type == "pressVideoAndPodcasts" %}
+					 video
+					{% endif %}
+					" style="background-image: url('{{ entry.thumbnailImageUrl }}')"></div>
+					<div class="content">
+						<p class="title">{{ entry.title }}</p>
+						<p class="pub-date">{{ entry.publication }}, {{ entry.publicationDate }}</p>
+						<p class="description">{{ entry.description }}</p>
+					</div>
 				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
-
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-05-30-1433000330-9385399-anxietytrappic-thumb.jpg"></div>
-				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
-
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="http://images.huffingtonpost.com/2015-10-09-1444359472-8073928-unhappy389944_640-thumb.jpg"></div>
-				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
-
-			<div class="press_item">
-				<div class="thumbnail">
-					<div class="img insert-background" image-url="https://img.huffingtonpost.com/asset/58a8746b2900002b00f27483.jpg?ops=crop_0_2_640_421,scalefit_820_noupscale"></div>
-				</div>
-				<div class="content">
-					<p class="title">An Article Wrote by Dr. Kris</p>
-					<p class="pub-date">Huffington Post, Nov. 10, 2017</p>
-					<p class="description">A description goes here. There is definitley quality content in this article.</p>
-				</div>
-			</div>
+			{% endfor %}
 
 		</div>
 
-		<a href="./news" class="link"><button class="button white">View All</button></a>
+		<a href="./press" class="link"><button class="button white">View All</button></a>
 	</div>
 
 	<div class="resources_section section">
@@ -181,12 +163,19 @@
 		<img class="title handwritten space small" src="./static/images/written/re.png">
 
 		<div class="resource_list">
-
-			{% for entry in craft.entries.section('resources').order('date asc').limit(6) %}
+			{% set range = range(1, 4) %}
+			
+			{% for entry in craft.entries.section('landingPage')[0].featuredResources.limit(6) %}
 				<div class="resource_item">
-					<p class="subtitle">{{ entry.title }}</p>
-					<p class="description">{{ entry.description }}</p>
-					<p class="more"><a href="#" class="link teal">read more →</a></p>
+					<a href="./uploads/resources/{{ entry.resourceFile[0].getPath() }}" download class="overlay_link"></a>
+					<div class="thumbnail">
+						<img class="img-ink {{ random(["", "rot90", "rot180", "rot270"]) }}" src="./static/images/inkblots/resource_ink/Resources_Icon{{random(range)}}.png" >
+					</div>
+					<div class="info">
+						<p class="resource_title">{{ entry.title }}</p>
+						<p class="meta"><span class="file_type">.{{ entry.resourceFile[0].extension|upper }}</span> <span class="date">{{ entry.dateCreated|date('n/j/y') }}</span></p>
+						<p class="more"><a class="link teal">download <span class="anim-arrow">→</span></a></p>
+					</div>
 				</div>
 			{% endfor %}
 			
