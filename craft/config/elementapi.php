@@ -13,7 +13,6 @@ return [
                     $srcFile = $entry->resourceFile[0];
                     $assetUrl = $srcFile->getPath();
                 }   
-                
                 return [
                     'title' => $entry->title,
                     'date' => $entry->dateCreated->w3cDate(),
@@ -67,6 +66,20 @@ return [
                     'description' => $entry->description,
                     'linkToContent' => $entry->linkToContent,
                     'thumbnailImageUrl' => $entry->thumbnailImageUrl
+                ];
+            },
+        ],
+        'api/events_upcoming.json' => [
+            'elementType' => 'Entry',
+            'elementsPerPage' => 4,
+            'pageParam' => 'pg',
+            'criteria' => ['section' => 'events', 'date' => ['>=' . date("Y-m-d H:i:s.u")], 'order' => 'date asc'],
+            'transformer' => function(EntryModel $entry) {
+                return [
+                    'title' => $entry->title,
+                    'description' => $entry->eventDescription,
+                    'date' => $entry->date->w3cDate(),
+                    'location' => $entry->location
                 ];
             },
         ],
