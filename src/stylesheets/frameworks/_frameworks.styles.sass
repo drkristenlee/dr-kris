@@ -42,10 +42,6 @@ $columbia: 'Columbia Serial', 'Georgia', serif
 // FRAMEWORK NAME: starter-framework
 // @import "_frameworks.starter-framework/_frameworks.starter-framework.styles"
 
-@font-face
-	font-family: "scout-theme"
-	src: url('../../public/static/fonts/scout-theme-2016.woff') format("woff"), url('../../public/static/fonts/scout-theme-2016.ttf') format("ttf")
-
 .clearfix
 	*zoom: 1
 	&:before, &:after
@@ -2146,20 +2142,21 @@ nav.nav
 				margin-top: 15px
 				margin-bottom: 0
 				font-size: 14px
-				opacity: 0.5
+				.faded
+					opacity: 0.5
 				.fa-heart
 					font-size: 12px
+				.scout-link
+					margin-left: -5px
+					text-decoration: none
+					transition-timing-function: ease-in-out
+					transition-duration: 250ms
+					&:hover
+						opacity: 1
 				.scout-logo
-					vertical-align: sub
-					&:before
-						content: "\63"
-						font-family: 'scout-theme'!important
-						font-style: normal!important
-						font-weight: 400!important
-						font-variant: normal!important
-						text-transform: none!important
-						speak: none
-						-webkit-font-smoothing: antialiased
+					height: 22px
+					vertical-align: middle
+					margin-top: -1px
 
 		@media (max-width: 950px)
 			flex-direction: column
