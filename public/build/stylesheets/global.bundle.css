@@ -2067,6 +2067,8 @@ nav.nav {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between; }
+      .section.resources_section .resource_list.match-bottom {
+        margin-bottom: 10px; }
       .section.resources_section .resource_list .resource_item {
         margin-bottom: 23px;
         background: #D8D9D9;
