@@ -1,7 +1,9 @@
 import '../stylesheets/styles.sass';
 var $ = require("jquery");
 
-console.log("Global.js file has imported");
+// console.log("Global.js file has imported");
+
+// ---- Functions ----
 
 function addBackgroundImages() {
 	$('.insert-background').each(function(){
@@ -13,6 +15,12 @@ function addBackgroundImages() {
 function closeNotifBanner() {
 	$('#notification_banner').remove();
 }
+
+function subscribeNewsletter() {
+
+}
+
+// ---- Document Ready ----
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	$('#container').addClass('loaded');

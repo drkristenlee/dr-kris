@@ -1919,10 +1919,26 @@ nav.nav
 
 .contact-form-wrapper
 	width: 100%
-	display: flex
-	justify-content: center
-	align-items: center
 	margin: 2rem 0
+	position: relative
+	.success-message
+		opacity: 0
+		pointer-events: none
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		text-align: center
+		transition-timing-function: ease-in-out
+		transition-duration: 250ms
+		padding-top: 50px
+		padding-bottom: 50px
+		.text
+			width: 100%
+			max-width: 500px
+			margin: auto
+			color: $blue
 	.contact-form
 		width: 100%
 		position: relative
@@ -1964,6 +1980,14 @@ nav.nav
 						border-color: $teal
 		.submit-contact
 			font-size: 14px
+	&.success
+		.contact-form
+			opacity: 0
+			pointer-events: none
+			height: 200px
+		.success-message
+			opacity: 1
+			pointer-events: unset
 
 
 #footer

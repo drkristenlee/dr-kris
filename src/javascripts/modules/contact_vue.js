@@ -23,6 +23,10 @@ Vue.component('contact-form', {
 		</div>
 
 		<div class="contact-form-wrapper">
+			<div class="success-message">
+				<p class="text">Thanks for filling out this form - your message has been sent to Dr. Kris. She'll get 
+				back to you as soon as possible, so stay tuned and keep an eye out for that response in your inbox!</p>
+			</div>
 			<div class="contact-form">
 				<div class="form-row">
 					<div class="_half form-content">
@@ -46,7 +50,7 @@ Vue.component('contact-form', {
 						<textarea v-model="message" class="form-el" rows="6" placeholder="Enter the body of your message here"></textarea>
 					</div>
 				</div>
-				<button class="submit-contact button primary" :disabled="!canSubmit">Send Message</button>
+				<button class="submit-contact button primary" :disabled="!canSubmit" @click="submitSuccess">Send Message</button>
 			</div>
 		</div>
 	</div>`,
@@ -61,6 +65,7 @@ Vue.component('contact-form', {
 	},
 	methods: {
 		submit: function(){
+			// Setup subject
 			var new_subj = "";
 			if (this.mode == "speak") {
 				new_subj = "Re: Speaking at event";
@@ -71,6 +76,28 @@ Vue.component('contact-form', {
 			} else {
 				new_subj = this.subject;
 			}
+
+			// Setup POST for email script
+			var self = this;
+			$.ajax({
+				method: 'POST',
+				url: "https://script.google.com/macros/s/AKfycbzX29BtfLzAXEvRF19VJk3ksPQUd6XlBhy8N9I_qjZyR_o3l4E/exec",
+				data: { 
+					email: self.email, 
+					subject: self.subject, 
+					body: self.message,
+					phone: self.phone
+				}, 
+				success: function(returnData) {
+					self.submitSuccess();
+				}, 
+				error: function(jqXHR, status, error) {
+					console.log(error);
+				}
+			});
+		},
+		submitSuccess: function() {
+			$('.contact-form-wrapper').addClass('success');
 		},
 		validPhone: function(phone){
 			var reg = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;

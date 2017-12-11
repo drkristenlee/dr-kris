@@ -3036,16 +3036,26 @@ nav.nav {
 
 .contact-form-wrapper {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 2rem 0; }
+  margin: 2rem 0;
+  position: relative; }
+  .contact-form-wrapper .success-message {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 250ms;
+    padding-top: 50px;
+    padding-bottom: 50px; }
+    .contact-form-wrapper .success-message .text {
+      width: 100%;
+      max-width: 500px;
+      margin: auto;
+      color: #274A63; }
   .contact-form-wrapper .contact-form {
     width: 100%;
     position: relative; }
@@ -3102,6 +3112,13 @@ nav.nav {
             border-color: #007C79; }
     .contact-form-wrapper .contact-form .submit-contact {
       font-size: 14px; }
+  .contact-form-wrapper.success .contact-form {
+    opacity: 0;
+    pointer-events: none;
+    height: 200px; }
+  .contact-form-wrapper.success .success-message {
+    opacity: 1;
+    pointer-events: unset; }
 
 #footer {
   width: 100%; }

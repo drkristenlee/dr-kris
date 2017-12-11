@@ -18,18 +18,24 @@ __webpack_require__(1);
 
 var $ = __webpack_require__(0);
 
-console.log("Global.js file has imported");
+// console.log("Global.js file has imported");
+
+// ---- Functions ----
 
 function addBackgroundImages() {
 	$('.insert-background').each(function () {
 		var link = $(this).attr('image-url');
-		$(this).css('background-image', "url(\"" + link + "\")");
+		$(this).css('background-image', 'url("' + link + '")');
 	});
 }
 
 function closeNotifBanner() {
 	$('#notification_banner').remove();
 }
+
+function subscribeNewsletter() {}
+
+// ---- Document Ready ----
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	$('#container').addClass('loaded');
