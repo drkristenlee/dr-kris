@@ -83,5 +83,18 @@ return [
                 ];
             },
         ],
+        'api/quiz_terms.json' => [
+            'elementType' => 'Entry',
+            'criteria' => ['section' => 'quizPage'],
+            'transformer' => function(EntryModel $entry) {
+                if (isset($entry->termsAndConditions[0])) {
+                    $srcFile = $entry->termsAndConditions[0];
+                    $termsUrl = $srcFile->getPath();
+                }   
+                return [
+                    'terms' => $termsUrl,
+                ];
+            },
+        ],
     ]
 ];
