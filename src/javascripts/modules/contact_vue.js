@@ -50,7 +50,7 @@ Vue.component('contact-form', {
 						<textarea v-model="message" class="form-el" rows="6" placeholder="Enter the body of your message here"></textarea>
 					</div>
 				</div>
-				<button class="submit-contact button primary" :disabled="!canSubmit" @click="submitSuccess">Send Message</button>
+				<button class="submit-contact button primary" :disabled="!canSubmit" @click="submit">Send Message</button>
 			</div>
 		</div>
 	</div>`,
@@ -81,7 +81,7 @@ Vue.component('contact-form', {
 			var self = this;
 			$.ajax({
 				method: 'POST',
-				url: "https://script.google.com/macros/s/AKfycbzX29BtfLzAXEvRF19VJk3ksPQUd6XlBhy8N9I_qjZyR_o3l4E/exec",
+				url: "https://script.google.com/macros/s/AKfycbwAf3o2EXesJBwVlKHF5ogFkpOHtmoHtYgZhnnLok4RY7_OWZs/exec",
 				data: { 
 					email: self.email, 
 					subject: self.subject, 

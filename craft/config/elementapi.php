@@ -25,7 +25,7 @@ return [
             'elementType' => 'Entry',
             'elementsPerPage' => 4,
             'pageParam' => 'pg',
-            'criteria' => ['section' => 'press', 'type' => 'pressVideoAndPodcasts'],
+            'criteria' => ['section' => 'press', 'type' => 'pressVideoAndPodcasts', 'order' => 'dateUpdated desc'],
             'transformer' => function(EntryModel $entry) {
                 return [
                     'title' => $entry->title,
@@ -41,7 +41,7 @@ return [
             'elementType' => 'Entry',
             'elementsPerPage' => 4,
             'pageParam' => 'pg',
-            'criteria' => ['section' => 'press', 'type' => 'pressMentionedIn'],
+            'criteria' => ['section' => 'press', 'type' => 'pressMentionedIn', 'order' => 'dateUpdated desc'],
             'transformer' => function(EntryModel $entry) {
                 return [
                     'title' => $entry->title,
@@ -57,7 +57,7 @@ return [
             'elementType' => 'Entry',
             'elementsPerPage' => 4,
             'pageParam' => 'pg',
-            'criteria' => ['section' => 'press', 'type' => 'pressWrittenBy'],
+            'criteria' => ['section' => 'press', 'type' => 'pressWrittenBy', 'order' => 'dateUpdated desc'],
             'transformer' => function(EntryModel $entry) {
                 return [
                     'title' => $entry->title,

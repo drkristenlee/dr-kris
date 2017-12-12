@@ -21,13 +21,18 @@ function completeNewsletter() {
 }
 
 function subscribeNewsletter() {
-	var $subemail = $('#footer .subscribe_input').value();
+	var $subemail = $('#footer .subscribe_input input').val();
+	console.log($subemail);
 	$.ajax({
 		type: "POST",
 		url: "https://www.aweber.com/scripts/addlead.pl",
+		crossDomain: true,
+		xhrFields: {
+	        withCredentials: true
+	    },
 		data: {
 			listname: 'awlist4164909',
-			email: $subemail
+			email: $subemail,
 		},
 		success: function(returnData) {
 			console.log(returnData);

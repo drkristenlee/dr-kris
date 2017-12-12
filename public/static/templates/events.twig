@@ -46,6 +46,7 @@
 		
 	</div>
 
+	{% if craft.entries.section('eventPage')[0].carouselImages | length %}
 	<div class="section no-flex past-events">
 
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot events-past-inkblot top">
@@ -69,7 +70,7 @@
 						<div class="image"></div>
 					</div>
 
-					{% for event in craft.entries.section('eventCarousel') %}
+					{% for event in craft.entries.section('eventPage')[0].carouselImages %}
 						<div class="slide">
 							<div class="image insert-background" image-url="./static/images/events/{{ event.carouselImage[0].getPath() }}"></div>
 
@@ -94,6 +95,7 @@
 
 		</div>
 	</div>
+	{% endif %}
 
 	<div class="section no-flex booking-info">
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
