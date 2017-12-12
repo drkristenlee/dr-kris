@@ -156,6 +156,7 @@
 		<a href="./press" class="link"><button class="button white">View All</button></a>
 	</div>
 
+	{% if craft.entries.section('landingPage')[0].featuredResources | length %}
 	<div class="resources_section section">
 		<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-resources-inkblot top">
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
@@ -182,8 +183,8 @@
 		</div>
 
 		<a href="./resources"><button class="button black">View All</button></a>
-
 	</div>
+	{% endif %}
 	
 {% endblock %}
 

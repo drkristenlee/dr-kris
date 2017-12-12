@@ -1,6 +1,6 @@
-webpackJsonp([3],{
+webpackJsonp([4],{
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16,7 +16,7 @@ switch (pathParams[1]) {
     // Home Page
     case '':
         // Import the module
-        __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 6)).then(function (module) {
+        __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 7)).then(function (module) {
             console.log("System.import -> Home.js");
         });
 
@@ -26,7 +26,7 @@ switch (pathParams[1]) {
     // News Page
     case 'news':
         // Import the module
-        __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 7)).then(function (module) {
+        __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 8)).then(function (module) {
             console.log("System.import -> news.js");
         });
 
@@ -44,5 +44,5 @@ console.log("NOTE: window.location.pathname is " + pathName);
 
 /***/ })
 
-},[5]);
+},[6]);
 //# sourceMappingURL=router.bundle.js.map
