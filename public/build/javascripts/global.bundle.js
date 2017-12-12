@@ -1,20 +1,12 @@
-webpackJsonp([3],[
-/* 0 */,
-/* 1 */
-/***/ (function(module, exports) {
+webpackJsonp([5],{
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(1);
+__webpack_require__(9);
 
 var $ = __webpack_require__(0);
 
@@ -33,7 +25,28 @@ function closeNotifBanner() {
 	$('#notification_banner').remove();
 }
 
-function subscribeNewsletter() {}
+function completeNewsletter() {
+	$('#footer .subscribe_input').toggleClass("completed");
+}
+
+function subscribeNewsletter() {
+	var $subemail = $('#footer .subscribe_input').value();
+	$.ajax({
+		type: "POST",
+		url: "https://www.aweber.com/scripts/addlead.pl",
+		data: {
+			listname: 'awlist4164909',
+			email: $subemail
+		},
+		success: function success(returnData) {
+			console.log(returnData);
+			completeNewsletter();
+		},
+		error: function error(jqXHR, textStatus, errorThrown) {
+			console.log(errorThrown);
+		}
+	});
+}
 
 // ---- Document Ready ----
 
@@ -53,7 +66,7 @@ $(document).ready(function () {
 	});
 
 	$('#footer .subscribe_input button').click(function (e) {
-		$(e.target).parent().toggleClass("completed");
+		subscribeNewsletter();
 	});
 
 	$("#resources .category-list .category").click(function () {
@@ -72,6 +85,14 @@ $(document).ready(function () {
 	});
 });
 
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
 /***/ })
-],[4]);
+
+},[3]);
 //# sourceMappingURL=global.bundle.js.map
