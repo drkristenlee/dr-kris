@@ -16,8 +16,8 @@ function closeNotifBanner() {
 	$('#notification_banner').remove();
 }
 
-function subscribeNewsletter() {
-
+function completeNewsletter() {
+	$('#footer .subscribe_input').toggleClass("completed");
 }
 
 // ---- Document Ready ----
@@ -38,7 +38,7 @@ $(document).ready(function(){
 	});
 
 	$('#footer .subscribe_input button').click(function(e){
-		$(e.target).parent().toggleClass("completed");
+		completeNewsletter();
 	});
 
 	$("#resources .category-list .category").click(function(){

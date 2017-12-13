@@ -40,50 +40,13 @@
 		    order: 'date asc'
 		}) %}
 
-		<div class="event_groups">
-
-			{% if not upcomingEvents|length %}
-				<p class="no_events_placeholder main">No upcoming events planned yet</p>
-			{% else %}
-
-				{% for year, entriesInYear in upcomingEvents | group("date.year") %}
-			        {% for month, entriesInMonth in entriesInYear | group("date|date('F')") %}
-			            
-			            <div class="event_section">
-							<p class="title">{{ month }} {{ year }}</p>
-							<div class="event-list">
-								
-								 {% for entry in entriesInMonth %}
-									<div class="event">
-										<div class="event_info">
-											<div class="info-title">{{ entry.title }}</div>
-											<div class="info">
-												<p class="info-date">{{ entry.date|date('n/j') }}</p>
-												<p class="info-loc">{{ entry.location }}</p>
-											</div>
-										</div>
-										<p class="description">
-											{{ entry.eventDescription }}
-										</p>
-									</div>
-								{% endfor %}
-
-							</div>
-						</div>
-
-			        {% endfor %}
-				{% endfor %}
-
-			{% endif %}
-
-		</div>
-
-		<div class="load-container">
-			<button class="button black">Load more</button>
-		</div>
-
+		{% verbatim %}
+			<event-upcoming-list></event-upcoming-list>
+		{% endverbatim %}
+		
 	</div>
 
+	{% if craft.entries.section('eventPage')[0].carouselImages | length %}
 	<div class="section no-flex past-events">
 
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot events-past-inkblot top">
@@ -107,7 +70,7 @@
 						<div class="image"></div>
 					</div>
 
-					{% for event in craft.entries.section('eventCarousel') %}
+					{% for event in craft.entries.section('eventPage')[0].carouselImages %}
 						<div class="slide">
 							<div class="image insert-background" image-url="./static/images/events/{{ event.carouselImage[0].getPath() }}"></div>
 
@@ -132,6 +95,7 @@
 
 		</div>
 	</div>
+	{% endif %}
 
 	<div class="section no-flex booking-info">
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
@@ -149,6 +113,9 @@
 
 {% endblock %}
 
+{% includeJsFile 'https://unpkg.com/vue@2.5.6/dist/vue.js' %}
+{% includeJsFile 'https://code.jquery.com/jquery-3.2.1.min.js' first %}
+{% includeJsFile "../src/javascripts/modules/events_vue.js" %}
 {% includeJsFile "../src/javascripts/modules/siema.min.js" first %}
 {% includeJsFile "../src/javascripts/modules/carousel.js" %}
 

@@ -13,7 +13,6 @@ return [
                     $srcFile = $entry->resourceFile[0];
                     $assetUrl = $srcFile->getPath();
                 }   
-                
                 return [
                     'title' => $entry->title,
                     'date' => $entry->dateCreated->w3cDate(),
@@ -26,7 +25,7 @@ return [
             'elementType' => 'Entry',
             'elementsPerPage' => 4,
             'pageParam' => 'pg',
-            'criteria' => ['section' => 'press', 'type' => 'pressVideoAndPodcasts'],
+            'criteria' => ['section' => 'press', 'type' => 'pressVideoAndPodcasts', 'order' => 'dateUpdated desc'],
             'transformer' => function(EntryModel $entry) {
                 return [
                     'title' => $entry->title,
@@ -42,7 +41,7 @@ return [
             'elementType' => 'Entry',
             'elementsPerPage' => 4,
             'pageParam' => 'pg',
-            'criteria' => ['section' => 'press', 'type' => 'pressMentionedIn'],
+            'criteria' => ['section' => 'press', 'type' => 'pressMentionedIn', 'order' => 'dateUpdated desc'],
             'transformer' => function(EntryModel $entry) {
                 return [
                     'title' => $entry->title,
@@ -58,7 +57,7 @@ return [
             'elementType' => 'Entry',
             'elementsPerPage' => 4,
             'pageParam' => 'pg',
-            'criteria' => ['section' => 'press', 'type' => 'pressWrittenBy'],
+            'criteria' => ['section' => 'press', 'type' => 'pressWrittenBy', 'order' => 'dateUpdated desc'],
             'transformer' => function(EntryModel $entry) {
                 return [
                     'title' => $entry->title,
@@ -67,6 +66,33 @@ return [
                     'description' => $entry->description,
                     'linkToContent' => $entry->linkToContent,
                     'thumbnailImageUrl' => $entry->thumbnailImageUrl
+                ];
+            },
+        ],
+        'api/events_upcoming.json' => [
+            'elementType' => 'Entry',
+            'elementsPerPage' => 4,
+            'pageParam' => 'pg',
+            'criteria' => ['section' => 'events', 'date' => ['>=' . date("Y-m-d H:i:s.u")], 'order' => 'date asc'],
+            'transformer' => function(EntryModel $entry) {
+                return [
+                    'title' => $entry->title,
+                    'description' => $entry->eventDescription,
+                    'date' => $entry->date->w3cDate(),
+                    'location' => $entry->location
+                ];
+            },
+        ],
+        'api/quiz_terms.json' => [
+            'elementType' => 'Entry',
+            'criteria' => ['section' => 'quizPage'],
+            'transformer' => function(EntryModel $entry) {
+                if (isset($entry->termsAndConditions[0])) {
+                    $srcFile = $entry->termsAndConditions[0];
+                    $termsUrl = $srcFile->getPath();
+                }   
+                return [
+                    'terms' => $termsUrl,
                 ];
             },
         ],

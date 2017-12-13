@@ -30,7 +30,7 @@ Vue.component('quiz-element', {
 			Psychology of Thinking, available for pre-order and scheduled to debut on one of my favorite days ever, February 6th
 			(my daughter's birthday, XO, darling). You can also learn more by connecting with my @TheRealDrKris.</p>
 
-			<p class="disclaimer">By using this quiz you agree to <a href="#" class="terms-conditions">these terms and 
+			<p class="disclaimer">By using this quiz you agree to <a :href="this.termsConditions" target="_blank" class="terms-conditions">these terms and 
 			conditions</a></p>
 
 			<p class="label">Enter your name to begin:</p>
@@ -517,6 +517,7 @@ Vue.component('quiz-element', {
 	</div>`,
 	data: function() {
 		return {
+			termsConditions: "",
 			fullValuesExpanded: false,
 			step: 0,
 			questions: [
@@ -1038,6 +1039,22 @@ Vue.component('quiz-element', {
 		}
 	},
 	methods: {
+		getTerms: function(data) {
+			var self = this;
+        	Vue.nextTick(function(){
+				$.ajax({
+					type: "GET",
+					url: "./api/quiz_terms.json",
+					contentType: "application/json",
+					success: function(returnData) {
+						self.termsConditions = './uploads/resources/'+returnData.data[0].terms;  
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						//console.log(errorThrown);
+					}
+				});
+			});
+		},
 		highestArea: function() {
 			var list = [
 				{ name: "reflective", score: this.results.reflect/138 },
@@ -1120,7 +1137,8 @@ Vue.component('quiz-element', {
 			});
 		}
 	},
-	computed: {
+	mounted: function(){
+		this.getTerms();
     },
 });
 

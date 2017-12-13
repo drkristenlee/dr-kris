@@ -133,7 +133,7 @@
 
 		<img class="title handwritten left-corner press" src="./static/images/written/press.png">
 
-		<div class="press_grid">
+		<div class="press_grid less-bottom">
 
 			{% for entry in craft.entries.section('landingPage')[0].featuredPress.limit(4) %}
 				<div class="press_item">
@@ -156,13 +156,14 @@
 		<a href="./press" class="link"><button class="button white">View All</button></a>
 	</div>
 
+	{% if craft.entries.section('landingPage')[0].featuredResources | length %}
 	<div class="resources_section section">
 		<img src="./static/images/inkblots/IB_events_left.png" class="inkblot landing-resources-inkblot top">
 		<img src="./static/images/inkblots/IB_footer.png" class="inkblot landing-resources-inkblot bottom">
 
 		<img class="title handwritten space small" src="./static/images/written/re.png">
 
-		<div class="resource_list">
+		<div class="resource_list match-bottom">
 			{% set range = range(1, 4) %}
 			
 			{% for entry in craft.entries.section('landingPage')[0].featuredResources.limit(6) %}
@@ -182,8 +183,8 @@
 		</div>
 
 		<a href="./resources"><button class="button black">View All</button></a>
-
 	</div>
+	{% endif %}
 	
 {% endblock %}
 

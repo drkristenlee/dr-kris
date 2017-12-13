@@ -88,7 +88,7 @@ Vue.component('resources-grid', {
 		},
 		parseDate: function(datestring) {
 			var d = new Date(Date.parse(datestring));
-			return d.getMonth() + "/" + d.getDate() + "/" + (d.getFullYear().toString().slice(-2));
+			return (d.getMonth()+1) + "/" + d.getDate() + "/" + (d.getFullYear().toString().slice(-2));
 		},
 		isFiltered: function(entry) {
 			return entry.title.toLowerCase().includes(this.search.toLowerCase()) || 
