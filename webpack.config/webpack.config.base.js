@@ -17,6 +17,7 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 // ADDED FOR AUTOPREFIXER
 const PostCSSPlugin = require('postcss-loader');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // MAIN WEBPACK CONFIGURATION
 const webpackBaseConfig = function(env) {
@@ -106,6 +107,10 @@ const webpackBaseConfig = function(env) {
             }),
 
             new WebpackNotifierPlugin({alwaysNotify: true}),
+
+            new CopyWebpackPlugin([
+                { from: './src/javascripts/modules', to: path.resolve(__dirname, "../public/build/javascripts/modules") }
+            ])
 
         ]
     }
