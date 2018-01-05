@@ -37,6 +37,15 @@
 			<div class="hero_bio mobile-pad">
 				<h3 class="tagline">{{ craft.entries.section('landingPage')[0].tagline }}</h3>
 				<p class="body">{{ craft.entries.section('aboutPage')[0].bio|nl2br|raw }}</p>
+
+				<div class="cv-section">
+					<a class="speaker-packet-link" href="./uploads/resources/{{ craft.entries.section('aboutPage')[0].speakerPacket[0].getPath() }}" download>
+						<button class="float_ad button primary">Download Professional Bio and Speaker's Packet</button>
+					</a>
+					<a class="cv-link" href="./uploads/resources/{{ craft.entries.section('aboutPage')[0].cv[0].getPath() }}" download>
+						<button class="float_ad button primary">Download CV and Shadow CV</button>
+					</a>
+				</div>
 			</div>
 		</div>
 
