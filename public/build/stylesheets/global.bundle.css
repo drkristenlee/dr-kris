@@ -2600,6 +2600,16 @@ nav.nav {
         @media (max-width: 800px) {
           .about_hero .flex-row .hero_bio .body {
             font-size: 16px; } }
+      .about_hero .flex-row .hero_bio .cv-section {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; }
+        .about_hero .flex-row .hero_bio .cv-section .speaker-packet-link {
+          margin: 25px 0; }
       @media (max-width: 950px) {
         .about_hero .flex-row .hero_bio {
           width: 100%;
