@@ -3516,6 +3516,31 @@ nav.nav {
         font-weight: 600;
         font-style: italic; }
 
+.book_trailer_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .book_trailer_container .book_trailer {
+    position: relative;
+    padding-bottom: 25%;
+    padding-top: 25px;
+    width: 50%;
+    margin-top: 50px; }
+    @media (max-width: 900px) {
+      .book_trailer_container .book_trailer {
+        padding-bottom: 56.25%;
+        height: 0;
+        width: 100%; } }
+    .book_trailer_container .book_trailer iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+
 .list_quotes {
   padding: 0 10vw;
   display: -webkit-box;

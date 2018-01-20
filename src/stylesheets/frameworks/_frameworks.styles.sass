@@ -2343,6 +2343,25 @@ nav.nav
 			.author
 				font-weight: 600
 				font-style: italic
+.book_trailer_container
+	display: flex
+	justify-content: center
+	.book_trailer
+		position: relative
+		padding-bottom: 25%
+		padding-top: 25px
+		width: 50%
+		margin-top: 50px
+		@media(max-width: 900px)
+			padding-bottom: 56.25% /* 16:9 */
+			height: 0
+			width: 100%
+		& iframe
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
 
 .list_quotes
 	padding: 0 10vw
