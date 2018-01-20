@@ -5,6 +5,15 @@
 // it (Vue swaps it out for it's template during rendering) and its data
 
 // <home-feed>
+
+function objectifyForm(formArray) {//serialize data function
+    var returnArray = {};
+    for (var i = 0; i < formArray.length; i++){
+        returnArray[formArray[i]['name']] = formArray[i]['value'];
+    }
+    return returnArray;
+}
+
 Vue.component('quiz-element', {
 	template: `<div id="quiz" :class="{ 'completed': step >= questions.length+3 }">
 		<h3 class="section-title" v-if="step < questions.length+3">Test your Mentalligence</h3>
@@ -34,10 +43,10 @@ Vue.component('quiz-element', {
 			conditions</a></p>
 
 			<p class="label">Enter your name to begin:</p>
-			<div class="button-group">
-				<input class="input" v-model="name" type="text" placeholder="Your name...">
+			<form id="quiz-form" class="button-group">
+				<input id="name" name="name" class="input" v-model="name" type="text" placeholder="Your name...">
 				<button class="button primary" @click="startQuiz" :disabled="this.name == ''">Begin Quiz</button>
-			</div>
+			</form>
 		</div>
 
 		<div class="quiz-rate quiz-page" v-else-if="step > 0 && step <= questions.length">
@@ -1084,7 +1093,24 @@ Vue.component('quiz-element', {
 			});
 			return sorted[0].name + " and " + sorted[1].name;
 		},
-		startQuiz: function() {
+		startQuiz: function(event) {
+			event.preventDefault();
+            var name = $("#name").val();
+            //var formData = objectifyForm($form.serializeArray());
+            var url = "https://script.google.com/a/husky.neu.edu/macros/s/AKfycbynjfzIOIJUJvudamz93sJYhlVvODYQ_HGi1Not7vLy4I2t24fw/exec?name=" + name +"&callback=?";
+
+            $.getJSON(url, function(){});
+
+            /*
+            $.ajax({
+                url: url,
+                method: "POST",
+                dataType: "jsonp",
+                crossDomain: true,
+                data: formData
+            });
+            */
+
 			this.step = 1;
 			Vue.nextTick(function(){
 				window.scroll(0, 0);
